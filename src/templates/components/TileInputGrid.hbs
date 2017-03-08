@@ -1,0 +1,22 @@
+<div class="grid-component type-{{type}}">
+    <div class="settings">
+        <input value="{{columns}}" type="text" class="columns">
+        <div class="x">x</div>
+        <input {{#unless isNormal}} disabled {{/unless}} value="{{items}}" type="text" class="items">
+    </div>
+
+    <div class="container">
+        {{#each grid}}
+            <div class="column" data-column="{{@index}}">
+                {{#each .}}
+                    <div data-tile-id="1" class="item">
+                        <div class="arrow up"></div>
+                        <img src="../img/icon_23.png">
+                        <div class="arrow down"></div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+
+</div>

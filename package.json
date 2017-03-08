@@ -1,0 +1,47 @@
+{
+  "name": "flashExtension",
+  "description": "Dopamine Flash Extension",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "controlkit": "^0.1.9",
+    "es6-object-assign": "^1.0.3",
+    "eventemitter4": "^0.2.4",
+    "gsap": "^1.19.0",
+    "hbsify": "^1.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.9.4",
+    "babel-core": "latest",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-class-properties": "latest",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "latest",
+    "babelify": "latest",
+    "bannerify": "latest",
+    "eslint": "^3.14.1",
+    "eslint-config-google": "^0.7.1",
+    "grunt": "latest",
+    "grunt-browserify": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-stylus": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-eslint": "^19.0.0",
+    "grunt-execute": "^0.2.2",
+    "grunt-gitinfo": "latest",
+    "grunt-sync": "latest",
+    "load-grunt-tasks": "latest",
+    "minifyify": "latest",
+    "ncp": "latest",
+    "regedit": "latest"
+  },
+  "scripts": {
+    "build": "grunt build:dev",
+    "watch": "grunt watchers",
+    "install-modules": "npm install",
+    "reset-modules": "rm -rf node-modules",
+    "start": "npm run watch",
+    "eslint-fix": "eslint src/**/*.js --fix"
+  }
+}

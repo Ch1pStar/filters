@@ -1,0 +1,4 @@
+src/js/flash/*
+src/js/engine/shims/*
+src/js/engine/simulators/*
+src/js/config/*
