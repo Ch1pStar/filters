@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flash Extension Web App</title>
+    <title>Dope Particles</title>
 </head>
 <body>
 
@@ -10,7 +10,12 @@
 <link rel="stylesheet" type="text/css" href="../dist/ext.min.css">
 
     <script>
+        var panel = new com.components.Panel();
+        document.body.appendChild(panel.container);
 
+        document.body.addEventListener('dblclick', function (e) {
+            if(e.target === document.body) location.reload();
+        });
     </script>
     <style>
         html, body {

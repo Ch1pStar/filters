@@ -2,7 +2,13 @@
 	background: #2e2e2e
 	border-bottom: 1px solid rgba(0,0,0,0.3)
 	.grid-component
-		padding: 10px
+		height: 100%
+		display flex
+		flex-wrap: wrap
+		padding: 5px
+		padding-top: 0
+		box-sizing: border-box
+		margin-top: -5px;
 		.container
 			display: flex
 		.settings
@@ -20,22 +26,23 @@
 		.column
 			width: 100%
 			.item
-				outline: 1px solid rgba(0,0,0,0.5)
-				background: rgba(0,0,0,0.3)
-				border-radius: 3px
-				height: 25px
+				width: 50px
+				height: 50px
 				margin: 5px
-				border: 2px solid transparent
-				position: relative
+				border-radius: 5px
+				border: 1px solid #0e0e0e
+				box-sizing: border-box
+				background: #0e0e0e
 				&:hover
 					background: rgba(0,0,0,0.1)
 					outline: 1px solid rgba(0,0,0,1)
 				&.active
-					border: 2px solid #2b9843
+					background: #478020
+					border: 1px solid #61a433
 		&.type-column
 			.column
 				.item
-					height: 75px
+					height: 45px
 
 .input-grid-component-container
 	@extends .grid-component-container

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionList>
-    <Extension Id="com.dopamine.FlashExtension.Panel">
+    <Extension Id="com.dopamine.DopamineFlashParticles.Panel">
         <HostList>
             <Host Name="FLPR" Port="8006"/>
         </HostList>

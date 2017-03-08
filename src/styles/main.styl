@@ -1,11 +1,15 @@
 @import "components/*.styl"
 
 
+#controlKit
+	position: static
 #controlKit .panel
+	position: static !important
+	width: 100% !important
 	& > .head
 		display: none
 	& > .wrap
-		overflow-y: scroll !important
+		// overflow-y: scroll !important
 	.scrollBar
 		display: none !important
 	.group-list

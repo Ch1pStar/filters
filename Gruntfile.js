@@ -82,6 +82,7 @@ module.exports = function(grunt) {
   grunt.initConfig(cfg);
   grunt.registerTask('build:dev',  ['gitinfo', 'eslint', 'clean', 'stylus', 'browserify:dev']);
   grunt.registerTask('build:prod', ['gitinfo', 'clean', 'stylus', 'browserify:prod']);
-  grunt.registerTask('watchers', ['build:dev', 'execute:install', 'watch']);
+  grunt.registerTask('watchers', ['build:dev', 'watch']);
+  grunt.registerTask('watchers:install', ['build:dev', 'execute:install', 'watch']);
 
 };
