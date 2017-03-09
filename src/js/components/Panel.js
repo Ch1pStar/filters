@@ -11,7 +11,7 @@ const panelTemplate = require('../../templates/Panel.hbs');
  * Preset commands panel
  * @class
  */
-class Panel extends Box{
+class Panel extends Box {
 
     /**
      * @type {Object} Flash API
@@ -25,63 +25,43 @@ class Panel extends Box{
 	 */
 	_effectsPanel = null;
 
+	/** @type {String} Image assets path */
+	assetsPath = '../img/particles/';
+
+	assets = [
+		'p1.png',
+		'p2.png',
+		'p3.png',
+		'p4.png',
+	];
+
     /**
      * @param {Object} fl Flash API
      * @param {Object} options Panel config options
      */
 	constructor(fl, options = {}) {
 		super(options, panelTemplate);
+
+		if (window.__adobe_cep__) {
+			// get library images
+		}
+
 		this.container.className = 'app-component-container';
 		this.render();
-
-		this._previewPanel = new PreviewBox();
-		this._previewPanel.render();
 
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
 
-		this._imagesPanel = new ImagesBox();
+		this._imagesPanel = new ImagesBox({ path: this.assetsPath, images: this.assets });
 		this._imagesPanel.render();
 
+		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
+		this._previewPanel.render();
+		this._imagesPanel.on(ImagesBox.events.CHANGE, (image) => this._previewPanel.particleImage = image);
 
 		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._effectsPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._imagesPanel.container);
-
-		// const grid = new Grid({ columns: 5, items: 2, type: Grid.types.COLUMN });
-		// grid.render();
-		// requestAnimationFrame(()=>{
-		// 	this._assetsPanel._wrapNode._element.insertBefore(grid.container, this._assetsPanel._wrapNode._element.firstChild);
-		// });
-
-		// const effectsOptions = {
-		// 	actions: [
-		// 		'Alpha',
-		// 		'Attraction',
-		// 		'Collision',
-		// 		'Color',
-		// 		'Crosszone'
-		// 	],
-		// 	selectedEffect: 'Alpha'
-		// };
-
-		// this._effectsPanel.addSelect(effectsOptions, 'actions', { target: 'selectedEffect', label: 'Add Effect' });
-		// this._effectsPanel.addButton('+', () => {
-		// 	const group = new InputGroup(effectsOptions.selectedEffect);
-		// 	group.panel = this._effectsPanel;
-		// 	this._groups.push(group);
-		// });
-
-		// const lifeGroup = new InputGroup('life');
-		// const rateGroup = new InputGroup('rate');
-		// const massGroup = new InputGroup('mass');
-		// const radiusGroup = new InputGroup('radius');
-
-		// this._groups = [lifeGroup, rateGroup, massGroup, radiusGroup];
-		// this._groups.forEach((group) => {
-		// 	group.panel = this._effectsPanel;
-		// });
-
 	}
 
 	/*eslint-disable*/

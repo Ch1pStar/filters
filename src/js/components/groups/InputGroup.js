@@ -7,21 +7,31 @@ const Group = require('./abstract/Group');
  */
 class InputGroup extends Group {
 
+	constructor(label, fields) {
+		super(label);
+
+		this.fields = fields;
+	}
+
 	/**
 	 * @type {string}
 	 * @private
 	 */
-	_value = '';
+	_value = 0;
 
 	set panel(panel) {
-		this._panel = panel.addGroup({ label: this.label.charAt(0).toUpperCase() + this.label.slice(1), enable: this.enable });
+		this._panel = panel.addGroup({ label: this.label, enable: this.enable });
 
 		// Get last index... a big hacky
 		this.group = panel._groups[panel._groups.length - 1];
 
-		panel.addStringInput(this, '_value', { label:  this.label.charAt(0).toUpperCase() + this.label.slice(1)+':' });
-
-		// this.addAddButton();
+		if (this.fields) {
+			for (const field in this.fields) {
+				panel.addStringInput(this.fields, field, { label:  `${field}:` });
+			}
+		} else {
+			panel.addStringInput(this, '_value', { label:  `${this.label}:` });
+		}
 	}
 
     /**
@@ -33,7 +43,7 @@ class InputGroup extends Group {
 	}
 
 	get value() {
-		return { [this.label]: this._value }
+		return { [this.label]: parseInt(this._value, 10) };
 	}
 }
 

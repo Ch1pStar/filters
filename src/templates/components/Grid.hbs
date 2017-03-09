@@ -1,18 +1,2 @@
-<div class="grid-component type-{{type}}">
-    <div class="settings">
-        <input value="{{columns}}" type="text" class="columns">
-        <div class="x">x</div>
-        <input {{#unless isNormal}} disabled {{/unless}} value="{{items}}" type="text" class="items">
-    </div>
-
-    <div class="container">
-        {{#each grid}}
-            <div class="column" data-column="{{@index}}">
-                {{#each .}}
-                    <div class="item img-box" data-item="{{@index}}"></div>
-                {{/each}}
-            </div>
-        {{/each}}
-    </div>
-
+<div class="grid-component">
 </div>

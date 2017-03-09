@@ -8,7 +8,9 @@
     "es6-object-assign": "^1.0.3",
     "eventemitter4": "^0.2.4",
     "gsap": "^1.19.0",
-    "hbsify": "^1.0.1"
+    "hbsify": "^1.0.1",
+    "pixi.js": "^4.4.1",
+    "dopamine-proton": "git+http://git.dopamine.bg/tools/dopamine-proton.git"
   },
   "devDependencies": {
     "autoprefixer-stylus": "^0.9.4",

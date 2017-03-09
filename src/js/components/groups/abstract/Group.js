@@ -44,10 +44,6 @@ class Group extends EventEmitter {
 		this.label = label;
 
 		this.enable = enable;
-
-		requestAnimationFrame(() => {
-			this.rendered();
-		});
 	}
 
 	set panel(panel) {
@@ -55,6 +51,10 @@ class Group extends EventEmitter {
 
 		// Get last index... a big hacky
 		this.group = this._panel._groups[this._panel._groups.length - 1];
+
+		requestAnimationFrame(() => {
+			this.rendered();
+		});
 	}
 
 	/**

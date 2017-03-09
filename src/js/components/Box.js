@@ -6,7 +6,6 @@ const EventEmitter = require('eventemitter4');
  */
 class Box extends EventEmitter {
 
-	
 	/** @type {HTMLElement} Box content wrapper */
 	container = null;
 
