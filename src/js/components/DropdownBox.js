@@ -4,6 +4,12 @@ const InputGroup = require('./groups/InputGroup');
 const AlphaGroup = require('./groups/AlphaGroup');
 const AttractionGroup = require('./groups/AttractionGroup');
 const RepulsionGroup = require('./groups/RepulsionGroup');
+const RectZoneGroup = require('./groups/RectZoneGroup');
+const CircleZoneGroup = require('./groups/CircleZoneGroup');
+const LineZoneGroup = require('./groups/LineZoneGroup');
+const ForceGroup = require('./groups/ForceGroup');
+const RotateGroup = require('./groups/RotateGroup');
+const ScaleGroup = require('./groups/ScaleGroup');
 const template = require('../../templates/components/BehavioursDropdown.hbs');
 
 class DropdownBox extends Box {
@@ -18,6 +24,12 @@ class DropdownBox extends Box {
 		Alpha: AlphaGroup,
 		Attraction: AttractionGroup,
 		Repulsion: RepulsionGroup,
+		RectZone: RectZoneGroup,
+		CircleZone: CircleZoneGroup,
+		LineZone: LineZoneGroup,
+		Force: ForceGroup,
+		Rotate: RotateGroup,
+		Scale: ScaleGroup,
 	};
 
 	constructor(parent) {

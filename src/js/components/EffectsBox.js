@@ -53,7 +53,7 @@ class EffetcsBox extends Box {
 		const massGroup = new MassGroup(this);
 
 		this.groups = [lifeGroup, rateGroup, gravityGroup, radiusGroup, velGroup, massGroup];
-		this.groups.forEach((group) => { 
+		this.groups.forEach((group) => {
 			group.panel = this._panel;
 			group.on(InputGroup.events.CHANGE, this.emitGroupsState.bind(this));
 		});
@@ -61,10 +61,11 @@ class EffetcsBox extends Box {
 		this._initDropdown();
 	}
 
-	emitGroupsState(){
+	emitGroupsState() {
 		let output = '';
-		this.groups.forEach((gr)=>{
-			output += gr.value+'\n';
+
+		this.groups.forEach((gr) => {
+			output += `${gr.value}\n`;
 		});
 		this.emit(EffetcsBox.events.CHANGE, output);
 	}
@@ -74,7 +75,7 @@ class EffetcsBox extends Box {
 		requestAnimationFrame(() => {
 			this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
 				if (!this.dropdownBox) {
-					requestAnimationFrame(()=> e.target.querySelector('span').textContent = '- Behaviors');
+					requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
 
 					const dropdownBox = new DropdownBox(this);
 
@@ -92,7 +93,7 @@ class EffetcsBox extends Box {
 						this.groups.splice(this.groups.indexOf(group), 1);
 					});
 				} else {
-					requestAnimationFrame(()=> e.target.querySelector('span').textContent = '+ Behaviors');
+					requestAnimationFrame(() => e.target.querySelector('span').textContent = '+ Behaviors');
 					this.container.removeChild(this.dropdownBox.container);
 					this.dropdownBox = null;
 				}

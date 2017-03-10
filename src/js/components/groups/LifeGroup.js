@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class LifeGroup extends InputGroup{
+class LifeGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Life');
@@ -9,12 +8,12 @@ class LifeGroup extends InputGroup{
 
 		this.fields = {
 			[this.label]: 2,
-			range: [.1,10],
+			range: [0.1, 10],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, this.label, 'range', {step: .1});
+		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.1 });
 	}
 
 	get value() {

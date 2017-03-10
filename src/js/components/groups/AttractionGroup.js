@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class AttractionGroup extends InputGroup{
+class AttractionGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Attraction');
@@ -15,8 +14,8 @@ class AttractionGroup extends InputGroup{
 			radius: 1,
 			radiusRange: [0, 10],
 			life: 1,
-			lifeRange: [.1, 10],
-		}
+			lifeRange: [0.1, 10],
+		};
 	}
 
 	_initFields() {
@@ -25,16 +24,16 @@ class AttractionGroup extends InputGroup{
 		this._panel.addStringInput(fields, 'x', { label:  'X:' });
 		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
 
-		this._panel.addSlider(this.fields, 'force', 'forceRange', {step: .5});
-		this._panel.addSlider(this.fields, 'radius', 'radiusRange', {step: .5});
-		this._panel.addSlider(this.fields, 'life', 'lifeRange', {step: .5});
+		this._panel.addSlider(this.fields, 'force', 'forceRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'radius', 'radiusRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'life', 'lifeRange', { step: 0.5 });
 	}
 
 	get value() {
 		const fields = this.fields;
 
 		return `emitter.addBehaviour(new Proton.Attraction({x:${fields.x}, y:${fields.y}}, 
-		${fields.force}, ${fields.radius}, ${fields.life}), new Proton.CrossZone(new Proton.RectZone(100, 100, 400, 350), 'bound'));`;
+		${fields.force}, ${fields.radius}, ${fields.life}));`;
 	}
 }
 

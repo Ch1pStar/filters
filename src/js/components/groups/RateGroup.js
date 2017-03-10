@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class RateGroup extends InputGroup{
+class RateGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Rate');
@@ -10,7 +9,7 @@ class RateGroup extends InputGroup{
 		this.fields = {
 			amount: 50,
 			amountRange: [1, 300],
-			frequency: .1,
+			frequency: 0.1,
 			frequencyRange: [0.01, 2],
 		};
 	}
@@ -18,8 +17,8 @@ class RateGroup extends InputGroup{
 	_initFields() {
 		const fields = this.fields;
 
-		this._panel.addSlider(this.fields, 'amount', 'amountRange', {step: 10});
-		this._panel.addSlider(this.fields, 'frequency', 'frequencyRange', {step: .01});
+		this._panel.addSlider(this.fields, 'amount', 'amountRange', { step: 10 });
+		this._panel.addSlider(this.fields, 'frequency', 'frequencyRange', { step: 0.01 });
 	}
 
 	get value() {

@@ -35,7 +35,7 @@ class PreviewBox extends Box {
 		emitter.integrator = new Proton.NumericalIntegration(Proton.EULER);
 		emitter.pool = new Proton.Pool();`,
 		body: ``,
-		footer: `emitter.p.x = Math.random() * (this.previewWidth - 200) + 100;
+		footer: `emitter.p.x = this.previewWidth/2;
 		// emitter.p.y = (Math.random()* (this.previewHeight/2) + 200) - 100;
 		emitter.p.y = 100;
 		emitter.emit();
@@ -58,13 +58,15 @@ class PreviewBox extends Box {
 			sp.position.x = particle.p.x;
 			sp.position.y = particle.p.y;
 			sp.alpha = particle.alpha;
+			sp.rotation = particle.rotation;
+			sp.scale.set(particle.scale);
 		});
 		emitter.addEventListener(Proton.PARTICLE_DEAD, (particle) => {
 			// this.cnt.removeChild(particle.sprite);
 			particle.sprite.renderable = false;
 		});
 		this.emitter = emitter;
-		`
+		`,
 	};
 
 	constructor(effectsPanel, imagesPanel) {

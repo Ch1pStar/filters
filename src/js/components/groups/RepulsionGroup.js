@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class RepulsionGroup extends InputGroup{
+class RepulsionGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Repulsion');
@@ -15,8 +14,8 @@ class RepulsionGroup extends InputGroup{
 			radius: 1,
 			radiusRange: [0, 10],
 			life: 1,
-			lifeRange: [.1, 10],
-		}
+			lifeRange: [0.1, 10],
+		};
 	}
 
 	_initFields() {
@@ -25,9 +24,9 @@ class RepulsionGroup extends InputGroup{
 		this._panel.addStringInput(fields, 'x', { label:  'X:' });
 		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
 
-		this._panel.addSlider(this.fields, 'force', 'forceRange', {step: .5});
-		this._panel.addSlider(this.fields, 'radius', 'radiusRange', {step: .5});
-		this._panel.addSlider(this.fields, 'life', 'lifeRange', {step: .5});
+		this._panel.addSlider(this.fields, 'force', 'forceRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'radius', 'radiusRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'life', 'lifeRange', { step: 0.5 });
 	}
 
 	get value() {

@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class AlphaGroup extends InputGroup{
+class AlphaGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Alpha');
@@ -18,7 +17,7 @@ class AlphaGroup extends InputGroup{
 	_initFields() {
 		this._panel.addStringInput(this.fields, 'min');
 		this._panel.addStringInput(this.fields, 'max');
-		this._panel.addSlider(this.fields, 'life', 'lifeRange', {step: .5});
+		this._panel.addSlider(this.fields, 'life', 'lifeRange', { step: 0.5 });
 	}
 
 	get value() {

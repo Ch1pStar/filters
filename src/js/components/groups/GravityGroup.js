@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class GravityGroup extends InputGroup{
+class GravityGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Gravity');
@@ -9,12 +8,12 @@ class GravityGroup extends InputGroup{
 
 		this.fields = {
 			[this.label]: 8,
-			range: [-20,20],
+			range: [-20, 20],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, this.label, 'range', {step: .5});
+		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.5 });
 	}
 
 	get value() {

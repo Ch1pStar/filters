@@ -1,6 +1,5 @@
 const InputGroup = require('./InputGroup');
 
-
 class RadiusGroup extends InputGroup {
 
 	constructor(parent) {
@@ -9,12 +8,12 @@ class RadiusGroup extends InputGroup {
 
 		this.fields = {
 			[this.label]: 5,
-			range: [.1,10],
+			range: [0.1, 10],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, this.label, 'range', {step: .1});
+		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.1 });
 	}
 
 	get value() {

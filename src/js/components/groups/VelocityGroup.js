@@ -1,7 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-
-class VelocityGroup extends InputGroup{
+class VelocityGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Velocity');
@@ -9,17 +8,17 @@ class VelocityGroup extends InputGroup{
 
 		this.fields = {
 			speed: 1,
-			speedRange: [.1, 10],
+			speedRange: [0.1, 10],
 			minAngle: 0,
 			maxAngle: 360,
-			orientation: 'polar'
-		}
+			orientation: 'polar',
+		};
 	}
 
 	_initFields() {
 		const fields = this.fields;
 
-		this._panel.addSlider(this.fields, 'speed', 'speedRange', {step: .1});
+		this._panel.addSlider(this.fields, 'speed', 'speedRange', { step: 0.1 });
 
 		this._panel.addStringInput(fields, 'minAngle', { label:  'Arc start:' });
 		this._panel.addStringInput(fields, 'maxAngle', { label:  'Arc end:' });

@@ -8,22 +8,24 @@ const Group = require('./abstract/Group');
 class InputGroup extends Group {
 
 	static events = {
-		CHANGE: 'input_group_change'
+		CHANGE: 'input_group_change',
 	};
 
 	constructor(label) {
 		super(label);
 	}
 
-	set fields(fields){
+	set fields(fields) {
 		const fieldsProxy = new Proxy(fields, {
 			set: (obj, prop, value) => {
 				obj[prop] = value;
 				this.emit(InputGroup.events.CHANGE, this.value);
+
 				return true;
 			},
-			get: (obj, prop) => obj[prop]
+			get: (obj, prop) => obj[prop],
 		});
+
 		this._fields = fieldsProxy;
 	}
 
@@ -31,7 +33,7 @@ class InputGroup extends Group {
 		return this._fields;
 	}
 
-	_initFields(){
+	_initFields() {
 	}
 
 	set panel(panel) {

@@ -1,6 +1,6 @@
 const InputGroup = require('./InputGroup');
 
-class MassGroup extends InputGroup{
+class MassGroup extends InputGroup {
 
 	constructor(parent) {
 		super('Mass');
@@ -15,7 +15,7 @@ class MassGroup extends InputGroup{
 	_initFields() {
 		const fields = this.fields;
 
-		this._panel.addSlider(this.fields, this.label, 'range', {step: .1});
+		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.1 });
 	}
 
 	get value() {
