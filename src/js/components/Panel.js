@@ -51,13 +51,18 @@ class Panel extends Box {
 
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
+		this._effectsPanel.on(EffectsBox.events.CHANGE, (prop) => this._previewPanel.effects = prop);
 
 		this._imagesPanel = new ImagesBox({ path: this.assetsPath, images: this.assets });
 		this._imagesPanel.render();
 
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
-		this._imagesPanel.on(ImagesBox.events.CHANGE, (image) => this._previewPanel.particleImage = image);
+
+		this._imagesPanel.on(ImagesBox.events.CHANGE, (image) => {
+			this._effectsPanel.emitGroupsState();
+			this._previewPanel.particleImage = image;
+		});
 
 		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._effectsPanel.container);

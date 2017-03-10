@@ -2,15 +2,28 @@ const Box = require('./Box');
 const DropdownBox = require('./DropdownBox');
 const ControlKit = require('controlkit');
 const InputGroup = require('./groups/InputGroup');
+const RateGroup = require('./groups/RateGroup');
+const VelocityGroup = require('./groups/VelocityGroup');
+const LifeGroup = require('./groups/LifeGroup');
+const RadiusGroup = require('./groups/RadiusGroup');
+const GravityGroup = require('./groups/GravityGroup');
+const MassGroup = require('./groups/MassGroup');
 const template = require('../../templates/Effects.hbs');
 
 class EffetcsBox extends Box {
+
+	/** @type {Object} List of events this class will dispatch */
+	static events = {
+		CHANGE: 'effect_change',
+	};
 
 	/**
 	 * @type {ControlKit}
 	 * @private
 	 */
 	_controlKit = null;
+
+	properties = {};
 
 	constructor(options) {
 		super(options, template);
@@ -29,24 +42,31 @@ class EffetcsBox extends Box {
 	}
 
 	_initGroups() {
-		// default groups
-		const lifeGroup = new InputGroup('Life');
-		const rateGroup = new InputGroup('Rate', {
-			amount: {
-				get: () => 0,
-				set: (val) => {
-					console.log(val);
-				},
-			}, frequency: '0' }
-		);
-		const massGroup = new InputGroup('Mass');
-		const radiusGroup = new InputGroup('Radius');
-		const velGroup = new InputGroup('Velocity');
+		const self = this;
 
-		this.groups = [lifeGroup, rateGroup, massGroup, radiusGroup, velGroup];
-		this.groups.forEach((group) => group.panel = this._panel);
+		// default groups
+		const lifeGroup = new LifeGroup(this);
+		const rateGroup = new RateGroup(this);
+		const radiusGroup = new RadiusGroup(this);
+		const velGroup = new VelocityGroup(this);
+		const gravityGroup = new GravityGroup(this);
+		const massGroup = new MassGroup(this);
+
+		this.groups = [lifeGroup, rateGroup, gravityGroup, radiusGroup, velGroup, massGroup];
+		this.groups.forEach((group) => { 
+			group.panel = this._panel;
+			group.on(InputGroup.events.CHANGE, this.emitGroupsState.bind(this));
+		});
 
 		this._initDropdown();
+	}
+
+	emitGroupsState(){
+		let output = '';
+		this.groups.forEach((gr)=>{
+			output += gr.value+'\n';
+		});
+		this.emit(EffetcsBox.events.CHANGE, output);
 	}
 
 	_initDropdown() {
@@ -54,7 +74,9 @@ class EffetcsBox extends Box {
 		requestAnimationFrame(() => {
 			this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
 				if (!this.dropdownBox) {
-					const dropdownBox = new DropdownBox(this._panel);
+					requestAnimationFrame(()=> e.target.querySelector('span').textContent = '- Behaviors');
+
+					const dropdownBox = new DropdownBox(this);
 
 					this.container.appendChild(dropdownBox.container);
 					this.dropdownBox = dropdownBox;
@@ -70,6 +92,7 @@ class EffetcsBox extends Box {
 						this.groups.splice(this.groups.indexOf(group), 1);
 					});
 				} else {
+					requestAnimationFrame(()=> e.target.querySelector('span').textContent = '+ Behaviors');
 					this.container.removeChild(this.dropdownBox.container);
 					this.dropdownBox = null;
 				}

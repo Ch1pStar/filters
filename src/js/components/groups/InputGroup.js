@@ -7,17 +7,32 @@ const Group = require('./abstract/Group');
  */
 class InputGroup extends Group {
 
-	constructor(label, fields) {
-		super(label);
+	static events = {
+		CHANGE: 'input_group_change'
+	};
 
-		this.fields = fields;
+	constructor(label) {
+		super(label);
 	}
 
-	/**
-	 * @type {string}
-	 * @private
-	 */
-	_value = 0;
+	set fields(fields){
+		const fieldsProxy = new Proxy(fields, {
+			set: (obj, prop, value) => {
+				obj[prop] = value;
+				this.emit(InputGroup.events.CHANGE, this.value);
+				return true;
+			},
+			get: (obj, prop) => obj[prop]
+		});
+		this._fields = fieldsProxy;
+	}
+
+	get fields() {
+		return this._fields;
+	}
+
+	_initFields(){
+	}
 
 	set panel(panel) {
 		this._panel = panel.addGroup({ label: this.label, enable: this.enable });
@@ -25,13 +40,7 @@ class InputGroup extends Group {
 		// Get last index... a big hacky
 		this.group = panel._groups[panel._groups.length - 1];
 
-		if (this.fields) {
-			for (const field in this.fields) {
-				panel.addStringInput(this.fields, field, { label:  `${field}:` });
-			}
-		} else {
-			panel.addStringInput(this, '_value', { label:  `${this.label}:` });
-		}
+		this._initFields();
 	}
 
     /**
@@ -42,9 +51,7 @@ class InputGroup extends Group {
 		// this.wrap.insertBefore(this._grid.container, this.wrap.firstChild);
 	}
 
-	get value() {
-		return { [this.label]: parseInt(this._value, 10) };
-	}
+	get value() {}
 }
 
 module.exports = InputGroup;

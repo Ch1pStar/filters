@@ -1,6 +1,9 @@
 const Box = require('./Box');
 const ControlKit = require('controlkit');
 const InputGroup = require('./groups/InputGroup');
+const AlphaGroup = require('./groups/AlphaGroup');
+const AttractionGroup = require('./groups/AttractionGroup');
+const RepulsionGroup = require('./groups/RepulsionGroup');
 const template = require('../../templates/components/BehavioursDropdown.hbs');
 
 class DropdownBox extends Box {
@@ -11,8 +14,16 @@ class DropdownBox extends Box {
 		REMOVE: 'dropwdown_effect_remove',
 	};
 
-	constructor() {
+	inputGroups = {
+		Alpha: AlphaGroup,
+		Attraction: AttractionGroup,
+		Repulsion: RepulsionGroup,
+	};
+
+	constructor(parent) {
 		super({}, template);
+
+		this.parent = parent;
 
 		this.container.classList.add('dropdown-component-container');
 		this.render();
@@ -33,7 +44,7 @@ class DropdownBox extends Box {
 						this.emit(DropdownBox.events.REMOVE, this.groups.get(effectType));
 						this.groups.delete(effectType);
 					} else {
-						const group = new InputGroup(effectType);
+						const group = new this.inputGroups[effectType](this.parent);
 
 						this.emit(DropdownBox.events.ADD, group);
 						this.groups.set(effectType, group);
