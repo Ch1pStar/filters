@@ -7,6 +7,8 @@
 		flex-direction: column
 		.content
 			.content-component
+				overflow-y: scroll
+				max-height: 470px
 				padding: 2px
 				padding-top: 0
 				.alpha
@@ -34,9 +36,14 @@
 					font-size: 0.75rem
 
 	@media screen  and (max-width : 1090px)
-		.behaviours-component-container
-			height: 100%
-			padding-bottom: 12px
-			box-sizing: border-box
+		box-sizing: border-box
+		display: flex
+		flex-flow: column
+		.heading
+			flex-shrink: 0
+		.content
+			display: flex
+			flex-flow: column
 			.content-component
 				height: 100%
+				max-height: 173px
