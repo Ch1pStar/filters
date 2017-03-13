@@ -7,14 +7,14 @@ class RepulsionGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x: 1,
-			y: 1,
-			force: 1,
-			forceRange: [0, 10],
+			x: 300,
+			y: 250,
+			force: 15,
+			forceRange: [1, 100],
 			radius: 1,
 			radiusRange: [0, 10],
-			life: 1,
-			lifeRange: [0.1, 10],
+			life: 100000000,
+			lifeRange: [10, 10000],
 		};
 	}
 
@@ -24,16 +24,19 @@ class RepulsionGroup extends InputGroup {
 		this._panel.addStringInput(fields, 'x', { label:  'X:' });
 		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
 
-		this._panel.addSlider(this.fields, 'force', 'forceRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'force', 'forceRange', { step: 5 });
 		this._panel.addSlider(this.fields, 'radius', 'radiusRange', { step: 0.5 });
-		this._panel.addSlider(this.fields, 'life', 'lifeRange', { step: 0.5 });
+		this._panel.addSlider(this.fields, 'life', 'lifeRange', { step: 10 });
 	}
 
 	get value() {
 		const fields = this.fields;
 
+		// return `emitter.addBehaviour(new Proton.Repulsion({x:${fields.x}, y:${fields.y}}, 
+		// ${fields.force}, ${fields.radius}, ${fields.life}));`;
+
 		return `emitter.addBehaviour(new Proton.Repulsion({x:${fields.x}, y:${fields.y}}, 
-		${fields.force}, ${fields.radius}, ${fields.life}));`;
+		${fields.force}));`;
 	}
 }
 

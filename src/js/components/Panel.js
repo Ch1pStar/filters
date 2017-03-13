@@ -59,9 +59,9 @@ class Panel extends Box {
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
 
-		this._imagesPanel.on(ImagesBox.events.CHANGE, (image) => {
+		this._imagesPanel.on(ImagesBox.events.CHANGE, (images) => {
 			this._effectsPanel.emitGroupsState();
-			this._previewPanel.particleImage = image;
+			this._previewPanel.particleImages = images;
 		});
 
 		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);

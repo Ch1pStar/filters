@@ -10,7 +10,7 @@
     "gsap": "^1.19.0",
     "hbsify": "^1.0.1",
     "pixi.js": "^4.4.1",
-    "dopamine-proton": "git+http://git.dopamine.bg/tools/dopamine-proton.git"
+    "quark": "git+https://github.com/Ch1pStar/Quark.git"
   },
   "devDependencies": {
     "autoprefixer-stylus": "^0.9.4",

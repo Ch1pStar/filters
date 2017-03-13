@@ -43,9 +43,9 @@ class ImagesBox extends Box {
 		imageWrapper.appendChild(imageElement);
 		this.grid.container.querySelector('.grid-component').appendChild(imageWrapper);
 		imageWrapper.addEventListener('click', () => {
-			this.grid._unselect();
+			// this.grid._unselect();
 			imageWrapper.classList.toggle('active');
-			this.emit(ImagesBox.events.CHANGE, imageElement);
+			this.emit(ImagesBox.events.CHANGE, this.container.querySelectorAll('.active img'));
 		});
 	}
 }
