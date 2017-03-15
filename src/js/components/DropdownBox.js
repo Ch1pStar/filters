@@ -10,6 +10,9 @@ const LineZoneGroup = require('./groups/LineZoneGroup');
 const ForceGroup = require('./groups/ForceGroup');
 const RotateGroup = require('./groups/RotateGroup');
 const ScaleGroup = require('./groups/ScaleGroup');
+const GravityWellGroup = require('./groups/GravityWellGroup');
+const RandomDriftGroup = require('./groups/RandomDriftGroup');
+const BlendModeGroup = require('./groups/BlendModeGroup');
 const template = require('../../templates/components/BehavioursDropdown.hbs');
 
 class DropdownBox extends Box {
@@ -30,6 +33,9 @@ class DropdownBox extends Box {
 		Force: ForceGroup,
 		Rotate: RotateGroup,
 		Scale: ScaleGroup,
+		GravityWell: GravityWellGroup,
+		RandomDrift: RandomDriftGroup,
+		BlendMode: BlendModeGroup,
 	};
 
 	constructor(parent) {
@@ -50,7 +56,7 @@ class DropdownBox extends Box {
 
 			items.forEach((option) => {
 				option.addEventListener('click', (e) => {
-					const effectType = e.target.dataset.effectType;
+					const effectType = option.dataset.effectType;
 
 					if (this.groups.has(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this.groups.get(effectType));

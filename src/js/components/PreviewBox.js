@@ -3,7 +3,9 @@ const template = require('../../templates/Preview.hbs');
 const PIXI = require('pixi.js');
 
 // const Proton = require('dopamine-proton');
-const Proton = require('quark');
+// const Proton = require('quark');
+
+const Proton = Quark;
 
 class PreviewBox extends Box {
 
@@ -15,17 +17,17 @@ class PreviewBox extends Box {
 			this.stage.removeChild(this.cnt);
 		}
 		this.cnt = new PIXI.particles.ParticleContainer(30000, {
-			scale: false,
+			scale: true,
 			position: true,
 			rotation: false,
 			uvs: false,
-			alpha: false,
+			alpha: true,
 		});
 
 		this.stage.addChild(this.cnt);
 
 		const emitter = new Proton.Emitter();
-		emitter.maxParticles = 15000;`,
+		emitter.maxParticles = 30000;`,
 		body: ``,
 		footer: `emitter.p.x = 100;
 		// emitter.p.y = (Math.random()* (this.previewHeight/2) + 200) - 100;
@@ -37,7 +39,7 @@ class PreviewBox extends Box {
 		emitter.particleCreated.add((particle)=>{
 			if(particle.sprite){
 				particle.sprite.visible = true;
-				// sp.alpha = 1;
+				particle.sprite.scale.set(particle.scale);
 				return;
 			}
 			const txtId = Math.floor(Math.random()*(this.particleTextures.length));
@@ -49,34 +51,21 @@ class PreviewBox extends Box {
 			sp.height = 15;
 			sp.anchor.set(0.5);
 			this.cnt.addChild(sp);
-	    });
+		});
 
-	    emitter.particleUpdate.add((particle)=>{
-	      const sp = particle.sprite;
-	      sp.position.set(particle.p.x, particle.p.y);
-	      // sp.position.x = particle.p.x;
-	      // sp.position.y = particle.p.y;
-	    //   // sp.scale.x = particle.scale/2;
-	    //   // sp.scale.y = particle.scale/2;
-	    //   // sp.anchor.x = 0.5;
-	    //   // sp.anchor.y = 0.5;
-	    //   // sp.alpha = particle.alpha;
-	    //   // sp.rotation = particle.rotation*Math.PI/180;
+		emitter.particleUpdate.add((particle)=>{
+			const sp = particle.sprite;
+			sp.position.set(particle.p.x, particle.p.y);
+			sp.alpha = particle.alpha;
+			sp.scale.set(particle.scale);
+			// sp.rotation = particle.rotation*Math.PI/180;
+		});
 
-	  //   	sp.position.x = particle.p.x;
-			// sp.position.y = particle.p.y;
-			// sp.alpha = particle.alpha;
-			// sp.rotation = particle.rotation;
-			// sp.scale.set(particle.scale);
-	    });
-
-
-	    emitter.particleDead.add((particle) =>{
-	        particle.sprite.visible = false;
-	        // particle.sprite.alpha = 0;
-	      // cnt.removeChild(particle.sprite);
-	    });
-
+		emitter.particleDead.add((particle) =>{
+			particle.sprite.visible = false;
+			
+			// cnt.removeChild(particle.sprite);
+		});
 
 		this.emitter = emitter;
 		`,
@@ -91,7 +80,8 @@ class PreviewBox extends Box {
 
 		this.currentFrame = 0;
 		this.running = true;
-		this._emitOnce = this._emitOnce.bind(this);
+		this._startEmit = this._startEmit.bind(this);
+		this._stopEmit = this._stopEmit.bind(this);
 		this._updateCursorPosition = this._updateCursorPosition.bind(this);
 
 		requestAnimationFrame(() => {
@@ -117,6 +107,7 @@ class PreviewBox extends Box {
 		// combine all the images into a single base texture sheet
 		images.forEach((img) => {
 			const imgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(img)));
+
 			imgSprite.x = sheetWidth;
 			sheetContainer.addChild(imgSprite);
 
@@ -126,17 +117,19 @@ class PreviewBox extends Box {
 			img.textureHeight = imgSprite.height;
 			sheetWidth += imgSprite.width;
 			// sheet height value is the largest single image height
-			sheetHeight = imgSprite.height>sheetHeight?imgSprite.height:sheetHeight;
+			sheetHeight = imgSprite.height > sheetHeight ? imgSprite.height : sheetHeight;
 		});
 
 		const sheetTexture = PIXI.RenderTexture.create(sheetWidth, sheetHeight);
 		// draw the images sheet
+
 		this.renderer.render(sheetContainer, sheetTexture);
 
 		// create a texture for each particle image from the texture sheet
 		const textures = [];
 		let startX = 0;
-		for(let i = 0;i<images.length;i++){
+
+		for (let i = 0; i < images.length; i++) {
 			const img = images[i];
 			const txt = new PIXI.Texture(sheetTexture, new PIXI.Rectangle(startX, 0, img.textureWidth, img.textureHeight));
 
@@ -173,7 +166,7 @@ class PreviewBox extends Box {
 	_createEmitter() {
 		const emitterCode = this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
 
-		eval(emitterCode);
+		if (this.particleTextures && this.particleTextures.length)			{ eval(emitterCode); }
 	}
 
 	_startRender() {
@@ -191,54 +184,64 @@ class PreviewBox extends Box {
 		draw();
 	}
 
-	_initEmitTypes(){
+	_initEmitTypes() {
 		const checkboxes = this.container.querySelectorAll('.check');
-		checkboxes.forEach((check)=>{
-			check.addEventListener('click', ()=>{
+
+		checkboxes.forEach((check) => {
+			check.addEventListener('click', () => {
 				const type = check.dataset.type;
 
-				checkboxes.forEach((check)=>check.checked = false);
+				checkboxes.forEach((check) => check.checked = false);
 				check.checked = true;
 
 				// reset
 				this.emitOnClick = false;
 				this._stopCursorFollow();
 
-				if(type === 'tween'){
+				if (type === 'tween') {
 					this._updateEmitterPosition = this._tweenUpdate;
 					this.emitter.p.x = 100;
 					this.emitter.p.y = 100;
-				}else if(type ==='follow'){
+				} else if (type === 'follow') {
 					this._updateEmitterPosition = this._cursorUpdate;
 					this._startCursorFollow();
-				}else{
-					this._updateEmitterPosition = function () {}.bind(this);
+				} else {
+					this._updateEmitterPosition = function () {};
 					this.emitOnClick = true;
+					this._stopEmit();
 				}
 			});
 		});
 	}
 
-	_updateEmitterPosition(){
+	_updateEmitterPosition() {
 
 	}
 
-	set emitOnClick(val){
+	set emitOnClick(val) {
 		this._emitOnClick = val;
-		if(val){
-			this.container.addEventListener('click', this._emitOnce);
-		}else{
-			this.container.removeEventListener('click', this._emitOnce);
+		if (val) {
+			this.container.addEventListener('mousedown', this._startEmit);
+			this.container.addEventListener('mouseup', this._stopEmit);
+		} else {
+			this.container.removeEventListener('mousedown', this._startEmit);
+			this.container.removeEventListener('mouseup', this._stopEmit);
 		}
 	}
 
-	_emitOnce() {
-		this.running = true;
+	_startEmit() {
+		this.emitter.emit();
+		this._updateEmitterPosition = this._cursorUpdate;
+		this._startCursorFollow();
+	}
+
+	_stopEmit() {
+		this.emitter.stopEmit();
 	}
 
 	_tweenUpdate() {
-		this.emitter.p.x = Math.sin(this.currentFrame*.1)*150+250;
-		this.emitter.p.y = Math.cos(this.currentFrame*.1)*30+150;
+		this.emitter.p.x = Math.sin(this.currentFrame * 0.1) * 150 + 250;
+		this.emitter.p.y = Math.cos(this.currentFrame * 0.1) * 30 + 150;
 	}
 
 	_startCursorFollow() {
@@ -250,7 +253,7 @@ class PreviewBox extends Box {
 		this.cursorY = e.layerY;
 	}
 
-	_stopCursorFollow(){
+	_stopCursorFollow() {
 		this.container.removeEventListener('mousemove', this._updateCursorPosition);
 	}
 
@@ -258,8 +261,8 @@ class PreviewBox extends Box {
 		const cursorX = this.cursorX || 100;
 		const cursorY = this.cursorY || 100;
 
-		if(cursorX < this.previewWidth) this.emitter.p.x = this.cursorX;
-		if(cursorY < this.previewHeight) this.emitter.p.y = this.cursorY;
+		if (cursorX < this.previewWidth) this.emitter.p.x = this.cursorX;
+		if (cursorY < this.previewHeight) this.emitter.p.y = this.cursorY;
 	}
 }
 
