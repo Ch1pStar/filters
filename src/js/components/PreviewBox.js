@@ -1,6 +1,7 @@
 const Box = require('./Box');
 const template = require('../../templates/Preview.hbs');
 const PIXI = require('pixi.js');
+const SheetBuilder = require('../util/SpriteSheetBuilder');
 
 // const Proton = require('dopamine-proton');
 // const Proton = require('quark');
@@ -99,46 +100,11 @@ class PreviewBox extends Box {
 	}
 
 	set particleImages(images) {
+		const sheetBuilder = new SheetBuilder(this.renderer);
+
 		this._particleImages = images;
-
-		let sheetWidth = 0;
-		let sheetHeight = 0;
-		const sheetContainer = new PIXI.Container();
-
-		// combine all the images into a single base texture sheet
-		images.forEach((img) => {
-			const imgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(img)));
-
-			imgSprite.x = sheetWidth;
-			sheetContainer.addChild(imgSprite);
-
-			// save image actual size, since if the img element was resized
-			// img.width and img.height are the resized values
-			img.textureWidth = imgSprite.width;
-			img.textureHeight = imgSprite.height;
-			sheetWidth += imgSprite.width;
-			// sheet height value is the largest single image height
-			sheetHeight = imgSprite.height > sheetHeight ? imgSprite.height : sheetHeight;
-		});
-
-		const sheetTexture = PIXI.RenderTexture.create(sheetWidth, sheetHeight);
-		// draw the images sheet
-
-		this.renderer.render(sheetContainer, sheetTexture);
-
-		// create a texture for each particle image from the texture sheet
-		const textures = [];
-		let startX = 0;
-
-		for (let i = 0; i < images.length; i++) {
-			const img = images[i];
-			const txt = new PIXI.Texture(sheetTexture, new PIXI.Rectangle(startX, 0, img.textureWidth, img.textureHeight));
-
-			textures.push(txt);
-			startX += img.textureWidth;
-		}
-
-		this.particleTextures = textures;
+		sheetBuilder.sources = images;
+		this.particleTextures = sheetBuilder.buildSheet();
 		this._createEmitter();
 	}
 
