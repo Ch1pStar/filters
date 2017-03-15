@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 
     browserify: {
       options: {
+        external: ['quark'],
         watch: true,
         transform: [
           ['babelify', {presets: ['es2015'], plugins: ['transform-class-properties']}], ['hbsify']
@@ -56,9 +57,9 @@ module.exports = function(grunt) {
       stylus: {
         files: ['src/styles/**/*.+(styl|css)'], tasks: 'stylus'
       },
-      eslint: {
-        files: ['src/**/*.js'], tasks: 'eslint'
-      },
+      // eslint: {
+      //   files: ['src/**/*.js'], tasks: 'eslint'
+      // },
       rebuild: {
         files: ['Gruntfile.js'], tasks: 'build:dev'
       },
@@ -66,9 +67,9 @@ module.exports = function(grunt) {
         files: ['src/**/*.+(js|hbs)'], tasks: 'execute:install'
       }
     },
-    eslint: {
-      target: ['src/**/*.js']
-    },
+    // eslint: {
+    //   target: ['src/**/*.js']
+    // },
     execute: {
       install: {
         src: ['install.js']
@@ -80,7 +81,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-execute');
   grunt.initConfig(cfg);
-  grunt.registerTask('build:dev',  ['gitinfo', 'eslint', 'clean', 'stylus', 'browserify:dev']);
+  // grunt.registerTask('build:dev',  ['gitinfo', 'eslint', 'clean', 'stylus', 'browserify:dev']);
+  grunt.registerTask('build:dev',  ['gitinfo', 'clean', 'stylus', 'browserify:dev']);
   grunt.registerTask('build:prod', ['gitinfo', 'clean', 'stylus', 'browserify:prod']);
   grunt.registerTask('watchers', ['build:dev', 'watch']);
   grunt.registerTask('watchers:install', ['build:dev', 'execute:install', 'watch']);

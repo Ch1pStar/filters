@@ -9,8 +9,8 @@ class ScaleGroup extends InputGroup {
 		this.fields = {
 			a: 1,
 			b: 0,
-			life: 1500,
-			lifeRange: [1, 10000],
+			life: Infinity,
+			lifeRange: [1000, 20000],
 		};
 	}
 
@@ -26,7 +26,8 @@ class ScaleGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		return `emitter.addBehaviour(new Proton.Scale(${fields.a}, ${fields.b}, ${fields.life}));`;
+		// return `emitter.addBehaviour(new Proton.Scale(${fields.a}, ${fields.b}, ${fields.life}));`;
+		return `emitter.addBehaviour(new Proton.Scale(${fields.a}, ${fields.b}, Infinity));`;
 	}
 }
 

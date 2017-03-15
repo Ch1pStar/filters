@@ -10,7 +10,7 @@ class RateGroup extends InputGroup {
 			amount: 100,
 			amountRange: [1, 300],
 			frequency: 0.1,
-			frequencyRange: [0.01, 2],
+			frequencyRange: [0.001, 2],
 		};
 	}
 

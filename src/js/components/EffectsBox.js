@@ -28,6 +28,8 @@ class EffetcsBox extends Box {
 	constructor(options) {
 		super(options, template);
 
+		window.ck = ControlKit;
+
 		this.container.classList.add('behaviours-component-container');
 		this.render();
 

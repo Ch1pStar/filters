@@ -1,3 +1,4 @@
+const wtf = require('proxy-polyfill');
 const Group = require('./abstract/Group');
 
 /**
