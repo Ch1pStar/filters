@@ -11,8 +11,8 @@ class RectZoneGroup extends InputGroup {
 			y: 1,
 			width: 200,
 			height: 100,
-			type: 'bound',
-			typeOptions: ['bound', 'dead', 'cross', 'emit'],
+			type: 'BOUND',
+			typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
 		};
 	}
 
@@ -34,7 +34,7 @@ class RectZoneGroup extends InputGroup {
 			return `emitter.addInitialize(new Proton.Position(new Proton.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height})));`;
 		}
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height}), '${fields.type}'));`;
+		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height}), Proton.CrossZone.CROSS_TYPES.${fields.type}));`;
 	}
 }
 

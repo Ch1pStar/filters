@@ -13,8 +13,8 @@ class LineZoneGroup extends InputGroup {
 			y2: 100,
 			direction: 'right',
 			directionOptions: ['right', 'left'],
-			type: 'bound',
-			typeOptions: ['bound', 'dead', 'emit'],
+			type: 'BOUND',
+			typeOptions: ['BOUND', 'DEAD', 'emit'],
 		};
 	}
 
@@ -38,7 +38,7 @@ class LineZoneGroup extends InputGroup {
 			return `emitter.addInitialize(new Proton.Position(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2})));`;
 		}
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${direction}), '${fields.type}'));`;
+		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${direction}), Proton.CrossZone.CROSS_TYPES.${fields.type}));`;
 	}
 }
 
