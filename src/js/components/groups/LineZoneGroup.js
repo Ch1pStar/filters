@@ -14,7 +14,7 @@ class LineZoneGroup extends InputGroup {
 			direction: 'right',
 			directionOptions: ['right', 'left'],
 			type: 'bound',
-			typeOptions: ['bound', 'dead'],
+			typeOptions: ['bound', 'dead', 'emit'],
 		};
 	}
 
@@ -26,14 +26,19 @@ class LineZoneGroup extends InputGroup {
 		this._panel.addStringInput(fields, 'x2', { label:  'x2:' });
 		this._panel.addStringInput(fields, 'y2', { label:  'y2:' });
 
-		this._panel.addSelect(fields, 'directionOptions', { target: 'direction' });
-		this._panel.addSelect(fields, 'typeOptions', { target: 'type' });
+		this._panel.addSelect(fields, 'directionOptions', { label:'Direction', target: 'direction' });
+		this._panel.addSelect(fields, 'typeOptions', { label: 'Type',  target: 'type' });
 	}
 
 	get value() {
 		const fields = this.fields;
+		const direction = fields.direction === 'right'?1:0;
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${fields.direction}), '${fields.type}'));`;
+		if(fields.type === 'emit'){
+			return `emitter.addInitialize(new Proton.Position(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2})));`;
+		}
+
+		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${direction}), '${fields.type}'));`;
 	}
 }
 

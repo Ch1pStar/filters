@@ -11,7 +11,7 @@ class CircleZoneGroup extends InputGroup {
 			y: 1,
 			radius: 100,
 			type: 'bound',
-			typeOptions: ['bound', 'dead', 'cross'],
+			typeOptions: ['bound', 'dead', 'cross', 'emit'],
 		};
 	}
 
@@ -27,6 +27,10 @@ class CircleZoneGroup extends InputGroup {
 
 	get value() {
 		const fields = this.fields;
+
+		if(fields.type === 'emit'){
+			return `emitter.addInitialize(new Proton.Position(new Proton.CircleZone(${fields.x}, ${fields.y}, ${fields.radius})));`;
+		}
 
 		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.CircleZone(${fields.x}, ${fields.y}, ${fields.radius}), '${fields.type}'));`;
 	}

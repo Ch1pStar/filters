@@ -62,7 +62,8 @@ class PreviewBox extends Box {
 		});
 
 		emitter.particleDead.add((particle) =>{
-			particle.sprite.visible = false;
+			// particle.sprite.visible = false;
+			particle.sprite.alpha = 0;
 			
 			// cnt.removeChild(particle.sprite);
 		});
