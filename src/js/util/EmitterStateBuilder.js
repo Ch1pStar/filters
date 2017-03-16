@@ -1,6 +1,7 @@
+const PIXI = require('pixi.js');
+
 const headTemplate = require('../../templates/components/emitter/head.hbs');
 const footerTemplate = require('../../templates/components/emitter/footer.hbs');
-
 const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
 const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
 const blendModeTemplate = require('../../templates/components/emitter/effects/BlendMode.hbs');
@@ -37,6 +38,7 @@ class EmitterStateBuilder{
 		RandomDrift: randomDriftTemplate,
 		Rate: rateTemplate,
 		RectZone: rectZoneTemplate,
+		Repulsion: repulsionTemplate,
 		Rotate: rotateTemplate,
 		Scale: scaleTemplate,
 		Velocity: velocityTemplate,
@@ -48,6 +50,8 @@ class EmitterStateBuilder{
 		footer: '',
 	};
 
+	effectMarkers = null;
+
 	constructor(){
 
 	}
@@ -55,9 +59,15 @@ class EmitterStateBuilder{
 	set effects(effects){
 		let bodyStr = '';
 
+		this.effectMarkers = new PIXI.Container();
 		this._effects = effects;
 		for(let effect in effects) {
-			bodyStr += this.effectTemplates[effect](effects[effect]);
+			const effectAttributes = effects[effect];
+
+			bodyStr += this.effectTemplates[effect](effectAttributes);
+			if(effectAttributes.x && effectAttributes.y){
+				this._createPointMarker(effect, effectAttributes.x, effectAttributes.y);
+			}
 		}
 
 		this.emitterTemplate.head = headTemplate(effects);
@@ -67,6 +77,32 @@ class EmitterStateBuilder{
 
 	get previewState(){
 		return this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
+	}
+
+
+	_createPointMarker(label, x, y) {
+		const cnt = new PIXI.Container();
+		const marker = new PIXI.Graphics();
+		const text = new PIXI.Text(label, {
+			fill: 0xFFFFFF
+		});
+
+		marker.beginFill(Math.random()*0xFFFFFF);
+		marker.drawCircle(0,0, 10);
+		marker.endFill();
+		marker.x = x;
+		marker.y = y;
+		cnt.addChild(marker);
+
+		text.x = x;
+		text.y = y+10;
+		cnt.addChild(text);
+
+		this.effectMarkers.addChild(cnt);
+	}
+
+	_createZoneMarker(points) {
+
 	}
 
 }

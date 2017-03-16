@@ -36,8 +36,13 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
+		if(this.emitterState.effectMarkers)
+			this.stage.removeChild(this.emitterState.effectMarkers);
+
 		this.emitterState.effects = effects;
+		
 		this._createEmitter();
+		this.stage.addChild(this.emitterState.effectMarkers);
 	}
 
 	set particleImages(images) {
