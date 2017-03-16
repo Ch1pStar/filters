@@ -15,7 +15,7 @@ class MassGroup extends InputGroup {
 	_initFields() {
 		const fields = this._fields;
 
-		window.slider = this._panel.addSlider(fields, this.label, '_range', { step: 0.1 });
+		this._panel.addSlider(fields, this.label, '_range', { step: 0.1 });
 	}
 
 	get value() {
