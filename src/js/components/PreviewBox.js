@@ -36,7 +36,6 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
-		// console.log(effects);
 		this.emitterState.effects = effects;
 		this._createEmitter();
 	}

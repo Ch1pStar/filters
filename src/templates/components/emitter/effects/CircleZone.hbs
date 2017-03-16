@@ -1,4 +1,4 @@
-{{if emit}}
+{{#if emit}}
 emitter.addInitialize(new Proton.Position(new Proton.CircleZone({{x}}, {{y}}, {{radius}})));
 {{else}}
 emitter.addBehaviour(new Proton.CrossZone(new Proton.CircleZone({{x}}, {{y}}, {{radius}}), Proton.CrossZone.CROSS_TYPES.{{type}}));

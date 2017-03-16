@@ -8,7 +8,7 @@
     "es6-object-assign": "^1.0.3",
     "eventemitter4": "^0.2.4",
     "gsap": "^1.19.0",
-    "hbsify": "^1.0.1",
+    "hbsfy": "^2.7.0",
     "pixi.js": "^4.4.1",
     "proxy-polyfill": "^0.1.6",
     "quark": "git+https://github.com/Ch1pStar/Quark.git"

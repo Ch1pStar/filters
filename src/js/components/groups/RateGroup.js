@@ -8,17 +8,17 @@ class RateGroup extends InputGroup {
 
 		this.fields = {
 			amount: 100,
-			amountRange: [1, 300],
+			_amountRange: [1, 300],
 			frequency: 0.1,
-			frequencyRange: [0.001, 2],
+			_frequencyRange: [0.001, 2],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
-		this._panel.addSlider(this.fields, 'amount', 'amountRange', { step: 10 });
-		this._panel.addSlider(this.fields, 'frequency', 'frequencyRange', { step: 0.01 });
+		this._panel.addSlider(fields, 'amount', '_amountRange', { step: 10 });
+		this._panel.addSlider(fields, 'frequency', '_frequencyRange', { step: 0.01 });
 	}
 
 	get value() {

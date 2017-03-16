@@ -11,23 +11,23 @@ class LineZoneGroup extends InputGroup {
 			y1: 1,
 			x2: 200,
 			y2: 100,
-			direction: 'right',
-			directionOptions: ['right', 'left'],
+			direction: 1,
+			_directionOptions: [1, 0],
 			type: 'BOUND',
-			typeOptions: ['BOUND', 'DEAD', 'emit'],
+			_typeOptions: ['BOUND', 'DEAD', 'emit'],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
 		this._panel.addStringInput(fields, 'x1', { label:  'x1:' });
 		this._panel.addStringInput(fields, 'y1', { label:  'y1:' });
 		this._panel.addStringInput(fields, 'x2', { label:  'x2:' });
 		this._panel.addStringInput(fields, 'y2', { label:  'y2:' });
 
-		this._panel.addSelect(fields, 'directionOptions', { label:'Direction', target: 'direction' });
-		this._panel.addSelect(fields, 'typeOptions', { label: 'Type',  target: 'type' });
+		this._panel.addSelect(fields, '_directionOptions', { label:'Direction', target: 'direction' });
+		this._panel.addSelect(fields, '_typeOptions', { label: 'Type',  target: 'type' });
 	}
 
 	get value() {

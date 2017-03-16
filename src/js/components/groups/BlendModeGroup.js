@@ -7,15 +7,15 @@ class BlendModeGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			modeRange: ['NORMAL', 'ADD', 'MULTIPLY', 'SCREEN'],
+			_modeRange: ['NORMAL', 'ADD', 'MULTIPLY', 'SCREEN'],
 			blendMode: 'NORMAL',
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
-		this._panel.addSelect(fields, 'modeRange', { label: 'BlendMode', target: 'blendMode' });
+		this._panel.addSelect(fields, '_modeRange', { label: 'BlendMode', target: 'blendMode' });
 	}
 
 	get value() {

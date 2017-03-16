@@ -64,10 +64,10 @@ class EffetcsBox extends Box {
 	}
 
 	emitGroupsState() {
-		let output = '';
+		const output = {};
 
 		this.groups.forEach((gr) => {
-			output += `${gr.value}\n`;
+			output[gr.label] = gr.fields;
 		});
 		this.emit(EffetcsBox.events.CHANGE, output);
 	}

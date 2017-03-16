@@ -10,20 +10,20 @@ class RotateGroup extends InputGroup {
 			a: 'Velocity',
 			b: 0,
 			style: 'to',
-			styleRange: ['to', 'from'],
+			_styleRange: ['to', 'from'],
 			life: 1,
-			lifeRange: [0.1, 10],
+			_lifeRange: [0.1, 10],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
 		this._panel.addStringInput(fields, 'a', { label:  'a:' });
 		this._panel.addStringInput(fields, 'b', { label:  'b:' });
-		this._panel.addSelect(fields, 'styleRange', { target: 'style' });
+		this._panel.addSelect(fields, '_styleRange', { target: 'style' });
 
-		this._panel.addSlider(fields, 'life', 'lifeRange', { step: 0.5 });
+		this._panel.addSlider(fields, 'life', '_lifeRange', { step: 0.5 });
 	}
 
 	get value() {

@@ -31,7 +31,13 @@ class InputGroup extends Group {
 	}
 
 	get fields() {
-		return this._fields;
+		const fields = {};
+		for(let field in this._fields){
+			if(field.charAt(0) !== '_'){
+				fields[field] = this._fields[field];
+			}
+		}
+		return fields
 	}
 
 	_initFields() {

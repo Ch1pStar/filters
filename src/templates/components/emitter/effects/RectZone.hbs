@@ -1,4 +1,4 @@
-{{if emit}}
+{{#if emit}}
 	emitter.addInitialize(new Proton.Position(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}})));
 {{else}}
 	emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}}),

@@ -8,12 +8,12 @@ class GravityGroup extends InputGroup {
 
 		this.fields = {
 			[this.label]: 8,
-			range: [-20, 20],
+			_range: [-20, 20],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.5 });
+		this._panel.addSlider(this._fields, this.label, '_range', { step: 0.5 });
 	}
 
 	get value() {

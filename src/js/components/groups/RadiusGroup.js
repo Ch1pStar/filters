@@ -8,12 +8,12 @@ class RadiusGroup extends InputGroup {
 
 		this.fields = {
 			[this.label]: 5,
-			range: [0.1, 10],
+			_range: [0.1, 10],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, this.label, 'range', { step: 0.1 });
+		this._panel.addSlider(this._fields, this.label, '_range', { step: 0.1 });
 	}
 
 	get value() {

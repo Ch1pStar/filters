@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('./util/HbsHelpers');
 
 const Panel = require('./components/Panel');
 /* eslint-disable */

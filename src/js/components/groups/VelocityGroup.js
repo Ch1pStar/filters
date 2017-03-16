@@ -8,7 +8,7 @@ class VelocityGroup extends InputGroup {
 
 		this.fields = {
 			speed: 1,
-			speedRange: [0.1, 10],
+			_speedRange: [0.1, 10],
 			minAngle: 0,
 			maxAngle: 360,
 			orientation: 'polar',
@@ -16,9 +16,9 @@ class VelocityGroup extends InputGroup {
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
-		this._panel.addSlider(this.fields, 'speed', 'speedRange', { step: 0.1 });
+		this._panel.addSlider(fields, 'speed', '_speedRange', { step: 0.1 });
 
 		this._panel.addStringInput(fields, 'minAngle', { label:  'Arc start:' });
 		this._panel.addStringInput(fields, 'maxAngle', { label:  'Arc end:' });

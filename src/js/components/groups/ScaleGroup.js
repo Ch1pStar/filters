@@ -10,17 +10,17 @@ class ScaleGroup extends InputGroup {
 			a: 1,
 			b: 0,
 			life: Infinity,
-			lifeRange: [1000, 20000],
+			_lifeRange: [1000, 20000],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
 		this._panel.addStringInput(fields, 'a', { label:  'a:' });
 		this._panel.addStringInput(fields, 'b', { label:  'b:' });
 
-		this._panel.addSlider(fields, 'life', 'lifeRange', { step: 100 });
+		this._panel.addSlider(fields, 'life', '_lifeRange', { step: 100 });
 	}
 
 	get value() {

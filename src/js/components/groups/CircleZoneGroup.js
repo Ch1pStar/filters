@@ -11,18 +11,18 @@ class CircleZoneGroup extends InputGroup {
 			y: 1,
 			radius: 100,
 			type: 'BOUND',
-			typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
+			_typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
 		this._panel.addStringInput(fields, 'x', { label:  'X:' });
 		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
 		this._panel.addStringInput(fields, 'radius', { label:  'radius:' });
 
-		this._panel.addSelect(fields, 'typeOptions', { target: 'type' });
+		this._panel.addSelect(fields, '_typeOptions', { target: 'type' });
 	}
 
 	get value() {

@@ -9,14 +9,14 @@ class ForceGroup extends InputGroup {
 		this.fields = {
 			x: 0,
 			y: 0,
-			rangeX: [-100, 100],
-			rangeY: [-100, 100],
+			_rangeX: [-100, 100],
+			_rangeY: [-100, 100],
 		};
 	}
 
 	_initFields() {
-		this._panel.addSlider(this.fields, 'x', 'rangeX', { step: 1 });
-		this._panel.addSlider(this.fields, 'y', 'rangeY', { step: 1 });
+		this._panel.addSlider(this._fields, 'x', '_rangeX', { step: 1 });
+		this._panel.addSlider(this._fields, 'y', '_rangeY', { step: 1 });
 	}
 
 	get value() {

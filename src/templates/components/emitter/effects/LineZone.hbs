@@ -1,4 +1,6 @@
-{{if emit}}
+{{!-- {{#ifCond type '==' 'emit'}} --}}
+{{#if emit}}
+console.log('lel');
 emitter.addInitialize(new Proton.Position(new Proton.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}})));
 {{else}}
 emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}}, {{direction}}),

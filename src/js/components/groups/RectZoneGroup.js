@@ -12,19 +12,19 @@ class RectZoneGroup extends InputGroup {
 			width: 200,
 			height: 100,
 			type: 'BOUND',
-			typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
+			_typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
 		};
 	}
 
 	_initFields() {
-		const fields = this.fields;
+		const fields = this._fields;
 
 		this._panel.addStringInput(fields, 'x', { label:  'X:' });
 		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
 		this._panel.addStringInput(fields, 'width', { label:  'width:' });
 		this._panel.addStringInput(fields, 'height', { label:  'height:' });
 
-		this._panel.addSelect(fields, 'typeOptions', { label: 'Type', target: 'type' });
+		this._panel.addSelect(fields, '_typeOptions', { label: 'Type', target: 'type' });
 	}
 
 	get value() {
