@@ -1,0 +1,40 @@
+emitter.p.x = 100;
+		// emitter.p.y = (Math.random()* (this.previewHeight/2) + 200) - 100;
+		emitter.p.y = 100;
+		emitter.emit();
+
+		window.emitter = emitter;
+
+		emitter.particleCreated.add((particle)=>{
+			if(particle.sprite){
+				particle.sprite.visible = true;
+				particle.sprite.scale.set(particle.scale);
+				return;
+			}
+			const txtId = Math.floor(Math.random()*(this.particleTextures.length));
+			const texture = this.particleTextures[txtId];
+			const sp = new PIXI.Sprite(texture);
+			particle.sprite = sp;
+			
+			sp.width = 15;
+			sp.height = 15;
+			sp.anchor.set(0.5);
+			this.cnt.addChild(sp);
+		});
+
+		emitter.particleUpdate.add((particle)=>{
+			const sp = particle.sprite;
+			sp.position.set(particle.p.x, particle.p.y);
+			sp.alpha = particle.alpha;
+			sp.scale.set(particle.scale);
+			// sp.rotation = particle.rotation*Math.PI/180;
+		});
+
+		emitter.particleDead.add((particle) =>{
+			// particle.sprite.visible = false;
+			particle.sprite.alpha = 0;
+			
+			// cnt.removeChild(particle.sprite);
+		});
+
+		this.emitter = emitter;

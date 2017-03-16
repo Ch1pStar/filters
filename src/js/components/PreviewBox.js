@@ -2,76 +2,17 @@ const Box = require('./Box');
 const template = require('../../templates/Preview.hbs');
 const PIXI = require('pixi.js');
 const SheetBuilder = require('../util/SpriteSheetBuilder');
+const EmitterStateBuilder = require('../util/EmitterStateBuilder');
 
 // const Proton = require('dopamine-proton');
-// const Proton = require('quark');
+const Proton = require('quark');
 
-const Proton = Quark;
+// const Proton = Quark;
 
 class PreviewBox extends Box {
 
 	emitter = null;
 	renderer = null;
-
-	emitterTemplate = {
-		head: `if (this.cnt) {
-			this.stage.removeChild(this.cnt);
-		}
-		this.cnt = new PIXI.particles.ParticleContainer(30000, {
-			scale: true,
-			position: true,
-			rotation: false,
-			uvs: false,
-			alpha: true,
-		});
-
-		this.stage.addChild(this.cnt);
-
-		const emitter = new Proton.Emitter();
-		emitter.maxParticles = 30000;`,
-		body: ``,
-		footer: `emitter.p.x = 100;
-		// emitter.p.y = (Math.random()* (this.previewHeight/2) + 200) - 100;
-		emitter.p.y = 100;
-		emitter.emit();
-
-		window.emitter = emitter;
-
-		emitter.particleCreated.add((particle)=>{
-			if(particle.sprite){
-				particle.sprite.visible = true;
-				particle.sprite.scale.set(particle.scale);
-				return;
-			}
-			const txtId = Math.floor(Math.random()*(this.particleTextures.length));
-			const texture = this.particleTextures[txtId];
-			const sp = new PIXI.Sprite(texture);
-			particle.sprite = sp;
-			
-			sp.width = 15;
-			sp.height = 15;
-			sp.anchor.set(0.5);
-			this.cnt.addChild(sp);
-		});
-
-		emitter.particleUpdate.add((particle)=>{
-			const sp = particle.sprite;
-			sp.position.set(particle.p.x, particle.p.y);
-			sp.alpha = particle.alpha;
-			sp.scale.set(particle.scale);
-			// sp.rotation = particle.rotation*Math.PI/180;
-		});
-
-		emitter.particleDead.add((particle) =>{
-			// particle.sprite.visible = false;
-			particle.sprite.alpha = 0;
-			
-			// cnt.removeChild(particle.sprite);
-		});
-
-		this.emitter = emitter;
-		`,
-	};
 
 	constructor(effectsPanel, imagesPanel) {
 		super({}, template);
@@ -80,6 +21,7 @@ class PreviewBox extends Box {
 
 		this.container.classList.add('preview-component-container');
 
+		this.emitterState = new EmitterStateBuilder();
 		this.currentFrame = 0;
 		this.running = true;
 		this._startEmit = this._startEmit.bind(this);
@@ -95,7 +37,7 @@ class PreviewBox extends Box {
 
 	set effects(effects) {
 		// console.log(effects);
-		this.emitterTemplate.body = effects;
+		this.emitterState.effects = effects;
 		this._createEmitter();
 	}
 
@@ -131,9 +73,9 @@ class PreviewBox extends Box {
 	}
 
 	_createEmitter() {
-		const emitterCode = this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
+		const emitterCode = this.emitterState.previewState;
 
-		if (this.particleTextures && this.particleTextures.length)			{ eval(emitterCode); }
+		if (this.particleTextures && this.particleTextures.length)	{ eval(emitterCode); }
 	}
 
 	_startRender() {

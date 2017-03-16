@@ -1,0 +1,15 @@
+if (this.cnt) {
+			this.stage.removeChild(this.cnt);
+		}
+		this.cnt = new PIXI.particles.ParticleContainer(30000, {
+			scale: true,
+			position: true,
+			rotation: false,
+			uvs: false,
+			alpha: true,
+		});
+
+		this.stage.addChild(this.cnt);
+
+		const emitter = new Proton.Emitter();
+		emitter.maxParticles = 30000;
