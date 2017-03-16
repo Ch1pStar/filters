@@ -3,6 +3,8 @@ const InputGroup = require('./groups/InputGroup');
 const Grid = require('./Grid');
 const PreviewBox = require('./PreviewBox');
 const ImagesBox = require('./ImagesBox');
+const ParticleTexturesBox = require('./ParticleTexturesBox');
+const BackgroundsBox = require('./BackgroundsBox');
 const EffectsBox = require('./EffectsBox');
 const Box = require('./Box');
 const panelTemplate = require('../../templates/Panel.hbs');
@@ -28,12 +30,17 @@ class Panel extends Box {
 	/** @type {String} Image assets path */
 	assetsPath = '../img/particles/';
 
-	assets = [
-		'p1.png',
-		'p2.png',
-		'p3.png',
-		'p4.png',
-	];
+	assets = {
+		particles: [
+			'p1.png',
+			'p2.png',
+			'p3.png',
+			'p4.png',
+		],
+		backgrounds: [
+			'p1.png',
+		],
+	};
 
     /**
      * @param {Object} fl Flash API
@@ -59,7 +66,7 @@ class Panel extends Box {
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
 
-		this._imagesPanel.on(ImagesBox.events.CHANGE, (images) => {
+		this._imagesPanel.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, (images) => {
 			this._effectsPanel.emitGroupsState();
 			this._previewPanel.particleImages = images;
 		});

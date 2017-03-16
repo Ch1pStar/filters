@@ -16,11 +16,8 @@ class ImagesBox extends Box {
 		this.container.classList.add('images-component-container');
 		this.render();
 
-		this.particleTexturesBox = new ParticleTexturesBox();
-		// this.particleTexturesBox.render();
-
-		this.backgroundsBox = new BackgroundsBox();
-
+		this.particleTexturesBox = new ParticleTexturesBox(options);
+		this.backgroundsBox = new BackgroundsBox(options);
 
 		requestAnimationFrame(() => {
 			this.render();
@@ -30,7 +27,6 @@ class ImagesBox extends Box {
 			this.container.appendChild(this.particleTexturesBox.container);
 			this.container.appendChild(this.backgroundsBox.container);
 		});
-
 
 	}
 }
