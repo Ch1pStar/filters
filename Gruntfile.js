@@ -29,7 +29,6 @@ module.exports = function(grunt) {
 
     browserify: {
       options: {
-        external: ['quark'],
         watch: true,
         transform: [
           ['babelify', {presets: ['es2015'], plugins: ['transform-class-properties']}], ['hbsify']
