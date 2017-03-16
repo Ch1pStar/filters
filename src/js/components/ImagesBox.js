@@ -1,4 +1,6 @@
 const Box = require('./Box');
+const ParticleTexturesBox = require('./ParticleTexturesBox');
+const BackgroundsBox = require('./BackgroundsBox');
 const template = require('../../templates/Images.hbs');
 const Grid = require('./Grid');
 
@@ -11,42 +13,25 @@ class ImagesBox extends Box {
 
 	constructor(options) {
 		super(options, template);
-
-		this.imagesPath = options.path;
-		this.images = options.images;
-
 		this.container.classList.add('images-component-container');
 		this.render();
 
-		const grid = this.grid = new Grid();
+		this.particleTexturesBox = new ParticleTexturesBox();
+		// this.particleTexturesBox.render();
 
-		grid.render();
-		this._initGridImages();
+		this.backgroundsBox = new BackgroundsBox();
+
+
 		requestAnimationFrame(() => {
-			this.container.querySelector('.content.container-grid').appendChild(grid.container);
+			this.render();
+			this.particleTexturesBox.render();
+			this.backgroundsBox.render();
+		
+			this.container.appendChild(this.particleTexturesBox.container);
+			this.container.appendChild(this.backgroundsBox.container);
 		});
-	}
 
-	_initGridImages() {
-		const imgs = this.images;
 
-		imgs.forEach((img) => this._createImageItem(img));
-	}
-
-	_createImageItem(imagePath) {
-		const imageElement = new Image();
-
-		imageElement.src = this.imagesPath + imagePath;
-		const imageWrapper = document.createElement('div');
-
-		imageWrapper.className = 'img-box';
-		imageWrapper.appendChild(imageElement);
-		this.grid.container.querySelector('.grid-component').appendChild(imageWrapper);
-		imageWrapper.addEventListener('click', () => {
-			// this.grid._unselect();
-			imageWrapper.classList.toggle('active');
-			this.emit(ImagesBox.events.CHANGE, this.container.querySelectorAll('.active img'));
-		});
 	}
 }
 
