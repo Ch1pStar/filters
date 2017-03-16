@@ -1,5 +1,7 @@
 const Box = require('./Box');
+<<<<<<< HEAD
 const template = require('../../templates/Images.hbs');
+const template = require('../../templates/ParticleTextures.hbs');
 const Grid = require('./Grid');
 
 class ParticleTexturesBox extends Box {
