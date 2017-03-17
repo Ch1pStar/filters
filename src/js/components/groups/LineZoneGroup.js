@@ -7,10 +7,14 @@ class LineZoneGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x1: 1,
-			y1: 1,
-			x2: 200,
-			y2: 100,
+			x1: 100,
+			y1: 250,
+			_y1Range: [0, 1080],
+			_x1Range: [0, 1920],
+			x2: 300,
+			y2: 250,
+			_y2Range: [0, 1080],
+			_x2Range: [0, 1920],
 			direction: 1,
 			_directionOptions: [1, 0],
 			type: 'BOUND',
@@ -21,10 +25,11 @@ class LineZoneGroup extends InputGroup {
 	_initFields() {
 		const fields = this._fields;
 
-		this._panel.addStringInput(fields, 'x1', { label:  'x1:' });
-		this._panel.addStringInput(fields, 'y1', { label:  'y1:' });
-		this._panel.addStringInput(fields, 'x2', { label:  'x2:' });
-		this._panel.addStringInput(fields, 'y2', { label:  'y2:' });
+		this._panel.addSlider(fields, 'x1', '_x1Range', { step: 1 });
+		this._panel.addSlider(fields, 'y1', '_y1Range', { step: 1 });
+
+		this._panel.addSlider(fields, 'x2', '_x2Range', { step: 1 });
+		this._panel.addSlider(fields, 'y2', '_y2Range', { step: 1 });
 
 		this._panel.addSelect(fields, '_directionOptions', { label:'Direction', target: 'direction' });
 		this._panel.addSelect(fields, '_typeOptions', { label: 'Type',  target: 'type' });

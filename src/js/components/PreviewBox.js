@@ -100,7 +100,7 @@ class PreviewBox extends Box {
 	_initEmitTypes() {
 		const checkboxes = this.container.querySelectorAll('.check');
 
-		checkboxes.forEach((check) => {
+		[...checkboxes].forEach((check) => {
 			check.addEventListener('click', () => {
 				const type = check.dataset.type;
 

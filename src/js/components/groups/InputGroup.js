@@ -28,6 +28,7 @@ class InputGroup extends Group {
 		});
 
 		this._fields = fieldsProxy;
+		// this._fields = fields;
 	}
 
 	get fields() {

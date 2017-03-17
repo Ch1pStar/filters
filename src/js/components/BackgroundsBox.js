@@ -32,7 +32,7 @@ class BackgroundsBox extends Box {
 	_initGridImages() {
 		const imgs = this.images;
 
-		imgs.forEach((img) => this._createImageItem(img));
+		[...imgs].forEach((img) => this._createImageItem(img));
 	}
 
 	_createImageItem(imagePath) {

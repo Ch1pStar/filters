@@ -63,10 +63,15 @@ class EmitterStateBuilder{
 		this._effects = effects;
 		for(let effect in effects) {
 			const effectAttributes = effects[effect];
+			// console.log(effectAttributes);
 
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 			if(effectAttributes.x && effectAttributes.y){
-				this._createPointMarker(effect, effectAttributes.x, effectAttributes.y);
+				if(effectAttributes.width && effectAttributes.height){
+					this.effectMarkers.addChild(this._createZoneMarker(effect, effectAttributes.x, effectAttributes.y, effectAttributes.width, effectAttributes.height));
+				}else{
+					this.effectMarkers.addChild(this._createPointMarker(effect, effectAttributes.x, effectAttributes.y));
+				}
 			}
 		}
 
@@ -79,30 +84,52 @@ class EmitterStateBuilder{
 		return this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
 	}
 
-
 	_createPointMarker(label, x, y) {
 		const cnt = new PIXI.Container();
 		const marker = new PIXI.Graphics();
 		const text = new PIXI.Text(label, {
-			fill: 0xFFFFFF
+			fill: 0x009900,
+			fontSize: 10,
 		});
 
 		marker.beginFill(Math.random()*0xFFFFFF);
-		marker.drawCircle(0,0, 10);
+		marker.drawCircle(0,0, 4);
 		marker.endFill();
 		marker.x = x;
 		marker.y = y;
 		cnt.addChild(marker);
 
-		text.x = x;
+		text.x = x - text.width/2;
 		text.y = y+10;
 		cnt.addChild(text);
 
-		this.effectMarkers.addChild(cnt);
+		cnt.cacheAsBitmap = true;
+
+		return cnt;
 	}
 
-	_createZoneMarker(points) {
+	_createZoneMarker(label, x, y, width, height) {
+		const cnt = new PIXI.Container();
+		const marker = new PIXI.Graphics();
+		const text = new PIXI.Text(label, {
+			fill: 0x009900,
+			fontSize: 10,
+		});
 
+		marker.lineStyle(2, Math.random()*0xFFFFFF);
+		marker.drawRect(0,0, width, height);
+		
+		marker.x = x;
+		marker.y = y;
+		cnt.addChild(marker);
+
+		text.x = x - text.width/2;
+		text.y = y+10;
+		cnt.addChild(text);
+
+		cnt.cacheAsBitmap = true;
+
+		return cnt;
 	}
 
 }

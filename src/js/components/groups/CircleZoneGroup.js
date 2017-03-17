@@ -7,8 +7,10 @@ class CircleZoneGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x: 1,
-			y: 1,
+			x: 300,
+			y: 250,
+			_yRange: [0, 1080],
+			_xRange: [0, 1920],
 			radius: 100,
 			type: 'BOUND',
 			_typeOptions: ['BOUND', 'DEAD', 'CROSS', 'emit'],
@@ -18,8 +20,8 @@ class CircleZoneGroup extends InputGroup {
 	_initFields() {
 		const fields = this._fields;
 
-		this._panel.addStringInput(fields, 'x', { label:  'X:' });
-		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
+		this._panel.addSlider(fields, 'x', '_xRange', { step: 1 });
+		this._panel.addSlider(fields, 'y', '_yRange', { step: 1 });
 		this._panel.addStringInput(fields, 'radius', { label:  'radius:' });
 
 		this._panel.addSelect(fields, '_typeOptions', { target: 'type' });

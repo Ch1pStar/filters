@@ -25,6 +25,7 @@ emitter.particleUpdate.add((particle)=>{
 	const sp = particle.sprite;
 	sp.position.set(particle.p.x, particle.p.y);
 	{{#if Alpha}}
+	// console.log(sp.alpha, particle.alpha);
 	sp.alpha = particle.alpha;
 	{{/if}}
 	{{#if Scale}}
@@ -36,7 +37,8 @@ emitter.particleUpdate.add((particle)=>{
 });
 
 emitter.particleDead.add((particle) =>{
-	particle.sprite.alpha = 0;
+	{{!-- particle.sprite.alpha = 0; --}}
+	particle.sprite.visible = false;
 });
 
 this.emitter = emitter;

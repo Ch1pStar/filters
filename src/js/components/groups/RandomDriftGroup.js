@@ -9,6 +9,8 @@ class RandomDriftGroup extends InputGroup {
 		this.fields = {
 			x: 300,
 			y: 250,
+			_yRange: [0, 1080],
+			_xRange: [0, 1920],
 			delay: 2,
 			_delayRange: [0, 100],
 		};
@@ -17,9 +19,8 @@ class RandomDriftGroup extends InputGroup {
 	_initFields() {
 		const fields = this._fields;
 
-		this._panel.addStringInput(fields, 'x', { label:  'X:' });
-		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
-
+		this._panel.addSlider(fields, 'x', '_xRange', { step: 1 });
+		this._panel.addSlider(fields, 'y', '_yRange', { step: 1 });
 		this._panel.addSlider(fields, 'delay', '_delayRange', { step: 1 });
 	}
 

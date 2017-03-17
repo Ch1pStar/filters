@@ -7,8 +7,8 @@ class ForceGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x: 0,
-			y: 0,
+			x: 5,
+			y: 5,
 			_rangeX: [-100, 100],
 			_rangeY: [-100, 100],
 		};

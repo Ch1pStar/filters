@@ -7,8 +7,10 @@ class AttractionGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x: 1,
-			y: 1,
+			x: 300,
+			y: 250,
+			_yRange: [0, 1080],
+			_xRange: [0, 1920],
 			force: 1,
 			_forceRange: [0, 10],
 			radius: 1,
@@ -21,8 +23,8 @@ class AttractionGroup extends InputGroup {
 	_initFields() {
 		const fields = this._fields;
 
-		this._panel.addStringInput(fields, 'x', { label:  'X:' });
-		this._panel.addStringInput(fields, 'y', { label:  'Y:' });
+		this._panel.addSlider(fields, 'x', '_xRange', { step: 1 });
+		this._panel.addSlider(fields, 'y', '_yRange', { step: 1 });
 
 		this._panel.addSlider(fields, 'force', '_forceRange', { step: 0.5 });
 		this._panel.addSlider(fields, 'radius', '_radiusRange', { step: 0.5 });
