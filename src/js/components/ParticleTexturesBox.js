@@ -12,33 +12,35 @@ class ParticleTexturesBox extends Box {
 	constructor(options) {
 		super(options, template);
 
-		this.imagesPath = options.path;
-		this.images = options.images.particles;
-
 		this.container.classList.add('particle-textures-component-container');
 		this.render();
 
 		const grid = this.grid = new Grid();
 
 		grid.render();
-		this._initGridImages();
 		requestAnimationFrame(() => {
-			requestAnimationFrame(()=>{
+			requestAnimationFrame(() => {
 				this.container.querySelector('.container-grid').appendChild(grid.container);
 			});
 		});
 	}
 
-	_initGridImages() {
-		const imgs = this.images;
+	set images(images) {
+		this._initGridImages(images);
+	}
 
-		imgs.forEach((img) => this._createImageItem(img));
+	get images() {
+		return this.container.querySelectorAll('.active img');
+	}
+
+	_initGridImages(imgs) {
+		[...imgs].forEach((img) => this._createImageItem(img));
 	}
 
 	_createImageItem(imagePath) {
 		const imageElement = new Image();
 
-		imageElement.src = this.imagesPath + imagePath;
+		imageElement.src = imagePath;
 		const imageWrapper = document.createElement('div');
 
 		imageWrapper.className = 'img-box';

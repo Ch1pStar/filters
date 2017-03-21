@@ -31,15 +31,15 @@ class LineZoneGroup extends InputGroup {
 		this._panel.addSlider(fields, 'x2', '_x2Range', { step: 1 });
 		this._panel.addSlider(fields, 'y2', '_y2Range', { step: 1 });
 
-		this._panel.addSelect(fields, '_directionOptions', { label:'Direction', target: 'direction' });
-		this._panel.addSelect(fields, '_typeOptions', { label: 'Type',  target: 'type' });
+		this._panel.addSelect(fields, '_directionOptions', { label: 'Direction', target: 'direction' });
+		this._panel.addSelect(fields, '_typeOptions', { label: 'Type', target: 'type' });
 	}
 
 	get value() {
 		const fields = this.fields;
-		const direction = fields.direction === 'right'?1:0;
+		const direction = fields.direction === 'right' ? 1 : 0;
 
-		if(fields.type === 'emit'){
+		if (fields.type === 'emit') {
 			return `emitter.addInitialize(new Proton.Position(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2})));`;
 		}
 

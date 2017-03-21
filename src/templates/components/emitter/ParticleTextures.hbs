@@ -1,0 +1,7 @@
+this.particleTextures = this.emitterZone.children.reduce(function(acc, itm, index){
+	if(index>0){
+		acc.push(itm.texture);
+		itm.visible = false;
+	}
+	return acc;
+}, []);

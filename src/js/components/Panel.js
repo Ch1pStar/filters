@@ -9,6 +9,7 @@ const EffectsBox = require('./EffectsBox');
 const ToolsLineBox = require('./ToolsLineBox');
 const Box = require('./Box');
 const panelTemplate = require('../../templates/Panel.hbs');
+const jsflUtil = require('../../jsfl/util');
 
 /**
  * Preset commands panel
@@ -28,18 +29,15 @@ class Panel extends Box {
 	 */
 	_effectsPanel = null;
 
-	/** @type {String} Image assets path */
-	assetsPath = '../img/particles/';
-
 	assets = {
 		particles: [
-			'p1.png',
-			'p2.png',
-			'p3.png',
-			'p4.png',
+			'../img/particles/p1.png',
+			'../img/particles/p2.png',
+			'../img/particles/p3.png',
+			'../img/particles/p4.png',
 		],
 		backgrounds: [
-			'p1.png',
+			'../img/particles/p1.png',
 		],
 	};
 
@@ -50,9 +48,7 @@ class Panel extends Box {
 	constructor(fl, options = {}) {
 		super(options, panelTemplate);
 
-		if (window.__adobe_cep__) {
-			// get library images
-		}
+		console.log(this.assets);
 
 		this.container.className = 'app-component-container';
 		this.render();
@@ -61,13 +57,19 @@ class Panel extends Box {
 		this._effectsPanel.render();
 		this._effectsPanel.on(EffectsBox.events.CHANGE, (prop) => this._previewPanel.effects = prop);
 
-		this._imagesPanel = new ImagesBox({ path: this.assetsPath, images: this.assets });
+		this._imagesPanel = new ImagesBox();
 		this._imagesPanel.render();
+
+		if (window.__adobe_cep__) {
+			this._eval(jsflUtil.getLibraryImages(), (res) => this._imagesPanel.particleTexturesBox.images = res.split(','));
+		} else {
+			this._imagesPanel.particleTexturesBox.images = this.assets.particles;
+		}
 
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
 
-		this._toolsLinePanel = new ToolsLineBox(this._previewPanel);
+		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, this._imagesPanel);
 		this._toolsLinePanel.render();
 
 		this._imagesPanel.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, (images) => {

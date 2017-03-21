@@ -23,7 +23,6 @@ emitter.particleUpdate.add(function(particle){
 	var sp = particle.sprite;
 	sp.position.set(particle.p.x, particle.p.y);
 	{{#if Alpha}}
-	// console.log(sp.alpha, particle.alpha);
 	sp.alpha = particle.alpha;
 	{{/if}}
 	{{#if Scale}}

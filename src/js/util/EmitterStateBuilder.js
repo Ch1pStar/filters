@@ -5,6 +5,7 @@ const footerTemplate = require('../../templates/components/emitter/footer.hbs');
 const emitterStartTemplate = require('../../templates/components/emitter/EmitterStart.hbs');
 const emitterStopTemplate = require('../../templates/components/emitter/EmitterStop.hbs');
 const emitterDestroyTemplate = require('../../templates/components/emitter/EmitterDestroy.hbs');
+const particleTexturesTemplate = require('../../templates/components/emitter/ParticleTextures.hbs');
 
 const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
 const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
@@ -25,7 +26,7 @@ const rotateTemplate = require('../../templates/components/emitter/effects/Rotat
 const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
 const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
 
-class EmitterStateBuilder{
+class EmitterStateBuilder {
 
 	effectTemplates = {
 		Alpha: alphaTemplate,
@@ -55,28 +56,28 @@ class EmitterStateBuilder{
 		emitterStart: emitterStartTemplate(),
 		emitterStop: emitterStopTemplate(),
 		emitterDestroy: emitterDestroyTemplate(),
+		particleTextures: particleTexturesTemplate(),
 	};
 
 	effectMarkers = null;
 
-	constructor(){
+	constructor() {
 
 	}
 
-	set effects(effects){
+	set effects(effects) {
 		let bodyStr = '';
 
 		this.effectMarkers = new PIXI.Container();
 		this._effects = effects;
-		for(let effect in effects) {
+		for (const effect in effects) {
 			const effectAttributes = effects[effect];
-			// console.log(effectAttributes);
 
 			bodyStr += this.effectTemplates[effect](effectAttributes);
-			if(effectAttributes.x && effectAttributes.y){
-				if(effectAttributes.width && effectAttributes.height){
+			if (effectAttributes.x && effectAttributes.y) {
+				if (effectAttributes.width && effectAttributes.height) {
 					this.effectMarkers.addChild(this._createZoneMarker(effect, effectAttributes.x, effectAttributes.y, effectAttributes.width, effectAttributes.height));
-				}else{
+				} else {
 					this.effectMarkers.addChild(this._createPointMarker(effect, effectAttributes.x, effectAttributes.y));
 				}
 			}
@@ -87,12 +88,16 @@ class EmitterStateBuilder{
 		this.emitterTemplate.footer = footerTemplate(effects);
 	}
 
-	get previewState(){
+	get previewState() {
 		return this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
 	}
 
 	get actionScriptState() {
-		return this.emitterTemplate.head.replace(/.stage/g, '') + this.emitterTemplate.body + this.emitterTemplate.footer + this.emitterTemplate.emitterStart;
+		return this.emitterTemplate.particleTextures
+			+ this.emitterTemplate.head.replace(/.stage/g, '')
+			+ this.emitterTemplate.body
+			+ this.emitterTemplate.footer
+			+ this.emitterTemplate.emitterStart;
 	}
 
 	_createPointMarker(label, x, y) {
@@ -103,15 +108,15 @@ class EmitterStateBuilder{
 			fontSize: 10,
 		});
 
-		marker.beginFill(Math.random()*0xFFFFFF);
-		marker.drawCircle(0,0, 4);
+		marker.beginFill(Math.random() * 0xFFFFFF);
+		marker.drawCircle(0, 0, 4);
 		marker.endFill();
 		marker.x = x;
 		marker.y = y;
 		cnt.addChild(marker);
 
-		text.x = x - text.width/2;
-		text.y = y+10;
+		text.x = x - text.width / 2;
+		text.y = y + 10;
 		cnt.addChild(text);
 
 		cnt.cacheAsBitmap = true;
@@ -127,14 +132,14 @@ class EmitterStateBuilder{
 			fontSize: 10,
 		});
 
-		marker.lineStyle(2, Math.random()*0xFFFFFF);
-		marker.drawRect(0,0, width, height);
+		marker.lineStyle(2, Math.random() * 0xFFFFFF);
+		marker.drawRect(0, 0, width, height);
 		marker.x = x;
 		marker.y = y;
 		cnt.addChild(marker);
 
-		text.x = x - text.width/2;
-		text.y = y+10;
+		text.x = x - text.width / 2;
+		text.y = y + 10;
 		cnt.addChild(text);
 
 		cnt.cacheAsBitmap = true;

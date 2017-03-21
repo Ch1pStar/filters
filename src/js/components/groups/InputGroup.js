@@ -32,12 +32,14 @@ class InputGroup extends Group {
 
 	get fields() {
 		const fields = {};
-		for(let field in this._fields){
-			if(field.charAt(0) !== '_'){
+
+		for (const field in this._fields) {
+			if (field.charAt(0) !== '_') {
 				fields[field] = this._fields[field];
 			}
 		}
-		return fields
+
+		return fields;
 	}
 
 	_initFields() {

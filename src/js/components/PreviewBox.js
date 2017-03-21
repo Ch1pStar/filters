@@ -30,11 +30,10 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
-		if(this.emitterState.effectMarkers)
-			this.stage.removeChild(this.emitterState.effectMarkers);
+		if (this.emitterState.effectMarkers)			{ this.stage.removeChild(this.emitterState.effectMarkers); }
 
 		this.emitterState.effects = effects;
-		 
+
 		this._createEmitter();
 		this.stage.addChild(this.emitterState.effectMarkers);
 	}
@@ -57,7 +56,6 @@ class PreviewBox extends Box {
 		const renderer = this.renderer = PIXI.autoDetectRenderer(this.view.width, this.view.height, { view });
 		const stage = this.stage = new PIXI.Container();
 
-
 		this.previewWidth = this.view.width;
 		this.previewHeight = this.view.height;
 
@@ -74,7 +72,7 @@ class PreviewBox extends Box {
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
 
-		if (this.particleTextures && this.particleTextures.length)	{ 
+		if (this.particleTextures && this.particleTextures.length)	{
 			eval(emitterCode);
 			this.emitter = this.latestEmitter;
 			this.emitter.emit();

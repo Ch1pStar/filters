@@ -30,7 +30,7 @@ class CircleZoneGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		if(fields.type === 'emit'){
+		if (fields.type === 'emit') {
 			return `emitter.addInitialize(new Proton.Position(new Proton.CircleZone(${fields.x}, ${fields.y}, ${fields.radius})));`;
 		}
 

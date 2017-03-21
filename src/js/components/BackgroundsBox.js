@@ -12,16 +12,12 @@ class BackgroundsBox extends Box {
 	constructor(options) {
 		super(options, template);
 
-		this.imagesPath = options.path;
-		this.images = options.images.backgrounds;
-
 		this.container.classList.add('backgrounds-component-container');
 		this.render();
 
 		const grid = this.grid = new Grid();
 
 		grid.render();
-		this._initGridImages();
 		requestAnimationFrame(() => {
 			requestAnimationFrame(() => {
 				this.container.querySelector('.content.container-grid').appendChild(grid.container);
@@ -29,16 +25,18 @@ class BackgroundsBox extends Box {
 		});
 	}
 
-	_initGridImages() {
-		const imgs = this.images;
+	set images(images) {
+		this._initGridImages(images);
+	}
 
+	_initGridImages(imgs) {
 		[...imgs].forEach((img) => this._createImageItem(img));
 	}
 
 	_createImageItem(imagePath) {
 		const imageElement = new Image();
 
-		imageElement.src = this.imagesPath + imagePath;
+		imageElement.src = imagePath;
 		const imageWrapper = document.createElement('div');
 
 		imageWrapper.className = 'img-box';

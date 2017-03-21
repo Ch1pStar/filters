@@ -5,7 +5,7 @@ const PIXI = require('pixi.js');
  * @class Combines an array of image sources into a single PIXI.BaseTexture.
  * Creates a texture for each image source from the base texture
  */
-class SpriteSheetBuilder{
+class SpriteSheetBuilder {
 
 	/** @type {PIXI.WebGLRenderer} The renderer used to render the sprite sheet */
 	renderer = null;
@@ -22,8 +22,8 @@ class SpriteSheetBuilder{
 	/** @type {Img[]} Array of image sources */
 	_sources = [];
 
-	/** 
-	 * @type {PIXI.Container} Pixi Container used to hold the source sprites for drawing 
+	/**
+	 * @type {PIXI.Container} Pixi Container used to hold the source sprites for drawing
 	 * @private
 	 */
 	_sheetContainer = null;
@@ -34,25 +34,24 @@ class SpriteSheetBuilder{
 	 */
 	_sheetTexture = null;
 
-
 	constructor(renderer) {
 		this.renderer = renderer;
-		this._sheetContainer = new PIXI.Container();		
+		this._sheetContainer = new PIXI.Container();
 	}
 
 	/**
 	 * Add aditional image sources
 	 * @param {Image[]} image sources array
 	 */
-	addSources(images){
+	addSources(images) {
 		this._sources.concat(images);
 	}
 
 	/**
 	 * Set image sources
-	 * @param  {Image[]} image sources array 
+	 * @param  {Image[]} image sources array
 	 */
-	set sources(images){
+	set sources(images) {
 		this._sources = images;
 	}
 
@@ -60,7 +59,7 @@ class SpriteSheetBuilder{
 	 * Get the current image sources
 	 * @return {Image[]} current image sources
 	 */
-	get sources(){
+	get sources() {
 		return this._sources;
 	}
 
@@ -69,8 +68,9 @@ class SpriteSheetBuilder{
 	 * and returns an array of PIXI.Texture for each image
 	 * @return {PIXI.Texture} A PIXI.Texture for each image
 	 */
-	buildSheet(){
+	buildSheet() {
 		this.renderSheet();
+
 		return this.createSourceTextures();
 	}
 
@@ -83,7 +83,7 @@ class SpriteSheetBuilder{
 		let width = this.sheetWidth;
 		let height = this.sheetHeight;
 
-		[...sources].forEach((source)=>{
+		[...sources].forEach((source) => {
 			const sourceSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(source)));
 
 			sourceSprite.x = width;
@@ -102,7 +102,6 @@ class SpriteSheetBuilder{
 
 		// draw the images sheet
 		this.renderer.render(container, sheetTexture);
-
 	}
 
 	/**

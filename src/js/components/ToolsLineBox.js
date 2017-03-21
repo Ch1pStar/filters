@@ -9,13 +9,15 @@ class ToolsLineBox extends Box {
 		CLICK: 'tools_click',
 	};
 
-	constructor(previewPanel) {
-	super({}, template);
+	constructor(previewPanel, imagesPanel) {
+		super({}, template);
 
-	this.previewPanel = previewPanel;
-	this.container.classList.add('tools-line-container');
-	window.jsfl = jsflUtil;
-		requestAnimationFrame(()=>{
+		this.previewPanel = previewPanel;
+		this.imagesPanel = imagesPanel;
+		this.container.classList.add('tools-line-container');
+		window.jsfl = jsflUtil;
+
+		requestAnimationFrame(() => {
 			this.render();
 			this._attachAddButton();
 			this._attachStopButton();
@@ -24,50 +26,47 @@ class ToolsLineBox extends Box {
 		});
 	}
 
-	_attachAddButton(){
-		this.container.querySelector('.button.add').addEventListener('click', ()=>{
+	_attachAddButton() {
+		this.container.querySelector('.button.add').addEventListener('click', () => {
+			const images = [...this.imagesPanel.particleTexturesBox.images];
 
-			window.__adobe_cep__.evalScript(jsflUtil.createEmitter(1, 2, this._prepareString(this.previewPanel.emitterState.actionScriptState)), (a)=>{
+			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
+
+			console.log(JSON.stringify(imageNames));
+			window.__adobe_cep__.evalScript(jsflUtil.createEmitter(JSON.stringify(imageNames), 2, this._prepareString(this.previewPanel.emitterState.actionScriptState)), (a) => {
 				console.log(a);
 			});
-
 		});
 	}
 
 	_attachStopButton() {
-
-		this.container.querySelector('.button.stop').addEventListener('click', ()=>{
-
+		this.container.querySelector('.button.stop').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStop)), (a)=>{
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStop)), (a) => {
 					console.log(a);
 				});
 		});
 	}
 
 	_attachStartButton() {
-
-		this.container.querySelector('.button.start').addEventListener('click', ()=>{
-
+		this.container.querySelector('.button.start').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStart)), (a)=>{
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStart)), (a) => {
 					console.log(a);
 				});
 		});
 	}
 
 	_attachDestroyButton() {
-
-		this.container.querySelector('.button.destroy').addEventListener('click', ()=>{
-
+		this.container.querySelector('.button.destroy').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterDestroy)), (a)=>{
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterDestroy)), (a) => {
 					console.log(a);
 				});
 		});
 	}
 
-	_prepareString(str){
+	_prepareString(str) {
 		return `"${str.split('\r\n').join('\\r\\n')}"`;
 	}
 }

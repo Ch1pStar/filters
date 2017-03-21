@@ -23,11 +23,10 @@ class ImagesBox extends Box {
 			this.render();
 			this.particleTexturesBox.render();
 			this.backgroundsBox.render();
-		
+
 			this.container.appendChild(this.particleTexturesBox.container);
 			this.container.appendChild(this.backgroundsBox.container);
 		});
-
 	}
 }
 
