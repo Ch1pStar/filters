@@ -17,11 +17,14 @@ function createEmitter(type, bounds, script){
 
 	var instanceName = prompt('Instance name');
 
-	fl.getDocumentDOM().selection[0].name = instanceName;
+	if(instanceName){
+		fl.getDocumentDOM().selection[0].name = instanceName;
+		script = script.replace(/emitterZone/g, instanceName);
+	}
 
-	script = script.replace(/emitterZone/g, instanceName);
+	fl.trace(script);
 
-	timeline.insertKeyframe(currentFrame-1);
+	timeline.insertKeyframe(currentFrame);
 	timeline.layers[currentLayer].frames[currentFrame].actionScript = script;
 
 	return 1;
@@ -34,8 +37,17 @@ function insertScript(script){
 	var currentFrame = timeline.currentFrame;
 	var currentLayer = timeline.currentLayer;
 
+	var instanceName = prompt('Instance name');
+
+	if(instanceName){
+		fl.getDocumentDOM().selection[0].name = instanceName;
+		script = script.replace(/emitterZone/g, instanceName);
+	}
+
+	fl.trace(script);
+
 	timeline.insertKeyframe(currentFrame);
-	timeline.layers[currentLayer].frames[currentFrame].actionScript = script.replace('\r\n', '\\r\\n');
+	timeline.layers[currentLayer].frames[currentFrame].actionScript = script;
 }
 
 module.exports = new global.Proxy({

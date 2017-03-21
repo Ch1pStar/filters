@@ -1,11 +1,19 @@
-this.emitter.emit();
+this.emitters = this.emitters || [];
+this.emitters.push(this.latestEmitter);
 
-function onTick() {
-    this.emitter.update(0.0167);
-    this.emitter.p.x = this.emitterZone.x;
-    this.emitter.p.y = this.emitterZone.y;
+this.latestEmitter.emit();
+
+if(!this.onTick){
+
+    function onTick() {
+        for(var i=0,len=this.emitters.length;i<len;i++){
+            var emitter = this.emitters[i];
+            emitter.update(0.0167);
+            emitter.p.x = this.emitterZone.x;
+            emitter.p.y = this.emitterZone.y;
+        }
+    }
+
+    this.onTick = onTick.bind(this);
+    PIXI.ticker.shared.add(this.onTick);
 }
-
-this.onTick = onTick.bind(this);
-
-PIXI.ticker.shared.add(this.onTick);

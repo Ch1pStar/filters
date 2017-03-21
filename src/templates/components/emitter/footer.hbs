@@ -1,6 +1,5 @@
 emitter.p.x = 100;
 emitter.p.y = 100;
-emitter.emit();
 
 window.emitter = emitter;
 emitter.particleCreated.add(function(particle){
@@ -40,4 +39,4 @@ emitter.particleDead.add(function(particle){
 	particle.sprite.visible = false;
 }.bind(this));
 
-this.emitter = emitter;
+this.latestEmitter = emitter;

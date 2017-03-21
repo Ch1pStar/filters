@@ -3,11 +3,7 @@ const template = require('../../templates/Preview.hbs');
 const PIXI = require('pixi.js');
 const SheetBuilder = require('../util/SpriteSheetBuilder');
 const EmitterStateBuilder = require('../util/EmitterStateBuilder');
-
-// const Proton = require('dopamine-proton');
 const Proton = require('quark');
-
-// const Proton = Quark;
 
 class PreviewBox extends Box {
 
@@ -78,7 +74,11 @@ class PreviewBox extends Box {
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
 
-		if (this.particleTextures && this.particleTextures.length)	{ eval(emitterCode); }
+		if (this.particleTextures && this.particleTextures.length)	{ 
+			eval(emitterCode);
+			this.emitter = this.latestEmitter;
+			this.emitter.emit();
+		}
 	}
 
 	_startRender() {

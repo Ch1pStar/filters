@@ -4,6 +4,7 @@ const headTemplate = require('../../templates/components/emitter/head.hbs');
 const footerTemplate = require('../../templates/components/emitter/footer.hbs');
 const emitterStartTemplate = require('../../templates/components/emitter/EmitterStart.hbs');
 const emitterStopTemplate = require('../../templates/components/emitter/EmitterStop.hbs');
+const emitterDestroyTemplate = require('../../templates/components/emitter/EmitterDestroy.hbs');
 
 const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
 const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
@@ -53,6 +54,7 @@ class EmitterStateBuilder{
 		footer: '',
 		emitterStart: emitterStartTemplate(),
 		emitterStop: emitterStopTemplate(),
+		emitterDestroy: emitterDestroyTemplate(),
 	};
 
 	effectMarkers = null;
