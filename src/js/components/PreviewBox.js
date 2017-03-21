@@ -51,10 +51,20 @@ class PreviewBox extends Box {
 		return this._particleImages;
 	}
 
+	set backgroundImage(image) {
+		const background = this.background;
+		const bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image)));
+
+		bgSprite.width = this.previewWidth;
+		background.children.length = 0;
+		background.addChild(bgSprite);
+	}
+
 	_initCanvasRenderer() {
 		const view = this.view = this.container.querySelector('.canvas');
 		const renderer = this.renderer = PIXI.autoDetectRenderer(this.view.width, this.view.height, { view });
 		const stage = this.stage = new PIXI.Container();
+		const background = this.background = new PIXI.Container();
 
 		this.previewWidth = this.view.width;
 		this.previewHeight = this.view.height;
@@ -65,6 +75,7 @@ class PreviewBox extends Box {
 		this.particleCounter = new PIXI.Text('0', { fill: 0xffffff });
 		this.particleCounter.y = this.previewHeight - this.particleCounter.height;
 		stage.addChild(this.particleCounter);
+		stage.addChild(background);
 
 		this._startRender();
 	}

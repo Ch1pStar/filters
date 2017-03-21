@@ -37,7 +37,7 @@ class Panel extends Box {
 			'../img/particles/p4.png',
 		],
 		backgrounds: [
-			'../img/particles/p1.png',
+			'../img/backgrounds/bg.png',
 		],
 	};
 
@@ -65,6 +65,7 @@ class Panel extends Box {
 		} else {
 			this._imagesPanel.particleTexturesBox.images = this.assets.particles;
 		}
+		this._imagesPanel.backgroundsBox.images = this.assets.backgrounds;
 
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
@@ -76,6 +77,8 @@ class Panel extends Box {
 			this._effectsPanel.emitGroupsState();
 			this._previewPanel.particleImages = images;
 		});
+
+		this._imagesPanel.backgroundsBox.on(BackgroundsBox.events.CHANGE, (images) => this._previewPanel.backgroundImage = images[0]);
 
 		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._effectsPanel.container);
