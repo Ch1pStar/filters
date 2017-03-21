@@ -47,7 +47,6 @@ class DropdownBox extends Box {
 		this.render();
 
 		this.initEffectOptions();
-		this.groups = new Map();
 	}
 
 	initEffectOptions() {
@@ -58,18 +57,37 @@ class DropdownBox extends Box {
 				option.addEventListener('click', (e) => {
 					const effectType = option.dataset.effectType;
 
-					if (this.groups.has(effectType)) {
-						this.emit(DropdownBox.events.REMOVE, this.groups.get(effectType));
-						this.groups.delete(effectType);
+					if (this._groupExits(effectType)) {
+						this.emit(DropdownBox.events.REMOVE, this._getGroup(effectType));
 					} else {
 						const group = new this.inputGroups[effectType](this.parent);
 
 						this.emit(DropdownBox.events.ADD, group);
-						this.groups.set(effectType, group);
 					}
+					this.parent.hideDropdown();
 				});
 			});
 		});
+	}
+
+	_groupExits(label) {
+		const groups = this.parent.groups;
+
+		for (let i = 0; i < groups.length; i++) {
+			if (groups[i].label === label) return true;
+		}
+
+		return false;
+	}
+
+	_getGroup(label) {
+		const groups = this.parent.groups;
+
+		for (let i = 0; i < groups.length; i++) {
+			if (groups[i].label === label) return groups[i];
+		}
+
+		return null;
 	}
 }
 

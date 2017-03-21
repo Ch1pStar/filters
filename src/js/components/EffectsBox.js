@@ -77,7 +77,7 @@ class EffetcsBox extends Box {
 		requestAnimationFrame(() => {
 			this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
 				if (!this.dropdownBox) {
-					requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
+					// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
 
 					const dropdownBox = new DropdownBox(this);
 
@@ -95,12 +95,16 @@ class EffetcsBox extends Box {
 						this.groups.splice(this.groups.indexOf(group), 1);
 					});
 				} else {
-					requestAnimationFrame(() => e.target.querySelector('span').textContent = '+ Behaviors');
-					this.container.removeChild(this.dropdownBox.container);
-					this.dropdownBox = null;
+					this.hideDropdown();
 				}
 			});
 		});
+	}
+
+	hideDropdown() {
+		// requestAnimationFrame(() => e.target.querySelector('span').textContent = '+ Behaviors');
+		this.container.removeChild(this.dropdownBox.container);
+		this.dropdownBox = null;
 	}
 }
 
