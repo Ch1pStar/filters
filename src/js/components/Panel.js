@@ -6,6 +6,7 @@ const ImagesBox = require('./ImagesBox');
 const ParticleTexturesBox = require('./ParticleTexturesBox');
 const BackgroundsBox = require('./BackgroundsBox');
 const EffectsBox = require('./EffectsBox');
+const ToolsLineBox = require('./ToolsLineBox');
 const Box = require('./Box');
 const panelTemplate = require('../../templates/Panel.hbs');
 
@@ -66,6 +67,9 @@ class Panel extends Box {
 		this._previewPanel = new PreviewBox(this._effectsPanel, this._imagesPanel);
 		this._previewPanel.render();
 
+		this._toolsLinePanel = new ToolsLineBox(this._previewPanel);
+		this._toolsLinePanel.render();
+
 		this._imagesPanel.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, (images) => {
 			this._effectsPanel.emitGroupsState();
 			this._previewPanel.particleImages = images;
@@ -74,6 +78,7 @@ class Panel extends Box {
 		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._effectsPanel.container);
 		this.container.querySelector('.app-component .inner .right').appendChild(this._imagesPanel.container);
+		this.container.querySelector('.app-component').appendChild(this._toolsLinePanel.container);
 	}
 
 	/*eslint-disable*/

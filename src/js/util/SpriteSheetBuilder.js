@@ -83,7 +83,7 @@ class SpriteSheetBuilder{
 		let width = this.sheetWidth;
 		let height = this.sheetHeight;
 
-		sources.forEach((source)=>{
+		[...sources].forEach((source)=>{
 			const sourceSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(source)));
 
 			sourceSprite.x = width;
@@ -115,7 +115,7 @@ class SpriteSheetBuilder{
 		const sheetTexture = this._sheetTexture;
 		let startX = 0;
 
-		sources.forEach((source) => {
+		[...sources].forEach((source) => {
 			const txt = new PIXI.Texture(sheetTexture, new PIXI.Rectangle(startX, 0, source.textureWidth, source.textureHeight));
 
 			textures.push(txt);

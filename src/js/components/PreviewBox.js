@@ -17,8 +17,6 @@ class PreviewBox extends Box {
 	constructor(effectsPanel, imagesPanel) {
 		super({}, template);
 
-		window.Proton = Proton;
-
 		this.container.classList.add('preview-component-container');
 
 		this.emitterState = new EmitterStateBuilder();
@@ -40,7 +38,7 @@ class PreviewBox extends Box {
 			this.stage.removeChild(this.emitterState.effectMarkers);
 
 		this.emitterState.effects = effects;
-		
+		 
 		this._createEmitter();
 		this.stage.addChild(this.emitterState.effectMarkers);
 	}
@@ -59,9 +57,10 @@ class PreviewBox extends Box {
 	}
 
 	_initCanvasRenderer() {
-		const view = this.view = this.container.querySelector('canvas');
+		const view = this.view = this.container.querySelector('.canvas');
 		const renderer = this.renderer = PIXI.autoDetectRenderer(this.view.width, this.view.height, { view });
 		const stage = this.stage = new PIXI.Container();
+
 
 		this.previewWidth = this.view.width;
 		this.previewHeight = this.view.height;
@@ -104,7 +103,7 @@ class PreviewBox extends Box {
 			check.addEventListener('click', () => {
 				const type = check.dataset.type;
 
-				checkboxes.forEach((check) => check.checked = false);
+				[...checkboxes].forEach((check) => check.checked = false);
 				check.checked = true;
 
 				// reset

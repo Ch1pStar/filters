@@ -2,6 +2,9 @@ const PIXI = require('pixi.js');
 
 const headTemplate = require('../../templates/components/emitter/head.hbs');
 const footerTemplate = require('../../templates/components/emitter/footer.hbs');
+const emitterStartTemplate = require('../../templates/components/emitter/EmitterStart.hbs');
+const emitterStopTemplate = require('../../templates/components/emitter/EmitterStop.hbs');
+
 const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
 const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
 const blendModeTemplate = require('../../templates/components/emitter/effects/BlendMode.hbs');
@@ -48,6 +51,8 @@ class EmitterStateBuilder{
 		head: '',
 		body: '',
 		footer: '',
+		emitterStart: emitterStartTemplate(),
+		emitterStop: emitterStopTemplate(),
 	};
 
 	effectMarkers = null;
@@ -84,6 +89,10 @@ class EmitterStateBuilder{
 		return this.emitterTemplate.head + this.emitterTemplate.body + this.emitterTemplate.footer;
 	}
 
+	get actionScriptState() {
+		return this.emitterTemplate.head.replace(/.stage/g, '') + this.emitterTemplate.body + this.emitterTemplate.footer + this.emitterTemplate.emitterStart;
+	}
+
 	_createPointMarker(label, x, y) {
 		const cnt = new PIXI.Container();
 		const marker = new PIXI.Graphics();
@@ -118,7 +127,6 @@ class EmitterStateBuilder{
 
 		marker.lineStyle(2, Math.random()*0xFFFFFF);
 		marker.drawRect(0,0, width, height);
-		
 		marker.x = x;
 		marker.y = y;
 		cnt.addChild(marker);

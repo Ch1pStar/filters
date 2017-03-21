@@ -1,0 +1,4 @@
+if (this.onTick) {
+    this.emitter.destroy();
+    PIXI.ticker.shared.remove(this.onTick);
+}

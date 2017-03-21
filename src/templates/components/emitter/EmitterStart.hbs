@@ -1,0 +1,11 @@
+this.emitter.emit();
+
+function onTick() {
+    this.emitter.update(0.0167);
+    this.emitter.p.x = this.emitterZone.x;
+    this.emitter.p.y = this.emitterZone.y;
+}
+
+this.onTick = onTick.bind(this);
+
+PIXI.ticker.shared.add(this.onTick);

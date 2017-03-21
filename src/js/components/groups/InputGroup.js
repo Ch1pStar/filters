@@ -1,4 +1,3 @@
-const wtf = require('proxy-polyfill');
 const Group = require('./abstract/Group');
 
 /**
@@ -17,7 +16,7 @@ class InputGroup extends Group {
 	}
 
 	set fields(fields) {
-		const fieldsProxy = new Proxy(fields, {
+		const fieldsProxy = new global.Proxy(fields, {
 			set: (obj, prop, value) => {
 				obj[prop] = value;
 				this.emit(InputGroup.events.CHANGE, this.value);

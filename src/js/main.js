@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('dopamine-polyfill').apply();
 require('./util/HbsHelpers');
 
 const Panel = require('./components/Panel');
