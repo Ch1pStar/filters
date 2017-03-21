@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js'], tasks: 'build:dev'
       },
       install: {
-        files: ['src/**/*.+(js|hbs)'], tasks: 'execute:install'
+        files: ['src/**/*.+(js|hbs)', 'src/styles/**/*.+(styl|css)'], tasks: 'execute:install'
       }
     },
     // eslint: {
