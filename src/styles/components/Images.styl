@@ -1,16 +1,8 @@
 .images-component-container
+	max-height: 140px
 	height: 100%
-	max-height: 160px
 	display: flex
 	flex-direction: row
-	flex-grow: 1
 	.container-grid
-			height: 100px
-			overflow: auto
-
-	@media screen  and (max-width : 1090px)
-		min-height: 100px
-		height: 100%
-		display: flex
-		.container-grid
-			max-height: 60px
+		height: calc(100% - 40px)
+		overflow: auto
