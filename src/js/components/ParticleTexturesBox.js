@@ -34,6 +34,7 @@ class ParticleTexturesBox extends Box {
 	}
 
 	_initGridImages(imgs) {
+		this.grid.clearContent('.grid-component');
 		[...imgs].forEach((img) => this._createImageItem(img));
 	}
 

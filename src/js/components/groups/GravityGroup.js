@@ -7,7 +7,7 @@ class GravityGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			[this.label]: 8,
+			[this.label]: 0.1,
 			_range: [-20, 20],
 		};
 	}

@@ -57,6 +57,8 @@ function insertScript(script) {
 
 function getLibraryImages() {
 	var dom = fl.getDocumentDOM();
+	if(!dom) return;
+
 	var paths = [];
 	var items = dom.library.items;
 

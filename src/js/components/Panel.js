@@ -61,7 +61,8 @@ class Panel extends Box {
 		this._imagesPanel.render();
 
 		if (window.__adobe_cep__) {
-			this._eval(jsflUtil.getLibraryImages(), (res) => this._imagesPanel.particleTexturesBox.images = res.split(','));
+			this._getDocumentImages();
+			this._subscribeDocumentEvents();
 		} else {
 			this._imagesPanel.particleTexturesBox.images = this.assets.particles;
 		}
@@ -100,6 +101,25 @@ class Panel extends Box {
 	}
 	/*eslint-enable*/
 
+	_getDocumentImages() {
+		const cep = window.__adobe_cep__;
+
+		cep.evalScript(jsflUtil.getLibraryImages(), (res) => {
+			const imgs = res === 'undefined' ? [] : res.split(',');
+
+			this._imagesPanel.particleTexturesBox.images = imgs;
+			this._imagesPanel.backgroundsBox.images = imgs;
+		});
+	}
+
+	_subscribeDocumentEvents() {
+		const cep = window.__adobe_cep__;
+
+		cep.addEventListener('com.adobe.events.flash.documentChanged',
+			this._getDocumentImages.bind(this));
+		cep.addEventListener('com.adobe.events.flash.documentOpened',
+			this._getDocumentImages.bind(this));
+	}
 }
 
 module.exports = Panel;

@@ -12,9 +12,9 @@ emitter.particleCreated.add(function(particle){
 	var texture = this.particleTextures[txtId];
 	var sp = new PIXI.Sprite(texture);
 	particle.sprite = sp;
-	
+	{{!-- 
 	sp.width = 15;
-	sp.height = 15;
+	sp.height = 15; --}}
 	sp.anchor.set(0.5);
 	this.cnt.addChild(sp);
 }.bind(this));

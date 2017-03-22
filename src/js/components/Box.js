@@ -30,6 +30,13 @@ class Box extends EventEmitter {
 		this.container.innerHTML = this.template();
 	}
 
+	clearContent(selector) {
+		const container = selector ? this.container.querySelector(selector) : this.container;
+
+		while (container.firstChild) {
+		    container.removeChild(container.firstChild);
+		}
+	}
 }
 
 module.exports = Box;
