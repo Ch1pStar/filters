@@ -1,5 +1,5 @@
 const Box = require('./Box');
-const template = require('../../templates/Backgrounds.hbs');
+const template = require('../../templates/BackgroundsBox.hbs');
 const Grid = require('./Grid');
 
 class BackgroundsBox extends Box {

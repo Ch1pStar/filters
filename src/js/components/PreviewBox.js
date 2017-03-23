@@ -1,5 +1,5 @@
 const Box = require('./Box');
-const template = require('../../templates/Preview.hbs');
+const template = require('../../templates/PreviewBox.hbs');
 const PIXI = require('pixi.js');
 const SheetBuilder = require('../util/SpriteSheetBuilder');
 const EmitterStateBuilder = require('../util/EmitterStateBuilder');
@@ -10,7 +10,7 @@ class PreviewBox extends Box {
 	emitter = null;
 	renderer = null;
 
-	constructor(effectsPanel, imagesPanel) {
+	constructor(effectsPanel) {
 		super({}, template);
 
 		this.container.classList.add('preview-component-container');
@@ -55,7 +55,9 @@ class PreviewBox extends Box {
 		const background = this.background;
 		const bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image)));
 
-		bgSprite.width = this.previewWidth;
+		// bgSprite.width = this.previewWidth;
+		bgSprite.x = bgSprite.width>this.previewWidth?0:(this.previewWidth - bgSprite.width)/2;
+		bgSprite.y = bgSprite.height>this.previewHeight?0:(this.previewHeight - bgSprite.height)/2;
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}
@@ -72,7 +74,7 @@ class PreviewBox extends Box {
 		window.r = renderer;
 		window.p = this;
 
-		this.particleCounter = new PIXI.Text('0', { fill: 0xffffff });
+		this.particleCounter = new PIXI.Text('0', { fill: 0xffffff, fontSize: 12 });
 		this.particleCounter.y = this.previewHeight - this.particleCounter.height;
 		stage.addChild(this.particleCounter);
 		stage.addChild(background);
@@ -89,6 +91,7 @@ class PreviewBox extends Box {
 			this.emitter.emit();
 		}
 	}
+
 
 	_startRender() {
 		const draw = () => {

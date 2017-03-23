@@ -8,7 +8,7 @@ const LifeGroup = require('./groups/LifeGroup');
 const RadiusGroup = require('./groups/RadiusGroup');
 const GravityGroup = require('./groups/GravityGroup');
 const MassGroup = require('./groups/MassGroup');
-const template = require('../../templates/Effects.hbs');
+const template = require('../../templates/EffectsBox.hbs');
 
 class EffetcsBox extends Box {
 
@@ -41,6 +41,8 @@ class EffetcsBox extends Box {
 		requestAnimationFrame(() => {
 			this.container.querySelector('.content .content-component').appendChild(this._controlKit._node._element);
 		});
+
+		this.hideDropdown = this.hideDropdown.bind(this);
 	}
 
 	_initGroups() {
@@ -58,6 +60,7 @@ class EffetcsBox extends Box {
 		this.groups.forEach((group) => {
 			group.panel = this._panel;
 			group.on(InputGroup.events.CHANGE, this.emitGroupsState.bind(this));
+			group.group.enable();
 		});
 
 		this._initDropdown();
@@ -66,9 +69,7 @@ class EffetcsBox extends Box {
 	emitGroupsState() {
 		const output = {};
 
-		this.groups.forEach((gr) => {
-			output[gr.label] = gr.fields;
-		});
+		this.groups.forEach((gr) => output[gr.label] = gr.fields);
 		this.emit(EffetcsBox.events.CHANGE, output);
 	}
 
@@ -76,16 +77,22 @@ class EffetcsBox extends Box {
 		// add event listener after the button is rendered
 		requestAnimationFrame(() => {
 			this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
+				e.stopPropagation();
 				if (!this.dropdownBox) {
 					// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
-
 					const dropdownBox = new DropdownBox(this);
 
 					this.container.appendChild(dropdownBox.container);
 					this.dropdownBox = dropdownBox;
 					this.dropdownBox.on(DropdownBox.events.ADD, (group) => {
+						const content = this.container.querySelector('.content-component');
+
 						group.panel = this._panel;
+						group.group.enable();
 						this.groups.push(group);
+
+						content.scrollTop = content.scrollHeight;
+						this.emitGroupsState();
 					});
 
 					this.dropdownBox.on(DropdownBox.events.REMOVE, (group) => {
@@ -94,6 +101,8 @@ class EffetcsBox extends Box {
 						this._panel._groups.splice(this._panel._groups.indexOf(group.group), 1);
 						this.groups.splice(this.groups.indexOf(group), 1);
 					});
+
+					document.body.addEventListener('click', this.hideDropdown);
 				} else {
 					this.hideDropdown();
 				}
@@ -103,8 +112,11 @@ class EffetcsBox extends Box {
 
 	hideDropdown() {
 		// requestAnimationFrame(() => e.target.querySelector('span').textContent = '+ Behaviors');
-		this.container.removeChild(this.dropdownBox.container);
-		this.dropdownBox = null;
+		if(this.dropdownBox){
+			this.container.removeChild(this.dropdownBox.container);
+			this.dropdownBox = null;
+			document.body.removeEventListener('click', this.hideDropdown);
+		}
 	}
 }
 

@@ -1,5 +1,5 @@
 const Box = require('./Box');
-const template = require('../../templates/ToolsLine.hbs');
+const template = require('../../templates/ToolsLineBox.hbs');
 const jsflUtil = require('../../jsfl/util');
 
 class ToolsLineBox extends Box {
@@ -9,11 +9,11 @@ class ToolsLineBox extends Box {
 		CLICK: 'tools_click',
 	};
 
-	constructor(previewPanel, imagesPanel) {
+	constructor(previewPanel, particleTexturesBox) {
 		super({}, template);
 
 		this.previewPanel = previewPanel;
-		this.imagesPanel = imagesPanel;
+		this.particleTexturesBox = particleTexturesBox;
 		this.container.classList.add('tools-line-container');
 		window.jsfl = jsflUtil;
 
@@ -28,7 +28,7 @@ class ToolsLineBox extends Box {
 
 	_attachAddButton() {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
-			const images = [...this.imagesPanel.particleTexturesBox.images];
+			const images = [...this.particleTexturesBox.images];
 
 			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
 

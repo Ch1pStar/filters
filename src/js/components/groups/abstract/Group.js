@@ -51,7 +51,7 @@ class Group extends EventEmitter {
 
 		// Get last index... a big hacky
 		this.group = this._panel._groups[this._panel._groups.length - 1];
-
+		
 		requestAnimationFrame(() => {
 			this.rendered();
 		});
@@ -78,7 +78,6 @@ class Group extends EventEmitter {
 	 */
 	add() {
 		this.emit(Group.events.ADD, { command: this.output });
-		// this.group.disable();
 	}
 
 	/**

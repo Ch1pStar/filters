@@ -13,7 +13,7 @@ const ScaleGroup = require('./groups/ScaleGroup');
 const GravityWellGroup = require('./groups/GravityWellGroup');
 const RandomDriftGroup = require('./groups/RandomDriftGroup');
 const BlendModeGroup = require('./groups/BlendModeGroup');
-const template = require('../../templates/components/BehavioursDropdown.hbs');
+const template = require('../../templates/components/DropdownBox.hbs');
 
 class DropdownBox extends Box {
 
@@ -54,8 +54,11 @@ class DropdownBox extends Box {
 			const items = Array.prototype.slice.call(this.container.querySelectorAll('li'));
 
 			items.forEach((option) => {
+				const effectType = option.dataset.effectType;
+
+				if(this._groupExits(effectType)) option.classList.add('active');
+
 				option.addEventListener('click', (e) => {
-					const effectType = option.dataset.effectType;
 
 					if (this._groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this._getGroup(effectType));

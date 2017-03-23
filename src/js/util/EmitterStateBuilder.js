@@ -108,7 +108,7 @@ class EmitterStateBuilder {
 			fontSize: 10,
 		});
 
-		marker.beginFill(Math.random() * 0xFFFFFF);
+		marker.beginFill(0x478020);
 		marker.drawCircle(0, 0, 4);
 		marker.endFill();
 		marker.x = x;
@@ -132,7 +132,7 @@ class EmitterStateBuilder {
 			fontSize: 10,
 		});
 
-		marker.lineStyle(2, Math.random() * 0xFFFFFF);
+		marker.lineStyle(2, 0x478020);
 		marker.drawRect(0, 0, width, height);
 		marker.x = x;
 		marker.y = y;
