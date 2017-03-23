@@ -29,10 +29,8 @@ class ToolsLineBox extends Box {
 	_attachAddButton() {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
 			const images = [...this.particleTexturesBox.images];
-
 			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
 
-			console.log(JSON.stringify(imageNames));
 			window.__adobe_cep__.evalScript(jsflUtil.createEmitter(JSON.stringify(imageNames), 2, this._prepareString(this.previewPanel.emitterState.actionScriptState)), (a) => {
 				console.log(a);
 			});

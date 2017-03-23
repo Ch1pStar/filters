@@ -100,6 +100,7 @@ class EffetcsBox extends Box {
 						this._panel._node._element.querySelector('.group-list').removeChild(group.group._node._element);
 						this._panel._groups.splice(this._panel._groups.indexOf(group.group), 1);
 						this.groups.splice(this.groups.indexOf(group), 1);
+						this.emitGroupsState();
 					});
 
 					document.body.addEventListener('click', this.hideDropdown);

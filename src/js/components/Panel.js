@@ -2,7 +2,6 @@ const Group = require('./groups/abstract/Group');
 const InputGroup = require('./groups/InputGroup');
 const Grid = require('./Grid');
 const PreviewBox = require('./PreviewBox');
-const ImagesBox = require('./ImagesBox');
 const ParticleTexturesBox = require('./ParticleTexturesBox');
 const BackgroundsBox = require('./BackgroundsBox');
 const EffectsBox = require('./EffectsBox');
