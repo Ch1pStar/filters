@@ -30,11 +30,11 @@ class Panel extends Box {
 
 	assets = {
 		particles: [
-			// '../img/particles/p1.png',
+			'../img/particles/p1.png',
 			// '../img/particles/p2.png',
-			// '../img/particles/p3.png',
+			'../img/particles/p3.png',
 			// '../img/particles/p4.png',
-			// '../img/particles/chip-3.png',
+			'../img/particles/chip-3.png',
 			'../img/basepixi-assets/1.png',
 			'../img/basepixi-assets/2.png',
 			'../img/basepixi-assets/3.png',
@@ -84,15 +84,16 @@ class Panel extends Box {
      */
 	constructor(fl, options = {}) {
 		super(options, panelTemplate);
-
-		window.pn = this;
-
 		this.container.className = 'app-component-container';
 		this.render();
 
+		const appContainer = this.container.querySelector('.app-component');
+		const leftContainer = appContainer.querySelector('.inner .left');
+		const rightContainer = appContainer.querySelector('.inner .right');
+		const imagesContainer = this._imagesContainer = this.container.querySelector('.images-component-container');
+
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
-		this._effectsPanel.on(EffectsBox.events.CHANGE, (effects) => this._previewPanel.effects = effects);
 
 		this.particleTexturesBox = new ParticleTexturesBox();
 		this.particleTexturesBox.render();
@@ -114,24 +115,20 @@ class Panel extends Box {
 		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, this.particleTexturesBox, this.backgroundsBox);
 		this._toolsLinePanel.render();
 
+		// attach component listeners
+		this._effectsPanel.on(EffectsBox.events.CHANGE, (effects) => this._previewPanel.effects = effects);
 		this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, (images) => {
 			this._effectsPanel.emitGroupsState();
 			this._previewPanel.particleImages = images;
 		});
-
 		this.backgroundsBox.on(BackgroundsBox.events.CHANGE, (images) => this._previewPanel.backgroundImage = images[0]);
 
-		this.container.querySelector('.app-component .inner .left').appendChild(this._previewPanel.container);
-		this.container.querySelector('.app-component .inner .right').appendChild(this._effectsPanel.container);
-		this.container.querySelector('.app-component').appendChild(this._toolsLinePanel.container);
-
-
-		const imagesContainer = this._imagesContainer =  document.createElement('div');
-
-		imagesContainer.className = 'box-component-container images-component-container';
+		// insert components
+		leftContainer.appendChild(this._previewPanel.container);
+		rightContainer.insertBefore(this._effectsPanel.container, rightContainer.firstChild);
+		appContainer.appendChild(this._toolsLinePanel.container);
 		imagesContainer.appendChild(this.particleTexturesBox.container);
 		imagesContainer.appendChild(this.backgroundsBox.container);
-		this.container.querySelector('.app-component .inner .right').appendChild(imagesContainer);
 	}
 
 	/*eslint-disable*/
