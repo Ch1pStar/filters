@@ -30,7 +30,7 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
-		if (this.emitterState.effectMarkers)			{ this.stage.removeChild(this.emitterState.effectMarkers); }
+		if (this.emitterState.effectMarkers) { this.stage.removeChild(this.emitterState.effectMarkers); }
 
 		this.emitterState.effects = effects;
 
@@ -56,8 +56,10 @@ class PreviewBox extends Box {
 		const bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image)));
 
 		// bgSprite.width = this.previewWidth;
-		bgSprite.x = bgSprite.width>this.previewWidth?0:(this.previewWidth - bgSprite.width)/2;
-		bgSprite.y = bgSprite.height>this.previewHeight?0:(this.previewHeight - bgSprite.height)/2;
+		// bgSprite.x = bgSprite.width>this.previewWidth?0:(this.previewWidth - bgSprite.width)/2;
+		// bgSprite.y = bgSprite.height>this.previewHeight?0:(this.previewHeight - bgSprite.height)/2;
+		bgSprite.x = (this.previewWidth - bgSprite.width)/2;
+		bgSprite.y = (this.previewHeight - bgSprite.height)/2;
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}
