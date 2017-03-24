@@ -53,10 +53,14 @@ class EmitterStateBuilder {
 		head: '',
 		body: '',
 		footer: '',
-		emitterStart: emitterStartTemplate(),
-		emitterStop: emitterStopTemplate(),
-		emitterDestroy: emitterDestroyTemplate(),
-		particleTextures: particleTexturesTemplate(),
+		emitterStart: emitterStartTemplate,
+		emitterStop: emitterStopTemplate,
+		emitterDestroy: emitterDestroyTemplate,
+		particleTextures: particleTexturesTemplate,
+	};
+
+	emitterParams = {
+		emitterZone: 'emitterZone',
 	};
 
 	effectMarkers = null;
@@ -93,11 +97,23 @@ class EmitterStateBuilder {
 	}
 
 	get actionScriptState() {
-		return this.emitterTemplate.particleTextures
+		return this.emitterTemplate.particleTextures(this.emitterParams)
 			+ this.emitterTemplate.head.replace(/.stage/g, '')
 			+ this.emitterTemplate.body
 			+ this.emitterTemplate.footer
-			+ this.emitterTemplate.emitterStart;
+			+ this.emitterStartState;
+	}
+
+	get emitterStopState() {
+		return this.emitterTemplate.emitterStop(this.emitterParams);
+	}
+
+	get emitterDestroyState() {
+		return this.emitterTemplate.emitterDestroy(this.emitterParams);
+	}
+
+	get emitterStartState() {
+		return this.emitterTemplate.emitterStart(this.emitterParams);
 	}
 
 	_createPointMarker(label, x, y) {

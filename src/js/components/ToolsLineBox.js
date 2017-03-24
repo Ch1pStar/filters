@@ -40,7 +40,7 @@ class ToolsLineBox extends Box {
 	_attachStopButton() {
 		this.container.querySelector('.button.stop').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStop)), (a) => {
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterStopState)), (a) => {
 					console.log(a);
 				});
 		});
@@ -49,7 +49,7 @@ class ToolsLineBox extends Box {
 	_attachStartButton() {
 		this.container.querySelector('.button.start').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterStart)), (a) => {
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterStartState)), (a) => {
 					console.log(a);
 				});
 		});
@@ -58,7 +58,7 @@ class ToolsLineBox extends Box {
 	_attachDestroyButton() {
 		this.container.querySelector('.button.destroy').addEventListener('click', () => {
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterTemplate.emitterDestroy)), (a) => {
+				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterDestroyState)), (a) => {
 					console.log(a);
 				});
 		});

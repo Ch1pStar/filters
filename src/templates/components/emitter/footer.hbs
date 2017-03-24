@@ -1,8 +1,8 @@
-emitter.p.x = 100;
-emitter.p.y = 100;
+emitterZoneEmitter.p.x = 100;
+emitterZoneEmitter.p.y = 100;
 
-window.emitter = emitter;
-emitter.particleCreated.add(function(particle){
+window.emitterZoneEmitter = emitterZoneEmitter;
+emitterZoneEmitter.particleCreated.add(function(particle){
 	if(particle.sprite){
 		particle.sprite.visible = true;
 		particle.sprite.scale.set(particle.scale);
@@ -16,26 +16,20 @@ emitter.particleCreated.add(function(particle){
 	sp.width = 15;
 	sp.height = 15; --}}
 	sp.anchor.set(0.5);
-	this.cnt.addChild(sp);
+	this.emitterZoneCnt.addChild(sp);
 }.bind(this));
 
-emitter.particleUpdate.add(function(particle){
+emitterZoneEmitter.particleUpdate.add(function(particle){
 	var sp = particle.sprite;
 	sp.position.set(particle.p.x, particle.p.y);
-	{{#if Alpha}}
-	sp.alpha = particle.alpha;
-	{{/if}}
-	{{#if Scale}}
-	sp.scale.set(particle.scale);
-	{{/if}}
-	{{#if Rotate}}
-	sp.rotation = particle.rotation;
-	{{/if}}
+	{{#if Alpha}}sp.alpha = particle.alpha;{{/if}}
+	{{#if Scale}}sp.scale.set(particle.scale);{{/if}}
+	{{#if Rotate}}sp.rotation = particle.rotation;{{/if}}
 }.bind(this));
 
-emitter.particleDead.add(function(particle){
-	{{!-- particle.sprite.alpha = 0; --}}
+emitterZoneEmitter.particleDead.add(function(particle){
 	particle.sprite.visible = false;
 }.bind(this));
 
-this.latestEmitter = emitter;
+var emitters = this.emitters = this.emitters || [];
+emitters.push(this.emitterZoneEmitter);

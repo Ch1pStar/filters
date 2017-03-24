@@ -4,18 +4,19 @@ function createEmitter(images, bounds, script) {
 	var timeline = dom.getTimeline();
 	var currentFrame = timeline.currentFrame;
 	var currentLayer = timeline.currentLayer;
+	var newSym;
 
-	dom.library.deleteItem('emitterZone');
+	// dom.library.deleteItem('emitterZone');
 
 	dom.addNewRectangle({ left: 99, top: 47, right: 337, bottom: 210 }, 0);
 
 	dom.setSelectionRect({ left: 99, top: 47, right: 337, bottom: 210 });
 
-	var newSym = fl.getDocumentDOM().convertToSymbol('movie clip', 'emitterZone', 'top left');
 
 	var instanceName = prompt('Instance name');
 
 	if (instanceName) {
+		newSym = fl.getDocumentDOM().convertToSymbol('movie clip', instanceName+'Class', 'top left');
 		dom.selection[0].name = instanceName;
 		script = script.replace(/emitterZone/g, instanceName);
 	}
@@ -49,6 +50,7 @@ function insertScript(script) {
 	if (instanceName && dom.selection[0]) {
 		dom.selection[0].name = instanceName;
 		script = script.replace(/emitterZone/g, instanceName);
+		fl.trace(script)
 	}
 
 	timeline.insertKeyframe(currentFrame);

@@ -1,3 +1,17 @@
 if (this.onTick) {
-    this.latestEmitter.destroy();
+    var emitters = this.emitters;
+    var emitter = this.emitterZoneEmitter;
+    var cnt = this.emitterZoneCnt;
+
+    emitter.destroy();
+    this.removeChild(cnt);
+    cnt.children.length = 0;
+    emitters.splice(emitters.indexOf(emitter), 1);
+    emitter = null;
+    cnt = null;
+
+    if (!emitters.length){
+        PIXI.ticker.shared.remove(this.onTick);
+        this.onTick = null;
+    }
 }

@@ -113,7 +113,7 @@ class EffetcsBox extends Box {
 
 	hideDropdown() {
 		// requestAnimationFrame(() => e.target.querySelector('span').textContent = '+ Behaviors');
-		if(this.dropdownBox){
+		if (this.dropdownBox) {
 			this.container.removeChild(this.dropdownBox.container);
 			this.dropdownBox = null;
 			document.body.removeEventListener('click', this.hideDropdown);

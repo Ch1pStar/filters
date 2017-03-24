@@ -1,6 +1,6 @@
 {{#ifCond type 'emit'}}
-	emitter.addInitialize(new Proton.Position(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}})));
+	emitterZoneEmitter.addInitialize(new Proton.Position(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}})));
 {{else}}
-	emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}}),
+	emitterZoneEmitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone({{x}}, {{y}}, {{width}}, {{height}}),
 		Proton.CrossZone.CROSS_TYPES.{{type}}));
 {{/ifCond}}

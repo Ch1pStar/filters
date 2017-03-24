@@ -56,10 +56,9 @@ class DropdownBox extends Box {
 			items.forEach((option) => {
 				const effectType = option.dataset.effectType;
 
-				if(this._groupExits(effectType)) option.classList.add('active');
+				if (this._groupExits(effectType)) option.classList.add('active');
 
 				option.addEventListener('click', (e) => {
-
 					if (this._groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this._getGroup(effectType));
 					} else {

@@ -58,8 +58,8 @@ class PreviewBox extends Box {
 		// bgSprite.width = this.previewWidth;
 		// bgSprite.x = bgSprite.width>this.previewWidth?0:(this.previewWidth - bgSprite.width)/2;
 		// bgSprite.y = bgSprite.height>this.previewHeight?0:(this.previewHeight - bgSprite.height)/2;
-		bgSprite.x = (this.previewWidth - bgSprite.width)/2;
-		bgSprite.y = (this.previewHeight - bgSprite.height)/2;
+		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
+		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}
@@ -89,11 +89,10 @@ class PreviewBox extends Box {
 
 		if (this.particleTextures && this.particleTextures.length)	{
 			eval(emitterCode);
-			this.emitter = this.latestEmitter;
+			this.emitter = this.emitterZoneEmitter;
 			this.emitter.emit();
 		}
 	}
-
 
 	_startRender() {
 		const draw = () => {

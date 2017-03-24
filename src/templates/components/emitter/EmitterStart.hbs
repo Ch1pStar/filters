@@ -1,13 +1,12 @@
-this.emitters = this.emitters || [];
-this.emitters.push(this.latestEmitter);
+var emitters = this.emitters = this.emitters || [];
 
-this.latestEmitter.emit();
+this.emitterZoneEmitter.emit();
 
 if(!this.onTick){
 
     function onTick() {
-        for(var i=0,len=this.emitters.length;i<len;i++){
-            var emitter = this.emitters[i];
+        for(var i=0,len=emitters.length;i<len;i++){
+            var emitter = emitters[i];
             emitter.update(0.0167);
             emitter.p.x = this.emitterZone.x + this.emitterZone.width/2;
             emitter.p.y = this.emitterZone.y + this.emitterZone.height/2;
