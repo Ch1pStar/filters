@@ -10,7 +10,7 @@
     "gsap": "^1.19.0",
     "hbsfy": "^2.7.0",
     "pixi.js": "^4.4.1",
-    "dopamine-polyfill": "git+http://git.dopamine.bg/tools/dopamine-polyfill.git#v1.0.4",
+    "dope-polyfill": "git+ssh://git@gitlab.in:games/libs/dope-polyfill.git#v1.1.0",
     "quark": "git+https://github.com/Ch1pStar/Quark.git"
   },
   "devDependencies": {
