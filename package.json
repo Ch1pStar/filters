@@ -1,7 +1,7 @@
 {
   "name": "dope-particles",
   "description": "Dopamine particle editor Flash extension",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "controlkit": "git+http://git.dopamine.bg/tools/controlkit.git",
