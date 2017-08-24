@@ -8,7 +8,7 @@ class BlendModeGroup extends InputGroup {
 
 		this.fields = {
 			_modeRange: ['NORMAL', 'ADD', 'MULTIPLY', 'SCREEN'],
-			blendMode: 'NORMAL',
+			blendMode: 'ADD',
 		};
 	}
 

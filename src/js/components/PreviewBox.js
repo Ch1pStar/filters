@@ -125,8 +125,8 @@ class PreviewBox extends Box {
 
 				if (type === 'tween') {
 					this._updateEmitterPosition = this._tweenUpdate;
-					this.emitter.p.x = 100;
-					this.emitter.p.y = 100;
+					this.emitter.p.x = 30;
+					this.emitter.p.y = 30;
 				} else if (type === 'follow') {
 					this._updateEmitterPosition = this._cursorUpdate;
 					this._startCursorFollow();
@@ -165,8 +165,8 @@ class PreviewBox extends Box {
 	}
 
 	_tweenUpdate() {
-		this.emitter.p.x = Math.sin(this.currentFrame * 0.1) * 150 + 250;
-		this.emitter.p.y = Math.cos(this.currentFrame * 0.1) * 30 + 150;
+		this.emitter.p.x = Math.sin(this.currentFrame * 0.04) * 450 + 620;
+		this.emitter.p.y = Math.cos(this.currentFrame * 0.04) * 30 + 80;
 	}
 
 	_startCursorFollow() {

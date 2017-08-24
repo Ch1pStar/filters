@@ -74,6 +74,8 @@ class Panel extends Box {
 		],
 		backgrounds: [
 			'../img/backgrounds/bg.png',
+			'../img/backgrounds/N16uiSo.jpg',
+			'../img/backgrounds/sky.jpg',
 			'../img/particles/chip-3.png',
 		],
 	};

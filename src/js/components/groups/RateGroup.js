@@ -7,7 +7,7 @@ class RateGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			amount: 8,
+			amount: 6,
 			_amountRange: [1, 300],
 			frequency: 0.01,
 			_frequencyRange: [0.001, 2],

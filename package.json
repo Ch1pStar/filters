@@ -4,14 +4,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "controlkit": "git+http://git.dopamine.bg/tools/controlkit.git",
+    "controlkit": "latest",
+    "dope-polyfill": "git+ssh://git@gitlab.in:games/libs/dope-polyfill.git#v1.1.0",
     "es6-object-assign": "^1.0.3",
     "eventemitter4": "^0.2.4",
     "gsap": "^1.19.0",
     "hbsfy": "^2.7.0",
+    "hbsify": "^1.0.1",
     "pixi.js": "^4.4.1",
-    "dope-polyfill": "git+ssh://git@gitlab.in:games/libs/dope-polyfill.git#v1.1.0",
-    "quark": "git+https://github.com/Ch1pStar/Quark.git"
+    "quark": "git+ssh://git@gitlab.in:n.yordanov/Quark.git"
   },
   "devDependencies": {
     "autoprefixer-stylus": "^0.9.4",

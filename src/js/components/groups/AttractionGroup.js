@@ -7,12 +7,12 @@ class AttractionGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			x: 320,
-			y: 350,
+			x: 700,
+			y: 410,
 			_yRange: [0, 1080],
 			_xRange: [0, 1920],
-			force: 10,
-			_forceRange: [0, 10],
+			force: 15,
+			_forceRange: [0, 15],
 			radius: 1,
 			_radiusRange: [0, 10],
 			life: 1,

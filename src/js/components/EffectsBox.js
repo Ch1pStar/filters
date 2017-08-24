@@ -7,7 +7,8 @@ const VelocityGroup = require('./groups/VelocityGroup');
 const LifeGroup = require('./groups/LifeGroup');
 const RadiusGroup = require('./groups/RadiusGroup');
 const GravityGroup = require('./groups/GravityGroup');
-const MassGroup = require('./groups/MassGroup');
+const AttractionGroup = require('./groups/AttractionGroup');
+const BlendModeGroup = require('./groups/BlendModeGroup');
 const template = require('../../templates/EffectsBox.hbs');
 
 class EffetcsBox extends Box {
@@ -54,9 +55,19 @@ class EffetcsBox extends Box {
 		const radiusGroup = new RadiusGroup(this);
 		const velGroup = new VelocityGroup(this);
 		const gravityGroup = new GravityGroup(this);
-		const massGroup = new MassGroup(this);
+		const attractionGroup = new AttractionGroup(this);
+		const blendModeGroup = new BlendModeGroup(this);
 
-		this.groups = [lifeGroup, rateGroup, gravityGroup, radiusGroup, velGroup, massGroup];
+		this.groups = [
+			lifeGroup,
+			rateGroup,
+			gravityGroup,
+			radiusGroup,
+			velGroup,
+			attractionGroup,
+			blendModeGroup,
+		];
+
 		this.groups.forEach((group) => {
 			group.panel = this._panel;
 			group.on(InputGroup.events.CHANGE, this.emitGroupsState.bind(this));

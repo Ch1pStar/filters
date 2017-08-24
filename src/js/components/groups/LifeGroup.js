@@ -7,7 +7,7 @@ class LifeGroup extends InputGroup {
 		this.parentComponent = parent;
 
 		this.fields = {
-			[this.label]: 6,
+			[this.label]: 10,
 			_range: [0.1, 10],
 		};
 	}
