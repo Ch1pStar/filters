@@ -42,15 +42,18 @@ class ParticleTexturesBox extends Box {
 		const imageElement = new Image();
 
 		imageElement.src = imagePath;
-		const imageWrapper = document.createElement('div');
 
-		imageWrapper.className = 'img-box';
-		imageWrapper.appendChild(imageElement);
-		this.grid.container.querySelector('.grid-component').appendChild(imageWrapper);
-		imageWrapper.addEventListener('click', () => {
-			// this.grid._unselect();
-			imageWrapper.classList.toggle('active');
-			this.emit(ParticleTexturesBox.events.CHANGE, this.container.querySelectorAll('.active img'));
+		imageElement.addEventListener('load', () => {
+			const imageWrapper = document.createElement('div');
+
+			imageWrapper.className = 'img-box';
+			imageWrapper.appendChild(imageElement);
+			this.grid.container.querySelector('.grid-component').appendChild(imageWrapper);
+			imageWrapper.addEventListener('click', () => {
+				// this.grid._unselect();
+				imageWrapper.classList.toggle('active');
+				this.emit(ParticleTexturesBox.events.CHANGE, this.container.querySelectorAll('.active img'));
+			});
 		});
 	}
 }
