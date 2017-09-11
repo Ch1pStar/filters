@@ -34,10 +34,10 @@ class RepulsionGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		// return `emitter.addBehaviour(new Proton.Repulsion({x:${fields.x}, y:${fields.y}},
+		// return `emitter.addBehaviour(new Quark.Repulsion({x:${fields.x}, y:${fields.y}},
 		// ${fields.force}, ${fields.radius}, ${fields.life}));`;
 
-		return `emitter.addBehaviour(new Proton.Repulsion({x:${fields.x}, y:${fields.y}}, 
+		return `emitter.addBehaviour(new Quark.Repulsion({x:${fields.x}, y:${fields.y}}, 
 		${fields.force}));`;
 	}
 }

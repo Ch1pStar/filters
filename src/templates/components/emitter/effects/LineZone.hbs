@@ -1,6 +1,6 @@
 {{#ifCond type 'emit'}}
-emitterZoneEmitter.addInitialize(new Proton.Position(new Proton.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}})));
+emitterZoneEmitter.addInitialize(new Quark.Position(new Quark.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}})));
 {{else}}
-emitterZoneEmitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}}, {{direction}}),
-Proton.CrossZone.CROSS_TYPES.{{type}}));
+emitterZoneEmitter.addBehaviour(new Quark.CrossZone(new Quark.LineZone({{x1}}, {{y1}}, {{x2}}, {{y2}}, {{direction}}),
+Quark.CrossZone.CROSS_TYPES.{{type}}));
 {{/ifCond}}

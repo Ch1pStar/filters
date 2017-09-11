@@ -40,10 +40,10 @@ class LineZoneGroup extends InputGroup {
 		const direction = fields.direction === 'right' ? 1 : 0;
 
 		if (fields.type === 'emit') {
-			return `emitter.addInitialize(new Proton.Position(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2})));`;
+			return `emitter.addInitialize(new Quark.Position(new Quark.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2})));`;
 		}
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${direction}), Proton.CrossZone.CROSS_TYPES.${fields.type}));`;
+		return `emitter.addBehaviour(new Quark.CrossZone(new Quark.LineZone(${fields.x1}, ${fields.y1}, ${fields.x2}, ${fields.y2}, ${direction}), Quark.CrossZone.CROSS_TYPES.${fields.type}));`;
 	}
 }
 

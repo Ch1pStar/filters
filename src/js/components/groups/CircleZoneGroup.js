@@ -31,10 +31,10 @@ class CircleZoneGroup extends InputGroup {
 		const fields = this.fields;
 
 		if (fields.type === 'emit') {
-			return `emitter.addInitialize(new Proton.Position(new Proton.CircleZone(${fields.x}, ${fields.y}, ${fields.radius})));`;
+			return `emitter.addInitialize(new Quark.Position(new Quark.CircleZone(${fields.x}, ${fields.y}, ${fields.radius})));`;
 		}
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.CircleZone(${fields.x}, ${fields.y}, ${fields.radius}), Proton.CrossZone.CROSS_TYPES.${fields.type}));`;
+		return `emitter.addBehaviour(new Quark.CrossZone(new Quark.CircleZone(${fields.x}, ${fields.y}, ${fields.radius}), Quark.CrossZone.CROSS_TYPES.${fields.type}));`;
 	}
 }
 

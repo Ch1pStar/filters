@@ -17,7 +17,7 @@ class RadiusGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addInitialize(new Proton.Radius(${this.fields[this.label]}));`;
+		return `emitter.addInitialize(new Quark.Radius(${this.fields[this.label]}));`;
 	}
 }
 

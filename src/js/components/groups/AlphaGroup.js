@@ -21,7 +21,7 @@ class AlphaGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addBehaviour(new Proton.Alpha(${this.fields.min}, ${this.fields.max}, ${this.fields.life}, Proton.easeOutCubic));`;
+		return `emitter.addBehaviour(new Quark.Alpha(${this.fields.min}, ${this.fields.max}, ${this.fields.life}, Quark.easeOutCubic));`;
 	}
 }
 

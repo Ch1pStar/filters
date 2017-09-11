@@ -25,7 +25,7 @@ class GravityWellGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addBehaviour(new Proton.GravityWell({x:${this.fields.x}, y:${this.fields.y}}, ${this.fields.force}));`;
+		return `emitter.addBehaviour(new Quark.GravityWell({x:${this.fields.x}, y:${this.fields.y}}, ${this.fields.force}));`;
 	}
 }
 

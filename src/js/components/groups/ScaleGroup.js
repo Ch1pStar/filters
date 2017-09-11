@@ -26,8 +26,8 @@ class ScaleGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		// return `emitter.addBehaviour(new Proton.Scale(${fields.a}, ${fields.b}, ${fields.life}));`;
-		return `emitter.addBehaviour(new Proton.Scale(${fields.a}, ${fields.b}, Infinity));`;
+		// return `emitter.addBehaviour(new Quark.Scale(${fields.a}, ${fields.b}, ${fields.life}));`;
+		return `emitter.addBehaviour(new Quark.Scale(${fields.a}, ${fields.b}, Infinity));`;
 	}
 }
 

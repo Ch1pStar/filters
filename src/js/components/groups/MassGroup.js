@@ -19,7 +19,7 @@ class MassGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addInitialize(new Proton.Mass(${this.fields[this.label]}));`;
+		return `emitter.addInitialize(new Quark.Mass(${this.fields[this.label]}));`;
 	}
 }
 

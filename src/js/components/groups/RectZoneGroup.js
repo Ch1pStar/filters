@@ -35,10 +35,10 @@ class RectZoneGroup extends InputGroup {
 		const fields = this.fields;
 
 		if (fields.type === 'emit') {
-			return `emitter.addInitialize(new Proton.Position(new Proton.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height})));`;
+			return `emitter.addInitialize(new Quark.Position(new Quark.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height})));`;
 		}
 
-		return `emitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height}), Proton.CrossZone.CROSS_TYPES.${fields.type}));`;
+		return `emitter.addBehaviour(new Quark.CrossZone(new Quark.RectZone(${fields.x}, ${fields.y}, ${fields.width}, ${fields.height}), Quark.CrossZone.CROSS_TYPES.${fields.type}));`;
 	}
 }
 

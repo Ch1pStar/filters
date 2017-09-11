@@ -20,7 +20,7 @@ class ForceGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addBehaviour(new Proton.Force(${this.fields.x}, ${this.fields.y}));`;
+		return `emitter.addBehaviour(new Quark.Force(${this.fields.x}, ${this.fields.y}));`;
 	}
 }
 

@@ -29,7 +29,7 @@ class RotateGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		return `emitter.addBehaviour(new Proton.Rotate('${fields.a}', ${fields.b}, 
+		return `emitter.addBehaviour(new Quark.Rotate('${fields.a}', ${fields.b}, 
 		'${fields.style}', ${fields.life}));`;
 	}
 }

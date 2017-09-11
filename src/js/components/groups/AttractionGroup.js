@@ -34,7 +34,7 @@ class AttractionGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		return `emitter.addBehaviour(new Proton.Attraction({x:${fields.x}, y:${fields.y}}, 
+		return `emitter.addBehaviour(new Quark.Attraction({x:${fields.x}, y:${fields.y}}, 
 		${fields.force}, ${fields.radius}, ${fields.life}));`;
 	}
 }

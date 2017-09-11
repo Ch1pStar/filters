@@ -25,7 +25,7 @@ class RandomDriftGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addBehaviour(new Proton.RandomDrift(${this.fields.x}, ${this.fields.y}, ${this.fields.delay}));`;
+		return `emitter.addBehaviour(new Quark.RandomDrift(${this.fields.x}, ${this.fields.y}, ${this.fields.delay}));`;
 	}
 }
 

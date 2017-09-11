@@ -22,7 +22,7 @@ class RateGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.rate = new Proton.Rate(${this.fields.amount}, ${this.fields.frequency});`;
+		return `emitter.rate = new Quark.Rate(${this.fields.amount}, ${this.fields.frequency});`;
 	}
 }
 

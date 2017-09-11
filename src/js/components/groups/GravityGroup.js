@@ -17,7 +17,7 @@ class GravityGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addBehaviour(new Proton.Gravity(${this.fields[this.label]}));`;
+		return `emitter.addBehaviour(new Quark.Gravity(${this.fields[this.label]}));`;
 	}
 }
 

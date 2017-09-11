@@ -17,7 +17,7 @@ class LifeGroup extends InputGroup {
 	}
 
 	get value() {
-		return `emitter.addInitialize(new Proton.Life(${this.fields[this.label]}));`;
+		return `emitter.addInitialize(new Quark.Life(${this.fields[this.label]}));`;
 	}
 }
 

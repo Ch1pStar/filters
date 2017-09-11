@@ -27,7 +27,7 @@ class VelocityGroup extends InputGroup {
 	get value() {
 		const fields = this.fields;
 
-		return `emitter.addInitialize(new Proton.Velocity(${fields.speed}, Proton.getSpan(${fields.minAngle}, ${fields.maxAngle}), '${fields.orientation}'));`;
+		return `emitter.addInitialize(new Quark.Velocity(${fields.speed}, Quark.getSpan(${fields.minAngle}, ${fields.maxAngle}), '${fields.orientation}'));`;
 	}
 }
 
