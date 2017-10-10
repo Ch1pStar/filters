@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExtensionBundleId="com.dopamine.DopamineFlashParticles.Panel" ExtensionBundleVersion="1.0" Version="6.0">
+<ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExtensionBundleId="com.dopamine.Particles.Panel" ExtensionBundleVersion="1.0" Version="6.0">
     <ExtensionList>
-        <Extension Id="com.dopamine.DopamineFlashParticles.Panel" Version="4.2.0"/>
+        <Extension Id="com.dopamine.Particles.Panel" Version="4.2.0"/>
     </ExtensionList>
     <ExecutionEnvironment>
         <HostList>
@@ -15,7 +15,7 @@
         </RequiredRuntimeList>
     </ExecutionEnvironment>
     <DispatchInfoList>
-        <Extension Id="com.dopamine.DopamineFlashParticles.Panel">
+        <Extension Id="com.dopamine.Particles.Panel">
             <DispatchInfo>
                 <Resources>
                     <MainPath>./html/index.html</MainPath>

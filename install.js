@@ -4,7 +4,7 @@ const copyExtensionFiles = ()=>{
     const fs = require('fs');
     const execSync = require('child_process').execSync;
     const extensionsPath = 'C:\\Program Files (x86)\\Common Files\\Adobe\\CEP\\extensions';
-    const extensionName = 'flash-extension';
+    const extensionName = 'com.dopamine.Particles';
     const targetDir = `${extensionsPath}\\${extensionName}`;
 
     const copyDir = path=>{
