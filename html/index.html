@@ -20,8 +20,7 @@
         document.body.appendChild(panel.container);
 
         document.body.addEventListener('dblclick', function (e) {
-            // if(e.target === document.body) location.reload();
-            location.reload();
+            if(window.__adobe_cep__) location.reload();
         });
     </script>
     <style>

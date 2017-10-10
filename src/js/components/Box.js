@@ -28,6 +28,16 @@ class Box extends EventEmitter {
 	*/
 	render() {
 		this.container.innerHTML = this.template();
+
+		this.onRendered();
+	}
+
+	/**
+	 * Called after the box content has been rendered
+	 * @return {[type]} [description]
+	 */
+	onRendered() {
+
 	}
 
 	clearContent(selector) {

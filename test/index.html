@@ -15,6 +15,7 @@
         document.body.appendChild(panel.container);
 
         document.body.addEventListener('dblclick', function (e) {
+            console.error(e.target);
             if(e.target === document.body) location.reload();
         });
     </script>

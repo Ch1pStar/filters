@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       options: {
         watch: true,
         transform: [
-          ['babelify', {presets: ['es2015'], plugins: ['transform-class-properties']}], ['hbsify']
+          ['babelify', {presets: ['es2015'], plugins: ['transform-class-properties', 'transform-object-rest-spread']}], ['hbsify']
         ],
       },
       dev: {

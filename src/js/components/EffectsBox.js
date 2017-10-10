@@ -11,6 +11,8 @@ const AttractionGroup = require('./groups/AttractionGroup');
 const BlendModeGroup = require('./groups/BlendModeGroup');
 const template = require('../../templates/EffectsBox.hbs');
 
+const DopeGroup = require('./groups/abstract/DopeGroup');
+
 class EffetcsBox extends Box {
 
 	/** @type {Object} List of events this class will dispatch */
@@ -29,54 +31,53 @@ class EffetcsBox extends Box {
 	constructor(options) {
 		super(options, template);
 
-		window.ck = ControlKit;
-
 		this.container.classList.add('behaviours-component-container');
 		this.render();
+	}
 
-		this._controlKit = new ControlKit();
-		this._panel = this._controlKit.addPanel();
+	onRendered() {
+		this.contentContainer = this.container.querySelector('.content .content-component');
 
 		this._initGroups();
-
-		requestAnimationFrame(() => {
-			this.container.querySelector('.content .content-component').appendChild(this._controlKit._node._element);
-		});
 
 		this.hideDropdown = this.hideDropdown.bind(this);
 	}
 
 	_initGroups() {
-		const self = this;
-
 		// default groups
-		const lifeGroup = new LifeGroup(this);
-		const rateGroup = new RateGroup(this);
-		const radiusGroup = new RadiusGroup(this);
-		const velGroup = new VelocityGroup(this);
-		const gravityGroup = new GravityGroup(this);
-		const attractionGroup = new AttractionGroup(this);
-		const blendModeGroup = new BlendModeGroup(this);
+		// const lifeGroup = new LifeGroup(this);
+		// const rateGroup = new RateGroup(this);
+		// const radiusGroup = new RadiusGroup(this);
+		// const velGroup = new VelocityGroup(this);
+		// const gravityGroup = new GravityGroup(this);
+		// const attractionGroup = new AttractionGroup(this);
+		// const blendModeGroup = new BlendModeGroup(this);
 
 		// emit groups state function
 		const emitGroupsState = this.emitGroupsState.bind(this);
 
+		const dg = new DopeGroup(this);
+
+		this.contentContainer.appendChild(dg.container);
+
+		window.a = dg;
+
 		this.groups = [
-			lifeGroup,
-			rateGroup,
-			gravityGroup,
-			radiusGroup,
-			velGroup,
-			attractionGroup,
-			blendModeGroup,
+			dg,
+			// lifeGroup,
+			// rateGroup,
+			// gravityGroup,
+			// radiusGroup,
+			// velGroup,
+			// attractionGroup,
+			// blendModeGroup,
 		];
 
 		this.groups.forEach((group) => {
-			group.panel = this._panel;
-			group.on(InputGroup.events.CHANGE, emitGroupsState);
-			group.group.enable();
+			group.on(DopeGroup.events.INPUT, emitGroupsState);
+
 		});
-		this._initDropdown();
+		// this._initDropdown();
 	}
 
 	emitGroupsState() {
