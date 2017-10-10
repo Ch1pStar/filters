@@ -35,42 +35,42 @@ class Panel extends Box {
 			'../img/particles/p3.png',
 			// '../img/particles/p4.png',
 			'../img/particles/chip-3.png',
-			'../img/basepixi-assets/1.png',
-			'../img/basepixi-assets/2.png',
-			'../img/basepixi-assets/3.png',
-			'../img/basepixi-assets/4.png',
-			'../img/basepixi-assets/5.png',
-			'../img/basepixi-assets/6.png',
-			'../img/basepixi-assets/7.png',
-			'../img/basepixi-assets/8.png',
-			'../img/basepixi-assets/9.png',
-			'../img/basepixi-assets/10.png',
-			'../img/basepixi-assets/11.png',
-			'../img/basepixi-assets/12.png',
-			'../img/basepixi-assets/13.png',
-			'../img/basepixi-assets/14.png',
-			'../img/basepixi-assets/15.png',
-			'../img/basepixi-assets/16.png',
-			'../img/basepixi-assets/17.png',
-			'../img/basepixi-assets/18.png',
-			'../img/basepixi-assets/19.png',
-			'../img/basepixi-assets/20.png',
-			'../img/basepixi-assets/21.png',
-			'../img/basepixi-assets/22.png',
-			'../img/basepixi-assets/23.png',
-			'../img/basepixi-assets/24.png',
-			'../img/basepixi-assets/25.png',
-			'../img/basepixi-assets/26.png',
-			'../img/basepixi-assets/27.png',
-			'../img/basepixi-assets/28.png',
-			'../img/basepixi-assets/29.png',
-			'../img/basepixi-assets/30.png',
-			'../img/basepixi-assets/31.png',
-			'../img/basepixi-assets/32.png',
-			'../img/basepixi-assets/33.png',
-			'../img/basepixi-assets/34.png',
-			'../img/basepixi-assets/35.png',
-			'../img/basepixi-assets/36.png',
+			// '../img/basepixi-assets/1.png',
+			// '../img/basepixi-assets/2.png',
+			// '../img/basepixi-assets/3.png',
+			// '../img/basepixi-assets/4.png',
+			// '../img/basepixi-assets/5.png',
+			// '../img/basepixi-assets/6.png',
+			// '../img/basepixi-assets/7.png',
+			// '../img/basepixi-assets/8.png',
+			// '../img/basepixi-assets/9.png',
+			// '../img/basepixi-assets/10.png',
+			// '../img/basepixi-assets/11.png',
+			// '../img/basepixi-assets/12.png',
+			// '../img/basepixi-assets/13.png',
+			// '../img/basepixi-assets/14.png',
+			// '../img/basepixi-assets/15.png',
+			// '../img/basepixi-assets/16.png',
+			// '../img/basepixi-assets/17.png',
+			// '../img/basepixi-assets/18.png',
+			// '../img/basepixi-assets/19.png',
+			// '../img/basepixi-assets/20.png',
+			// '../img/basepixi-assets/21.png',
+			// '../img/basepixi-assets/22.png',
+			// '../img/basepixi-assets/23.png',
+			// '../img/basepixi-assets/24.png',
+			// '../img/basepixi-assets/25.png',
+			// '../img/basepixi-assets/26.png',
+			// '../img/basepixi-assets/27.png',
+			// '../img/basepixi-assets/28.png',
+			// '../img/basepixi-assets/29.png',
+			// '../img/basepixi-assets/30.png',
+			// '../img/basepixi-assets/31.png',
+			// '../img/basepixi-assets/32.png',
+			// '../img/basepixi-assets/33.png',
+			// '../img/basepixi-assets/34.png',
+			// '../img/basepixi-assets/35.png',
+			// '../img/basepixi-assets/36.png',
 		],
 		backgrounds: [
 			'../img/backgrounds/bg.png',
@@ -93,6 +93,7 @@ class Panel extends Box {
 		const leftContainer = appContainer.querySelector('.inner .left');
 		const rightContainer = appContainer.querySelector('.inner .right');
 		const imagesContainer = this._imagesContainer = this.container.querySelector('.images-component-container');
+		const inFlash = this.inFlash = Boolean(window.__adobe_cep__);
 
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
@@ -103,7 +104,7 @@ class Panel extends Box {
 		this.backgroundsBox = new BackgroundsBox();
 		this.backgroundsBox.render();
 
-		if (window.__adobe_cep__) {
+		if (inFlash) {
 			this._getDocumentImages();
 			this._subscribeDocumentEvents();
 		} else {
@@ -148,9 +149,7 @@ class Panel extends Box {
 	/*eslint-enable*/
 
 	_getDocumentImages() {
-		const cep = window.__adobe_cep__;
-
-		cep.evalScript(jsflUtil.getLibraryImages(), (res) => {
+		this._eval(jsflUtil.getLibraryImages(), (res) => {
 			const imgs = res === 'undefined' ? [] : res.split(',');
 
 			this.particleTexturesBox.images = imgs;

@@ -17,6 +17,8 @@ class ToolsLineBox extends Box {
 		this.container.classList.add('tools-line-container');
 		window.jsfl = jsflUtil;
 
+		this.inFlash = Boolean(window.__adobe_cep__);
+
 		requestAnimationFrame(() => {
 			this.render();
 			this._attachAddButton();
@@ -30,10 +32,17 @@ class ToolsLineBox extends Box {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
 			const images = [...this.particleTexturesBox.images];
 			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
+			const codeString = this.previewPanel.emitterState.actionScriptState;
+
+			if(!this.inFlash){
+				console.log(codeString);
+
+				return;
+			}
 
 			window.__adobe_cep__.evalScript(
 				jsflUtil.createEmitter(JSON.stringify(imageNames), 2,
-				this._prepareString(this.previewPanel.emitterState.actionScriptState)),
+				this._prepareString(codeString)),
 				(a) => {
 					console.log(a);
 				}
@@ -43,8 +52,16 @@ class ToolsLineBox extends Box {
 
 	_attachStopButton() {
 		this.container.querySelector('.button.stop').addEventListener('click', () => {
+			const codeString = this.previewPanel.emitterState.emitterStopState;
+
+			if(!this.inFlash){
+				console.log(codeString);
+
+				return;
+			}
+
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterStopState)), (a) => {
+				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 					console.log(a);
 				});
 		});
@@ -52,8 +69,16 @@ class ToolsLineBox extends Box {
 
 	_attachStartButton() {
 		this.container.querySelector('.button.start').addEventListener('click', () => {
+			const codeString = this.previewPanel.emitterState.emitterStartState;
+
+			if(!this.inFlash){
+				console.log(codeString);
+
+				return;
+			}
+
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterStartState)), (a) => {
+				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 					console.log(a);
 				});
 		});
@@ -61,8 +86,16 @@ class ToolsLineBox extends Box {
 
 	_attachDestroyButton() {
 		this.container.querySelector('.button.destroy').addEventListener('click', () => {
+			const codeString = this.previewPanel.emitterState.emitterDestroyState;
+
+			if(!this.inFlash){
+				console.log(codeString);
+
+				return;
+			}
+
 			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(this.previewPanel.emitterState.emitterDestroyState)), (a) => {
+				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 					console.log(a);
 				});
 		});

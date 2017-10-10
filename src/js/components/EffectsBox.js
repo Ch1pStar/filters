@@ -58,6 +58,9 @@ class EffetcsBox extends Box {
 		const attractionGroup = new AttractionGroup(this);
 		const blendModeGroup = new BlendModeGroup(this);
 
+		// emit groups state function
+		const emitGroupsState = this.emitGroupsState.bind(this);
+
 		this.groups = [
 			lifeGroup,
 			rateGroup,
@@ -70,10 +73,9 @@ class EffetcsBox extends Box {
 
 		this.groups.forEach((group) => {
 			group.panel = this._panel;
-			group.on(InputGroup.events.CHANGE, this.emitGroupsState.bind(this));
+			group.on(InputGroup.events.CHANGE, emitGroupsState);
 			group.group.enable();
 		});
-
 		this._initDropdown();
 	}
 
