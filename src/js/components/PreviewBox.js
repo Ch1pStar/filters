@@ -99,6 +99,8 @@ class PreviewBox extends Box {
 			requestAnimationFrame(draw);
 			if (this.emitter && this.running) {
 				this._updateEmitterPosition();
+				// physics is not decoupled from rendering for this demo
+				// so we use constant time step
 				this.emitter.update(0.0167);
 				this.particleCounter.text = this.emitter.activeCount;
 			}

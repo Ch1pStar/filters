@@ -1,16 +1,13 @@
 const Box = require('./Box');
 const DropdownBox = require('./DropdownBox');
-const ControlKit = require('controlkit');
-const InputGroup = require('./groups/InputGroup');
-const RateGroup = require('./groups/RateGroup');
-const VelocityGroup = require('./groups/VelocityGroup');
-const LifeGroup = require('./groups/LifeGroup');
-const RadiusGroup = require('./groups/RadiusGroup');
-const GravityGroup = require('./groups/GravityGroup');
-const AttractionGroup = require('./groups/AttractionGroup');
-const BlendModeGroup = require('./groups/BlendModeGroup');
-const template = require('../../templates/EffectsBox.hbs');
 
+const RateGroup = require('./groups/dope/RateGroup');
+const VelocityGroup = require('./groups/dope/VelocityGroup');
+
+const template = require('../../templates/EffectsBox.hbs');
+const buttonTemplate = require('../../templates/components/button.hbs');
+
+const InputStateManager = require('./InputStateManager');
 const DopeGroup = require('./groups/abstract/DopeGroup');
 
 class EffetcsBox extends Box {
@@ -31,97 +28,138 @@ class EffetcsBox extends Box {
 	constructor(options) {
 		super(options, template);
 
+		this.groups = [];
+
+		this.stateManager = new InputStateManager();
+
 		this.container.classList.add('behaviours-component-container');
 		this.render();
+		window.e = this;
 	}
 
 	onRendered() {
 		this.contentContainer = this.container.querySelector('.content .content-component');
 
 		this._initGroups();
+		this._initStateButtons();
 
 		this.hideDropdown = this.hideDropdown.bind(this);
+		this.emitGroupsState = this.emitGroupsState.bind(this);
 	}
 
 	_initGroups() {
+		const state = this.stateManager.state;
 		// default groups
-		// const lifeGroup = new LifeGroup(this);
-		// const rateGroup = new RateGroup(this);
-		// const radiusGroup = new RadiusGroup(this);
-		// const velGroup = new VelocityGroup(this);
-		// const gravityGroup = new GravityGroup(this);
-		// const attractionGroup = new AttractionGroup(this);
-		// const blendModeGroup = new BlendModeGroup(this);
+		const lifeGroup = this._addGroup(new DopeGroup('Life', state.Life));
+		const rateGroup = this._addGroup(new RateGroup(state.Rate));
+		const gravityGroup = this._addGroup(new DopeGroup('Gravity', state.Gravity));
+		const velGroup = this._addGroup(new VelocityGroup(state.Velocity));
 
-		// emit groups state function
-		const emitGroupsState = this.emitGroupsState.bind(this);
-
-		const dg = new DopeGroup(this);
-
-		this.contentContainer.appendChild(dg.container);
-
-		window.a = dg;
-
-		this.groups = [
-			dg,
-			// lifeGroup,
-			// rateGroup,
-			// gravityGroup,
-			// radiusGroup,
-			// velGroup,
-			// attractionGroup,
-			// blendModeGroup,
-		];
-
-		this.groups.forEach((group) => {
-			group.on(DopeGroup.events.INPUT, emitGroupsState);
-
-		});
-		// this._initDropdown();
+		this._initDropdown();
 	}
 
 	emitGroupsState() {
 		const output = {};
+		const outputState = {};
 
-		this.groups.forEach((gr) => output[gr.label] = gr.fields);
+		this.groups.forEach((gr) =>{
+			output[gr.label] = gr.fields;
+			outputState[gr.label] = gr.state;
+		});
+		this.stateManager.setState(outputState);
 		this.emit(EffetcsBox.events.CHANGE, output);
 	}
 
-	_initDropdown() {
-		// add event listener after the button is rendered
-		requestAnimationFrame(() => {
-			this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
-				e.stopPropagation();
-				if (!this.dropdownBox) {
-					// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
-					const dropdownBox = new DropdownBox(this);
+	_addGroup(group) {
+		this.contentContainer.appendChild(group.container);
 
-					this.container.appendChild(dropdownBox.container);
-					this.dropdownBox = dropdownBox;
-					this.dropdownBox.on(DropdownBox.events.ADD, (group) => {
-						const content = this.container.querySelector('.content-component');
+		group.on(DopeGroup.events.CHANGE, this.emitGroupsState);
+		this.groups.push(group);
 
-						group.panel = this._panel;
-						group.group.enable();
-						this.groups.push(group);
+		return group;
+	}
 
-						content.scrollTop = content.scrollHeight;
-						this.emitGroupsState();
-					});
+	_removeGroup(group) {
+		this.contentContainer.removeChild(group.container);
 
-					this.dropdownBox.on(DropdownBox.events.REMOVE, (group) => {
-						// remove the group from control kit
-						this._panel._node._element.querySelector('.group-list').removeChild(group.group._node._element);
-						this._panel._groups.splice(this._panel._groups.indexOf(group.group), 1);
-						this.groups.splice(this.groups.indexOf(group), 1);
-						this.emitGroupsState();
-					});
+		group.removeAllListeners(DopeGroup.events.CHANGE);
+		this.groups.splice(this.groups.indexOf(group), 1);
 
-					document.body.addEventListener('click', this.hideDropdown);
-				} else {
-					this.hideDropdown();
-				}
+		return group;
+	}
+
+	_initStateButtons() {
+		const saveButton = this.container.querySelector('.save-state-button');
+
+		saveButton.addEventListener('click', (e)=>{
+			const label = prompt('Name') || undefined;
+			const outputState = {};
+
+			this.groups.forEach((gr) =>outputState[gr.label] = gr.state);
+			this.stateManager.setState(outputState, label);
+			this.stateManager.saveState(label);
+
+			this._initSavedStatesButtons();
+		});
+
+		this._initSavedStatesButtons();
+	}
+
+	_initSavedStatesButtons() {
+		const states = this.stateManager.states;
+		const buttonsContainer = this.container.querySelector('.state-buttons');
+
+		buttonsContainer.innerHTML = '';
+
+		states.forEach((state) => {
+			const button = document.createElement('div');
+
+			button.classList.add('button');
+			button.innerHTML = buttonTemplate({label: state});
+
+			button.addEventListener('click', (e) => {
+				const savedState = this.stateManager.getSavedState(state);
+
+				this.groups.forEach((gr) =>{
+					if(savedState[gr.label]){
+						gr.options = savedState[gr.label];
+						gr.setState();
+					}
+				});
+
+				this.emitGroupsState();
 			});
+
+			buttonsContainer.appendChild(button);
+		});
+	}
+
+	_initDropdown() {
+		this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
+			e.stopPropagation();
+			if (!this.dropdownBox) {
+				// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
+				const dropdownBox = new DropdownBox(this);
+
+				this.container.appendChild(dropdownBox.container);
+				this.dropdownBox = dropdownBox;
+				this.dropdownBox.on(DropdownBox.events.ADD, (group) => {
+					const content = this.container.querySelector('.content-component');
+
+					content.scrollTop = content.scrollHeight;
+					this._addGroup(group);
+					this.emitGroupsState();
+				});
+
+				this.dropdownBox.on(DropdownBox.events.REMOVE, (group) => {
+					this._removeGroup(group);
+					this.emitGroupsState();
+				});
+
+				document.body.addEventListener('click', this.hideDropdown);
+			} else {
+				this.hideDropdown();
+			}
 		});
 	}
 

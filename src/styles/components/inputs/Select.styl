@@ -1,0 +1,112 @@
+.select-component-container
+	width: 100%
+	.select-component
+		position: relative
+		text-align: left
+		set-font-size(15px)
+		&.horizontal-view
+			display: flex
+			align-items: baseline
+			.title
+				text-align: right
+				padding-left: 0
+				padding-right: 15px
+				flex: 0
+			.select-container
+				flex: 1
+		.title
+			font-size: inherit
+			flex: 1
+			color: $color-default-dark
+			font-weight: 500
+			-webkit-user-select: none
+			-moz-user-select: none
+			-ms-user-select: none
+			user-select: none
+		.select-container
+			flex: 3
+		.top
+			margin-top: 13px
+			text-align: left
+			min-height: 24px
+			position: relative
+			overflow: hidden
+			cursor: pointer
+			color: $color-primary-invert
+			border-bottom: 2px solid $color-default
+			&.open
+				border-bottom: none
+				&:after
+					transform: rotate(90deg)
+				+ .options
+					margin-top: -3px
+				+ .helper
+					color: $color-default
+			&:after
+				set-font-size(22px)
+				font-family: FontAwesome
+				content: "\f104"
+				position: absolute
+				top: 0
+				right: 3px
+				color: $color-default
+				transform: rotate(-90deg)
+				transition: transform 0.3s ease-in-out
+		.options
+			background: $color-primary
+			display: flex
+			flex-direction: column
+			position: relative
+			box-shadow: 0 1px 15px 0 $box-shadow
+			opacity: 0
+			transform: rotateX(-90deg)
+			transform-origin: 0 0
+			text-transform: lowercase
+			max-height: 217px
+			overflow: hidden
+			overflow-y: auto
+			set-transition(opacity, transform)
+			z-index: 2
+			&.show
+				opacity: 1
+				transform: rotateX(0)
+			.option
+				line-height: 20px
+				color: $color-primary-invert
+				background: $color-primary
+				cursor: pointer
+				flex: 1 0 100%
+				padding: 7px 6px 8px
+				text-align: left
+				position: relative
+				&.selected
+					color: $color-default-dark
+					background: $color-primary-default-lighter
+				&:hover
+					background: $color-primary-default-lighter
+		.options::-webkit-scrollbar
+			width: $space-xs
+			border-radius: 10px
+			background: $color-default-lighter
+			right: 20px
+		.options::-webkit-scrollbar-thumb
+			background: $color-default
+		.helper
+			position: absolute
+			top: 48px
+			height 30px
+			padding-top: $space-s
+			set-font-size(13px)
+			color: $color-default-dark
+	.select-container
+		&.danger
+			.top
+				border-color: $color-danger
+				&:after
+					background: $color-danger
+		&.warning
+			.top
+				border-color: $color-warning
+				&:after
+					background: $color-warning
+			

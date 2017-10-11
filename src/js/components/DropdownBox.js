@@ -1,18 +1,18 @@
 const Box = require('./Box');
 const ControlKit = require('controlkit');
-const InputGroup = require('./groups/InputGroup');
-const AlphaGroup = require('./groups/AlphaGroup');
-const AttractionGroup = require('./groups/AttractionGroup');
-const RepulsionGroup = require('./groups/RepulsionGroup');
-const RectZoneGroup = require('./groups/RectZoneGroup');
-const CircleZoneGroup = require('./groups/CircleZoneGroup');
-const LineZoneGroup = require('./groups/LineZoneGroup');
-const ForceGroup = require('./groups/ForceGroup');
-const RotateGroup = require('./groups/RotateGroup');
-const ScaleGroup = require('./groups/ScaleGroup');
-const GravityWellGroup = require('./groups/GravityWellGroup');
-const RandomDriftGroup = require('./groups/RandomDriftGroup');
-const BlendModeGroup = require('./groups/BlendModeGroup');
+// const RepulsionGroup = require('./groups/RepulsionGroup');
+// const RectZoneGroup = require('./groups/RectZoneGroup');
+// const CircleZoneGroup = require('./groups/CircleZoneGroup');
+// const LineZoneGroup = require('./groups/LineZoneGroup');
+// const ForceGroup = require('./groups/ForceGroup');
+// const RotateGroup = require('./groups/RotateGroup');
+// const ScaleGroup = require('./groups/ScaleGroup');
+// const GravityWellGroup = require('./groups/GravityWellGroup');
+// const RandomDriftGroup = require('./groups/RandomDriftGroup');
+
+const AlphaGroup = require('./groups/dope/AlphaGroup');
+const BlendModeGroup = require('./groups/dope/BlendModeGroup');
+const AttractionGroup = require('./groups/dope/AttractionGroup');
 const template = require('../../templates/components/DropdownBox.hbs');
 
 class DropdownBox extends Box {
@@ -26,15 +26,15 @@ class DropdownBox extends Box {
 	inputGroups = {
 		Alpha: AlphaGroup,
 		Attraction: AttractionGroup,
-		Repulsion: RepulsionGroup,
-		RectZone: RectZoneGroup,
-		CircleZone: CircleZoneGroup,
-		LineZone: LineZoneGroup,
-		Force: ForceGroup,
-		Rotate: RotateGroup,
-		Scale: ScaleGroup,
-		GravityWell: GravityWellGroup,
-		RandomDrift: RandomDriftGroup,
+		// Repulsion: RepulsionGroup,
+		// RectZone: RectZoneGroup,
+		// CircleZone: CircleZoneGroup,
+		// LineZone: LineZoneGroup,
+		// Force: ForceGroup,
+		// Rotate: RotateGroup,
+		// Scale: ScaleGroup,
+		// GravityWell: GravityWellGroup,
+		// RandomDrift: RandomDriftGroup,
 		BlendMode: BlendModeGroup,
 	};
 
@@ -62,7 +62,7 @@ class DropdownBox extends Box {
 					if (this._groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this._getGroup(effectType));
 					} else {
-						const group = new this.inputGroups[effectType](this.parent);
+						const group = new this.inputGroups[effectType](this.parent.stateManager.state[effectType]);
 
 						this.emit(DropdownBox.events.ADD, group);
 					}
