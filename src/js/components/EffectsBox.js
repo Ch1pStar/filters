@@ -124,6 +124,9 @@ class EffetcsBox extends Box {
 					if(savedState[gr.label]){
 						gr.options = savedState[gr.label];
 						gr.setState();
+					}else{
+						this._removeGroup(gr);
+						this.emitGroupsState();
 					}
 				});
 
