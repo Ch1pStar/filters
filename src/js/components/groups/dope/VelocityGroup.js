@@ -3,10 +3,6 @@ const InputRange = require('dope-components').InputRange;
 
 class VelocityGroup extends DopeGroup {
 
-	constructor(state) {
-		super('Velocity', state);
-	}
-
 	_initInput() {
 		const speed = this.speedInput = new InputRange();
 		const minAngle = this.minAngleInput = new InputRange();

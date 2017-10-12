@@ -16,11 +16,11 @@ class DopeGroup extends EventEmitter{
 	 * @param {string} label The group label
 	 * @param {Boolean} enable Whether the group is enabled
 	 */
-	constructor(label, options = {}) {
+	constructor(options = {}) {
 		super();
 
-		this.label = label;
 		this.options = options;
+		this.label = options.label;
 
 		this.container = document.createElement('div');
 		this.container.className = 'input-group-component-container';
@@ -33,7 +33,7 @@ class DopeGroup extends EventEmitter{
 	}
 
 	setState() {
-		this.input.setState({label: this.label, ...this.options});
+		this.input.setState({...this.options});
 	}
 
 	_initInput() {

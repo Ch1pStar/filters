@@ -3,18 +3,21 @@
 class InputStateManager {
 
 	_inputState = {
-		Life: {min:0.1, max: 15, value: 5},
-		Gravity: {min:-10, max: 10, value: 0},
+		Life: {label: 'Life', min:0.1, max: 15, value: 5},
+		Gravity: {label: 'Gravity', min:-10, max: 10, value: 0},
 		Attraction: {
+			label: 'Attraction',
 			x: {label: 'Attraction x', min:0, max: 1920, value: 700},
 			y: {label: 'Attraction y', min:0, max: 1080, value: 410},
 			force: {label: 'Attraction Force', min:0, max: 30, value: 15},
 		},
 		Alpha: {
+			label: 'Alpha',
 			min: {label: 'Alpha start', min:1, max: 0, value: 1},
 			max: {label: 'Alpha end', min:0, max: 1, value: 0},
 		},
 		BlendMode: {
+			label: 'BlendMode',
 			blendMode: {
 				label: 'Blend Mode',
 				value: 'NORMAL',
@@ -25,10 +28,12 @@ class InputStateManager {
 			},
 		},
 		Rate: {
+			label: 'Rate',
 			amount: {label: 'Rate amount', min:1, max: 15, value: 2},
 			frequency: {label: 'Rate frequency', min:0.01, max: 3, value: 0.05},
 		},
 		Velocity: {
+			label: 'Velocity',
 			speed: {label: 'Speed', min:1, max: 50, value: 10},
 			minAngle: {label: 'Arc start', min:0, max: 360, value: 90},
 			maxAngle: {label: 'Arc end', min:0, max: 360, value: 270},

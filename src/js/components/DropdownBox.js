@@ -23,21 +23,6 @@ class DropdownBox extends Box {
 		REMOVE: 'dropwdown_effect_remove',
 	};
 
-	inputGroups = {
-		Alpha: AlphaGroup,
-		Attraction: AttractionGroup,
-		// Repulsion: RepulsionGroup,
-		// RectZone: RectZoneGroup,
-		// CircleZone: CircleZoneGroup,
-		// LineZone: LineZoneGroup,
-		// Force: ForceGroup,
-		// Rotate: RotateGroup,
-		// Scale: ScaleGroup,
-		// GravityWell: GravityWellGroup,
-		// RandomDrift: RandomDriftGroup,
-		BlendMode: BlendModeGroup,
-	};
-
 	constructor(parent) {
 		super({}, template);
 
@@ -56,13 +41,13 @@ class DropdownBox extends Box {
 			items.forEach((option) => {
 				const effectType = option.dataset.effectType;
 
-				if (this._groupExits(effectType)) option.classList.add('active');
+				if (this.groupExits(effectType)) option.classList.add('active');
 
 				option.addEventListener('click', (e) => {
-					if (this._groupExits(effectType)) {
-						this.emit(DropdownBox.events.REMOVE, this._getGroup(effectType));
+					if (this.groupExits(effectType)) {
+						this.emit(DropdownBox.events.REMOVE, this.getGroup(effectType));
 					} else {
-						const group = new this.inputGroups[effectType](this.parent.stateManager.state[effectType]);
+						const group = new this.parent.inputGroups[effectType](this.parent.stateManager.state[effectType]);
 
 						this.emit(DropdownBox.events.ADD, group);
 					}
@@ -72,7 +57,7 @@ class DropdownBox extends Box {
 		});
 	}
 
-	_groupExits(label) {
+	groupExits(label) {
 		const groups = this.parent.groups;
 
 		for (let i = 0; i < groups.length; i++) {
@@ -82,7 +67,7 @@ class DropdownBox extends Box {
 		return false;
 	}
 
-	_getGroup(label) {
+	getGroup(label) {
 		const groups = this.parent.groups;
 
 		for (let i = 0; i < groups.length; i++) {

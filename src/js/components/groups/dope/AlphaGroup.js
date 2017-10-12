@@ -3,10 +3,6 @@ const InputRange = require('dope-components').InputRange;
 
 class AlphaGroup extends DopeGroup {
 
-	constructor(state) {
-		super('Alpha', state);
-	}
-
 	_initInput() {
 		const min = this.minInput = new InputRange();
 		const max = this.maxInput = new InputRange();

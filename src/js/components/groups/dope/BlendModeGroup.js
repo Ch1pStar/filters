@@ -3,10 +3,6 @@ const Select = require('dope-components').Select;
 
 class BlendModeGroup extends DopeGroup {
 
-	constructor(state) {
-		super('BlendMode', state);
-	}
-
 	_initInput() {
 		const blendMode = this.blendModeInput = new Select();
 

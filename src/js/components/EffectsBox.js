@@ -10,6 +10,10 @@ const buttonTemplate = require('../../templates/components/button.hbs');
 const InputStateManager = require('./InputStateManager');
 const DopeGroup = require('./groups/abstract/DopeGroup');
 
+const AlphaGroup = require('./groups/dope/AlphaGroup');
+const BlendModeGroup = require('./groups/dope/BlendModeGroup');
+const AttractionGroup = require('./groups/dope/AttractionGroup');
+
 class EffetcsBox extends Box {
 
 	/** @type {Object} List of events this class will dispatch */
@@ -23,6 +27,25 @@ class EffetcsBox extends Box {
 	 */
 	_controlKit = null;
 
+	inputGroups = {
+		Alpha: AlphaGroup,
+		Attraction: AttractionGroup,
+		// Repulsion: RepulsionGroup,
+		// RectZone: RectZoneGroup,
+		// CircleZone: CircleZoneGroup,
+		// LineZone: LineZoneGroup,
+		// Force: ForceGroup,
+		// Rotate: RotateGroup,
+		// Scale: ScaleGroup,
+		// GravityWell: GravityWellGroup,
+		// RandomDrift: RandomDriftGroup,
+		BlendMode: BlendModeGroup,
+		Life: DopeGroup,
+		Rate: RateGroup,
+		Gravity: DopeGroup,
+		Velocity: VelocityGroup,
+	};
+
 	properties = {};
 
 	constructor(options) {
@@ -33,7 +56,10 @@ class EffetcsBox extends Box {
 		this.stateManager = new InputStateManager();
 
 		this.container.classList.add('behaviours-component-container');
-		this.render();
+
+		this.hideDropdown = this.hideDropdown.bind(this);
+		this.emitGroupsState = this.emitGroupsState.bind(this);
+
 		window.e = this;
 	}
 
@@ -42,17 +68,14 @@ class EffetcsBox extends Box {
 
 		this._initGroups();
 		this._initStateButtons();
-
-		this.hideDropdown = this.hideDropdown.bind(this);
-		this.emitGroupsState = this.emitGroupsState.bind(this);
 	}
 
 	_initGroups() {
 		const state = this.stateManager.state;
 		// default groups
-		const lifeGroup = this._addGroup(new DopeGroup('Life', state.Life));
+		const lifeGroup = this._addGroup(new DopeGroup(state.Life));
 		const rateGroup = this._addGroup(new RateGroup(state.Rate));
-		const gravityGroup = this._addGroup(new DopeGroup('Gravity', state.Gravity));
+		const gravityGroup = this._addGroup(new DopeGroup(state.Gravity));
 		const velGroup = this._addGroup(new VelocityGroup(state.Velocity));
 
 		this._initDropdown();
@@ -63,9 +86,14 @@ class EffetcsBox extends Box {
 		const outputState = {};
 
 		this.groups.forEach((gr) =>{
+			const groupState = gr.state;
+
 			output[gr.label] = gr.fields;
-			outputState[gr.label] = gr.state;
+
+			groupState.label = gr.label;
+			outputState[gr.label] = groupState;
 		});
+
 		this.stateManager.setState(outputState);
 		this.emit(EffetcsBox.events.CHANGE, output);
 	}
@@ -88,6 +116,17 @@ class EffetcsBox extends Box {
 		return group;
 	}
 
+	_clearGroups() {
+		const groups = this.groups;
+
+		groups.forEach((gr) => {
+			this.contentContainer.removeChild(gr.container);
+			gr.removeAllListeners(DopeGroup.events.CHANGE);
+		});
+
+		groups.length = 0;
+	}
+
 	_initStateButtons() {
 		const saveButton = this.container.querySelector('.save-state-button');
 
@@ -95,7 +134,12 @@ class EffetcsBox extends Box {
 			const label = prompt('Name') || undefined;
 			const outputState = {};
 
-			this.groups.forEach((gr) =>outputState[gr.label] = gr.state);
+			this.groups.forEach((gr) => {
+				const groupState = gr.state;
+
+				groupState.label = gr.label;
+				outputState[gr.label] = groupState;
+			});
 			this.stateManager.setState(outputState, label);
 			this.stateManager.saveState(label);
 
@@ -120,16 +164,10 @@ class EffetcsBox extends Box {
 			button.addEventListener('click', (e) => {
 				const savedState = this.stateManager.getSavedState(state);
 
-				this.groups.forEach((gr) =>{
-					if(savedState[gr.label]){
-						gr.options = savedState[gr.label];
-						gr.setState();
-					}else{
-						this._removeGroup(gr);
-						this.emitGroupsState();
-					}
-				});
-
+				this._clearGroups();
+				for(let groupState in savedState) {
+					this._addGroup(new this.inputGroups[groupState](savedState[groupState]));
+				}
 				this.emitGroupsState();
 			});
 

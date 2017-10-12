@@ -3,10 +3,6 @@ const InputRange = require('dope-components').InputRange;
 
 class RateGroup extends DopeGroup {
 
-	constructor(state) {
-		super('Rate', state);
-	}
-
 	_initInput() {
 		const amount = this.amountInput = new InputRange();
 		const frequency = this.frequencyInput = new InputRange();

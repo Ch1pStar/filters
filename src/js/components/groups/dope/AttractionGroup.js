@@ -3,10 +3,6 @@ const InputRange = require('dope-components').InputRange;
 
 class AttractionGroup extends DopeGroup {
 
-	constructor(state) {
-		super('Attraction', state);
-	}
-
 	_initInput() {
 		const x = this.xInput = new InputRange();
 		const y = this.yInput = new InputRange();
