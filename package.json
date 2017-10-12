@@ -6,6 +6,7 @@
   "dependencies": {
     "controlkit": "latest",
     "dope-polyfill": "git+ssh://git@gitlab.in:games/libs/dope-polyfill.git#v1.1.0",
+    "dope-components": "git+ssh://git@gitlab.in:games/libs/dope-components.git#dev",
     "es6-object-assign": "^1.0.3",
     "eventemitter4": "^0.2.4",
     "gsap": "^1.19.0",
