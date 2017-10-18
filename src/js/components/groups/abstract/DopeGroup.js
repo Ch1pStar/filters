@@ -1,12 +1,11 @@
 const InputRange = require('dope-components').InputRange;
 const EventEmitter = require('eventemitter4');
 
-class DopeGroup extends EventEmitter{
-
+class DopeGroup extends EventEmitter {
 	static events = {
 		// ...InputRange.events,
 		ADD: 'add',
-		CHANGE: 'change',
+		CHANGE: 'change'
 	};
 
 	container = null;
@@ -25,7 +24,7 @@ class DopeGroup extends EventEmitter{
 		this.container = document.createElement('div');
 		this.container.className = 'input-group-component-container';
 
-		const input = this.input = new InputRange();
+		const input = (this.input = new InputRange());
 
 		this.inputs = [input];
 
@@ -33,16 +32,16 @@ class DopeGroup extends EventEmitter{
 	}
 
 	setState() {
-		this.input.setState({...this.options});
+		this.input.setState({ ...this.options });
 	}
 
 	_initInput() {
 		const cnt = this.container;
 		const inputs = this.inputs;
 
-		inputs.forEach((input) => {
-			input.on(InputRange.events.INPUT, (e) => {
-				this.emit(DopeGroup.events.CHANGE, e);		
+		inputs.forEach(input => {
+			input.on(InputRange.events.INPUT, e => {
+				this.emit(DopeGroup.events.CHANGE, e);
 			});
 
 			cnt.appendChild(input.container);
@@ -52,12 +51,10 @@ class DopeGroup extends EventEmitter{
 	}
 
 	get fields() {
-		return { [this.label]: this.input.state.value};
+		return { [this.label]: this.input.state.value };
 	}
 
-	get command() {
-
-	}
+	get command() {}
 
 	get state() {
 		return this.input.state;

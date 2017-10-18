@@ -7,46 +7,49 @@ const emitterStopTemplate = require('../../templates/components/emitter/EmitterS
 const emitterDestroyTemplate = require('../../templates/components/emitter/EmitterDestroy.hbs');
 const particleTexturesTemplate = require('../../templates/components/emitter/ParticleTextures.hbs');
 
-const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
-const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
-const blendModeTemplate = require('../../templates/components/emitter/effects/BlendMode.hbs');
-const circleZoneTemplate = require('../../templates/components/emitter/effects/CircleZone.hbs');
-const forceTemplate = require('../../templates/components/emitter/effects/Force.hbs');
-const gravityTemplate = require('../../templates/components/emitter/effects/Gravity.hbs');
-const gravityWellTemplate = require('../../templates/components/emitter/effects/GravityWell.hbs');
-const lifeTemplate = require('../../templates/components/emitter/effects/Life.hbs');
-const lineZoneTemplate = require('../../templates/components/emitter/effects/LineZone.hbs');
-const massTemplate = require('../../templates/components/emitter/effects/Mass.hbs');
-const radiusTemplate = require('../../templates/components/emitter/effects/Radius.hbs');
-const randomDriftTemplate = require('../../templates/components/emitter/effects/RandomDrift.hbs');
-const rateTemplate = require('../../templates/components/emitter/effects/Rate.hbs');
-const rectZoneTemplate = require('../../templates/components/emitter/effects/RectZone.hbs');
-const repulsionTemplate = require('../../templates/components/emitter/effects/Repulsion.hbs');
-const rotateTemplate = require('../../templates/components/emitter/effects/Rotate.hbs');
-const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
-const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
+// const alphaTemplate = require('../../templates/components/emitter/effects/Alpha.hbs');
+// const attractionTemplate = require('../../templates/components/emitter/effects/Attraction.hbs');
+// const blendModeTemplate = require('../../templates/components/emitter/effects/BlendMode.hbs');
+// const circleZoneTemplate = require('../../templates/components/emitter/effects/CircleZone.hbs');
+// const forceTemplate = require('../../templates/components/emitter/effects/Force.hbs');
+// const gravityTemplate = require('../../templates/components/emitter/effects/Gravity.hbs');
+// const gravityWellTemplate = require('../../templates/components/emitter/effects/GravityWell.hbs');
+// const lifeTemplate = require('../../templates/components/emitter/effects/Life.hbs');
+// const lineZoneTemplate = require('../../templates/components/emitter/effects/LineZone.hbs');
+// const massTemplate = require('../../templates/components/emitter/effects/Mass.hbs');
+// const radiusTemplate = require('../../templates/components/emitter/effects/Radius.hbs');
+// const randomDriftTemplate = require('../../templates/components/emitter/effects/RandomDrift.hbs');
+// const rateTemplate = require('../../templates/components/emitter/effects/Rate.hbs');
+// const rectZoneTemplate = require('../../templates/components/emitter/effects/RectZone.hbs');
+// const repulsionTemplate = require('../../templates/components/emitter/effects/Repulsion.hbs');
+// const rotateTemplate = require('../../templates/components/emitter/effects/Rotate.hbs');
+// const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
+// const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
+const glowFilterTemplate = require('../../templates/components/emitter/effects/GlowFilter.hbs');
+const displacementFilterTemplate = require('../../templates/components/emitter/effects/DisplacementFilter.hbs');
 
 class EmitterStateBuilder {
-
 	effectTemplates = {
-		Alpha: alphaTemplate,
-		Attraction: attractionTemplate,
-		BlendMode: blendModeTemplate,
-		CircleZone: circleZoneTemplate,
-		Force: forceTemplate,
-		Gravity: gravityTemplate,
-		GravityWell: gravityWellTemplate,
-		Life: lifeTemplate,
-		LineZone: lineZoneTemplate,
-		Mass: massTemplate,
-		Radius: radiusTemplate,
-		RandomDrift: randomDriftTemplate,
-		Rate: rateTemplate,
-		RectZone: rectZoneTemplate,
-		Repulsion: repulsionTemplate,
-		Rotate: rotateTemplate,
-		Scale: scaleTemplate,
-		Velocity: velocityTemplate,
+		// Alpha: alphaTemplate,
+		// Attraction: attractionTemplate,
+		// BlendMode: blendModeTemplate,
+		// CircleZone: circleZoneTemplate,
+		// Force: forceTemplate,
+		// Gravity: gravityTemplate,
+		// GravityWell: gravityWellTemplate,
+		// Life: lifeTemplate,
+		// LineZone: lineZoneTemplate,
+		// Mass: massTemplate,
+		// Radius: radiusTemplate,
+		// RandomDrift: randomDriftTemplate,
+		// Rate: rateTemplate,
+		// RectZone: rectZoneTemplate,
+		// Repulsion: repulsionTemplate,
+		// Rotate: rotateTemplate,
+		// Scale: scaleTemplate,
+		// Velocity: velocityTemplate,
+		GlowFilter: glowFilterTemplate,
+		DisplacementFilter: displacementFilterTemplate
 	};
 
 	emitterTemplate = {
@@ -56,18 +59,16 @@ class EmitterStateBuilder {
 		emitterStart: emitterStartTemplate,
 		emitterStop: emitterStopTemplate,
 		emitterDestroy: emitterDestroyTemplate,
-		particleTextures: particleTexturesTemplate,
+		particleTextures: particleTexturesTemplate
 	};
 
 	emitterParams = {
-		emitterZone: 'emitterZone',
+		emitterZone: 'emitterZone'
 	};
 
 	effectMarkers = null;
 
-	constructor() {
-
-	}
+	constructor() {}
 
 	set effects(effects) {
 		let bodyStr = '';
@@ -80,9 +81,19 @@ class EmitterStateBuilder {
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 			if (effectAttributes.x && effectAttributes.y) {
 				if (effectAttributes.width && effectAttributes.height) {
-					this.effectMarkers.addChild(this._createZoneMarker(effect, effectAttributes.x, effectAttributes.y, effectAttributes.width, effectAttributes.height));
+					this.effectMarkers.addChild(
+						this._createZoneMarker(
+							effect,
+							effectAttributes.x,
+							effectAttributes.y,
+							effectAttributes.width,
+							effectAttributes.height
+						)
+					);
 				} else {
-					this.effectMarkers.addChild(this._createPointMarker(effect, effectAttributes.x, effectAttributes.y));
+					this.effectMarkers.addChild(
+						this._createPointMarker(effect, effectAttributes.x, effectAttributes.y)
+					);
 				}
 			}
 		}
@@ -97,11 +108,13 @@ class EmitterStateBuilder {
 	}
 
 	get actionScriptState() {
-		return this.emitterTemplate.particleTextures(this.emitterParams)
-			+ this.emitterTemplate.head.replace(/.stage/g, '')
-			+ this.emitterTemplate.body
-			+ this.emitterTemplate.footer
-			+ this.emitterStartState;
+		return (
+			this.emitterTemplate.particleTextures(this.emitterParams) +
+			this.emitterTemplate.head.replace(/.stage/g, '') +
+			this.emitterTemplate.body +
+			this.emitterTemplate.footer +
+			this.emitterStartState
+		);
 	}
 
 	get emitterStopState() {
@@ -121,7 +134,7 @@ class EmitterStateBuilder {
 		const marker = new PIXI.Graphics();
 		const text = new PIXI.Text(label, {
 			fill: 0x009900,
-			fontSize: 10,
+			fontSize: 10
 		});
 
 		marker.beginFill(0x478020);
@@ -145,7 +158,7 @@ class EmitterStateBuilder {
 		const marker = new PIXI.Graphics();
 		const text = new PIXI.Text(label, {
 			fill: 0x009900,
-			fontSize: 10,
+			fontSize: 10
 		});
 
 		marker.lineStyle(2, 0x478020);
@@ -162,7 +175,6 @@ class EmitterStateBuilder {
 
 		return cnt;
 	}
-
 }
 
 module.exports = EmitterStateBuilder;

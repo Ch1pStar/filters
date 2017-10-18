@@ -1,19 +1,17 @@
 const Box = require('./Box');
 const DropdownBox = require('./DropdownBox');
 
-// const RateGroup = require('./groups/dope/RateGroup');
-// const VelocityGroup = require('./groups/dope/VelocityGroup');
-
 const template = require('../../templates/EffectsBox.hbs');
 const buttonTemplate = require('../../templates/components/button.hbs');
 
 const InputStateManager = require('./InputStateManager');
 const DopeGroup = require('./groups/abstract/DopeGroup');
 
-// const AlphaGroup = require('./groups/dope/AlphaGroup');
-// const BlendModeGroup = require('./groups/dope/BlendModeGroup');
-// const AttractionGroup = require('./groups/dope/AttractionGroup');
 const GlowFilter = require('./groups/dope/GlowFilter');
+const DisplacementFilter = require('./groups/dope/DisplacementFilter');
+const BlurFilter = require('./groups/dope/BlurFilter');
+const NoiseFilter = require('./groups/dope/NoiseFilter');
+const ColorMatrixFilter = require('./groups/dope/ColorMatrixFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -28,23 +26,11 @@ class EffetcsBox extends Box {
 	_controlKit = null;
 
 	inputGroups = {
-		// Alpha: AlphaGroup,
-		// Attraction: AttractionGroup,
-		// Repulsion: RepulsionGroup,
-		// RectZone: RectZoneGroup,
-		// CircleZone: CircleZoneGroup,
-		// LineZone: LineZoneGroup,
-		// Force: ForceGroup,
-		// Rotate: RotateGroup,
-		// Scale: ScaleGroup,
-		// GravityWell: GravityWellGroup,
-		// RandomDrift: RandomDriftGroup,
-		// BlendMode: BlendModeGroup,
-		// Life: DopeGroup,
-		// Rate: RateGroup,
-		// Gravity: DopeGroup,
-		// Velocity: VelocityGroup,
-		GlowFilter: GlowFilter
+		DisplacementFilter,
+		GlowFilter,
+		BlurFilter,
+		NoiseFilter,
+		ColorMatrixFilter
 	};
 
 	properties = {};
@@ -74,11 +60,11 @@ class EffetcsBox extends Box {
 	_initGroups() {
 		const state = this.stateManager.state;
 		// default groups
-		// const lifeGroup = this._addGroup(new DopeGroup(state.Life));
-		// const rateGroup = this._addGroup(new RateGroup(state.Rate));
-		// const gravityGroup = this._addGroup(new DopeGroup(state.Gravity));
-		// const velGroup = this._addGroup(new VelocityGroup(state.Velocity));
-		const glowFilter = this._addGroup(new DopeGroup(state.GlowFilter));
+		// const glowFilter = this._addGroup(new DopeGroup(state.GlowFilter));
+		// const displacementFilter = this._addGroup(new DopeGroup(state.DisplacementFilter));
+		// const blurFilter = this._addGroup(new DopeGroup(state.BlurFilter));
+		// const noiseFilter = this._addGroup(new DopeGroup(state.NoiseFilter));
+		// const colorMatrixFilter = this._addGroup(new DopeGroup(state.ColorMatrixFilter));
 
 		this._initDropdown();
 	}

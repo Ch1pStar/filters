@@ -14,6 +14,10 @@ const ControlKit = require('controlkit');
 // const BlendModeGroup = require('./groups/dope/BlendModeGroup');
 // const AttractionGroup = require('./groups/dope/AttractionGroup');
 const GlowFilter = require('./groups/dope/GlowFilter');
+const DisplacementFilter = require('./groups/dope/DisplacementFilter');
+const BlurFilter = require('./groups/dope/BlurFilter');
+const NoiseFilter = require('./groups/dope/NoiseFilter');
+const ColorMatrixFilter = require('./groups/dope/ColorMatrixFilter');
 const template = require('../../templates/components/DropdownBox.hbs');
 
 class DropdownBox extends Box {

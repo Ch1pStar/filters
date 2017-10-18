@@ -37,10 +37,44 @@ class InputStateManager {
 		// },
 		GlowFilter: {
 			label: 'Glow Filter',
+			enabled: { label: 'enabled', checked: false },
 			innerStrength: { label: 'Inner Strength', min: 0, max: 20, value: 10 },
 			outerStrength: { label: 'Outer Strength', min: 0, max: 20, value: 10 },
 			distance: { label: 'Distance', min: 0, max: 20, value: 10 },
 			color: { label: 'Color' }
+		},
+		DisplacementFilter: {
+			label: 'Displacement Filter',
+			enabled: { label: 'enabled', checked: false },
+			scaleX: { label: 'scale.x', min: 1, max: 200 },
+			scaleY: { label: 'scale.y', min: 1, max: 200 }
+		},
+		BlurFilter: {
+			label: 'Blur Filter',
+			enabled: { label: 'enabled', checked: false },
+			blur: { label: 'Blur', min: 1, max: 100 },
+			quality: { label: 'Quality', min: 1, max: 10 }
+		},
+		NoiseFilter: {
+			label: 'Noise Filter',
+			enabled: { label: 'enabled', checked: false },
+			noise: { label: 'Noise', min: 0, max: 1 },
+			seed: { label: 'Seed', min: 0, max: 1 }
+		},
+		ColorMatrixFilter: {
+			label: 'Color Matrix Filter',
+			enabled: { label: 'enabled', checked: false },
+			reset: { label: 'Reset' },
+			sepia: { label: 'Sepia' },
+			negative: { label: 'Negative' },
+			kodachrome: { label: 'Kodachrome' },
+			lsd: { label: 'lsd' },
+			polaroid: { label: 'Polaroid' },
+			desaturate: { label: 'Desaturate' },
+			contrast: { label: 'Contrast' },
+			greyscale: { label: 'Greyscale' },
+			predator: { label: 'Predator' },
+			saturate: { label: 'Saturate' }
 		}
 	};
 
