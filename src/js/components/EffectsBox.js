@@ -1,8 +1,8 @@
 const Box = require('./Box');
 const DropdownBox = require('./DropdownBox');
 
-const RateGroup = require('./groups/dope/RateGroup');
-const VelocityGroup = require('./groups/dope/VelocityGroup');
+// const RateGroup = require('./groups/dope/RateGroup');
+// const VelocityGroup = require('./groups/dope/VelocityGroup');
 
 const template = require('../../templates/EffectsBox.hbs');
 const buttonTemplate = require('../../templates/components/button.hbs');
@@ -10,15 +10,15 @@ const buttonTemplate = require('../../templates/components/button.hbs');
 const InputStateManager = require('./InputStateManager');
 const DopeGroup = require('./groups/abstract/DopeGroup');
 
-const AlphaGroup = require('./groups/dope/AlphaGroup');
-const BlendModeGroup = require('./groups/dope/BlendModeGroup');
-const AttractionGroup = require('./groups/dope/AttractionGroup');
+// const AlphaGroup = require('./groups/dope/AlphaGroup');
+// const BlendModeGroup = require('./groups/dope/BlendModeGroup');
+// const AttractionGroup = require('./groups/dope/AttractionGroup');
+const GlowFilter = require('./groups/dope/GlowFilter');
 
 class EffetcsBox extends Box {
-
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
-		CHANGE: 'effect_change',
+		CHANGE: 'effect_change'
 	};
 
 	/**
@@ -28,8 +28,8 @@ class EffetcsBox extends Box {
 	_controlKit = null;
 
 	inputGroups = {
-		Alpha: AlphaGroup,
-		Attraction: AttractionGroup,
+		// Alpha: AlphaGroup,
+		// Attraction: AttractionGroup,
 		// Repulsion: RepulsionGroup,
 		// RectZone: RectZoneGroup,
 		// CircleZone: CircleZoneGroup,
@@ -39,11 +39,12 @@ class EffetcsBox extends Box {
 		// Scale: ScaleGroup,
 		// GravityWell: GravityWellGroup,
 		// RandomDrift: RandomDriftGroup,
-		BlendMode: BlendModeGroup,
-		Life: DopeGroup,
-		Rate: RateGroup,
-		Gravity: DopeGroup,
-		Velocity: VelocityGroup,
+		// BlendMode: BlendModeGroup,
+		// Life: DopeGroup,
+		// Rate: RateGroup,
+		// Gravity: DopeGroup,
+		// Velocity: VelocityGroup,
+		GlowFilter: GlowFilter
 	};
 
 	properties = {};
@@ -73,10 +74,11 @@ class EffetcsBox extends Box {
 	_initGroups() {
 		const state = this.stateManager.state;
 		// default groups
-		const lifeGroup = this._addGroup(new DopeGroup(state.Life));
-		const rateGroup = this._addGroup(new RateGroup(state.Rate));
-		const gravityGroup = this._addGroup(new DopeGroup(state.Gravity));
-		const velGroup = this._addGroup(new VelocityGroup(state.Velocity));
+		// const lifeGroup = this._addGroup(new DopeGroup(state.Life));
+		// const rateGroup = this._addGroup(new RateGroup(state.Rate));
+		// const gravityGroup = this._addGroup(new DopeGroup(state.Gravity));
+		// const velGroup = this._addGroup(new VelocityGroup(state.Velocity));
+		const glowFilter = this._addGroup(new DopeGroup(state.GlowFilter));
 
 		this._initDropdown();
 	}
@@ -85,7 +87,7 @@ class EffetcsBox extends Box {
 		const output = {};
 		const outputState = {};
 
-		this.groups.forEach((gr) =>{
+		this.groups.forEach(gr => {
 			const groupState = gr.state;
 
 			output[gr.label] = gr.fields;
@@ -119,7 +121,7 @@ class EffetcsBox extends Box {
 	_clearGroups() {
 		const groups = this.groups;
 
-		groups.forEach((gr) => {
+		groups.forEach(gr => {
 			this.contentContainer.removeChild(gr.container);
 			gr.removeAllListeners(DopeGroup.events.CHANGE);
 		});
@@ -130,11 +132,11 @@ class EffetcsBox extends Box {
 	_initStateButtons() {
 		const saveButton = this.container.querySelector('.save-state-button');
 
-		saveButton.addEventListener('click', (e)=>{
+		saveButton.addEventListener('click', e => {
 			const label = prompt('Name') || undefined;
 			const outputState = {};
 
-			this.groups.forEach((gr) => {
+			this.groups.forEach(gr => {
 				const groupState = gr.state;
 
 				groupState.label = gr.label;
@@ -155,17 +157,17 @@ class EffetcsBox extends Box {
 
 		buttonsContainer.innerHTML = '';
 
-		states.forEach((state) => {
+		states.forEach(state => {
 			const button = document.createElement('div');
 
 			button.classList.add('button');
-			button.innerHTML = buttonTemplate({label: state});
+			button.innerHTML = buttonTemplate({ label: state });
 
-			button.addEventListener('click', (e) => {
+			button.addEventListener('click', e => {
 				const savedState = this.stateManager.getSavedState(state);
 
 				this._clearGroups();
-				for(let groupState in savedState) {
+				for (let groupState in savedState) {
 					this._addGroup(new this.inputGroups[groupState](savedState[groupState]));
 				}
 				this.emitGroupsState();
@@ -176,7 +178,7 @@ class EffetcsBox extends Box {
 	}
 
 	_initDropdown() {
-		this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
+		this.container.querySelector('.effect-add-button').addEventListener('click', e => {
 			e.stopPropagation();
 			if (!this.dropdownBox) {
 				// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
@@ -184,7 +186,7 @@ class EffetcsBox extends Box {
 
 				this.container.appendChild(dropdownBox.container);
 				this.dropdownBox = dropdownBox;
-				this.dropdownBox.on(DropdownBox.events.ADD, (group) => {
+				this.dropdownBox.on(DropdownBox.events.ADD, group => {
 					const content = this.container.querySelector('.content-component');
 
 					content.scrollTop = content.scrollHeight;
@@ -192,7 +194,7 @@ class EffetcsBox extends Box {
 					this.emitGroupsState();
 				});
 
-				this.dropdownBox.on(DropdownBox.events.REMOVE, (group) => {
+				this.dropdownBox.on(DropdownBox.events.REMOVE, group => {
 					this._removeGroup(group);
 					this.emitGroupsState();
 				});
