@@ -77,9 +77,18 @@ class InputStateManager {
 			saturate: { label: 'Saturate' }
 		},
 		OutlineFilter: {
-			label: 'OutlineFilter',
+			label: 'Outline Filter',
 			enabled: { label: 'enabled', checked: false },
 			thickness: { label: 'thickness', min: 0, max: 20, value: 10 },
+			color: { label: 'color' }
+		},
+		DropShadowFilter: {
+			label: 'DropShadow Filter',
+			enabled: { label: 'enabled', checked: false },
+			blur: { label: 'Blur', min: 1, max: 40, value: 10 },
+			alpha: { label: 'Alpha', min: 0, max: 1, value: 0.5 },
+			distance: { label: 'Distance', min: 0, max: 50, value: 0.5 },
+			rotation: { label: 'Rotation', min: 0, max: 360, value: 10 },
 			color: { label: 'color' }
 		}
 	};

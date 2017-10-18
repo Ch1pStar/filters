@@ -7,7 +7,7 @@ class OutlineFilter extends DopeGroup {
 	_initInput() {
 		const enabled = (this.enabledInput = new Checkbox());
 		const thickness = (this.thicknessInput = new InputRange());
-		const color = (this.thicknessInput = new InputRange());
+		const color = (this.colorInput = new InputRange());
 		this.inputs = [enabled, thickness, color];
 		super._initInput();
 	}

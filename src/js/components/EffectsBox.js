@@ -13,6 +13,7 @@ const BlurFilter = require('./groups/dope/filters/BlurFilter');
 const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
 const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
 const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
+const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -31,7 +32,9 @@ class EffetcsBox extends Box {
 		GlowFilter,
 		BlurFilter,
 		NoiseFilter,
-		ColorMatrixFilter
+		ColorMatrixFilter,
+		OutlineFilter,
+		DropShadowFilter
 	};
 
 	properties = {};

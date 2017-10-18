@@ -19,6 +19,7 @@ const BlurFilter = require('./groups/dope/filters/BlurFilter');
 const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
 const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
 const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
+const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
 
 const template = require('../../templates/components/DropdownBox.hbs');
 
@@ -53,7 +54,7 @@ class DropdownBox extends Box {
 					if (this.groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this.getGroup(effectType));
 					} else {
-						console.log(this.parent);
+						console.log(this.parent.inputGroups);
 						const group = new this.parent.inputGroups[effectType](
 							this.parent.stateManager.state[effectType]
 						);
