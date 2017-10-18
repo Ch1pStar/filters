@@ -20,6 +20,7 @@ const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
 const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
 const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
 const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
+const TwistFilter = require('./groups/dope/filters/TwistFilter');
 
 const template = require('../../templates/components/DropdownBox.hbs');
 

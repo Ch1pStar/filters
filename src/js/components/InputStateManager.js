@@ -90,6 +90,14 @@ class InputStateManager {
 			distance: { label: 'Distance', min: 0, max: 50, value: 0.5 },
 			rotation: { label: 'Rotation', min: 0, max: 360, value: 10 },
 			color: { label: 'color' }
+		},
+		TwistFilter: {
+			label: 'DropShadow Filter',
+			enabled: { label: 'enabled', checked: false },
+			angle: { label: 'Angle', min: 0, max: 10, value: 5 },
+			radius: { label: 'Radius', min: 0, max: 1920, value: 500 },
+			x: { label: 'x', min: 0, max: 1920, value: 500 },
+			y: { label: 'y', min: 0, max: 972, value: 500 }
 		}
 	};
 

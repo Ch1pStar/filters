@@ -14,6 +14,7 @@ const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
 const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
 const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
 const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
+const TwistFilter = require('./groups/dope/filters/TwistFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -34,7 +35,8 @@ class EffetcsBox extends Box {
 		NoiseFilter,
 		ColorMatrixFilter,
 		OutlineFilter,
-		DropShadowFilter
+		DropShadowFilter,
+		TwistFilter
 	};
 
 	properties = {};
@@ -64,12 +66,6 @@ class EffetcsBox extends Box {
 	_initGroups() {
 		const state = this.stateManager.state;
 		// default groups
-		// const glowFilter = this._addGroup(new DopeGroup(state.GlowFilter));
-		// const displacementFilter = this._addGroup(new DopeGroup(state.DisplacementFilter));
-		// const blurFilter = this._addGroup(new DopeGroup(state.BlurFilter));
-		// const noiseFilter = this._addGroup(new DopeGroup(state.NoiseFilter));
-		// const colorMatrixFilter = this._addGroup(new DopeGroup(state.ColorMatrixFilter));
-		const outlineFilter = this._addGroup(new DopeGroup(state.OutlineFilter));
 
 		this._initDropdown();
 	}
