@@ -15,6 +15,18 @@ const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
 const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
 const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
 const TwistFilter = require('./groups/dope/filters/TwistFilter');
+const AsciiFilter = require('./groups/dope/filters/AsciiFilter');
+const DotFilter = require('./groups/dope/filters/DotFilter');
+const EmbrossFilter = require('./groups/dope/filters/EmbrossFilter');
+const PixelateFilter = require('./groups/dope/filters/PixelateFilter');
+const RGBSplitFilter = require('./groups/dope/filters/RGBSplitFilter');
+const CrossHatchFilter = require('./groups/dope/filters/CrossHatchFilter');
+const ConvolutionFilter = require('./groups/dope/filters/ConvolutionFilter');
+const BloomFilter = require('./groups/dope/filters/BloomFilter');
+const TiltShiftFilter = require('./groups/dope/filters/TiltShiftFilter');
+const ShockwaveFilter = require('./groups/dope/filters/ShockwaveFilter');
+const BulgePinchFilter = require('./groups/dope/filters/BulgePinchFilter');
+const ColorReplaceFilter = require('./groups/dope/filters/ColorReplaceFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -23,7 +35,7 @@ class EffetcsBox extends Box {
 	};
 
 	/**
-	 * @type {ControlKit}
+	 * @type {ControlKit} 
 	 * @private
 	 */
 	_controlKit = null;
@@ -36,7 +48,19 @@ class EffetcsBox extends Box {
 		ColorMatrixFilter,
 		OutlineFilter,
 		DropShadowFilter,
-		TwistFilter
+		TwistFilter,
+		AsciiFilter,
+		DotFilter,
+		EmbrossFilter,
+		PixelateFilter,
+		RGBSplitFilter,
+		CrossHatchFilter,
+		ConvolutionFilter,
+		BloomFilter,
+		TiltShiftFilter,
+		ShockwaveFilter,
+		BulgePinchFilter,
+		ColorReplaceFilter
 	};
 
 	properties = {};

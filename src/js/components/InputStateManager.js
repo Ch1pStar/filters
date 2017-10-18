@@ -98,6 +98,83 @@ class InputStateManager {
 			radius: { label: 'Radius', min: 0, max: 1920, value: 500 },
 			x: { label: 'x', min: 0, max: 1920, value: 500 },
 			y: { label: 'y', min: 0, max: 972, value: 500 }
+		},
+		AsciiFilter: {
+			label: 'Ascii Filter',
+			enabled: { label: 'enabled', checked: false },
+			size: { label: 'size', min: 0, max: 20, value: 10 }
+		},
+		DotFilter: {
+			label: 'Dot Filter',
+			enabled: { label: 'enabled', checked: false },
+			scale: { label: 'Scale', min: 0, max: 1, value: 0.5 },
+			angle: { label: 'Angle', min: 0, max: 5, value: 5 }
+		},
+		EmbrossFilter: {
+			label: 'Embross Filter',
+			enabled: { label: 'enabled', checked: false },
+			strength: { label: 'strength', min: 0, max: 20, value: 10 }
+		},
+		PixelateFilter: {
+			label: 'Pixelate Filter',
+			enabled: { label: 'enabled', checked: false },
+			sizeX: { label: 'sizeX', min: 4, max: 40, value: 15 },
+			sizeY: { label: 'sizeY', min: 4, max: 40, value: 15 }
+		},
+		RGBSplitFilter: {
+			label: 'RGBSplit Filter',
+			enabled: { label: 'enabled', checked: false },
+			redX: { label: 'redX', min: -20, max: 20, value: 15 },
+			redY: { label: 'redY', min: -20, max: 20, value: 15 },
+			greenX: { label: 'greenX', min: -20, max: 20, value: 15 },
+			greenY: { label: 'greenY', min: -20, max: 20, value: 15 },
+			blueX: { label: 'blueX', min: -20, max: 20, value: 15 },
+			blueY: { label: 'blueY', min: -20, max: 20, value: 15 }
+		},
+		CrossHatchFilter: {
+			label: 'Cross Hatch',
+			enabled: { label: 'enabled', checked: false }
+		},
+		ConvolutionFilter: {
+			label: 'Convolution Filter',
+			enabled: { label: 'enabled', checked: false },
+			width: { label: 'width', min: 0, max: 500, value: 15 },
+			height: { label: 'height', min: 0, max: 500, value: 15 }
+		},
+		BloomFilter: {
+			label: 'Bloom Filter',
+			enabled: { label: 'enabled', checked: false },
+			blur: { label: 'blur', min: 0, max: 20, value: 15 },
+			blurX: { label: 'blurX', min: 0, max: 20, value: 15 },
+			blurY: { label: 'blurY', min: 0, max: 20, value: 15 }
+		},
+		TiltShiftFilter: {
+			label: 'TiltShift Filter',
+			enabled: { label: 'enabled', checked: false },
+			blur: { label: 'blur', min: 0, max: 200, value: 15 },
+			gradientBlur: { label: 'gradientBlur', min: 0, max: 200, value: 15 }
+		},
+		ShockwaveFilter: {
+			label: 'Shockwave Filter',
+			enabled: { label: 'enabled', checked: false },
+			time: { label: 'Time', min: 0, max: 1, value: 0.5 },
+			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5 },
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5 }
+		},
+		BulgePinchFilter: {
+			label: 'BulgePinchFilter',
+			enabled: { label: 'enabled', checked: false },
+			radius: { label: 'radius', min: 0, max: 1000, value: 0.5 },
+			strength: { label: 'strength', min: 0, max: 1, value: 0.5 },
+			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5 },
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5 }
+		},
+		ColorReplaceFilter: {
+			label: 'ColorReplaceFilter',
+			enabled: { label: 'enabled', checked: false },
+			originalColor: { label: 'originalColor' },
+			newColor: { label: 'newColor' },
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5 }
 		}
 	};
 
