@@ -13,11 +13,13 @@ const ControlKit = require('controlkit');
 // const AlphaGroup = require('./groups/dope/AlphaGroup');
 // const BlendModeGroup = require('./groups/dope/BlendModeGroup');
 // const AttractionGroup = require('./groups/dope/AttractionGroup');
-const GlowFilter = require('./groups/dope/GlowFilter');
-const DisplacementFilter = require('./groups/dope/DisplacementFilter');
-const BlurFilter = require('./groups/dope/BlurFilter');
-const NoiseFilter = require('./groups/dope/NoiseFilter');
-const ColorMatrixFilter = require('./groups/dope/ColorMatrixFilter');
+const GlowFilter = require('./groups/dope/filters/GlowFilter');
+const DisplacementFilter = require('./groups/dope/filters/DisplacementFilter');
+const BlurFilter = require('./groups/dope/filters/BlurFilter');
+const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
+const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
+const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
+
 const template = require('../../templates/components/DropdownBox.hbs');
 
 class DropdownBox extends Box {
@@ -51,6 +53,7 @@ class DropdownBox extends Box {
 					if (this.groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this.getGroup(effectType));
 					} else {
+						console.log(this.parent);
 						const group = new this.parent.inputGroups[effectType](
 							this.parent.stateManager.state[effectType]
 						);

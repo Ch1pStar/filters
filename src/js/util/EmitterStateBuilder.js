@@ -25,8 +25,6 @@ const particleTexturesTemplate = require('../../templates/components/emitter/Par
 // const rotateTemplate = require('../../templates/components/emitter/effects/Rotate.hbs');
 // const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
 // const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
-const glowFilterTemplate = require('../../templates/components/emitter/effects/GlowFilter.hbs');
-const displacementFilterTemplate = require('../../templates/components/emitter/effects/DisplacementFilter.hbs');
 
 class EmitterStateBuilder {
 	effectTemplates = {
@@ -48,8 +46,6 @@ class EmitterStateBuilder {
 		// Rotate: rotateTemplate,
 		// Scale: scaleTemplate,
 		// Velocity: velocityTemplate,
-		GlowFilter: glowFilterTemplate,
-		DisplacementFilter: displacementFilterTemplate
 	};
 
 	emitterTemplate = {

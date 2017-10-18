@@ -7,11 +7,12 @@ const buttonTemplate = require('../../templates/components/button.hbs');
 const InputStateManager = require('./InputStateManager');
 const DopeGroup = require('./groups/abstract/DopeGroup');
 
-const GlowFilter = require('./groups/dope/GlowFilter');
-const DisplacementFilter = require('./groups/dope/DisplacementFilter');
-const BlurFilter = require('./groups/dope/BlurFilter');
-const NoiseFilter = require('./groups/dope/NoiseFilter');
-const ColorMatrixFilter = require('./groups/dope/ColorMatrixFilter');
+const GlowFilter = require('./groups/dope/filters/GlowFilter');
+const DisplacementFilter = require('./groups/dope/filters/DisplacementFilter');
+const BlurFilter = require('./groups/dope/filters/BlurFilter');
+const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
+const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
+const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -65,6 +66,7 @@ class EffetcsBox extends Box {
 		// const blurFilter = this._addGroup(new DopeGroup(state.BlurFilter));
 		// const noiseFilter = this._addGroup(new DopeGroup(state.NoiseFilter));
 		// const colorMatrixFilter = this._addGroup(new DopeGroup(state.ColorMatrixFilter));
+		const outlineFilter = this._addGroup(new DopeGroup(state.OutlineFilter));
 
 		this._initDropdown();
 	}

@@ -1,4 +1,4 @@
-const DopeGroup = require('../abstract/DopeGroup');
+const DopeGroup = require('../../abstract/DopeGroup');
 const Button = require('dope-components').Button;
 const Checkbox = require('dope-components').Checkbox;
 

@@ -75,6 +75,12 @@ class InputStateManager {
 			greyscale: { label: 'Greyscale' },
 			predator: { label: 'Predator' },
 			saturate: { label: 'Saturate' }
+		},
+		OutlineFilter: {
+			label: 'OutlineFilter',
+			enabled: { label: 'enabled', checked: false },
+			thickness: { label: 'thickness', min: 0, max: 20, value: 10 },
+			color: { label: 'color' }
 		}
 	};
 
