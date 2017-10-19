@@ -1,4 +1,4 @@
-const Group = require('./abstract/Group');
+const Group = require('../abstract/Group');
 const InputRange = require('dope-components').InputRange;
 const InputColor = require('dope-components').InputColor;
 const Checkbox = require('dope-components').Checkbox;

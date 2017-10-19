@@ -3,10 +3,9 @@ const template = require('../../templates/PreviewBox.hbs');
 const PIXI = require('pixi.js');
 const SheetBuilder = require('../util/SpriteSheetBuilder');
 const EmitterStateBuilder = require('../util/EmitterStateBuilder');
-const Proton = require('quark');
+const Proton = require('Quark');
 
 class PreviewBox extends Box {
-
 	emitter = null;
 	renderer = null;
 
@@ -30,7 +29,9 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
-		if (this.emitterState.effectMarkers) { this.stage.removeChild(this.emitterState.effectMarkers); }
+		if (this.emitterState.effectMarkers) {
+			this.stage.removeChild(this.emitterState.effectMarkers);
+		}
 
 		this.emitterState.effects = effects;
 
@@ -55,9 +56,9 @@ class PreviewBox extends Box {
 		const background = this.background;
 		const bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image)));
 
-		// bgSprite.width = this.previewWidth;
-		// bgSprite.x = bgSprite.width>this.previewWidth?0:(this.previewWidth - bgSprite.width)/2;
-		// bgSprite.y = bgSprite.height>this.previewHeight?0:(this.previewHeight - bgSprite.height)/2;
+		bgSprite.width = this.previewWidth;
+		bgSprite.x = bgSprite.width > this.previewWidth ? 0 : (this.previewWidth - bgSprite.width) / 2;
+		bgSprite.y = bgSprite.height > this.previewHeight ? 0 : (this.previewHeight - bgSprite.height) / 2;
 		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
 		background.children.length = 0;
@@ -65,10 +66,10 @@ class PreviewBox extends Box {
 	}
 
 	_initCanvasRenderer() {
-		const view = this.view = this.container.querySelector('.canvas');
-		const renderer = this.renderer = PIXI.autoDetectRenderer(this.view.width, this.view.height, { view });
-		const stage = this.stage = new PIXI.Container();
-		const background = this.background = new PIXI.Container();
+		const view = (this.view = this.container.querySelector('.canvas'));
+		const renderer = (this.renderer = PIXI.autoDetectRenderer(this.view.width, this.view.height, { view }));
+		const stage = (this.stage = new PIXI.Container());
+		const background = (this.background = new PIXI.Container());
 
 		this.previewWidth = this.view.width;
 		this.previewHeight = this.view.height;
@@ -86,8 +87,9 @@ class PreviewBox extends Box {
 
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
+		console.log(this.emitterState);
 
-		if (this.particleTextures && this.particleTextures.length)	{
+		if (this.particleTextures && this.particleTextures.length) {
 			eval(emitterCode);
 			this.emitter = this.emitterZoneEmitter;
 			this.emitter.emit();
@@ -114,11 +116,11 @@ class PreviewBox extends Box {
 	_initEmitTypes() {
 		const checkboxes = this.container.querySelectorAll('.check');
 
-		[...checkboxes].forEach((check) => {
+		[...checkboxes].forEach(check => {
 			check.addEventListener('click', () => {
 				const type = check.dataset.type;
 
-				[...checkboxes].forEach((check) => check.checked = false);
+				[...checkboxes].forEach(check => (check.checked = false));
 				check.checked = true;
 
 				// reset
@@ -133,7 +135,7 @@ class PreviewBox extends Box {
 					this._updateEmitterPosition = this._cursorUpdate;
 					this._startCursorFollow();
 				} else {
-					this._updateEmitterPosition = function () {};
+					this._updateEmitterPosition = function() {};
 					this.emitOnClick = true;
 					this._stopEmit();
 				}
@@ -141,9 +143,7 @@ class PreviewBox extends Box {
 		});
 	}
 
-	_updateEmitterPosition() {
-
-	}
+	_updateEmitterPosition() {}
 
 	set emitOnClick(val) {
 		this._emitOnClick = val;

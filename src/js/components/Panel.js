@@ -1,5 +1,5 @@
 const Group = require('./groups/abstract/Group');
-const InputGroup = require('./groups/InputGroup');
+// const InputGroup = require('./groups/InputGroup');
 const Grid = require('./Grid');
 const PreviewBox = require('./PreviewBox');
 const ParticleTexturesBox = require('./ParticleTexturesBox');
@@ -15,8 +15,7 @@ const jsflUtil = require('../../jsfl/util');
  * @class
  */
 class Panel extends Box {
-
-    /**
+	/**
      * @type {Object} Flash API
      * @private
      */
@@ -34,7 +33,7 @@ class Panel extends Box {
 			// '../img/particles/p2.png',
 			'../img/particles/p3.png',
 			// '../img/particles/p4.png',
-			'../img/particles/chip-3.png',
+			'../img/particles/chip-3.png'
 			// '../img/basepixi-assets/1.png',
 			// '../img/basepixi-assets/2.png',
 			// '../img/basepixi-assets/3.png',
@@ -76,11 +75,11 @@ class Panel extends Box {
 			'../img/backgrounds/bg.png',
 			'../img/backgrounds/N16uiSo.jpg',
 			'../img/backgrounds/sky.jpg',
-			'../img/particles/chip-3.png',
-		],
+			'../img/particles/chip-3.png'
+		]
 	};
 
-    /**
+	/**
      * @param {Object} fl Flash API
      * @param {Object} options Panel config options
      */
@@ -92,8 +91,8 @@ class Panel extends Box {
 		const appContainer = this.container.querySelector('.app-component');
 		const leftContainer = appContainer.querySelector('.inner .left');
 		const rightContainer = appContainer.querySelector('.inner .right');
-		const imagesContainer = this._imagesContainer = this.container.querySelector('.images-component-container');
-		const inFlash = this.inFlash = Boolean(window.__adobe_cep__);
+		const imagesContainer = (this._imagesContainer = this.container.querySelector('.images-component-container'));
+		const inFlash = (this.inFlash = Boolean(window.__adobe_cep__));
 
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
@@ -119,12 +118,15 @@ class Panel extends Box {
 		this._toolsLinePanel.render();
 
 		// attach component listeners
-		this._effectsPanel.on(EffectsBox.events.CHANGE, (effects) => this._previewPanel.effects = effects);
-		this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, (images) => {
+		this._effectsPanel.on(EffectsBox.events.CHANGE, effects => (this._previewPanel.effects = effects));
+		this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, images => {
 			this._effectsPanel.emitGroupsState();
 			this._previewPanel.particleImages = images;
 		});
-		this.backgroundsBox.on(BackgroundsBox.events.CHANGE, (images) => this._previewPanel.backgroundImage = images[0]);
+		this.backgroundsBox.on(
+			BackgroundsBox.events.CHANGE,
+			images => (this._previewPanel.backgroundImage = images[0])
+		);
 
 		// insert components
 		leftContainer.appendChild(this._previewPanel.container);
@@ -149,7 +151,7 @@ class Panel extends Box {
 	/*eslint-enable*/
 
 	_getDocumentImages() {
-		this._eval(jsflUtil.getLibraryImages(), (res) => {
+		this._eval(jsflUtil.getLibraryImages(), res => {
 			const imgs = res === 'undefined' ? [] : res.split(',');
 
 			this.particleTexturesBox.images = imgs;
@@ -160,10 +162,8 @@ class Panel extends Box {
 	_subscribeDocumentEvents() {
 		const cep = window.__adobe_cep__;
 
-		cep.addEventListener('com.adobe.events.flash.documentChanged',
-			this._getDocumentImages.bind(this));
-		cep.addEventListener('com.adobe.events.flash.documentOpened',
-			this._getDocumentImages.bind(this));
+		cep.addEventListener('com.adobe.events.flash.documentChanged', this._getDocumentImages.bind(this));
+		cep.addEventListener('com.adobe.events.flash.documentOpened', this._getDocumentImages.bind(this));
 	}
 }
 

@@ -5,32 +5,32 @@ const template = require('../../templates/EffectsBox.hbs');
 const buttonTemplate = require('../../templates/components/button.hbs');
 
 const InputStateManager = require('./InputStateManager');
-const DopeGroup = require('./groups/abstract/DopeGroup');
+const Group = require('./groups/abstract/Group');
 
-const GlowFilter = require('./groups/dope/filters/GlowFilter');
-const DisplacementFilter = require('./groups/dope/filters/DisplacementFilter');
-const BlurFilter = require('./groups/dope/filters/BlurFilter');
-const NoiseFilter = require('./groups/dope/filters/NoiseFilter');
-const ColorMatrixFilter = require('./groups/dope/filters/ColorMatrixFilter');
-const OutlineFilter = require('./groups/dope/filters/OutlineFilter');
-const DropShadowFilter = require('./groups/dope/filters/DropShadowFilter');
-const TwistFilter = require('./groups/dope/filters/TwistFilter');
-const AsciiFilter = require('./groups/dope/filters/AsciiFilter');
-const DotFilter = require('./groups/dope/filters/DotFilter');
-const EmbrossFilter = require('./groups/dope/filters/EmbrossFilter');
-const PixelateFilter = require('./groups/dope/filters/PixelateFilter');
-const RGBSplitFilter = require('./groups/dope/filters/RGBSplitFilter');
-const CrossHatchFilter = require('./groups/dope/filters/CrossHatchFilter');
-const ConvolutionFilter = require('./groups/dope/filters/ConvolutionFilter');
-const BloomFilter = require('./groups/dope/filters/BloomFilter');
-const TiltShiftFilter = require('./groups/dope/filters/TiltShiftFilter');
-const ShockwaveFilter = require('./groups/dope/filters/ShockwaveFilter');
-const BulgePinchFilter = require('./groups/dope/filters/BulgePinchFilter');
-const ColorReplaceFilter = require('./groups/dope/filters/ColorReplaceFilter');
-const MultiColorReplaceFilter = require('./groups/dope/filters/MultiColorReplaceFilter');
-const SimpleLightmapFilter = require('./groups/dope/filters/SimpleLightmapFilter');
-const GodrayFilter = require('./groups/dope/filters/GodrayFilter');
-const ZoomBlurFilter = require('./groups/dope/filters/ZoomBlurFilter');
+const GlowFilter = require('./groups/filters/GlowFilter');
+const DisplacementFilter = require('./groups/filters/DisplacementFilter');
+const BlurFilter = require('./groups/filters/BlurFilter');
+const NoiseFilter = require('./groups/filters/NoiseFilter');
+const ColorMatrixFilter = require('./groups/filters/ColorMatrixFilter');
+const OutlineFilter = require('./groups/filters/OutlineFilter');
+const DropShadowFilter = require('./groups/filters/DropShadowFilter');
+const TwistFilter = require('./groups/filters/TwistFilter');
+const AsciiFilter = require('./groups/filters/AsciiFilter');
+const DotFilter = require('./groups/filters/DotFilter');
+const EmbrossFilter = require('./groups/filters/EmbrossFilter');
+const PixelateFilter = require('./groups/filters/PixelateFilter');
+const RGBSplitFilter = require('./groups/filters/RGBSplitFilter');
+const CrossHatchFilter = require('./groups/filters/CrossHatchFilter');
+const ConvolutionFilter = require('./groups/filters/ConvolutionFilter');
+const BloomFilter = require('./groups/filters/BloomFilter');
+const TiltShiftFilter = require('./groups/filters/TiltShiftFilter');
+const ShockwaveFilter = require('./groups/filters/ShockwaveFilter');
+const BulgePinchFilter = require('./groups/filters/BulgePinchFilter');
+const ColorReplaceFilter = require('./groups/filters/ColorReplaceFilter');
+const MultiColorReplaceFilter = require('./groups/filters/MultiColorReplaceFilter');
+const SimpleLightmapFilter = require('./groups/filters/SimpleLightmapFilter');
+const GodrayFilter = require('./groups/filters/GodrayFilter');
+const ZoomBlurFilter = require('./groups/filters/ZoomBlurFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -39,7 +39,7 @@ class EffetcsBox extends Box {
 	};
 
 	/**
-	 * @type {ControlKit} 
+	 * @type {ControlKit}
 	 * @private
 	 */
 	_controlKit = null;
@@ -122,7 +122,7 @@ class EffetcsBox extends Box {
 	_addGroup(group) {
 		this.contentContainer.appendChild(group.container);
 
-		group.on(DopeGroup.events.CHANGE, this.emitGroupsState);
+		group.on(Group.events.CHANGE, this.emitGroupsState);
 		this.groups.push(group);
 
 		return group;
@@ -131,7 +131,7 @@ class EffetcsBox extends Box {
 	_removeGroup(group) {
 		this.contentContainer.removeChild(group.container);
 
-		group.removeAllListeners(DopeGroup.events.CHANGE);
+		group.removeAllListeners(Group.events.CHANGE);
 		this.groups.splice(this.groups.indexOf(group), 1);
 
 		return group;
@@ -142,7 +142,7 @@ class EffetcsBox extends Box {
 
 		groups.forEach(gr => {
 			this.contentContainer.removeChild(gr.container);
-			gr.removeAllListeners(DopeGroup.events.CHANGE);
+			gr.removeAllListeners(Group.events.CHANGE);
 		});
 
 		groups.length = 0;

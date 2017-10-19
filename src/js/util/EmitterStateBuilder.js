@@ -25,6 +25,7 @@ const particleTexturesTemplate = require('../../templates/components/emitter/Par
 // const rotateTemplate = require('../../templates/components/emitter/effects/Rotate.hbs');
 // const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
 // const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
+const AsciiFilter = require('../../templates/components/emitter/effects/AsciiFilter.hbs');
 
 class EmitterStateBuilder {
 	effectTemplates = {
@@ -46,6 +47,7 @@ class EmitterStateBuilder {
 		// Rotate: rotateTemplate,
 		// Scale: scaleTemplate,
 		// Velocity: velocityTemplate,
+		AsciiFilter
 	};
 
 	emitterTemplate = {
@@ -75,23 +77,6 @@ class EmitterStateBuilder {
 			const effectAttributes = effects[effect];
 
 			bodyStr += this.effectTemplates[effect](effectAttributes);
-			if (effectAttributes.x && effectAttributes.y) {
-				if (effectAttributes.width && effectAttributes.height) {
-					this.effectMarkers.addChild(
-						this._createZoneMarker(
-							effect,
-							effectAttributes.x,
-							effectAttributes.y,
-							effectAttributes.width,
-							effectAttributes.height
-						)
-					);
-				} else {
-					this.effectMarkers.addChild(
-						this._createPointMarker(effect, effectAttributes.x, effectAttributes.y)
-					);
-				}
-			}
 		}
 
 		this.emitterTemplate.head = headTemplate(effects);

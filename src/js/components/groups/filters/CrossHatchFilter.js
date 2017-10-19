@@ -1,7 +1,7 @@
-const Group = require('./abstract/Group');
+const Group = require('../abstract/Group');
 const Checkbox = require('dope-components').Checkbox;
 
-class CrossHatchFilter extends Grop {
+class CrossHatchFilter extends Group {
 	_initInput() {
 		const enabled = (this.enabledInput = new Checkbox());
 		this.inputs = [enabled];
