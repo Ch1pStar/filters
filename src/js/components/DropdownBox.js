@@ -33,7 +33,11 @@ const TiltShiftFilter = require('./groups/dope/filters/TiltShiftFilter');
 const ShockwaveFilter = require('./groups/dope/filters/ShockwaveFilter');
 const BulgePinchFilter = require('./groups/dope/filters/BulgePinchFilter');
 const ColorReplaceFilter = require('./groups/dope/filters/ColorReplaceFilter');
-
+const MultiColorReplaceFilter = require('./groups/dope/filters/MultiColorReplaceFilter');
+const SimpleLightmapFilter = require('./groups/dope/filters/SimpleLightmapFilter');
+const GodrayFilter = require('./groups/dope/filters/GodrayFilter');
+const ZoomBlurFilter = require('./groups/dope/filters/ZoomBlurFilter');
+ZoomBlurFilter;
 const template = require('../../templates/components/DropdownBox.hbs');
 
 class DropdownBox extends Box {
@@ -67,7 +71,6 @@ class DropdownBox extends Box {
 					if (this.groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this.getGroup(effectType));
 					} else {
-						console.log(this.parent.inputGroups);
 						const group = new this.parent.inputGroups[effectType](
 							this.parent.stateManager.state[effectType]
 						);

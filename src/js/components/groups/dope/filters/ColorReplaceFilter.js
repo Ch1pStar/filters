@@ -10,6 +10,7 @@ class ColorReplaceFilter extends DopeGroup {
 		const newColor = (this.newColorInput = new InputColor());
 		const epsilon = (this.epsilonInput = new InputRange());
 		this.inputs[(enabled, originalColor, newColor, epsilon)];
+		super._initInput();
 	}
 
 	setState() {

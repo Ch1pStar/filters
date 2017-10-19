@@ -175,6 +175,39 @@ class InputStateManager {
 			originalColor: { label: 'originalColor' },
 			newColor: { label: 'newColor' },
 			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5 }
+		},
+		MultiColorReplaceFilter: {
+			label: 'MultiColorReplaceFilter',
+			enabled: { label: 'enabled', checked: false },
+			original0: { label: 'original0' },
+			target0: { label: 'target0' },
+			original1: { label: 'original1' },
+			target1: { label: 'target1' },
+			original2: { label: 'original2' },
+			target2: { label: 'target2' },
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5 }
+		},
+		SimpleLightmapFilter: {
+			label: 'SimpleLightmapFilter',
+			enabled: { label: 'enabled', checked: false },
+			color: { label: 'color' },
+			alpha: { label: 'alpha', min: 0, max: 1, value: 0.5 }
+		},
+		GodrayFilter: {
+			label: 'GodrayFilter',
+			enabled: { label: 'enabled', checked: false },
+			time: { label: 'time', min: 0, max: 1, value: 0 },
+			angle: { label: 'angle', min: 0, max: 60, value: 30 },
+			gain: { label: 'gain', min: 0, max: 1, value: 0 },
+			lacunarity: { label: 'lacunarity', min: 0, max: 5, value: 0 }
+		},
+		ZoomBlurFilter: {
+			label: 'ZoomBlurFilter',
+			enabled: { label: 'enabled', checked: false },
+			strength: { label: 'strength', min: 0, max: 0.5, value: 0 },
+			centerX: { label: 'centerX', min: 0, max: 1920, value: 900 },
+			centerY: { label: 'centerY', min: 0, max: 1920, value: 900 },
+			innerRadius: { label: 'innerRadius', min: 0, max: 960, value: 360 }
 		}
 	};
 

@@ -27,6 +27,10 @@ const TiltShiftFilter = require('./groups/dope/filters/TiltShiftFilter');
 const ShockwaveFilter = require('./groups/dope/filters/ShockwaveFilter');
 const BulgePinchFilter = require('./groups/dope/filters/BulgePinchFilter');
 const ColorReplaceFilter = require('./groups/dope/filters/ColorReplaceFilter');
+const MultiColorReplaceFilter = require('./groups/dope/filters/MultiColorReplaceFilter');
+const SimpleLightmapFilter = require('./groups/dope/filters/SimpleLightmapFilter');
+const GodrayFilter = require('./groups/dope/filters/GodrayFilter');
+const ZoomBlurFilter = require('./groups/dope/filters/ZoomBlurFilter');
 
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
@@ -60,7 +64,11 @@ class EffetcsBox extends Box {
 		TiltShiftFilter,
 		ShockwaveFilter,
 		BulgePinchFilter,
-		ColorReplaceFilter
+		ColorReplaceFilter,
+		MultiColorReplaceFilter,
+		SimpleLightmapFilter,
+		GodrayFilter,
+		ZoomBlurFilter
 	};
 
 	properties = {};
