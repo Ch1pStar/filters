@@ -85,7 +85,6 @@ class EmitterStateBuilder {
 		this._effects = effects;
 		for (const effect in effects) {
 			const effectAttributes = effects[effect];
-
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
