@@ -77,7 +77,6 @@ class PreviewBox extends Box {
 		this.particleCounter.y = this.previewHeight - this.particleCounter.height;
 		stage.addChild(this.particleCounter);
 		stage.addChild(background);
-		console.log(stage);
 		this._startRender();
 	}
 
