@@ -1,4 +1,5 @@
 const PIXI = require('pixi.js');
+const Filters = require('pixi-filters');
 
 const headTemplate = require('../../templates/components/emitter/head.hbs');
 const footerTemplate = require('../../templates/components/emitter/footer.hbs');
@@ -25,7 +26,30 @@ const particleTexturesTemplate = require('../../templates/components/emitter/Par
 // const rotateTemplate = require('../../templates/components/emitter/effects/Rotate.hbs');
 // const scaleTemplate = require('../../templates/components/emitter/effects/Scale.hbs');
 // const velocityTemplate = require('../../templates/components/emitter/effects/Velocity.hbs');
-const AsciiFilter = require('../../templates/components/emitter/effects/AsciiFilter.hbs');
+const AsciiFilter = require('../../templates/components/emitter/effects/filters/AsciiFilter.hbs');
+const BloomFilter = require('../../templates/components/emitter/effects/filters/BloomFilter.hbs');
+const BlurFilter = require('../../templates/components/emitter/effects/filters/BlurFilter.hbs');
+const BulgePinchFilter = require('../../templates/components/emitter/effects/filters/BulgePinchFilter.hbs');
+const ColorMatrixFilter = require('../../templates/components/emitter/effects/filters/ColorMatrixFilter.hbs');
+const ColorReplaceFilter = require('../../templates/components/emitter/effects/filters/ColorReplaceFilter.hbs');
+const ConvolutionFilter = require('../../templates/components/emitter/effects/filters/ConvolutionFilter.hbs');
+const CrossHatchFilter = require('../../templates/components/emitter/effects/filters/CrossHatchFilter.hbs');
+const DisplacementFilter = require('../../templates/components/emitter/effects/filters/DisplacementFilter.hbs');
+const DotFilter = require('../../templates/components/emitter/effects/filters/DotFilter.hbs');
+const DropshadowFilter = require('../../templates/components/emitter/effects/filters/DropshadowFilter.hbs');
+const EmbrossFilter = require('../../templates/components/emitter/effects/filters/EmbrossFilter.hbs');
+const GlowFilter = require('../../templates/components/emitter/effects/filters/GlowFilter.hbs');
+const GodrayFilter = require('../../templates/components/emitter/effects/filters/GodrayFilter.hbs');
+const MultiColorReplacerFilter = require('../../templates/components/emitter/effects/filters/MultiColorReplacerFilter.hbs');
+const NoiseFilter = require('../../templates/components/emitter/effects/filters/NoiseFilter.hbs');
+const OutlineFilter = require('../../templates/components/emitter/effects/filters/OutlineFilter.hbs');
+const PixelateFilter = require('../../templates/components/emitter/effects/filters/PixelateFilter.hbs');
+const RGBSplitFilter = require('../../templates/components/emitter/effects/filters/RGBSplitFilter.hbs');
+const ShockwaveFilter = require('../../templates/components/emitter/effects/filters/ShockwaveFilter.hbs');
+const SimpleLightmapFilter = require('../../templates/components/emitter/effects/filters/SimpleLightmapFilter.hbs');
+const TiltShiftFilter = require('../../templates/components/emitter/effects/filters/TiltShiftFilter.hbs');
+const TwistFilter = require('../../templates/components/emitter/effects/filters/TwistFilter.hbs');
+const ZoomBlurFilter = require('../../templates/components/emitter/effects/filters/ZoomBlurFilter.hbs');
 
 class EmitterStateBuilder {
 	effectTemplates = {
@@ -47,7 +71,30 @@ class EmitterStateBuilder {
 		// Rotate: rotateTemplate,
 		// Scale: scaleTemplate,
 		// Velocity: velocityTemplate,
-		AsciiFilter
+		AsciiFilter,
+		BloomFilter,
+		BlurFilter,
+		BulgePinchFilter,
+		ColorMatrixFilter,
+		ColorReplaceFilter,
+		ConvolutionFilter,
+		CrossHatchFilter,
+		DisplacementFilter,
+		DotFilter,
+		DropshadowFilter,
+		EmbrossFilter,
+		GlowFilter,
+		GodrayFilter,
+		MultiColorReplacerFilter,
+		NoiseFilter,
+		OutlineFilter,
+		PixelateFilter,
+		RGBSplitFilter,
+		ShockwaveFilter,
+		SimpleLightmapFilter,
+		TiltShiftFilter,
+		TwistFilter,
+		ZoomBlurFilter
 	};
 
 	emitterTemplate = {
@@ -71,13 +118,15 @@ class EmitterStateBuilder {
 	set effects(effects) {
 		let bodyStr = '';
 
-		this.effectMarkers = new PIXI.Container();
 		this._effects = effects;
 		for (const effect in effects) {
+			console.log('EFFECT: ', effect);
 			const effectAttributes = effects[effect];
 
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
+
+		console.log(bodyStr);
 
 		this.emitterTemplate.head = headTemplate(effects);
 		this.emitterTemplate.body = bodyStr;

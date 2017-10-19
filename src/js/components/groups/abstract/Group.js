@@ -41,7 +41,7 @@ class Group extends EventEmitter {
 
 		inputs.forEach(input => {
 			input.on(InputRange.events.INPUT, e => {
-				this.emit(DopeGroup.events.CHANGE, e);
+				this.emit(Group.events.CHANGE, e);
 			});
 
 			cnt.appendChild(input.container);

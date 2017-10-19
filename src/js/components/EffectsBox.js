@@ -236,3 +236,30 @@ class EffetcsBox extends Box {
 }
 
 module.exports = EffetcsBox;
+
+
+
+AsciiFilter
+BloomFilter
+BlurFilter
+BulgePinchFilter
+ColorMatrixFilter
+ColorReplaceFilter
+ConvolutionFilter
+CrossHatchFilter
+DisplacementFilter
+DotFilter
+DropShadowFilter
+EmbrossFilter
+GlowFilter
+GodrayFilter
+MultiColorReplaceFilter
+NoiseFilter
+OutlineFilter
+PixelateFilter
+RGBSplitFilter
+ShockwaveFilter
+SimpleLightmapFilter
+TiltShiftFilter
+TwistFilter
+ZoomBlurFilter

@@ -4,6 +4,7 @@ const PIXI = require('pixi.js');
 const SheetBuilder = require('../util/SpriteSheetBuilder');
 const EmitterStateBuilder = require('../util/EmitterStateBuilder');
 const Proton = require('Quark');
+const Filters = require('pixi-filters');
 
 class PreviewBox extends Box {
 	emitter = null;
@@ -29,14 +30,9 @@ class PreviewBox extends Box {
 	}
 
 	set effects(effects) {
-		if (this.emitterState.effectMarkers) {
-			this.stage.removeChild(this.emitterState.effectMarkers);
-		}
-
 		this.emitterState.effects = effects;
 
 		this._createEmitter();
-		this.stage.addChild(this.emitterState.effectMarkers);
 	}
 
 	set particleImages(images) {
@@ -81,13 +77,12 @@ class PreviewBox extends Box {
 		this.particleCounter.y = this.previewHeight - this.particleCounter.height;
 		stage.addChild(this.particleCounter);
 		stage.addChild(background);
-
+		console.log(stage);
 		this._startRender();
 	}
 
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
-		console.log(this.emitterState);
 
 		if (this.particleTextures && this.particleTextures.length) {
 			eval(emitterCode);
