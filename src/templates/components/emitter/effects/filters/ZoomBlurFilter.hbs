@@ -1,5 +1,10 @@
 
     if (this.filters.indexOf(zoomBlurFilter) === -1) {
-      this.filters.push(zoomBlurFilter);
+      this.filters.push(zoomBlurFilter);      
     } 
+    this.filters[this.filters.indexOf(zoomBlurFilter)].strength = {{strength}};
+    this.filters[this.filters.indexOf(zoomBlurFilter)].centerX = {{centerX}};
+    this.filters[this.filters.indexOf(zoomBlurFilter)].centerY = {{centerY}};
+    this.filters[this.filters.indexOf(zoomBlurFilter)].innerRadius = {{innerRadius}};
+    
     

@@ -1,5 +1,8 @@
     if (this.filters.indexOf(colorReplaceFilter) === -1) {
       this.filters.push(colorReplaceFilter);
+      this.filters[this.filters.indexOf(colorReplaceFilter)].originalColor = '{{originalColor}}';
+      this.filters[this.filters.indexOf(colorReplaceFilter)].newColor = '{{newColor}}';
+      this.filters[this.filters.indexOf(colorReplaceFilter)].epsilon = {{epsilon}};
     } else {      
       this.filters[this.filters.indexOf(colorReplaceFilter)].originalColor = '{{originalColor}}';
       this.filters[this.filters.indexOf(colorReplaceFilter)].newColor = '{{newColor}}';

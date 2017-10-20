@@ -10,10 +10,13 @@ const glowFilter = new Filters.GlowFilter();
 const asciiFilter = new Filters.AsciiFilter();
 // const bloomFilter = new Filters.GlowFilter();
 // const blurFilter = new Filters.BlurFilter();
-const zoomBlurFilter = require('@pixi/filter-zoom-blur');
-const bulgePinchFilter = require('@pixi/filter-bulge-pinch');
+const zoomBlurFilter = new Filters.ZoomBlurFilter();
+const bulgePinchFilter = new Filters.BulgePinchFilter();
 // const colorMatricFilter = require('@pixi/filter-color-matrix');
-const colorReplaceFilter = require('@pixi/filter-color-replace');
+const colorReplaceFilter = new Filters.ColorReplaceFilter();
+const convolutionFilter = new Filters.ConvolutionFilter();
+const crossHatchFilter = new Filters.CrossHatchFilter();
+const dotFilter = new Filters.DotFilter();
 
 class PreviewBox extends Box {
 	emitter = null;

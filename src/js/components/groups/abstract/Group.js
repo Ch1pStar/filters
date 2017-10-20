@@ -1,6 +1,7 @@
 const InputRange = require('dope-components').InputRange;
 const EventEmitter = require('eventemitter4');
 const Folder = require('dope-components').Folder;
+const Component = require('dope-components').Component;
 
 class Group extends EventEmitter {
 	static events = {
@@ -41,8 +42,11 @@ class Group extends EventEmitter {
 		const inputs = this.inputs;
 
 		inputs.forEach(input => {
-			input.on(InputRange.events.INPUT, e => {
+			// Component.UPDATE_STATE
+			// Component.events.UPDATE_STATE
+			input.on(Component.events.UPDATE_STATE, e => {
 				this.emit(Group.events.CHANGE, e);
+				console.log(this);
 			});
 
 			cnt.appendChild(input.container);

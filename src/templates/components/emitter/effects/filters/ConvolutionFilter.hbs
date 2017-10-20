@@ -11,3 +11,10 @@ this.filters.forEach(function(filter) {
     that.filters.push(convolutionFilter)
   }
 });
+
+    if (this.filters.indexOf(convolutionFilter) === -1) {
+      this.filters.push(convolutionFilter);
+    } else {      
+      this.filters[this.filters.indexOf(convolutionFilter)].width = {{width}};      
+      this.filters[this.filters.indexOf(convolutionFilter)].height = {{height}};
+    }
