@@ -1,4 +1,3 @@
-{{#ifCond enabled true}}
 var simpleLightmapFilter = new Filters.SimpleLightmapFilter();;
 if (this.filters.length < 1) {
   this.filters.push(simpleLightmapFilter);
@@ -14,4 +13,3 @@ this.filters.forEach(function(filter) {
     that.filters.push(simpleLightmapFilter)
   }
 });
-{{/ifCond}}

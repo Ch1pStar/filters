@@ -1,4 +1,3 @@
-{{#ifCond enabled true}}
 var outlineFilter = new Filters.OutlineFilter();;
 if (this.filters.length < 1) {
   this.filters.push(outlineFilter);
@@ -12,4 +11,3 @@ this.filters.forEach(function(filter) {
     that.filters.push(outlineFilter)
   }
 });
-{{/ifCond}}

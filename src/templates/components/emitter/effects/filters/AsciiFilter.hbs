@@ -1,14 +1,6 @@
-{{#ifCond enabled true}}
-var asciiFilter = new Filters.AsciiFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(asciiFilter); 
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === asciiFilter) {
-    filter.size = {{size}};
-  }else {
-    that.filters.push(asciiFilter)
-  }
-});
-{{/ifCond}}
+
+    if (this.filters.indexOf(asciiFilter) === -1) {
+      this.filters.push(asciiFilter);
+    } else {      
+      this.filters[this.filters.indexOf(asciiFilter)].size = {{size}};
+    }

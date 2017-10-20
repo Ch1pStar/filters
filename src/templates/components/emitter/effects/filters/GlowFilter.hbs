@@ -1,18 +1,8 @@
-{{#ifCond enabled true}}
-var glowFilter = new Filters.GlowFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(glowFilter);
-}
-
-this.filters.forEach(function(filter) {
-  if (filter === glowFilter) {
-    filter.innerStrength = {{innerStrength}};
-    filter.outerStrength = {{outerStrength}};
-    filter.distance = {{distance}};
-    filter.color = '{{color}}';
-  } else {
-    this.filters.push(glowFilter);
-  }
-});
-
-{{/ifCond}}
+    if (this.filters.indexOf(glowFilter) === -1) {
+      this.filters.push(glowFilter);
+    } else {      
+      this.filters[this.filters.indexOf(glowFilter)].innerStrength = {{innerStrength}};
+      this.filters[this.filters.indexOf(glowFilter)].outerStrength = {{outerStrength}};
+      this.filters[this.filters.indexOf(glowFilter)].distance = {{distance}};
+      this.filters[this.filters.indexOf(glowFilter)].color = '{{color}}';
+    }

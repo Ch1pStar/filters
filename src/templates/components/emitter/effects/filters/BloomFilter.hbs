@@ -1,17 +1,7 @@
-{{#ifCond enabled true}}
-var bloomFilter = new Filters.GlowFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(bloomFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  
-  if (filter === bloomFilter) {
-    filter.blur = {{blur}};
-    filter.blurX = {{blurX}};
-    filter.blurY = {{blurY}};
-  } else {
-    that.filters.push(bloomFilter)
-  }
-});
-{{/ifCond}}
+    if (this.filters.indexOf(bloomFilter) === -1) {
+      this.filters.push(bloomFilter);
+    } else {      
+      this.filters[this.filters.indexOf(bloomFilter)].blur = {{blur}};
+      this.filters[this.filters.indexOf(bloomFilter)].blurX = {{blurX}};
+      this.filters[this.filters.indexOf(bloomFilter)].blurY = {{blurY}};
+    }

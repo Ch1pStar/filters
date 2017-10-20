@@ -1,17 +1,10 @@
-{{#ifCond enabled true}}
-var bulgePinchFilter = new Filters.BulgePinchFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(bulgePinchFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  
-  if (filter === bulgePinchFilter) {
-    filter.blur = {{blur}};
-    filter.blurX = {{blurX}};
-    filter.blurY = {{blurY}};
-  } else {
-    that.filters.push(bulgePinchFilter)
-  }
-});
-{{/ifCond}}
+
+
+    if (this.filters.indexOf(bulgePinchFilter) === -1) {
+      this.filters.push(bulgePinchFilter);
+    } else {      
+      this.filters[this.filters.indexOf(bulgePinchFilter)].radius = {{radius}};
+      this.filters[this.filters.indexOf(bulgePinchFilter)].strength = {{strength}};
+      this.filters[this.filters.indexOf(bulgePinchFilter)].centerX = {{centerX}};
+      this.filters[this.filters.indexOf(bulgePinchFilter)].centerY = '{{centerY}}';
+    }

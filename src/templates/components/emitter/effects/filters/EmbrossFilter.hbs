@@ -1,4 +1,3 @@
-{{#ifCond enabled true}}
 var embrossFilter = new Filters.EmbrossFilter();;
 if (this.filters.length < 1) {
   this.filters.push(embrossFilter);
@@ -11,4 +10,3 @@ this.filters.forEach(function(filter) {
     that.filters.push(embrossFilter)
   }
 });
-{{/ifCond}}

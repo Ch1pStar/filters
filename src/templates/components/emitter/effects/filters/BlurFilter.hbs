@@ -1,15 +1,6 @@
-{{#ifCond enabled true}}
-var blurFilter = new Filters.BlurFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(blurFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === blurFilter) {
-    filter.size = {{blur}};
-    filter.size = {{quality}};
-  }else {
-    that.filters.push(blurFilter)
-  }
-});
-{{/ifCond}}
+    if (this.filters.indexOf(blurFilter) === -1) {
+      this.filters.push(blurFilter);
+    } else {      
+      this.filters[this.filters.indexOf(blurFilter)].blur = {{blur}};
+      this.filters[this.filters.indexOf(blurFilter)].quality = {{quality}};
+    }

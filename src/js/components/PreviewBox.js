@@ -6,6 +6,15 @@ const EmitterStateBuilder = require('../util/EmitterStateBuilder');
 const Proton = require('Quark');
 const Filters = require('pixi-filters');
 
+const glowFilter = new Filters.GlowFilter();
+const asciiFilter = new Filters.AsciiFilter();
+// const bloomFilter = new Filters.GlowFilter();
+// const blurFilter = new Filters.BlurFilter();
+const zoomBlurFilter = require('@pixi/filter-zoom-blur');
+const bulgePinchFilter = require('@pixi/filter-bulge-pinch');
+// const colorMatricFilter = require('@pixi/filter-color-matrix');
+const colorReplaceFilter = require('@pixi/filter-color-replace');
+
 class PreviewBox extends Box {
 	emitter = null;
 	renderer = null;
@@ -82,6 +91,9 @@ class PreviewBox extends Box {
 
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
+		// let glow = new Filters.GlowFilter();
+		// this.filters.push(glow);
+		// console.log(this.filters[this.filters.indexOf(glow)]);
 
 		eval(emitterCode);
 		// if (this.particleTextures && this.particleTextures.length) {

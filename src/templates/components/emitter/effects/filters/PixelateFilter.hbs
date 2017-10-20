@@ -1,4 +1,3 @@
-{{#ifCond enabled true}}
 var pixelateFilter = new Filters.PixelateFilter();;
 if (this.filters.length < 1) {
   this.filters.push(pixelateFilter);
@@ -12,4 +11,3 @@ this.filters.forEach(function(filter) {
     that.filters.push(pixelateFilter)
   }
 });
-{{/ifCond}}

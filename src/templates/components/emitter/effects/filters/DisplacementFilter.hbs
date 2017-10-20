@@ -1,4 +1,3 @@
-{{#ifCond enabled true}}
 var displacementFilter = new Filters.DisplacementFilter();
 if (this.filters.length < 1) {
   this.filters.push(displacementFilter);
@@ -11,4 +10,3 @@ this.filters.forEach(function(filter) {
     that.filters.push(displacementFilter)
   }
 });
-{{/ifCond}}
