@@ -1,2 +1,14 @@
-var filter = new Filters.AsciiFilter({{size}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var asciiFilter = new Filters.AsciiFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(asciiFilter); 
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === asciiFilter) {
+    filter.size = {{size}};
+  }else {
+    that.filters.push(asciiFilter)
+  }
+});
+{{/ifCond}}

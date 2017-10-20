@@ -1,2 +1,15 @@
-var filter = new Filters.NoiseFilter({{noise}}, {{seed}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var noiseFilter = new Filters.NoiseFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(noiseFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === noiseFilter) {
+    filter.noise = {{noise}};
+    filter.seed = {{seed}};    
+  }else {
+    that.filters.push(noiseFilter)
+  }
+});
+{{/ifCond}}

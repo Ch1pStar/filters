@@ -1,2 +1,16 @@
-var filter = new Filters.ColorReplaceFilter({{originalColor}}, {{newColor}}, {{epsilon}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var colorReplaceFilter = new Filters.ColorReplaceFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(colorReplaceFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === colorReplaceFilter) {
+    filter.originalColor = '{{originalColor}}''
+    filter.newColor = '{{newColor}}'
+    filter.epsilon = {{epsilon}}
+  }else {
+    that.filters.push(colorReplaceFilter)
+  }
+});
+{{/ifCond}}

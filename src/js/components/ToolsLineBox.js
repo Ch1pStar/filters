@@ -3,10 +3,9 @@ const template = require('../../templates/ToolsLineBox.hbs');
 const jsflUtil = require('../../jsfl/util');
 
 class ToolsLineBox extends Box {
-
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
-		CLICK: 'tools_click',
+		CLICK: 'tools_click'
 	};
 
 	constructor(previewPanel, particleTexturesBox) {
@@ -31,19 +30,18 @@ class ToolsLineBox extends Box {
 	_attachAddButton() {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
 			const images = [...this.particleTexturesBox.images];
-			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
+			const imageNames = images.map(itm => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
 			const codeString = this.previewPanel.emitterState.actionScriptState;
 
-			if(!this.inFlash){
-				console.log(codeString);
-
+			if (!this.inFlash) {
+				console.log('execute generated code');
+				// eval(codeString);
 				return;
 			}
 
 			window.__adobe_cep__.evalScript(
-				jsflUtil.createEmitter(JSON.stringify(imageNames), 2,
-				this._prepareString(codeString)),
-				(a) => {
+				jsflUtil.createEmitter(JSON.stringify(imageNames), 2, this._prepareString(codeString)),
+				a => {
 					console.log(a);
 				}
 			);
@@ -54,16 +52,15 @@ class ToolsLineBox extends Box {
 		this.container.querySelector('.button.stop').addEventListener('click', () => {
 			const codeString = this.previewPanel.emitterState.emitterStopState;
 
-			if(!this.inFlash){
+			if (!this.inFlash) {
 				console.log(codeString);
 
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
-					console.log(a);
-				});
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+				console.log(a);
+			});
 		});
 	}
 
@@ -71,16 +68,15 @@ class ToolsLineBox extends Box {
 		this.container.querySelector('.button.start').addEventListener('click', () => {
 			const codeString = this.previewPanel.emitterState.emitterStartState;
 
-			if(!this.inFlash){
+			if (!this.inFlash) {
 				console.log(codeString);
 
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
-					console.log(a);
-				});
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+				console.log(a);
+			});
 		});
 	}
 
@@ -88,16 +84,15 @@ class ToolsLineBox extends Box {
 		this.container.querySelector('.button.destroy').addEventListener('click', () => {
 			const codeString = this.previewPanel.emitterState.emitterDestroyState;
 
-			if(!this.inFlash){
+			if (!this.inFlash) {
 				console.log(codeString);
 
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(
-				jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
-					console.log(a);
-				});
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+				console.log(a);
+			});
 		});
 	}
 

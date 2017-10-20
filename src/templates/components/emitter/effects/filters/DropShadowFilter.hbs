@@ -1,2 +1,18 @@
-var filter = new Filters.DropShadowFilter({{blur}}, {{alpha}}, {{distance}}, {{rotation}}, {{color}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var dropShadowFilter = new Filters.DropShadowFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(dropShadowFilter);
+}
+
+this.filters.forEach(function(filter) {
+  if (filter === dropShadowFilter) {
+    filter.blur = {{blur}};
+    filter.alpha = {{alpha}};
+    filter.distance = {{distance}};
+    filter.rotation = {{rotation}};
+    filter.color = '{{color}}';
+  }else {
+    that.filters.push(dropShadowFilter)
+  }
+});
+{{/ifCond}}

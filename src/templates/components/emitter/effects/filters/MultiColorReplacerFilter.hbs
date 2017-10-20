@@ -1,2 +1,20 @@
-var filter = new Filters.MultiColorReplaceFilter({{original0}},{{target0}},{{original1}},{{target1}},{{original2}},{{target2}},{{epsilon}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var multiColorReplaceFilter = new Filters.MultiColorReplaceFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(multiColorReplaceFilter);
+}
+
+this.filters.forEach(function(filter) {
+  if (filter === multiColorReplaceFilter) {
+    filter.original0 = '{{original0}}';
+    filter.target0 = '{{target0}}';
+    filter.original1 = '{{original1}}';
+    filter.target1 = '{{target1}}';
+    filter.original2 = '{{original2}}';
+    filter.target2 = '{{target2}}';
+    filter.epsilon = {{epsilon}};
+  }else {
+    that.filters.push(multiColorReplaceFilter)
+  }
+});
+{{/ifCond}}

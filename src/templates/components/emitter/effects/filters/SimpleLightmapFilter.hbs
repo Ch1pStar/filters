@@ -1,2 +1,17 @@
-var filter = new Filters.SimpleLightmapFilter({{color}}, {{alpha}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var simpleLightmapFilter = new Filters.SimpleLightmapFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(simpleLightmapFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === simpleLightmapFilter) {
+    filter.time = '{{color}}';
+    filter.centerX = {{alpha}}; 
+    
+      
+  }else {
+    that.filters.push(simpleLightmapFilter)
+  }
+});
+{{/ifCond}}

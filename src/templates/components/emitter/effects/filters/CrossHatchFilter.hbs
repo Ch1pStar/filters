@@ -1,2 +1,9 @@
-var filter = new Filters.CrossHatchFilter());
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var convolutionFilter = new Filters.ConvolutionFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(convolutionFilter);
+}
+  
+  this.filters.push(convolutionFilter)
+});
+{{/ifCond}}

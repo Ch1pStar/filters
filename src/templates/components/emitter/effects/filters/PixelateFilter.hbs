@@ -1,2 +1,15 @@
-var filter = new Filters.PixelateFilter({{sizeX}}, {{sizeY}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var pixelateFilter = new Filters.PixelateFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(pixelateFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === pixelateFilter) {
+    filter.sizeX = {{sizeX}};
+    filter.sizeY = {{sizeY}};    
+  }else {
+    that.filters.push(pixelateFilter)
+  }
+});
+{{/ifCond}}

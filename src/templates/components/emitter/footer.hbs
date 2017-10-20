@@ -1,6 +1,10 @@
+
+
+this.stage.filters = this.filters
+
+
 emitterZoneEmitter.p.x = 100;
 emitterZoneEmitter.p.y = 100;
-
 window.emitterZoneEmitter = emitterZoneEmitter;
 emitterZoneEmitter.particleCreated.add(function(particle){
 	if(particle.sprite){
@@ -33,3 +37,4 @@ emitterZoneEmitter.particleDead.add(function(particle){
 
 var emitters = this.emitters = this.emitters || [];
 emitters.push(this.emitterZoneEmitter);
+

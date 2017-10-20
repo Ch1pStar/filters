@@ -92,7 +92,7 @@ class InputStateManager {
 			color: { label: 'color' }
 		},
 		TwistFilter: {
-			label: 'DropShadowFilter',
+			label: 'TwistFilter',
 			enabled: { label: 'enabled', checked: false },
 			angle: { label: 'Angle', min: 0, max: 10, value: 5 },
 			radius: { label: 'Radius', min: 0, max: 1920, value: 500 },

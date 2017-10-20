@@ -1,7 +1,8 @@
 const Group = require('./abstract/Group');
 const InputRange = require('dope-components').InputRange;
+const Folder = require('dope-components').Folder;
 
-class VelocityGroup extends Group {
+class VelocityGroup extends Folder {
 	_initInput() {
 		const speed = (this.speedInput = new InputRange());
 		const minAngle = (this.minAngleInput = new InputRange());

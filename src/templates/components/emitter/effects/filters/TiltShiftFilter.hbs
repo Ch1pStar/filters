@@ -1,2 +1,15 @@
-var filter = new Filters.TiltShiftFilter({{blur}}, {{gradientBlur}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var tiltShiftFilter = new Filters.TiltShiftFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(tiltShiftFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === tiltShiftFilter) {
+    filter.blur = '{{blur}}';
+    filter.gradientBlur = {{gradientBlur}};       
+  }else {
+    that.filters.push(tiltShiftFilter)
+  }
+});
+{{/ifCond}}

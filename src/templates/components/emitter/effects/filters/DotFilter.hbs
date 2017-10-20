@@ -1,2 +1,15 @@
-var filter = new Filters.DotFilter({{scale}},{{angle}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var dotFilter = new Filters.DotFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(dotFilter);
+}
+
+this.filters.forEach(function(filter) {
+  if (filter === dotFilter) {
+    filter.scale = {{scale}};
+    filter.angle = {{angle}};
+  }else {
+    that.filters.push(dotFilter)
+  }
+});
+{{/ifCond}}

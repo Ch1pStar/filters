@@ -1,2 +1,17 @@
-var filter = new Filters.ShockwaveFilter({{time}}, {{centerX}}, {{centerY}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var shockwaveFilter = new Filters.ShockwaveFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(shockwaveFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === shockwaveFilter) {
+    filter.time = {{time}};
+    filter.centerX = {{centerX}}; 
+    filter.centerY = {{centerY}}; 
+      
+  }else {
+    that.filters.push(shockwaveFilter)
+  }
+});
+{{/ifCond}}

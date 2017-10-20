@@ -1,2 +1,15 @@
-var filter = new Filters.ConvolutionFilter({{width}}, {{height}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var convolutionFilter = new Filters.ConvolutionFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(convolutionFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === convolutionFilter) {
+    filter.width = {{width}};
+    filter.height = {{height}};    
+  }else {
+    that.filters.push(convolutionFilter)
+  }
+});
+{{/ifCond}}

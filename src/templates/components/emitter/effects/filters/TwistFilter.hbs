@@ -1,2 +1,17 @@
-var filter = new Filters.TwistFilter({{angle}}, {{radius}}, {{x}}, {{y}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var twistFilter = new Filters.TwistFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(twistFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === twistFilter) {
+    filter.angle = {{angle}};
+    filter.radius = {{radius}};      
+    filter.x = {{x}};      
+    filter.y = {{y}};       
+  }else {
+    that.filters.push(twistFilter)
+  }
+});
+{{/ifCond}}

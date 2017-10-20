@@ -21,6 +21,7 @@ class PreviewBox extends Box {
 		this._startEmit = this._startEmit.bind(this);
 		this._stopEmit = this._stopEmit.bind(this);
 		this._updateCursorPosition = this._updateCursorPosition.bind(this);
+		this.filters = [];
 
 		requestAnimationFrame(() => {
 			this.render();
@@ -31,7 +32,6 @@ class PreviewBox extends Box {
 
 	set effects(effects) {
 		this.emitterState.effects = effects;
-
 		this._createEmitter();
 	}
 
@@ -83,11 +83,12 @@ class PreviewBox extends Box {
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
 
-		if (this.particleTextures && this.particleTextures.length) {
-			eval(emitterCode);
-			this.emitter = this.emitterZoneEmitter;
-			this.emitter.emit();
-		}
+		eval(emitterCode);
+		// if (this.particleTextures && this.particleTextures.length) {
+
+		// 	this.emitter = this.emitterZoneEmitter;
+		// 	this.emitter.emit();
+		// }
 	}
 
 	_startRender() {

@@ -1,2 +1,14 @@
-var filter = new Filters.DisplacementFilter({{scaleX}}, {{scaleY}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var displacementFilter = new Filters.DisplacementFilter();
+if (this.filters.length < 1) {
+  this.filters.push(displacementFilter);
+}
+
+this.filters.forEach(function(filter) {
+  if (filter === displacementFilter) {
+    filter.size = {{size}};
+  }else {
+    that.filters.push(displacementFilter)
+  }
+});
+{{/ifCond}}

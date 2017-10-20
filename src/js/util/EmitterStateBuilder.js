@@ -80,7 +80,7 @@ class EmitterStateBuilder {
 	constructor() {}
 
 	set effects(effects) {
-		console.log(this.effectTemplates);
+		// console.log(this.effectTemplates);
 		let bodyStr = '';
 		this._effects = effects;
 		for (const effect in effects) {
@@ -88,9 +88,12 @@ class EmitterStateBuilder {
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
+		// console.log(bodyStr);
+
 		this.emitterTemplate.head = headTemplate(effects);
 		this.emitterTemplate.body = bodyStr;
 		this.emitterTemplate.footer = footerTemplate(effects);
+		// console.log(this.emitterTemplate);
 	}
 
 	get previewState() {

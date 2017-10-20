@@ -1,2 +1,17 @@
-var filter = new Filters.ZoomBlurFilter({{strength}}, {{cemterX}}, {{centerY}}, {{innerRadius}}));
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var twistFilter = new Filters.TwistFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(twistFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === twistFilter) {
+    filter.strength = {{strength}};
+    filter.centerX = {{centerX}};      
+    filter.centerY = {{centerY}};      
+    filter.innerRadius = {{innerRadius}};       
+  }else {
+    that.filters.push(twistFilter)
+  }
+});
+{{/ifCond}}

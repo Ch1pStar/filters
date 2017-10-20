@@ -1,2 +1,17 @@
-var filter = new Filters.BulgePinchFilter({{radius}}, {{strength}}, {{centerX}}, {{centerY}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var bulgePinchFilter = new Filters.BulgePinchFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(bulgePinchFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  
+  if (filter === bulgePinchFilter) {
+    filter.blur = {{blur}};
+    filter.blurX = {{blurX}};
+    filter.blurY = {{blurY}};
+  } else {
+    that.filters.push(bulgePinchFilter)
+  }
+});
+{{/ifCond}}

@@ -1,2 +1,24 @@
-var filter = new Filters.ColorMatrixFilter({{reset}}, {{sepia}}, {{negative}}, {{kodachrome}}, {{lsd}},{{polaroid}},{{desaturate}},{{contrast}},{{greyscale}},{{predator}},{{saturate}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var colorMatrixFilter = new Filters.ColorMatrixFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(colorMatrixFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  if (filter === colorMatrixFilter) {
+    filter.reset = {{reset}};
+    filter.sepia = {{sepia}};
+    filter.negative = {{negative}};
+    filter.kodachrome = {{kodachrome}};
+    filter.lsd = {{lsd}};
+    filter.polaroid = {{polaroid}};
+    filter.desaturate = {{desaturate}};
+    filter.contrast = {{contrast}};
+    filter.greyscale = {{greyscale}};
+    filter.predator = {{predator}};
+    filter.saturate = {{saturate}};
+  }else {
+    that.filters.push(colorMatrixFilter)
+  }
+});
+{{/ifCond}}

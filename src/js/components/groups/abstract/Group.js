@@ -1,5 +1,6 @@
 const InputRange = require('dope-components').InputRange;
 const EventEmitter = require('eventemitter4');
+const Folder = require('dope-components').Folder;
 
 class Group extends EventEmitter {
 	static events = {

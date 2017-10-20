@@ -1,2 +1,17 @@
-var filter = new Filters.BloomFilter({{blur}}, {{blurX}}, {{blurY}});
-this.stage.filters = [filter];
+{{#ifCond enabled true}}
+var bloomFilter = new Filters.GlowFilter();;
+if (this.filters.length < 1) {
+  this.filters.push(bloomFilter);
+}
+var that = this;
+this.filters.forEach(function(filter) {
+  
+  if (filter === bloomFilter) {
+    filter.blur = {{blur}};
+    filter.blurX = {{blurX}};
+    filter.blurY = {{blurY}};
+  } else {
+    that.filters.push(bloomFilter)
+  }
+});
+{{/ifCond}}
