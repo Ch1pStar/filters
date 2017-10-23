@@ -1,18 +1,3 @@
-var godrayFilter = new Filters.GodrayFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(godrayFilter);
-}
-
-this.filters.forEach(function(filter) {
-  if (filter === godrayFilter) {
-    filter.time = {{time}}
-    filter.angle = {{angle}}
-    filter.gain = {{gain}}
-    filter.lacunarity = {{lacunarity}}
-  }else {
-    that.filters.push(godrayFilter)
-  }
-});
 
     if (this.filters.indexOf(godrayFilter) === -1) {
       this.filters.push(godrayFilter);
