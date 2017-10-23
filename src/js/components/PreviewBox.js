@@ -22,6 +22,7 @@ const dropShadowFilter = new PIXI.filters.DropShadowFilter();
 const embossFilter = new Filters.EmbossFilter();
 const godrayFilter = new Filters.GodrayFilter();
 // const multiColorReplaceFilter = new PIXI.filters.MultiColorReplaceFilter();
+const noiseFilter = new PIXI.filters.NoiseFilter();
 const outlineFilter = new Filters.OutlineFilter();
 const pixelateFilter = new Filters.PixelateFilter();
 const rgbSplitFilter = new Filters.RGBSplitFilter();

@@ -1,13 +1,6 @@
-var noiseFilter = new Filters.NoiseFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(noiseFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === noiseFilter) {
-    filter.noise = {{noise}};
-    filter.seed = {{seed}};    
-  }else {
-    that.filters.push(noiseFilter)
-  }
-});
+
+    if (this.filters.indexOf(noiseFilter) === -1) {
+      this.filters.push(noiseFilter);
+    }
+    this.filters[this.filters.indexOf(noiseFilter)].noise = {{noise}};
+    this.filters[this.filters.indexOf(noiseFilter)].seed = {{seed}};
