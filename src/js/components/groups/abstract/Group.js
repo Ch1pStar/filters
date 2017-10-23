@@ -46,7 +46,6 @@ class Group extends EventEmitter {
 			// Component.events.UPDATE_STATE
 			input.on(Component.events.UPDATE_STATE, e => {
 				this.emit(Group.events.CHANGE, e);
-				console.log(this);
 			});
 
 			cnt.appendChild(input.container);

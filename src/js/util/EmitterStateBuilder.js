@@ -18,7 +18,7 @@ const ConvolutionFilter = require('../../templates/components/emitter/effects/fi
 const CrossHatchFilter = require('../../templates/components/emitter/effects/filters/CrossHatchFilter.hbs');
 const DisplacementFilter = require('../../templates/components/emitter/effects/filters/DisplacementFilter.hbs');
 const DotFilter = require('../../templates/components/emitter/effects/filters/DotFilter.hbs');
-const DropshadowFilter = require('../../templates/components/emitter/effects/filters/DropshadowFilter.hbs');
+const DropShadowFilter = require('../../templates/components/emitter/effects/filters/DropShadowFilter.hbs');
 const EmbossFilter = require('../../templates/components/emitter/effects/filters/EmbossFilter.hbs');
 const GlowFilter = require('../../templates/components/emitter/effects/filters/GlowFilter.hbs');
 const GodrayFilter = require('../../templates/components/emitter/effects/filters/GodrayFilter.hbs');
@@ -45,7 +45,7 @@ class EmitterStateBuilder {
 		CrossHatchFilter,
 		DisplacementFilter,
 		DotFilter,
-		DropshadowFilter,
+		DropShadowFilter,
 		EmbossFilter,
 		GlowFilter,
 		GodrayFilter,
@@ -80,7 +80,6 @@ class EmitterStateBuilder {
 	constructor() {}
 
 	set effects(effects) {
-		// console.log(this.effectTemplates);
 		let bodyStr = '';
 		this._effects = effects;
 		for (const effect in effects) {
@@ -88,12 +87,11 @@ class EmitterStateBuilder {
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
-		// console.log(bodyStr);
+		console.log(bodyStr);
 
 		this.emitterTemplate.head = headTemplate(effects);
 		this.emitterTemplate.body = bodyStr;
 		this.emitterTemplate.footer = footerTemplate(effects);
-		// console.log(this.emitterTemplate);
 	}
 
 	get previewState() {
