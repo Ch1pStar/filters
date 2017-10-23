@@ -3,12 +3,14 @@ const EventEmitter = require('eventemitter4');
 const Folder = require('dope-components').Folder;
 const Component = require('dope-components').Component;
 
-class Group extends Folder {
+class Group extends EventEmitter {
 	static events = {
 		// ...InputRange.events,
 		ADD: 'add',
 		CHANGE: 'change'
 	};
+
+	container = null;
 
 	/**
 	 * @param {Panel} panel The panel this component is attatched to
@@ -22,11 +24,17 @@ class Group extends Folder {
 		this.label = options.label;
 
 		this.container = document.createElement('div');
-		this.container.className = 'folder-component-container input-group-component-container';
+		this.container.className = 'input-group-component-container';
 
 		const input = (this.input = new InputRange());
+
 		this.inputs = [input];
+
 		this._initInput();
+	}
+
+	setState() {
+		this.input.setState({ ...this.options });
 	}
 
 	_initInput() {
@@ -34,6 +42,8 @@ class Group extends Folder {
 		const inputs = this.inputs;
 
 		inputs.forEach(input => {
+			// Component.UPDATE_STATE
+			// Component.events.UPDATE_STATE
 			input.on(Component.events.UPDATE_STATE, e => {
 				this.emit(Group.events.CHANGE, e);
 			});

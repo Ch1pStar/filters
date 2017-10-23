@@ -10,16 +10,19 @@ class GlowFilter extends Group {
 		const outerStrength = (this.outerStrengthInput = new InputRange());
 		const distance = (this.distanceInput = new InputRange());
 		const color = (this.colorInput = new InputColor());
-		const state = this.options;
+		const quality = (this.qualityInput = new InputRange());
+		this.inputs = [enabled, innerStrength, outerStrength, distance, color, quality];
+		super._initInput();
+	}
 
-		this.inputs = [enabled, innerStrength, outerStrength, distance, color];
+	setState() {
+		const state = this.options;
 		this.enabledInput.setState(state.enabled);
 		this.innerStrengthInput.setState(state.innerStrength);
 		this.outerStrengthInput.setState(state.outerStrength);
 		this.distanceInput.setState(state.distance);
 		this.colorInput.setState(state.colorInput);
-
-		super._initInput();
+		this.qualityInput.setState(state.quality);
 	}
 
 	get fields() {
@@ -28,7 +31,8 @@ class GlowFilter extends Group {
 			innerStrength: this.innerStrengthInput.state.value,
 			outerStrength: this.outerStrengthInput.state.value,
 			distance: this.distanceInput.state.value,
-			color: this.colorInput.state.value
+			color: this.colorInput.state.value,
+			quality: this.qualityInput.state.value
 		};
 	}
 
@@ -38,7 +42,8 @@ class GlowFilter extends Group {
 			innerStrength: this.innerStrengthInput.state,
 			outerStrength: this.outerStrengthInput.state,
 			distance: this.distanceInput.state,
-			color: this.colorInput.state
+			color: this.colorInput.state,
+			quality: this.qualityInput.state
 		};
 	}
 }

@@ -189,6 +189,7 @@ class EffetcsBox extends Box {
 				for (let groupState in savedState) {
 					this._addGroup(new this.inputGroups[groupState](savedState[groupState]));
 				}
+				console.log(savedState);
 				this.emitGroupsState();
 			});
 

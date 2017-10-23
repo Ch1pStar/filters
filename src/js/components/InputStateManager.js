@@ -41,7 +41,8 @@ class InputStateManager {
 			innerStrength: { label: 'Inner Strength', min: 0, max: 20, value: 10, step: 0.01 },
 			outerStrength: { label: 'Outer Strength', min: 0, max: 20, value: 10, step: 0.01 },
 			distance: { label: 'Distance', min: 0, max: 20, value: 10, step: 0.01 },
-			color: { label: 'Color' }
+			color: { label: 'Color' },
+			quality: { label: 'Quality', min: 0, max: 20, value: 10, step: 0.01 }
 		},
 		DisplacementFilter: {
 			label: 'DisplacementFilter',
