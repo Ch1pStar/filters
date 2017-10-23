@@ -111,7 +111,7 @@ class InputStateManager {
 			angle: { label: 'Angle', min: 0, max: 5, value: 5, step: 0.01 }
 		},
 		EmbossFilter: {
-			label: 'EmbrossFilter',
+			label: 'EmbossFilter',
 			enabled: { label: 'enabled' },
 			strength: { label: 'strength', min: 0, max: 20, value: 10, step: 0.01 }
 		},

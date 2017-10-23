@@ -19,7 +19,7 @@ const CrossHatchFilter = require('../../templates/components/emitter/effects/fil
 const DisplacementFilter = require('../../templates/components/emitter/effects/filters/DisplacementFilter.hbs');
 const DotFilter = require('../../templates/components/emitter/effects/filters/DotFilter.hbs');
 const DropshadowFilter = require('../../templates/components/emitter/effects/filters/DropshadowFilter.hbs');
-const EmbrossFilter = require('../../templates/components/emitter/effects/filters/EmbrossFilter.hbs');
+const EmbossFilter = require('../../templates/components/emitter/effects/filters/EmbossFilter.hbs');
 const GlowFilter = require('../../templates/components/emitter/effects/filters/GlowFilter.hbs');
 const GodrayFilter = require('../../templates/components/emitter/effects/filters/GodrayFilter.hbs');
 const MultiColorReplacerFilter = require('../../templates/components/emitter/effects/filters/MultiColorReplacerFilter.hbs');
@@ -46,7 +46,7 @@ class EmitterStateBuilder {
 		DisplacementFilter,
 		DotFilter,
 		DropshadowFilter,
-		EmbrossFilter,
+		EmbossFilter,
 		GlowFilter,
 		GodrayFilter,
 		MultiColorReplacerFilter,

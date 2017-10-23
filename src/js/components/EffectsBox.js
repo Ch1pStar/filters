@@ -17,7 +17,7 @@ const DropShadowFilter = require('./groups/filters/DropShadowFilter');
 const TwistFilter = require('./groups/filters/TwistFilter');
 const AsciiFilter = require('./groups/filters/AsciiFilter');
 const DotFilter = require('./groups/filters/DotFilter');
-const EmbrossFilter = require('./groups/filters/EmbrossFilter');
+const EmbossFilter = require('./groups/filters/EmbossFilter');
 const PixelateFilter = require('./groups/filters/PixelateFilter');
 const RGBSplitFilter = require('./groups/filters/RGBSplitFilter');
 const CrossHatchFilter = require('./groups/filters/CrossHatchFilter');
@@ -55,7 +55,7 @@ class EffetcsBox extends Box {
 		TwistFilter,
 		AsciiFilter,
 		DotFilter,
-		EmbrossFilter,
+		EmbossFilter,
 		PixelateFilter,
 		RGBSplitFilter,
 		CrossHatchFilter,
@@ -237,29 +237,27 @@ class EffetcsBox extends Box {
 
 module.exports = EffetcsBox;
 
-
-
-AsciiFilter
-BloomFilter
-BlurFilter
-BulgePinchFilter
-ColorMatrixFilter
-ColorReplaceFilter
-ConvolutionFilter
-CrossHatchFilter
-DisplacementFilter
-DotFilter
-DropShadowFilter
-EmbrossFilter
-GlowFilter
-GodrayFilter
-MultiColorReplaceFilter
-NoiseFilter
-OutlineFilter
-PixelateFilter
-RGBSplitFilter
-ShockwaveFilter
-SimpleLightmapFilter
-TiltShiftFilter
-TwistFilter
-ZoomBlurFilter
+AsciiFilter;
+BloomFilter;
+BlurFilter;
+BulgePinchFilter;
+ColorMatrixFilter;
+ColorReplaceFilter;
+ConvolutionFilter;
+CrossHatchFilter;
+DisplacementFilter;
+DotFilter;
+DropShadowFilter;
+EmbossFilter;
+GlowFilter;
+GodrayFilter;
+MultiColorReplaceFilter;
+NoiseFilter;
+OutlineFilter;
+PixelateFilter;
+RGBSplitFilter;
+ShockwaveFilter;
+SimpleLightmapFilter;
+TiltShiftFilter;
+TwistFilter;
+ZoomBlurFilter;
