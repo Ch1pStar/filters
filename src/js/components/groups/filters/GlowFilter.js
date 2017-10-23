@@ -10,17 +10,16 @@ class GlowFilter extends Group {
 		const outerStrength = (this.outerStrengthInput = new InputRange());
 		const distance = (this.distanceInput = new InputRange());
 		const color = (this.colorInput = new InputColor());
-		this.inputs = [enabled, innerStrength, outerStrength, distance, color];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, innerStrength, outerStrength, distance, color];
 		this.enabledInput.setState(state.enabled);
 		this.innerStrengthInput.setState(state.innerStrength);
 		this.outerStrengthInput.setState(state.outerStrength);
 		this.distanceInput.setState(state.distance);
 		this.colorInput.setState(state.colorInput);
+
+		super._initInput();
 	}
 
 	get fields() {

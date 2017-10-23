@@ -15,7 +15,7 @@ const bulgePinchFilter = new Filters.BulgePinchFilter();
 // const colorMatricFilter = new Filters.ColorMatrixFilter()
 const colorReplaceFilter = new Filters.ColorReplaceFilter();
 const convolutionFilter = new Filters.ConvolutionFilter();
-const crossHatchFilter = new Filters.CrossHatchFilter();
+const crossHatchFilter = new PIXI.filters.CrossHatchFilter();
 const dotFilter = new Filters.DotFilter();
 // const displacementFilter = new PIXI.filters.DisplacementFilter();
 const dropShadowFilter = new PIXI.filters.DropShadowFilter();
@@ -81,7 +81,7 @@ class PreviewBox extends Box {
 		bgSprite.y = bgSprite.height > this.previewHeight ? 0 : (this.previewHeight - bgSprite.height) / 2;
 		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
-		console.log(bgSprite.texture);
+		// console.log(bgSprite.texture);
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}

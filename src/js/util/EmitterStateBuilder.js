@@ -87,7 +87,7 @@ class EmitterStateBuilder {
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
-		console.log(bodyStr);
+		// console.log(bodyStr);
 
 		this.emitterTemplate.head = headTemplate(effects);
 		this.emitterTemplate.body = bodyStr;
