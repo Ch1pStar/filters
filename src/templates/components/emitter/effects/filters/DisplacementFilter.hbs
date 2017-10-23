@@ -1,12 +1,6 @@
-var displacementFilter = new Filters.DisplacementFilter();
-if (this.filters.length < 1) {
-  this.filters.push(displacementFilter);
-}
 
-this.filters.forEach(function(filter) {
-  if (filter === displacementFilter) {
-    filter.size = {{size}};
-  }else {
-    that.filters.push(displacementFilter)
-  }
-});
+    if (this.filters.indexOf(displacementFilter) === -1) {
+      this.filters.push(displacementFilter);
+    } 
+      this.filters[this.filters.indexOf(displacementFilter)].scaleX = {{scaleX}};      
+      this.filters[this.filters.indexOf(displacementFilter)].scaleY = {{scaleY}};

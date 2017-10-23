@@ -12,11 +12,23 @@ const asciiFilter = new Filters.AsciiFilter();
 // const blurFilter = new Filters.BlurFilter();
 const zoomBlurFilter = new Filters.ZoomBlurFilter();
 const bulgePinchFilter = new Filters.BulgePinchFilter();
-// const colorMatricFilter = require('@pixi/filter-color-matrix');
+// const colorMatricFilter = new Filters.ColorMatrixFilter()
 const colorReplaceFilter = new Filters.ColorReplaceFilter();
 const convolutionFilter = new Filters.ConvolutionFilter();
 const crossHatchFilter = new Filters.CrossHatchFilter();
 const dotFilter = new Filters.DotFilter();
+//const displacementFilter = new PIXI.filters.DisplacementFilter();
+const dropShadowFilter = new Filters.DropShadowFilter();
+const embossFilter = new Filters.EmbossFilter();
+const godrayFilter = new Filters.GodrayFilter();
+//const multiColorReplaceFilter = new Filters.MultiColorReplaceFilter();
+const outlineFilter = new Filters.OutlineFilter();
+const pixelateFilter = new Filters.PixelateFilter();
+const rgbSplitFilter = new Filters.RGBSplitFilter();
+const shockwaveFilter = new Filters.ShockwaveFilter();
+const simpleLightmapFilter = new Filters.SimpleLightmapFilter();
+const tiltShiftFilter = new Filters.TiltShiftFilter();
+const twistFilter = new Filters.TwistFilter();
 
 class PreviewBox extends Box {
 	emitter = null;
@@ -62,13 +74,14 @@ class PreviewBox extends Box {
 
 	set backgroundImage(image) {
 		const background = this.background;
-		const bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image)));
+		const bgSprite = (this.bgSprite = new PIXI.Sprite(new PIXI.Texture(new PIXI.BaseTexture(image))));
 
 		bgSprite.width = this.previewWidth;
 		bgSprite.x = bgSprite.width > this.previewWidth ? 0 : (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = bgSprite.height > this.previewHeight ? 0 : (this.previewHeight - bgSprite.height) / 2;
 		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
+		console.log(bgSprite.texture);
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}
@@ -94,9 +107,6 @@ class PreviewBox extends Box {
 
 	_createEmitter() {
 		const emitterCode = this.emitterState.previewState;
-		// let glow = new Filters.GlowFilter();
-		// this.filters.push(glow);
-		// console.log(this.filters[this.filters.indexOf(glow)]);
 
 		eval(emitterCode);
 		// if (this.particleTextures && this.particleTextures.length) {

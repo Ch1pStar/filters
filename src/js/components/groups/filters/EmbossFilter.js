@@ -2,7 +2,7 @@ const Group = require('../abstract/Group');
 const InputRange = require('dope-components').InputRange;
 const Checkbox = require('dope-components').Checkbox;
 
-class EmbrossFilter extends Group {
+class EmbossFilter extends Group {
 	_initInput() {
 		const enabled = (this.enabledInput = new Checkbox());
 		const strength = (this.strengthInput = new InputRange());
@@ -31,4 +31,4 @@ class EmbrossFilter extends Group {
 	}
 }
 
-module.exports = EmbrossFilter;
+module.exports = EmbossFilter;

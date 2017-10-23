@@ -1,13 +1,6 @@
-var pixelateFilter = new Filters.PixelateFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(pixelateFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === pixelateFilter) {
-    filter.sizeX = {{sizeX}};
-    filter.sizeY = {{sizeY}};    
-  }else {
-    that.filters.push(pixelateFilter)
-  }
-});
+
+    if (this.filters.indexOf(pixelateFilter) === -1) {
+      this.filters.push(pixelateFilter);
+    }
+    this.filters[this.filters.indexOf(pixelateFilter)].sizeX = {{sizeX}};
+    this.filters[this.filters.indexOf(pixelateFilter)].sizeY = {{sizeY}};

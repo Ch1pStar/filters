@@ -1,15 +1,8 @@
-var shockwaveFilter = new Filters.ShockwaveFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(shockwaveFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === shockwaveFilter) {
-    filter.time = {{time}};
-    filter.centerX = {{centerX}}; 
-    filter.centerY = {{centerY}}; 
-      
-  }else {
-    that.filters.push(shockwaveFilter)
-  }
-});
+
+
+    if (this.filters.indexOf(shockwaveFilter) === -1) {
+      this.filters.push(shockwaveFilter);
+    }
+    this.filters[this.filters.indexOf(shockwaveFilter)].time = {{time}};
+    this.filters[this.filters.indexOf(shockwaveFilter)].center[0] = {{centerX}};
+    this.filters[this.filters.indexOf(shockwaveFilter)].center[1] = {{centerY}};

@@ -1,12 +1,4 @@
-var embrossFilter = new Filters.EmbrossFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(embrossFilter);
-}
-
-this.filters.forEach(function(filter) {
-  if (filter === embrossFilter) {
-    filter.strength = {{strength}}
-  }else {
-    that.filters.push(embrossFilter)
-  }
-});
+    if (this.filters.indexOf(embossFilter) === -1) {
+      this.filters.push(embossFilter);
+    } 
+      this.filters[this.filters.indexOf(embossFilter)].strength = {{strength}};      

@@ -1,18 +1,10 @@
-var multiColorReplaceFilter = new Filters.MultiColorReplaceFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(multiColorReplaceFilter);
-}
 
-this.filters.forEach(function(filter) {
-  if (filter === multiColorReplaceFilter) {
-    filter.original0 = '{{original0}}';
-    filter.target0 = '{{target0}}';
-    filter.original1 = '{{original1}}';
-    filter.target1 = '{{target1}}';
-    filter.original2 = '{{original2}}';
-    filter.target2 = '{{target2}}';
-    filter.epsilon = {{epsilon}};
-  }else {
-    that.filters.push(multiColorReplaceFilter)
-  }
-});
+    if (this.filters.indexOf(multiColorReplaceFilter) === -1) {
+      this.filters.push(multiColorReplaceFilter);
+    }
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original0 = {{original0}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target0 = {{target0}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original1 = {{original1}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target1 = {{target1}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original2 = {{original2}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target2 = {{target2}};

@@ -1,17 +1,10 @@
-var RGBSplitFilter = new Filters.RGBSplitFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(RGBSplitFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === RGBSplitFilter) {
-    filter.redX = {{redX}};
-    filter.redY = {{redY}}; 
-    filter.blueX = {{blueX}}; 
-    filter.blueY = {{blueY}}; 
-    filter.greenX = {{greenX}}; 
-    filter.greenY = {{greenY}};    
-  }else {
-    that.filters.push(RGBSplitFilter)
-  }
-});
+
+    if (this.filters.indexOf(rgbSplitFilter) === -1) {
+      this.filters.push(rgbSplitFilter);
+    }
+    this.filters[this.filters.indexOf(rgbSplitFilter)].redX = {{redX}};
+    this.filters[this.filters.indexOf(rgbSplitFilter)].redY = {{redY}};
+    his.filters[this.filters.indexOf(rgbSplitFilter)].blueX = {{blueX}};
+    this.filters[this.filters.indexOf(rgbSplitFilter)].blueY = {{blueY}};
+    his.filters[this.filters.indexOf(rgbSplitFilter)].greenX = {{greenX}};
+    this.filters[this.filters.indexOf(rgbSplitFilter)].greenY = {{greenY}};

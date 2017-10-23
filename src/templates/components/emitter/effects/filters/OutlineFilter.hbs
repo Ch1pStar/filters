@@ -1,13 +1,5 @@
-var outlineFilter = new Filters.OutlineFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(outlineFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === outlineFilter) {
-    filter.thickness = {{thickness}};
-    filter.color = '{{color}}';    
-  }else {
-    that.filters.push(outlineFilter)
-  }
-});
+    if (this.filters.indexOf(outlineFilter) === -1) {
+      this.filters.push(outlineFilter);
+    }
+    this.filters[this.filters.indexOf(outlineFilter)].thickness = {{thickness}};
+    this.filters[this.filters.indexOf(outlineFilter)].color = '{{color}}';

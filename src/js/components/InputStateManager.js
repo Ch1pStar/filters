@@ -38,28 +38,28 @@ class InputStateManager {
 		GlowFilter: {
 			label: 'GlowFilter',
 			enabled: { label: 'enabled' },
-			innerStrength: { label: 'Inner Strength', min: 0, max: 20, value: 10 },
-			outerStrength: { label: 'Outer Strength', min: 0, max: 20, value: 10 },
-			distance: { label: 'Distance', min: 0, max: 20, value: 10 },
+			innerStrength: { label: 'Inner Strength', min: 0, max: 20, value: 10, step: 0.01 },
+			outerStrength: { label: 'Outer Strength', min: 0, max: 20, value: 10, step: 0.01 },
+			distance: { label: 'Distance', min: 0, max: 20, value: 10, step: 0.01 },
 			color: { label: 'Color' }
 		},
 		DisplacementFilter: {
 			label: 'DisplacementFilter',
 			enabled: { label: 'enabled' },
-			scaleX: { label: 'scale.x', min: 1, max: 200 },
-			scaleY: { label: 'scale.y', min: 1, max: 200 }
+			scaleX: { label: 'scale.x', min: 1, max: 200, step: 0.01 },
+			scaleY: { label: 'scale.y', min: 1, max: 200, step: 0.01 }
 		},
 		BlurFilter: {
 			label: 'BlurFilter',
 			enabled: { label: 'enabled' },
-			blur: { label: 'Blur', min: 1, max: 100 },
-			quality: { label: 'Quality', min: 1, max: 10 }
+			blur: { label: 'Blur', min: 1, max: 100, step: 0.01 },
+			quality: { label: 'Quality', min: 1, max: 10, step: 0.01 }
 		},
 		NoiseFilter: {
 			label: 'NoiseFilter',
 			enabled: { label: 'enabled' },
-			noise: { label: 'Noise', min: 0, max: 1 },
-			seed: { label: 'Seed', min: 0, max: 1 }
+			noise: { label: 'Noise', min: 0, max: 1, step: 0.01 },
+			seed: { label: 'Seed', min: 0, max: 1, step: 0.01 }
 		},
 		ColorMatrixFilter: {
 			label: 'ColorMatrixFilter',
@@ -79,57 +79,57 @@ class InputStateManager {
 		OutlineFilter: {
 			label: 'OutlineFilter',
 			enabled: { label: 'enabled' },
-			thickness: { label: 'thickness', min: 0, max: 20, value: 10 },
+			thickness: { label: 'thickness', min: 0, max: 20, value: 10, step: 0.01 },
 			color: { label: 'color' }
 		},
 		DropShadowFilter: {
 			label: 'DropShadowFilter',
 			enabled: { label: 'enabled' },
-			blur: { label: 'Blur', min: 1, max: 40, value: 10 },
-			alpha: { label: 'Alpha', min: 0, max: 1, value: 0.5 },
-			distance: { label: 'Distance', min: 0, max: 50, value: 0.5 },
-			rotation: { label: 'Rotation', min: 0, max: 360, value: 10 },
+			blur: { label: 'Blur', min: 1, max: 40, value: 10, step: 0.01 },
+			alpha: { label: 'Alpha', min: 0, max: 1, value: 0.5, step: 0.01 },
+			distance: { label: 'Distance', min: 0, max: 50, value: 0.5, step: 0.01 },
+			rotation: { label: 'Rotation', min: 0, max: 360, value: 10, step: 0.01 },
 			color: { label: 'color' }
 		},
 		TwistFilter: {
 			label: 'TwistFilter',
-			enabled: { label: 'enabled' },
-			angle: { label: 'Angle', min: 0, max: 10, value: 5 },
-			radius: { label: 'Radius', min: 0, max: 1920, value: 500 },
-			x: { label: 'x', min: 0, max: 1920, value: 500 },
-			y: { label: 'y', min: 0, max: 972, value: 500 }
+			enabled: { label: 'enabled', isClicked: false },
+			angle: { label: 'Angle', min: 0, max: 10, value: 5, step: 0.01 },
+			radius: { label: 'Radius', min: 0, max: 1920, value: 500, step: 0.01 },
+			x: { label: 'x', min: 0, max: 1920, value: 500, step: 0.01 },
+			y: { label: 'y', min: 0, max: 972, value: 500, step: 0.01 }
 		},
 		AsciiFilter: {
 			label: 'AsciiFilter',
 			enabled: { label: 'enabled' },
-			size: { label: 'size', min: 0, max: 20, value: 10 }
+			size: { label: 'size', min: 0, max: 20, value: 10, step: 0.01 }
 		},
 		DotFilter: {
 			label: 'DotFilter',
 			enabled: { label: 'enabled' },
-			scale: { label: 'Scale', min: 0, max: 1, value: 0.5 },
-			angle: { label: 'Angle', min: 0, max: 5, value: 5 }
+			scale: { label: 'Scale', min: 0, max: 1, value: 0.5, step: 0.01 },
+			angle: { label: 'Angle', min: 0, max: 5, value: 5, step: 0.01 }
 		},
-		EmbrossFilter: {
+		EmbossFilter: {
 			label: 'EmbrossFilter',
 			enabled: { label: 'enabled' },
-			strength: { label: 'strength', min: 0, max: 20, value: 10 }
+			strength: { label: 'strength', min: 0, max: 20, value: 10, step: 0.01 }
 		},
 		PixelateFilter: {
 			label: 'PixelateFilter',
 			enabled: { label: 'enabled' },
-			sizeX: { label: 'sizeX', min: 4, max: 40, value: 15 },
-			sizeY: { label: 'sizeY', min: 4, max: 40, value: 15 }
+			sizeX: { label: 'sizeX', min: 4, max: 40, value: 15, step: 0.01 },
+			sizeY: { label: 'sizeY', min: 4, max: 40, value: 15, step: 0.01 }
 		},
 		RGBSplitFilter: {
 			label: 'RGBSplitFilter',
 			enabled: { label: 'enabled' },
-			redX: { label: 'redX', min: -20, max: 20, value: 15 },
-			redY: { label: 'redY', min: -20, max: 20, value: 15 },
-			greenX: { label: 'greenX', min: -20, max: 20, value: 15 },
-			greenY: { label: 'greenY', min: -20, max: 20, value: 15 },
-			blueX: { label: 'blueX', min: -20, max: 20, value: 15 },
-			blueY: { label: 'blueY', min: -20, max: 20, value: 15 }
+			redX: { label: 'redX', min: -20, max: 20, value: 15, step: 0.01 },
+			redY: { label: 'redY', min: -20, max: 20, value: 15, step: 0.01 },
+			greenX: { label: 'greenX', min: -20, max: 20, value: 15, step: 0.01 },
+			greenY: { label: 'greenY', min: -20, max: 20, value: 15, step: 0.01 },
+			blueX: { label: 'blueX', min: -20, max: 20, value: 15, step: 0.01 },
+			blueY: { label: 'blueY', min: -20, max: 20, value: 15, step: 0.01 }
 		},
 		CrossHatchFilter: {
 			label: 'CrossHatch',
@@ -138,43 +138,43 @@ class InputStateManager {
 		ConvolutionFilter: {
 			label: 'ConvolutionFilter',
 			enabled: { label: 'enabled' },
-			width: { label: 'width', min: 0, max: 500, value: 15 },
-			height: { label: 'height', min: 0, max: 500, value: 15 }
+			width: { label: 'width', min: 0, max: 500, value: 15, step: 0.01 },
+			height: { label: 'height', min: 0, max: 500, value: 15, step: 0.01 }
 		},
 		BloomFilter: {
 			label: 'BloomFilter',
 			enabled: { label: 'enabled' },
-			blur: { label: 'blur', min: 0, max: 20, value: 15 },
-			blurX: { label: 'blurX', min: 0, max: 20, value: 15 },
-			blurY: { label: 'blurY', min: 0, max: 20, value: 15 }
+			blur: { label: 'blur', min: 0, max: 20, value: 15, step: 0.01 },
+			blurX: { label: 'blurX', min: 0, max: 20, value: 15, step: 0.01 },
+			blurY: { label: 'blurY', min: 0, max: 20, value: 15, step: 0.01 }
 		},
 		TiltShiftFilter: {
 			label: 'TiltShiftFilter',
 			enabled: { label: 'enabled' },
 			blur: { label: 'blur', min: 0, max: 200, value: 15 },
-			gradientBlur: { label: 'gradientBlur', min: 0, max: 200, value: 15 }
+			gradientBlur: { label: 'gradientBlur', min: 0, max: 200, value: 15, step: 0.01 }
 		},
 		ShockwaveFilter: {
 			label: 'ShockwaveFilter',
 			enabled: { label: 'enabled' },
-			time: { label: 'Time', min: 0, max: 1, value: 0.5 },
-			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5 },
-			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5 }
+			time: { label: 'Time', min: 0, max: 1, value: 0.5, step: 0.01 },
+			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5, step: 0.01 },
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 }
 		},
 		BulgePinchFilter: {
 			label: 'BulgePinchFilter',
 			enabled: { label: 'enabled' },
-			radius: { label: 'radius', min: 0, max: 1000, value: 0.5 },
-			strength: { label: 'strength', min: 0, max: 1, value: 0.5 },
-			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5 },
-			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5 }
+			radius: { label: 'radius', min: 0, max: 1000, value: 0.5, step: 0.01 },
+			strength: { label: 'strength', min: 0, max: 1, value: 0.5, step: 0.01 },
+			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5, step: 0.01 },
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 }
 		},
 		ColorReplaceFilter: {
 			label: 'ColorReplaceFilter',
 			enabled: { label: 'enabled' },
 			originalColor: { label: 'originalColor' },
 			newColor: { label: 'newColor' },
-			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5 }
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 }
 		},
 		MultiColorReplaceFilter: {
 			label: 'MultiColorReplaceFilter',
@@ -185,29 +185,29 @@ class InputStateManager {
 			target1: { label: 'target1' },
 			original2: { label: 'original2' },
 			target2: { label: 'target2' },
-			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5 }
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 }
 		},
 		SimpleLightmapFilter: {
 			label: 'SimpleLightmapFilter',
 			enabled: { label: 'enabled' },
 			color: { label: 'color' },
-			alpha: { label: 'alpha', min: 0, max: 1, value: 0.5 }
+			alpha: { label: 'alpha', min: 0, max: 1, value: 0.5, step: 0.01 }
 		},
 		GodrayFilter: {
 			label: 'GodrayFilter',
 			enabled: { label: 'enabled' },
-			time: { label: 'time', min: 0, max: 1, value: 0 },
-			angle: { label: 'angle', min: 0, max: 60, value: 30 },
-			gain: { label: 'gain', min: 0, max: 1, value: 0 },
-			lacunarity: { label: 'lacunarity', min: 0, max: 5, value: 0 }
+			time: { label: 'time', min: 0, max: 1, value: 0, step: 0.01 },
+			angle: { label: 'angle', min: 0, max: 60, value: 30, step: 0.01 },
+			gain: { label: 'gain', min: 0, max: 1, value: 0, step: 0.01 },
+			lacunarity: { label: 'lacunarity', min: 0, max: 5, value: 0, step: 0.01 }
 		},
 		ZoomBlurFilter: {
 			label: 'ZoomBlurFilter',
-			enabled: { label: 'enabled' },
-			strength: { label: 'strength', min: 0, max: 0.5, value: 0, step: 0.1 },
-			centerX: { label: 'centerX', min: 0, max: 1920, value: 900, step: 0.1 },
-			centerY: { label: 'centerY', min: 0, max: 1920, value: 900, step: 0.1 },
-			innerRadius: { label: 'innerRadius', min: 0, max: 960, value: 360, step: 0.1 }
+			enabled: { label: 'enabled', isChecked: false },
+			strength: { label: 'strength', min: 0, max: 0.5, value: 0, step: 0.01 },
+			centerX: { label: 'centerX', min: 0, max: 1920, value: 900, step: 0.01 },
+			centerY: { label: 'centerY', min: 0, max: 1920, value: 900, step: 0.01 },
+			innerRadius: { label: 'innerRadius', min: 0, max: 960, value: 360, step: 0.01 }
 		}
 	};
 

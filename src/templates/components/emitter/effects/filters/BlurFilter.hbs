@@ -1,6 +1,5 @@
     if (this.filters.indexOf(blurFilter) === -1) {
       this.filters.push(blurFilter);
-    } else {      
-      this.filters[this.filters.indexOf(blurFilter)].blur = {{blur}};
-      this.filters[this.filters.indexOf(blurFilter)].quality = {{quality}};
-    }
+    } 
+    this.filters[this.filters.indexOf(blurFilter)].blur = {{blur}};
+    this.filters[this.filters.indexOf(blurFilter)].quality = {{quality}};

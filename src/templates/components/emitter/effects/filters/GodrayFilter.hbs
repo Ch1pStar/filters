@@ -13,3 +13,11 @@ this.filters.forEach(function(filter) {
     that.filters.push(godrayFilter)
   }
 });
+
+    if (this.filters.indexOf(godrayFilter) === -1) {
+      this.filters.push(godrayFilter);
+    }
+      this.filters[this.filters.indexOf(godrayFilter)].time = {{time}};
+      this.filters[this.filters.indexOf(godrayFilter)].angle = {{angle}};
+      this.filters[this.filters.indexOf(godrayFilter)].gain = {{gain}};
+      this.filters[this.filters.indexOf(godrayFilter)].lacunarity = {{lacunarity}};

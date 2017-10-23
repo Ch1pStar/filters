@@ -1,15 +1,8 @@
-var twistFilter = new Filters.TwistFilter();;
-if (this.filters.length < 1) {
-  this.filters.push(twistFilter);
-}
-var that = this;
-this.filters.forEach(function(filter) {
-  if (filter === twistFilter) {
-    filter.angle = {{angle}};
-    filter.radius = {{radius}};      
-    filter.x = {{x}};      
-    filter.y = {{y}};       
-  }else {
-    that.filters.push(twistFilter)
-  }
-});
+
+    if (this.filters.indexOf(twistFilter) === -1) {
+      this.filters.push(twistFilter);
+    }
+    this.filters[this.filters.indexOf(twistFilter)].angle = {{angle}};
+    this.filters[this.filters.indexOf(twistFilter)].radius = {{radius}};
+    this.filters[this.filters.indexOf(twistFilter)].offset.x = {{x}};
+    this.filters[this.filters.indexOf(twistFilter)].offset.y = {{y}};
