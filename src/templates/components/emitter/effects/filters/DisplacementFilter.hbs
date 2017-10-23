@@ -2,5 +2,6 @@
     if (this.filters.indexOf(displacementFilter) === -1) {
       this.filters.push(displacementFilter);
     } 
-      this.filters[this.filters.indexOf(displacementFilter)].scaleX = {{scaleX}};      
-      this.filters[this.filters.indexOf(displacementFilter)].scaleY = {{scaleY}};
+      this.filters[this.filters.indexOf(displacementFilter)].sprite = this.background.children.bgSprite;
+      this.filters[this.filters.indexOf(displacementFilter)].scale.x = {{scaleX}};      
+      this.filters[this.filters.indexOf(displacementFilter)].scale.y = {{scaleY}};

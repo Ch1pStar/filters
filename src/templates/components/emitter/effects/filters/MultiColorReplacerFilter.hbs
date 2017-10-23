@@ -2,9 +2,10 @@
     if (this.filters.indexOf(multiColorReplaceFilter) === -1) {
       this.filters.push(multiColorReplaceFilter);
     }
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original0 = {{original0}};
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target0 = {{target0}};
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original1 = {{original1}};
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target1 = {{target1}};
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].original2 = {{original2}};
-      this.filters[this.filters.indexOf(multiColorReplaceFilter)].target2 = {{target2}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[0][0] = {{original0}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[0][1] = {{target0}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[1][0] = {{original1}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[1][1] = {{target1}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[2][0] = {{original2}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[2][1] = {{target2}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].epsilon = {{epsilon}};
