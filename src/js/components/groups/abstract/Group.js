@@ -10,8 +10,6 @@ class Group extends EventEmitter {
 		CHANGE: 'change'
 	};
 
-	container = null;
-
 	/**
 	 * @param {Panel} panel The panel this component is attatched to
 	 * @param {string} label The group label

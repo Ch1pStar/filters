@@ -65,7 +65,7 @@ class InputStateManager {
 		ColorMatrixFilter: {
 			label: 'ColorMatrixFilter',
 			enabled: { label: 'enabled' },
-			reset: { label: 'Reset' },
+			reset: { label: 'Reset', isChecked: false },
 			sepia: { label: 'Sepia' },
 			negative: { label: 'Negative' },
 			kodachrome: { label: 'Kodachrome' },

@@ -17,7 +17,7 @@ const colorReplaceFilter = new Filters.ColorReplaceFilter();
 const convolutionFilter = new Filters.ConvolutionFilter();
 const crossHatchFilter = new PIXI.filters.CrossHatchFilter();
 const dotFilter = new Filters.DotFilter();
-// const displacementFilter = new PIXI.filters.DisplacementFilter();
+// const displacementFilter = new PIXI.filters.DisplacementFilter(null, 0, 0);
 const dropShadowFilter = new PIXI.filters.DropShadowFilter();
 const embossFilter = new Filters.EmbossFilter();
 const godrayFilter = new Filters.GodrayFilter();
@@ -81,7 +81,7 @@ class PreviewBox extends Box {
 		bgSprite.y = bgSprite.height > this.previewHeight ? 0 : (this.previewHeight - bgSprite.height) / 2;
 		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
-		// console.log(bgSprite.texture);
+
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}

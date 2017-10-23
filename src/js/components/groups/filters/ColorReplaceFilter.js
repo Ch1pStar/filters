@@ -9,7 +9,7 @@ class ColorReplaceFilter extends Group {
 		const originalColor = (this.originalColorInput = new InputColor());
 		const newColor = (this.newColorInput = new InputColor());
 		const epsilon = (this.epsilonInput = new InputRange());
-		this.inputs[(enabled, originalColor, newColor, epsilon)];
+		this.inputs = [enabled, originalColor, newColor, epsilon];
 		super._initInput();
 	}
 

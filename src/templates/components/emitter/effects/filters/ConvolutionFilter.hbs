@@ -3,5 +3,6 @@
     if (this.filters.indexOf(convolutionFilter) === -1) {
       this.filters.push(convolutionFilter);
     } 
+     this.filters[this.filters.indexOf(convolutionFilter)].matrix = [0,0,0,1,1,1,0,0,0]
       this.filters[this.filters.indexOf(convolutionFilter)].width = {{width}};      
       this.filters[this.filters.indexOf(convolutionFilter)].height = {{height}};
