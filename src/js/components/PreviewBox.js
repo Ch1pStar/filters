@@ -82,7 +82,6 @@ class PreviewBox extends Box {
 		bgSprite.y = bgSprite.height > this.previewHeight ? 0 : (this.previewHeight - bgSprite.height) / 2;
 		bgSprite.x = (this.previewWidth - bgSprite.width) / 2;
 		bgSprite.y = (this.previewHeight - bgSprite.height) / 2;
-
 		background.children.length = 0;
 		background.addChild(bgSprite);
 	}

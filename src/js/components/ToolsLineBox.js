@@ -29,7 +29,7 @@ class ToolsLineBox extends Box {
 
 	_attachAddButton() {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
-			const images = [...this.particleTexturesBox.images];
+			// const images = [...this.particleTexturesBox.images];
 			const imageNames = images.map(itm => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
 			const codeString = this.previewPanel.emitterState.actionScriptState;
 

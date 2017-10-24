@@ -123,10 +123,10 @@ class Panel extends Box {
 		// 	this._effectsPanel.emitGroupsState();
 		// 	this._previewPanel.particleImages = images;
 		// });
-		this.backgroundsBox.on(
-			BackgroundsBox.events.CHANGE,
-			images => (this._previewPanel.backgroundImage = images[0])
-		);
+
+		this.backgroundsBox.on(BackgroundsBox.events.CHANGE, images => {
+			this._previewPanel.backgroundImage = images[0];
+		});
 
 		// insert components
 		leftContainer.appendChild(this._previewPanel.container);
