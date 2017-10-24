@@ -25,13 +25,13 @@ class ConvolutionFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			width: this.widthInput.state,
-			height: this.heightInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		width: this.widthInput.state,
+	// 		height: this.heightInput.state
+	// 	};
+	// }
 }
 
 module.exports = ConvolutionFilter;

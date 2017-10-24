@@ -97,8 +97,8 @@ class Panel extends Box {
 		this._effectsPanel = new EffectsBox();
 		this._effectsPanel.render();
 
-		this.particleTexturesBox = new ParticleTexturesBox();
-		this.particleTexturesBox.render();
+		// this.particleTexturesBox = new ParticleTexturesBox();
+		// this.particleTexturesBox.render();
 
 		this.backgroundsBox = new BackgroundsBox();
 		this.backgroundsBox.render();
@@ -107,22 +107,22 @@ class Panel extends Box {
 			this._getDocumentImages();
 			this._subscribeDocumentEvents();
 		} else {
-			this.particleTexturesBox.images = this.assets.particles;
+			// this.particleTexturesBox.images = this.assets.particles;
 		}
 		this.backgroundsBox.images = this.assets.backgrounds;
 
 		this._previewPanel = new PreviewBox(this._effectsPanel);
 		this._previewPanel.render();
 
-		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, this.particleTexturesBox, this.backgroundsBox);
+		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, /*this.particleTexturesBox,*/ this.backgroundsBox);
 		this._toolsLinePanel.render();
 
 		// attach component listeners
 		this._effectsPanel.on(EffectsBox.events.CHANGE, effects => (this._previewPanel.effects = effects));
-		this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, images => {
-			this._effectsPanel.emitGroupsState();
-			this._previewPanel.particleImages = images;
-		});
+		// this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, images => {
+		// 	this._effectsPanel.emitGroupsState();
+		// 	this._previewPanel.particleImages = images;
+		// });
 		this.backgroundsBox.on(
 			BackgroundsBox.events.CHANGE,
 			images => (this._previewPanel.backgroundImage = images[0])
@@ -132,7 +132,7 @@ class Panel extends Box {
 		leftContainer.appendChild(this._previewPanel.container);
 		rightContainer.insertBefore(this._effectsPanel.container, rightContainer.firstChild);
 		appContainer.appendChild(this._toolsLinePanel.container);
-		imagesContainer.appendChild(this.particleTexturesBox.container);
+		// imagesContainer.appendChild(this.particleTexturesBox.container);
 		imagesContainer.appendChild(this.backgroundsBox.container);
 	}
 
@@ -154,7 +154,7 @@ class Panel extends Box {
 		this._eval(jsflUtil.getLibraryImages(), res => {
 			const imgs = res === 'undefined' ? [] : res.split(',');
 
-			this.particleTexturesBox.images = imgs;
+			// this.particleTexturesBox.images = imgs;
 			this.backgroundsBox.images = imgs;
 		});
 	}

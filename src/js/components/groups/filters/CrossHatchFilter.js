@@ -16,11 +16,11 @@ class CrossHatchFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state
+	// 	};
+	// }
 }
 
 module.exports = CrossHatchFilter;

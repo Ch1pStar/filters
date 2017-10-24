@@ -22,12 +22,12 @@ class EmbossFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			strength: this.strengthInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		strength: this.strengthInput.state
+	// 	};
+	// }
 }
 
 module.exports = EmbossFilter;

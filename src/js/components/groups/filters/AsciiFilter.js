@@ -22,12 +22,12 @@ class AsciiFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			size: this.sizeInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		size: this.sizeInput.state
+	// 	};
+	// }
 }
 
 module.exports = AsciiFilter;

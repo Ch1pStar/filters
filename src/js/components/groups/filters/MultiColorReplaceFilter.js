@@ -40,18 +40,18 @@ class MultiColorReplaceFilter extends Group {
 			epsilon: this.epsilonInput.state.value
 		};
 	}
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			original0: this.original0Input.state,
-			target0: this.target0Input.state,
-			original1: this.original1Input.state,
-			target1: this.target1Input.state,
-			original2: this.original2Input.state,
-			target2: this.target2Input.state,
-			epsilon: this.epsilonInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		original0: this.original0Input.state,
+	// 		target0: this.target0Input.state,
+	// 		original1: this.original1Input.state,
+	// 		target1: this.target1Input.state,
+	// 		original2: this.original2Input.state,
+	// 		target2: this.target2Input.state,
+	// 		epsilon: this.epsilonInput.state
+	// 	};
+	// }
 }
 
 module.exports = MultiColorReplaceFilter;

@@ -25,13 +25,13 @@ class NoiseFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			noise: this.noiseInput.state,
-			seed: this.seedInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		noise: this.noiseInput.state,
+	// 		seed: this.seedInput.state
+	// 	};
+	// }
 }
 
 module.exports = NoiseFilter;

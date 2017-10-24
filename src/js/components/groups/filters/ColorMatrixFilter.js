@@ -55,22 +55,22 @@ class ColorMatrixFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state.value,
-			reset: this.resetInput.state,
-			sepia: this.sepiaInput.state,
-			negative: this.negativeInput.state,
-			kodachrome: this.kodachromeInput.state,
-			lsd: this.lsdInput.state,
-			polaroid: this.polaroidInput.state,
-			desaturate: this.desaturateInput.state,
-			contrast: this.contrastInput.state,
-			greyscale: this.greyscaleInput.state,
-			predator: this.predatorInput.state,
-			saturate: this.saturateInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state.value,
+	// 		reset: this.resetInput.state,
+	// 		sepia: this.sepiaInput.state,
+	// 		negative: this.negativeInput.state,
+	// 		kodachrome: this.kodachromeInput.state,
+	// 		lsd: this.lsdInput.state,
+	// 		polaroid: this.polaroidInput.state,
+	// 		desaturate: this.desaturateInput.state,
+	// 		contrast: this.contrastInput.state,
+	// 		greyscale: this.greyscaleInput.state,
+	// 		predator: this.predatorInput.state,
+	// 		saturate: this.saturateInput.state
+	// 	};
+	// }
 }
 
 module.exports = ColorMatrixFilter;

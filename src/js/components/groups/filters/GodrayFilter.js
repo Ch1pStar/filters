@@ -31,15 +31,15 @@ class GodrayFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			time: this.timeInput.state,
-			angle: this.angleInput.state,
-			gain: this.gainInput.state,
-			lacunarity: this.lacunarityInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		time: this.timeInput.state,
+	// 		angle: this.angleInput.state,
+	// 		gain: this.gainInput.state,
+	// 		lacunarity: this.lacunarityInput.state
+	// 	};
+	// }
 }
 
 module.exports = GodrayFilter;

@@ -31,15 +31,15 @@ class ZoomBlurFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			strength: this.strengthInput.state,
-			centerX: this.centerXInput.state,
-			centerY: this.centerYInput.state,
-			innerRadius: this.innerRadiusInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		strength: this.strengthInput.state,
+	// 		centerX: this.centerXInput.state,
+	// 		centerY: this.centerYInput.state,
+	// 		innerRadius: this.innerRadiusInput.state
+	// 	};
+	// }
 }
 
 module.exports = ZoomBlurFilter;

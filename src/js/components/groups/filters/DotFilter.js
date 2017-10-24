@@ -25,13 +25,13 @@ class DotFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			scale: this.scaleInput.state,
-			angle: this.angleInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		scale: this.scaleInput.state,
+	// 		angle: this.angleInput.state
+	// 	};
+	// }
 }
 
 module.exports = DotFilter;

@@ -20,7 +20,8 @@ class Group extends Folder {
 		this.options = options;
 		this.label = this._state.title = options.label;
 
-		const input = (this.input = new InputRange());
+		const input = (this.input = new InputRange(options));
+
 		this.input.setState({ ...this.options });
 		this.inputs = [input];
 
@@ -47,9 +48,9 @@ class Group extends Folder {
 
 	get command() {}
 
-	get state() {
-		return this.input.state;
-	}
+	// get state() {
+	// 	return this.input.state;
+	// }
 }
 
 module.exports = Group;

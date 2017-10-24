@@ -26,13 +26,13 @@ class OutlineFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			thickness: this.thicknessInput.state,
-			color: this.colorInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		thickness: this.thicknessInput.state,
+	// 		color: this.colorInput.state
+	// 	};
+	// }
 }
 
 module.exports = OutlineFilter;

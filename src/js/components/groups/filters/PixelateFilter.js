@@ -25,13 +25,13 @@ class PixelateFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			sizeX: this.sizeXInput.state,
-			sizeY: this.sizeYInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		sizeX: this.sizeXInput.state,
+	// 		sizeY: this.sizeYInput.state
+	// 	};
+	// }
 }
 
 module.exports = PixelateFilter;

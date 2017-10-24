@@ -11,9 +11,10 @@ class GlowFilter extends Group {
 		const distance = (this.distanceInput = new InputRange());
 		const color = (this.colorInput = new InputColor());
 		const quality = (this.qualityInput = new InputRange());
+		// const isCollapsed = (this.isCollapsed = new Boolean());
 		const state = this.options;
 
-		this.inputs = [enabled, innerStrength, outerStrength, distance, color, quality];
+		this.inputs = [enabled, innerStrength, outerStrength, distance, color, quality /*, isCollapsed*/];
 
 		this.enabledInput.setState(state.enabled);
 		this.innerStrengthInput.setState(state.innerStrength);
@@ -21,6 +22,7 @@ class GlowFilter extends Group {
 		this.distanceInput.setState(state.distance);
 		this.colorInput.setState(state.colorInput);
 		this.qualityInput.setState(state.quality);
+		// this.isCollapsed.setState(state.isCollapsed);
 		super._initInput();
 	}
 
@@ -32,19 +34,21 @@ class GlowFilter extends Group {
 			distance: this.distanceInput.state.value,
 			color: this.colorInput.state.value,
 			quality: this.qualityInput.state.value
+			// isCollapsed: this.isCollapsed.state.value
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			innerStrength: this.innerStrengthInput.state,
-			outerStrength: this.outerStrengthInput.state,
-			distance: this.distanceInput.state,
-			color: this.colorInput.state,
-			quality: this.qualityInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		innerStrength: this.innerStrengthInput.state,
+	// 		outerStrength: this.outerStrengthInput.state,
+	// 		distance: this.distanceInput.state,
+	// 		color: this.colorInput.state,
+	// 		quality: this.qualityInput.state
+	// 		// isCollapsed: this.isCollapsed.state
+	// 	};
+	// }
 }
 
 module.exports = GlowFilter;

@@ -26,13 +26,13 @@ class SimpleLightmapFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			color: this.colorInput.state,
-			alpha: this.alphaInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		color: this.colorInput.state,
+	// 		alpha: this.alphaInput.state
+	// 	};
+	// }
 }
 
 module.exports = SimpleLightmapFilter;

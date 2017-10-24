@@ -43,6 +43,7 @@ class InputStateManager {
 			distance: { label: 'Distance', min: 0, max: 20, value: 10, step: 0.01 },
 			color: { label: 'Color' },
 			quality: { label: 'Quality', min: 0, max: 20, value: 10, step: 0.01 }
+			// isCollapsed: false
 		},
 		DisplacementFilter: {
 			label: 'DisplacementFilter',

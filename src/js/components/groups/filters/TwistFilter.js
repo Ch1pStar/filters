@@ -31,15 +31,15 @@ class TwistFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			angle: this.angleInput.state,
-			radius: this.radiusInput.state,
-			x: this.xInput.state,
-			y: this.yInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		angle: this.angleInput.state,
+	// 		radius: this.radiusInput.state,
+	// 		x: this.xInput.state,
+	// 		y: this.yInput.state
+	// 	};
+	// }
 }
 
 module.exports = TwistFilter;

@@ -29,14 +29,14 @@ class ColorReplaceFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			originalColor: this.originalColorInput.state,
-			newColor: this.newColorInput.state,
-			epsilon: this.epsilonInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		originalColor: this.originalColorInput.state,
+	// 		newColor: this.newColorInput.state,
+	// 		epsilon: this.epsilonInput.state
+	// 	};
+	// }
 }
 
 module.exports = ColorReplaceFilter;

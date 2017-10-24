@@ -25,13 +25,13 @@ class DisplacementFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			scaleX: this.scaleXInput.state,
-			scaleY: this.scaleYInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		scaleX: this.scaleXInput.state,
+	// 		scaleY: this.scaleYInput.state
+	// 	};
+	// }
 }
 
 module.exports = DisplacementFilter;

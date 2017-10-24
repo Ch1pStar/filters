@@ -25,13 +25,13 @@ class BlurFilter extends Group {
 		};
 	}
 
-	get state() {
-		return {
-			enabled: this.enabledInput.state,
-			blur: this.blurInput.state,
-			quality: this.qualityInput.state
-		};
-	}
+	// get state() {
+	// 	return {
+	// 		enabled: this.enabledInput.state,
+	// 		blur: this.blurInput.state,
+	// 		quality: this.qualityInput.state
+	// 	};
+	// }
 }
 
 module.exports = BlurFilter;
