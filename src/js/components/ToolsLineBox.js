@@ -34,7 +34,7 @@ class ToolsLineBox extends Box {
 			const codeString = this.previewPanel.emitterState.actionScriptState;
 
 			if (!this.inFlash) {
-				console.log('execute generated code');
+				console.log(codeString);
 				// eval(codeString);
 				return;
 			}

@@ -1,11 +1,10 @@
-const EventEmitter = require('eventemitter4');
+const EventEmitter = require('eventemitter3');
 
 /**
  * A box component class
  * @class
  */
 class Box extends EventEmitter {
-
 	/** @type {HTMLElement} Box content wrapper */
 	container = null;
 
@@ -36,15 +35,13 @@ class Box extends EventEmitter {
 	 * Called after the box content has been rendered
 	 * @return {[type]} [description]
 	 */
-	onRendered() {
-
-	}
+	onRendered() {}
 
 	clearContent(selector) {
 		const container = selector ? this.container.querySelector(selector) : this.container;
 
 		while (container.firstChild) {
-		    container.removeChild(container.firstChild);
+			container.removeChild(container.firstChild);
 		}
 	}
 }

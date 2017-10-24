@@ -1,5 +1,5 @@
 const template = require('../../templates/components/Grid.hbs');
-const EventEmitter = require('eventemitter4');
+const EventEmitter = require('eventemitter3');
 const Box = require('./Box');
 
 /**
@@ -7,7 +7,6 @@ const Box = require('./Box');
  * @class
  */
 class Grid extends Box {
-
 	/**
 	 * @param  {Object} options The grid config options
 	 */
@@ -24,7 +23,7 @@ class Grid extends Box {
 	_unselect() {
 		const items = this.container.querySelectorAll('.img-box');
 
-		[...items].forEach((item) => {
+		[...items].forEach(item => {
 			item.classList.remove('active');
 		});
 	}
@@ -37,10 +36,10 @@ class Grid extends Box {
 		const active = this.container.querySelectorAll('.active');
 		const selected = [];
 
-		[...active].forEach((item) => {
+		[...active].forEach(item => {
 			const obj = {
 				x: item.parentNode.getAttribute('data-column'),
-				y: item.getAttribute('data-item'),
+				y: item.getAttribute('data-item')
 			};
 
 			selected.push(obj);
