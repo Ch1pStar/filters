@@ -1,0 +1,49 @@
+.folder-component-container
+	width:100%
+	.folder-component
+		position: relative
+		fill-solid-clickable($color-default)
+		.folder
+			width: 100%
+			cursor: pointer
+			height: 38px
+			text-align: left
+			.title
+				set-font-size(15px)
+				font-weight: 500
+				line-height: 38px
+				color: $color-primary
+				padding: 0 10px
+			.content
+				opacity: 0
+				background: $color-primary
+				transform-origin: 0 0
+				transform: rotateX(-90deg)
+				set-transition(opacity, transform)
+				&.active
+					opacity: 1
+					transform: rotateX(0deg)
+				div
+					color: black
+					background: beige
+		&.open
+			opacity: 1
+			transform: rotateX(0)
+			&:after
+				transform: rotate(90deg)
+		&:after
+			set-font-size(22px)
+			font-family: FontAwesome
+			content: "\f104"
+			position: absolute
+			top: 8px
+			right: 14px
+			color: $color-primary
+			transform: rotate(-90deg)
+			transition: transform 0.3s ease-in-out
+	&.disabled
+		.toggle
+			pointer-events: none
+			background: lighten($color-default, 80%)
+			.inner
+				pointer-events: none

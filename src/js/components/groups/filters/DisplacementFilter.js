@@ -7,15 +7,14 @@ class DisplacementFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const scaleX = (this.scaleXInput = new InputRange());
 		const scaleY = (this.scaleYInput = new InputRange());
-		this.inputs = [enabled, scaleX, scaleY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, scaleX, scaleY];
+
 		this.enabledInput.setState(state.enabled);
 		this.scaleXInput.setState(state.scaleX);
 		this.scaleYInput.setState(state.scaleY);
+		super._initInput();
 	}
 
 	get fields() {

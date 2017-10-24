@@ -1,0 +1,24 @@
+$timing = 0.3s
+$timing-function = cubic-bezier(0.000, 0.000, 0.580, 1.000)
+
+set-transition(prop, rest...)
+	if length(arguments) > 1
+		transition: prop $timing $timing-function, rest $timing $timing-function
+	else
+		transition: prop $timing $timing-function
+
+/* Px to REM Mixin*/
+set-font-size(value) {
+	font-size: remify(value)
+}
+
+remify(value) {
+	u = unit(value);
+
+	if (u is 'px') {
+		return unit(value/16, 'rem')
+	} else {
+		return unit(value, u)
+	}
+}
+/* EOF Px to REM Mixin*/

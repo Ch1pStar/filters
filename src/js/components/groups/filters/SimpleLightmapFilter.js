@@ -8,15 +8,14 @@ class SimpleLightmapFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const color = (this.colorInput = new InputColor());
 		const alpha = (this.alphaInput = new InputRange());
-		this.inputs = [enabled, color, alpha];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, color, alpha];
+
 		this.enabledInput.setState(state.enabled);
 		this.colorInput.setState(state.color);
 		this.alphaInput.setState(state.alpha);
+		super._initInput();
 	}
 
 	get fields() {

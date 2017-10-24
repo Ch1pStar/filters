@@ -13,12 +13,10 @@ class MultiColorReplaceFilter extends Group {
 		const original2 = (this.original2Input = new InputColor());
 		const target2 = (this.target2Input = new InputColor());
 		const epsilon = (this.epsilonInput = new InputRange());
-		this.inputs = [enabled, original0, target0, original1, target1, original2, target2, epsilon];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, original0, target0, original1, target1, original2, target2, epsilon];
+
 		this.enabledInput.setState(state.enabled);
 		this.original0Input.setState(state.original0);
 		this.target0Input.setState(state.target0);
@@ -27,6 +25,7 @@ class MultiColorReplaceFilter extends Group {
 		this.original2Input.setState(state.original2);
 		this.target2Input.setState(state.target2);
 		this.epsilonInput.setState(state.epsilon);
+		super._initInput();
 	}
 
 	get fields() {

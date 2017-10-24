@@ -1,0 +1,116 @@
+/*
+Fill mixins
+*/
+
+
+/* 	
+default solid fill, make sure $box-bg
+matches the background color.
+*/
+
+fill-solid(n)
+	color: $box-bg
+	background: n
+	
+fill-solid-clickable(n)
+	color: $box-bg
+	background: n
+	&:hover
+		if dark($box-bg) = true
+			background: lighten((n), 10%)
+		else
+			background: darken((n), 10%)
+
+	&:active
+		if dark($box-bg) = true
+			background: darken((n), 10%)
+		else
+			background: lighten((n), 10%)
+	&:focus
+		if dark($box-bg) = true
+			background: lighten((n), 30%)
+		else
+			background: darken((n), 30%)
+
+	&:disabled
+			background: mix((n), $box-bg, 50%)
+			pointer-events: none
+
+		
+/*
+This mixes a given color with the bg
+color, then checks whether the bg
+is dark or light, and adjusts the
+text color for readability.
+*/
+
+fill-light(n)
+	background: mix((n), $box-bg, 35%)
+	if dark($box-bg) = true
+		color: n + 15%
+	else
+		color: n - 15%
+
+fill-light-clickable(n)
+	background: mix((n), $box-bg, 35%)
+	if dark($box-bg) = true
+		color: n + 15%
+	else
+		color: n - 15%
+	&:hover
+		background: mix((n), $box-bg, 25%)
+	
+	&:active
+		background: mix((n), $box-bg, 45%)
+	
+	&:focus
+		if dark($box-bg) = true
+			background: lighten((n), 30%)
+		else
+			background: darken((n), 30%)
+	
+	&:disabled
+		background: mix((n), $box-bg, 50%)
+		pointer-events: none
+		
+		
+/*  
+Same as above except the fill is
+transparent
+*/
+fill-outline(n)
+	background: $no-fill
+	border: 2px solid (n)
+	if dark($box-bg) = true
+		color: n + 15%
+	else
+		color: n - 15%
+
+
+fill-outline-clickable(n)
+	background: $no-fill
+	border: 2px solid (n)
+	if dark($box-bg) = true
+		color: n + 15%
+	else
+		color: n - 15%
+	&:hover
+		color: $box-bg
+		background: n
+	&:active
+		color: $box-bg
+		if dark($box-bg) = true
+			border-color: darken((n), 10%)
+			background: darken((n), 10%)
+		else
+			border-color: lighten((n), 10%)
+			background: lighten((n), 15%)
+	&:focus
+		if dark($box-bg) = true
+			border: 2px solid lighten((n), 30%)
+		else
+			border: 2px solid darken((n), 30%)
+
+	&:disabled
+			border: 2px solid mix((n), $box-bg, 50%)
+			pointer-events: none

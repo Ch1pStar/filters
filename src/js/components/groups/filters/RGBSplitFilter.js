@@ -11,12 +11,10 @@ class RGBSplitFilter extends Group {
 		const greenY = (this.greenYInput = new InputRange());
 		const blueX = (this.blueXInput = new InputRange());
 		const blueY = (this.blueYInput = new InputRange());
-		this.inputs = [enabled, redX, redY, greenX, greenY, blueX, blueY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, redX, redY, greenX, greenY, blueX, blueY];
+
 		this.enabledInput.setState(state.enabled);
 		this.redXInput.setState(state.redX);
 		this.redYInput.setState(state.redY);
@@ -24,6 +22,7 @@ class RGBSplitFilter extends Group {
 		this.greenYInput.setState(state.greenY);
 		this.blueXInput.setState(state.blueX);
 		this.blueYInput.setState(state.blueY);
+		super._initInput();
 	}
 
 	get fields() {

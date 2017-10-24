@@ -3,7 +3,7 @@ const EventEmitter = require('eventemitter4');
 const Folder = require('dope-components').Folder;
 const Component = require('dope-components').Component;
 
-class Group extends EventEmitter {
+class Group extends Folder {
 	static events = {
 		// ...InputRange.events,
 		ADD: 'add',
@@ -21,22 +21,22 @@ class Group extends EventEmitter {
 		this.options = options;
 		this.label = options.label;
 
-		this.container = document.createElement('div');
-		this.container.className = 'input-group-component-container';
+		// this.container = document.createElement('div');
+		// this.container.className = 'folder-component-container input-group-component-container';
 
 		const input = (this.input = new InputRange());
-
+		this.input.setState({ ...this.options });
 		this.inputs = [input];
 
 		this._initInput();
 	}
 
-	setState() {
-		this.input.setState({ ...this.options });
-	}
+	// setState() {
+
+	// }
 
 	_initInput() {
-		const cnt = this.container;
+		const cnt = this.getContainer();
 		const inputs = this.inputs;
 
 		inputs.forEach(input => {

@@ -11,18 +11,17 @@ class DropShadowFilter extends Group {
 		const distance = (this.distanceInput = new InputRange());
 		const rotation = (this.rotationInput = new InputRange());
 		const color = (this.colorInput = new InputColor());
-		this.inputs = [enabled, blur, alpha, distance, rotation, color];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, blur, alpha, distance, rotation, color];
+
 		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.alphaInput.setState(state.alpha);
 		this.distanceInput.setState(state.distance);
 		this.rotationInput.setState(state.rotation);
 		this.colorInput.setState(state.color);
+		super._initInput();
 	}
 
 	get fields() {

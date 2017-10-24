@@ -9,17 +9,16 @@ class GodrayFilter extends Group {
 		const angle = (this.angleInput = new InputRange());
 		const gain = (this.gainInput = new InputRange());
 		const lacunarity = (this.lacunarityInput = new InputRange());
-		this.inputs = [enabled, time, angle, gain, lacunarity];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, time, angle, gain, lacunarity];
+
 		this.enabledInput.setState(state.enabled);
 		this.timeInput.setState(state.time);
 		this.angleInput.setState(state.angle);
 		this.gainInput.setState(state.gain);
 		this.lacunarityInput.setState(state.lacunarity);
+		super._initInput();
 	}
 
 	get fields() {

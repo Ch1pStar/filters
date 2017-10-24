@@ -9,17 +9,16 @@ class ZoomBlurFilter extends Group {
 		const centerX = (this.centerXInput = new InputRange());
 		const centerY = (this.centerYInput = new InputRange());
 		const innerRadius = (this.innerRadiusInput = new InputRange());
-		this.inputs = [enabled, strength, centerX, centerY, innerRadius];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, strength, centerX, centerY, innerRadius];
+
 		this.enabledInput.setState(state.enabled);
 		this.strengthInput.setState(state.strength);
 		this.centerXInput.setState(state.centerX);
 		this.centerYInput.setState(state.centerY);
 		this.innerRadiusInput.setState(state.innerRadius);
+		super._initInput();
 	}
 
 	get fields() {

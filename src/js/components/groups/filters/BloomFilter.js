@@ -8,16 +8,15 @@ class BloomFilter extends Group {
 		const blur = (this.blurInput = new InputRange());
 		const blurX = (this.blurXInput = new InputRange());
 		const blurY = (this.blurYInput = new InputRange());
-		this.inputs = [enabled, blur, blurX, blurY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, blur, blurX, blurY];
+
 		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.blurXInput.setState(state.blurX);
 		this.blurYInput.setState(state.blurY);
+		super._initInput();
 	}
 
 	get fields() {

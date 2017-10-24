@@ -8,16 +8,15 @@ class ShockwaveFilter extends Group {
 		const time = (this.timeInput = new InputRange());
 		const centerX = (this.centerXInput = new InputRange());
 		const centerY = (this.centerYInput = new InputRange());
-		this.inputs = [enabled, time, centerX, centerY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, time, centerX, centerY];
+
 		this.enabledInput.setState(state.enabled);
 		this.timeInput.setState(state.time);
 		this.centerXInput.setState(state.centerX);
 		this.centerYInput.setState(state.centerY);
+		super._initInput();
 	}
 
 	get fields() {

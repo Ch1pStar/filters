@@ -6,14 +6,13 @@ class EmbossFilter extends Group {
 	_initInput() {
 		const enabled = (this.enabledInput = new Checkbox());
 		const strength = (this.strengthInput = new InputRange());
-		this.inputs = [enabled, strength];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, strength];
+
 		this.enabledInput.setState(state.enabled);
 		this.strengthInput.setState(state.strength);
+		super._initInput();
 	}
 
 	get fields() {

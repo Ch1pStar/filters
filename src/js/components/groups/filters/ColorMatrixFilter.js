@@ -16,6 +16,8 @@ class ColorMatrixFilter extends Group {
 		const greyscale = (this.greyscaleInput = new Checkbox());
 		const predator = (this.predatorInput = new Checkbox());
 		const saturate = (this.saturateInput = new Checkbox());
+		const state = this.options;
+
 		this.inputs = [
 			enabled,
 			reset,
@@ -30,13 +32,10 @@ class ColorMatrixFilter extends Group {
 			predator,
 			saturate
 		];
-		super._initInput();
-	}
 
-	setState() {
-		const state = this.options;
 		this.enabledInput.setState(state.enabled);
 		this.resetInput.setState(state.reset);
+		super._initInput();
 	}
 
 	get fields() {

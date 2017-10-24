@@ -7,15 +7,14 @@ class DotFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const scale = (this.scaleInput = new InputRange());
 		const angle = (this.angleInput = new InputRange());
-		this.inputs = [enabled, scale, angle];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, scale, angle];
+
 		this.enabledInput.setState(state.enabled);
 		this.scaleInput.setState(state.scale);
 		this.angleInput.setState(state.angle);
+		super._initInput();
 	}
 
 	get fields() {

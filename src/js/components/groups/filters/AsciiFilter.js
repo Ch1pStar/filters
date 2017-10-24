@@ -6,14 +6,13 @@ class AsciiFilter extends Group {
 	_initInput() {
 		const enabled = (this.enabledInput = new Checkbox());
 		const size = (this.sizeInput = new InputRange());
-		this.inputs = [enabled, size];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, size];
+
 		this.enabledInput.setState(state.enabled);
 		this.sizeInput.setState(state.size);
+		super._initInput();
 	}
 
 	get fields() {

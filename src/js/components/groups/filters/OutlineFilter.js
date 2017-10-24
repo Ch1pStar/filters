@@ -8,15 +8,14 @@ class OutlineFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const thickness = (this.thicknessInput = new InputRange());
 		const color = (this.colorInput = new InputColor());
-		this.inputs = [enabled, thickness, color];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, thickness, color];
+
 		this.enabledInput.setState(state.enabled);
 		this.thicknessInput.setState(state.thickness);
 		this.colorInput.setState(state.color);
+		super._initInput();
 	}
 
 	get fields() {

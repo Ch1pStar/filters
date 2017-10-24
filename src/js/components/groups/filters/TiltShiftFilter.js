@@ -7,15 +7,14 @@ class TiltShiftFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const blur = (this.blurInput = new InputRange());
 		const gradientBlur = (this.gradientBlurInput = new InputRange());
-		this.inputs = [enabled, blur, gradientBlur];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, blur, gradientBlur];
+
 		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.gradientBlurInput.setState(state.gradientBlur);
+		super._initInput();
 	}
 
 	get fields() {

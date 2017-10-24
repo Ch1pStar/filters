@@ -7,15 +7,14 @@ class ConvolutionFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const width = (this.widthInput = new InputRange());
 		const height = (this.heightInput = new InputRange());
-		this.inputs = [enabled, width, height];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, width, height];
+
 		this.enabledInput.setState(state.enabled);
 		this.widthInput.setState(state.width);
 		this.heightInput.setState(state.height);
+		super._initInput();
 	}
 
 	get fields() {

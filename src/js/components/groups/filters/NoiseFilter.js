@@ -7,15 +7,14 @@ class NoiseFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const noise = (this.noiseInput = new InputRange());
 		const seed = (this.seedInput = new InputRange());
-		this.inputs = [enabled, noise, seed];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, noise, seed];
+
 		this.enabledInput.setState(state.enabled);
 		this.noiseInput.setState(state.noise);
 		this.seedInput.setState(state.seed);
+		super._initInput();
 	}
 
 	get fields() {

@@ -9,17 +9,16 @@ class BulgePinchFilter extends Group {
 		const strength = (this.strengthInput = new InputRange());
 		const centerX = (this.centerXInput = new InputRange());
 		const centerY = (this.centerYInput = new InputRange());
-		this.inputs = [enabled, radius, strength, centerX, centerY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, radius, strength, centerX, centerY];
+
 		this.enabledInput.setState(state.enabled);
 		this.radiusInput.setState(state.radius);
 		this.strengthInput.setState(state.strength);
 		this.centerXInput.setState(state.centerX);
 		this.centerYInput.setState(state.centerY);
+		super._initInput();
 	}
 
 	get fields() {

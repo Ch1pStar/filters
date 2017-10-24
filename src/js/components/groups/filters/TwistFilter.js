@@ -9,18 +9,18 @@ class TwistFilter extends Group {
 		const radius = (this.radiusInput = new InputRange());
 		const x = (this.xInput = new InputRange());
 		const y = (this.yInput = new InputRange());
-		this.inputs = [enabled, angle, radius, x, y];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, angle, radius, x, y];
+
 		this.enabledInput.setState(state.enabled);
 		this.angleInput.setState(state.angle);
 		this.radiusInput.setState(state.radius);
 		this.xInput.setState(state.x);
 		this.yInput.setState(state.y);
+		super._initInput();
 	}
+
 	get fields() {
 		return {
 			enabled: this.enabledInput.state.value,

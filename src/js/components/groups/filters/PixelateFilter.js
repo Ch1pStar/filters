@@ -7,15 +7,14 @@ class PixelateFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const sizeX = (this.sizeXInput = new InputRange());
 		const sizeY = (this.sizeYInput = new InputRange());
-		this.inputs = [enabled, sizeX, sizeY];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, sizeX, sizeY];
+
 		this.enabledInput.setState(state.enabled);
 		this.sizeXInput.setState(state.sizeX);
 		this.sizeYInput.setState(state.sizeY);
+		super._initInput();
 	}
 
 	get fields() {

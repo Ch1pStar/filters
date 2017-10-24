@@ -1,0 +1,116 @@
+// Colors
+
+$box-bg = #303540
+$color-border = #292d36
+$box-shadow = rgba(0,0,0, 0.2)
+$box-shadow-big = rgba(0, 0, 0, 0.3)
+$no-fill = transparent
+
+
+/*
+Basic colors
+Avoid using '$color-basic' in places where '$color-default'
+should be used. Even though their values match now, they
+might change in the future, leading to style errors.
+*/
+
+
+$color-lighten = #fff           //Instead of using '$color-darken' & '$color-lighten' directly,
+$color-darken = #000            //use '$color-primary' & '$color-primary-invert' to set the text
+								//colors.
+$color-default = #79828f
+$color-basic = #555f6d			//ToDo
+$color-info = #08a0ce
+$color-success = #8fc350
+$color-warning = #fc9335
+$color-danger = #ec5735
+
+
+// text that should match BG (for example, inside a solid button)
+$color-primary = $box-bg
+
+// default header text color
+$color-primary-invert = $color-lighten
+
+// default text color
+$color-secondary-invert = $color-lighten
+
+/*
+Dark
+Use this for coloring text, since it needs to be
+slightly darker than the default for legibility.
+!On a dark theme replace 'shade' with 'tint'.
+*/
+
+$color-default-dark = tint($color-default, 15%)
+$color-lighten-dark = $color-default
+$color-info-dark = tint($color-info, 15%)
+$color-success-dark = tint($color-success, 15%)
+$color-warning-dark = tint($color-warning, 15%)
+$color-danger-dark = tint($color-danger, 15%)
+
+
+/*
+Lighter
+Use this for light/translucent background fill.
+Emulates transparency by mixing the base colors
+with the background color.
+!Make sure $box-bg matches the background color.
+*/
+
+$color-primary-default-lighter = mix($color-default, $box-bg, 20%)
+
+$color-default-lighter = mix($color-default, $box-bg, 35%)
+$color-lighten-lighter = mix($color-darken, $box-bg, 35%)
+$color-info-lighter = mix($color-info, $box-bg, 35%)
+$color-success-lighter = mix($color-success, $box-bg, 35%)
+$color-warning-lighter = mix($color-warning, $box-bg, 35%)
+$color-danger-lighter = mix($color-danger, $box-bg, 35%)
+
+
+/*
+Light & Darker
+Not used in any components yet so the values can be
+adjusted if needed.
+!On a dark theme replace 'tint' with 'shade' and
+'darken' with 'lighten'
+*/
+
+$color-default-light = mix($color-default, $box-bg, 50%)
+$color-darken-light = mix($color-darken, $box-bg, 50%)
+$color-info-light = mix($color-info, $box-bg, 50%)
+$color-success-light = mix($color-success, $box-bg, 50%)
+$color-warning-light = mix($color-warning, $box-bg, 50%)
+$color-danger-light = mix($color-danger, $box-bg, 50%)
+
+$color-default-darker = lighten($color-default, 50%)
+$color-lighten-darker = lighten($color-darken, 50%)
+$color-info-darker = lighten($color-info, 50%)
+$color-success-darker = lighten($color-success, 50%)
+$color-warning-darker = lighten($color-warning, 50%)
+$color-danger-darker = lighten($color-danger, 50%)
+
+
+/*
+In case we need an even lighter or darker shade,
+use -lightest or -darkest to add it and don't forget
+to swap 'lighten' with 'darken' for dark themes
+*/
+
+$color-default-lightest-primary = mix($color-default, $box-bg, 15%)
+$color-default-lightest-secondary = darken($color-default, 30%)
+
+$color-darken-lightest = darken($color-lighten, 85%)
+$color-default-lightest = darken($color-default, 50%)
+
+
+//These should be deleted and replaced with the variables they point to
+
+$color-primary-caption = $color-lighten-lighter          ///ToDo
+$color-primary-loader = alpha($color-darken, 0.2)
+$color-primary-border = alpha($color-default, 0.0)      //List border
+$color-primary-nav-dark = #1e2128
+$color-primary-nav-inner = #15171c
+$color-primary-light = #f5f7f9
+$color-primary-nav-inner-light = #e4e9ef
+$color-primary-bg = #272b34

@@ -7,15 +7,14 @@ class BlurFilter extends Group {
 		const enabled = (this.enabledInput = new Checkbox());
 		const blur = (this.blurInput = new InputRange());
 		const quality = (this.qualityInput = new InputRange());
-		this.inputs = [enabled, blur, quality];
-		super._initInput();
-	}
-
-	setState() {
 		const state = this.options;
+
+		this.inputs = [enabled, blur, quality];
+
 		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.qualityInput.setState(state.quality);
+		super._initInput();
 	}
 
 	get fields() {
