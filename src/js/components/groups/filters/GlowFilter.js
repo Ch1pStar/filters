@@ -32,18 +32,6 @@ class GlowFilter extends Group {
 			quality: this.qualityInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		innerStrength: this.innerStrengthInput.state,
-	// 		outerStrength: this.outerStrengthInput.state,
-	// 		distance: this.distanceInput.state,
-	// 		color: this.colorInput.state,
-	// 		quality: this.qualityInput.state
-	// 		// isCollapsed: this.isCollapsed.state
-	// 	};
-	// }
 }
 
 module.exports = GlowFilter;

@@ -18,13 +18,6 @@ class AsciiFilter extends Group {
 			size: this.sizeInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		size: this.sizeInput.state
-	// 	};
-	// }
 }
 
 module.exports = AsciiFilter;

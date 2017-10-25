@@ -21,14 +21,6 @@ class NoiseFilter extends Group {
 			seed: this.seedInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		noise: this.noiseInput.state,
-	// 		seed: this.seedInput.state
-	// 	};
-	// }
 }
 
 module.exports = NoiseFilter;

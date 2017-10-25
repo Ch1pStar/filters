@@ -21,14 +21,6 @@ class BlurFilter extends Group {
 			quality: this.qualityInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		blur: this.blurInput.state,
-	// 		quality: this.qualityInput.state
-	// 	};
-	// }
 }
 
 module.exports = BlurFilter;

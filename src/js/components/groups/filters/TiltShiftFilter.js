@@ -21,14 +21,6 @@ class TiltShiftFilter extends Group {
 			gradientBlur: this.gradientBlurInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		blur: this.blurInput.state,
-	// 		gradientBlur: this.gradientBlurInput.state
-	// 	};
-	// }
 }
 
 module.exports = TiltShiftFilter;

@@ -59,14 +59,6 @@ class ConvolutionFilter extends Group {
 			height: this.heightInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		width: this.widthInput.state,
-	// 		height: this.heightInput.state
-	// 	};
-	// }
 }
 
 module.exports = ConvolutionFilter;

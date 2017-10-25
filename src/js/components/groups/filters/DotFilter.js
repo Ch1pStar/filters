@@ -21,14 +21,6 @@ class DotFilter extends Group {
 			angle: this.angleInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		scale: this.scaleInput.state,
-	// 		angle: this.angleInput.state
-	// 	};
-	// }
 }
 
 module.exports = DotFilter;

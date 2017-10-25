@@ -1,38 +1,5 @@
 
 
 this.background.filters = this.filters;
-emitterZoneEmitter.p.x = 100;
-emitterZoneEmitter.p.y = 100;
-window.emitterZoneEmitter = emitterZoneEmitter;
-emitterZoneEmitter.particleCreated.add(function(particle){
-	if(particle.sprite){
-		particle.sprite.visible = true;
-		particle.sprite.scale.set(particle.scale);
-		return;
-	}
-	var txtId = Math.floor(Math.random()*(this.particleTextures.length));
-	var texture = this.particleTextures[txtId];
-	var sp = new PIXI.Sprite(texture);
-	particle.sprite = sp;
-	{{!-- 
-	sp.width = 15;
-	sp.height = 15; --}}
-	sp.anchor.set(0.5);
-	this.emitterZoneCnt.addChild(sp);
-}.bind(this));
 
-emitterZoneEmitter.particleUpdate.add(function(particle){
-	var sp = particle.sprite;
-	sp.position.set(particle.p.x, particle.p.y);
-	{{#if Alpha}}sp.alpha = particle.alpha;{{/if}}
-	{{#if Scale}}sp.scale.set(particle.scale);{{/if}}
-	{{#if Rotate}}sp.rotation = particle.rotation;{{/if}}
-}.bind(this));
-
-emitterZoneEmitter.particleDead.add(function(particle){
-	particle.sprite.visible = false;
-}.bind(this));
-
-var emitters = this.emitters = this.emitters || [];
-emitters.push(this.emitterZoneEmitter);
 

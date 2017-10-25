@@ -31,17 +31,6 @@ class DropShadowFilter extends Group {
 			color: this.colorInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		blur: this.blurInput.state,
-	// 		alpha: this.alphaInput.state,
-	// 		distance: this.distanceInput.state,
-	// 		rotation: this.rotationInput.state,
-	// 		color: this.colorInput.state
-	// 	};
-	// }
 }
 
 module.exports = DropShadowFilter;

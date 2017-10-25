@@ -18,13 +18,6 @@ class EmbossFilter extends Group {
 			strength: this.strengthInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		strength: this.strengthInput.state
-	// 	};
-	// }
 }
 
 module.exports = EmbossFilter;

@@ -21,14 +21,6 @@ class PixelateFilter extends Group {
 			sizeY: this.sizeYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		sizeX: this.sizeXInput.state,
-	// 		sizeY: this.sizeYInput.state
-	// 	};
-	// }
 }
 
 module.exports = PixelateFilter;

@@ -33,18 +33,6 @@ class RGBSplitFilter extends Group {
 			blueY: this.blueYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		redX: this.redXInput.state,
-	// 		redY: this.redYInput.state,
-	// 		greenX: this.greenXInput.state,
-	// 		greenY: this.greenYInput.state,
-	// 		blueX: this.blueXInput.state,
-	// 		blueY: this.blueYInput.state
-	// 	};
-	// }
 }
 
 module.exports = RGBSplitFilter;

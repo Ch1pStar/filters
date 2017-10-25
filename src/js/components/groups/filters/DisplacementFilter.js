@@ -21,14 +21,6 @@ class DisplacementFilter extends Group {
 			scaleY: this.scaleYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		scaleX: this.scaleXInput.state,
-	// 		scaleY: this.scaleYInput.state
-	// 	};
-	// }
 }
 
 module.exports = DisplacementFilter;

@@ -1,19 +1,4 @@
 
-if (this.emitterZoneCnt) { this.stage.removeChild(this.emitterZoneCnt); this.emitterZoneCnt = null; };
-// if (!this.emitterZoneCnt) {
-	this.emitterZoneCnt = new PIXI.particles.ParticleContainer(30000, {
-		scale: {{#if Scale}}true{{else}}false{{/if}},
-		position: true,
-		rotation: {{#if Rotate}}true{{else}}false{{/if}},
-		uvs: false,
-		alpha: {{#if Alpha}}true{{else}}false{{/if}},
-	});
 
-	this.stage.addChild(this.emitterZoneCnt);
-	
-// }
-
-var emitterZoneEmitter = this.emitterZoneEmitter = new Quark.Emitter();
-emitterZoneEmitter.maxParticles = 30000;
 this.filters = [];
 

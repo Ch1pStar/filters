@@ -22,14 +22,6 @@ class OutlineFilter extends Group {
 			color: this.colorInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		thickness: this.thicknessInput.state,
-	// 		color: this.colorInput.state
-	// 	};
-	// }
 }
 
 module.exports = OutlineFilter;

@@ -24,15 +24,6 @@ class ShockwaveFilter extends Group {
 			centerY: this.centerYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		time: this.timeInput.state,
-	// 		centerX: this.centerXInput.state,
-	// 		centerY: this.centerYInput.state
-	// 	};
-	// }
 }
 
 module.exports = ShockwaveFilter;

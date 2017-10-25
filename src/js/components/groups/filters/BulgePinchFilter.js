@@ -27,16 +27,6 @@ class BulgePinchFilter extends Group {
 			centerY: this.centerYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		radius: this.radiusInput.state,
-	// 		strength: this.strengthInput.state,
-	// 		centerX: this.centerXInput.state,
-	// 		centerY: this.centerYInput.state
-	// 	};
-	// }
 }
 
 module.exports = BulgePinchFilter;

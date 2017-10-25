@@ -27,16 +27,6 @@ class TwistFilter extends Group {
 			y: this.yInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		angle: this.angleInput.state,
-	// 		radius: this.radiusInput.state,
-	// 		x: this.xInput.state,
-	// 		y: this.yInput.state
-	// 	};
-	// }
 }
 
 module.exports = TwistFilter;

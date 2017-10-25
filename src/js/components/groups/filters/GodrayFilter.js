@@ -27,16 +27,6 @@ class GodrayFilter extends Group {
 			lacunarity: this.lacunarityInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		time: this.timeInput.state,
-	// 		angle: this.angleInput.state,
-	// 		gain: this.gainInput.state,
-	// 		lacunarity: this.lacunarityInput.state
-	// 	};
-	// }
 }
 
 module.exports = GodrayFilter;

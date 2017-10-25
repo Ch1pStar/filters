@@ -25,15 +25,6 @@ class ColorReplaceFilter extends Group {
 			epsilon: this.epsilonInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		originalColor: this.originalColorInput.state,
-	// 		newColor: this.newColorInput.state,
-	// 		epsilon: this.epsilonInput.state
-	// 	};
-	// }
 }
 
 module.exports = ColorReplaceFilter;

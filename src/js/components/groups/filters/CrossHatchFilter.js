@@ -11,12 +11,6 @@ class CrossHatchFilter extends Group {
 	get fields() {
 		return {};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state
-	// 	};
-	// }
 }
 
 module.exports = CrossHatchFilter;

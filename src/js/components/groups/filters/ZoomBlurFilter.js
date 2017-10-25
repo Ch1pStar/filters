@@ -27,16 +27,6 @@ class ZoomBlurFilter extends Group {
 			innerRadius: this.innerRadiusInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state,
-	// 		strength: this.strengthInput.state,
-	// 		centerX: this.centerXInput.state,
-	// 		centerY: this.centerYInput.state,
-	// 		innerRadius: this.innerRadiusInput.state
-	// 	};
-	// }
 }
 
 module.exports = ZoomBlurFilter;

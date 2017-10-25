@@ -24,15 +24,6 @@ class BloomFilter extends Group {
 			blurY: this.blurYInput.state.value
 		};
 	}
-
-	// get state() {
-	// 	return {
-	// 		enabled: this.enabledInput.state.value,
-	// 		blur: this.blurInput.state,
-	// 		blurX: this.blurXInput.state,
-	// 		blurY: this.blurYInput.state
-	// 	};
-	// }
 }
 
 module.exports = BloomFilter;
