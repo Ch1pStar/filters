@@ -21,7 +21,7 @@ const dotFilter = new Filters.DotFilter();
 const dropShadowFilter = new PIXI.filters.DropShadowFilter();
 const embossFilter = new Filters.EmbossFilter();
 const godrayFilter = new Filters.GodrayFilter();
-// const multiColorReplaceFilter = new PIXI.filters.MultiColorReplaceFilter();
+const multiColorReplaceFilter = new PIXI.filters.MultiColorReplaceFilter([], 0, 3);
 const noiseFilter = new PIXI.filters.NoiseFilter();
 const outlineFilter = new Filters.OutlineFilter();
 const pixelateFilter = new Filters.PixelateFilter();
@@ -53,6 +53,21 @@ class PreviewBox extends Box {
 			this._initCanvasRenderer();
 			this._initEmitTypes();
 		});
+	}
+
+	hashCode(str) {
+		// java String#hashCode
+		var hash = 0;
+		for (var i = 0; i < str.length; i++) {
+			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		return hash;
+	}
+
+	intToRGB(i) {
+		var c = (i & 0x00ffffff).toString(16).toUpperCase();
+
+		return '00000'.substring(0, 6 - c.length) + c;
 	}
 
 	set effects(effects) {

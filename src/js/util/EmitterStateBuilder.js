@@ -22,7 +22,7 @@ const DropShadowFilter = require('../../templates/components/emitter/effects/fil
 const EmbossFilter = require('../../templates/components/emitter/effects/filters/EmbossFilter.hbs');
 const GlowFilter = require('../../templates/components/emitter/effects/filters/GlowFilter.hbs');
 const GodrayFilter = require('../../templates/components/emitter/effects/filters/GodrayFilter.hbs');
-const MultiColorReplacerFilter = require('../../templates/components/emitter/effects/filters/MultiColorReplacerFilter.hbs');
+const MultiColorReplaceFilter = require('../../templates/components/emitter/effects/filters/MultiColorReplaceFilter.hbs');
 const NoiseFilter = require('../../templates/components/emitter/effects/filters/NoiseFilter.hbs');
 const OutlineFilter = require('../../templates/components/emitter/effects/filters/OutlineFilter.hbs');
 const PixelateFilter = require('../../templates/components/emitter/effects/filters/PixelateFilter.hbs');
@@ -49,7 +49,7 @@ class EmitterStateBuilder {
 		EmbossFilter,
 		GlowFilter,
 		GodrayFilter,
-		MultiColorReplacerFilter,
+		MultiColorReplaceFilter,
 		NoiseFilter,
 		OutlineFilter,
 		PixelateFilter,
@@ -87,7 +87,7 @@ class EmitterStateBuilder {
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
-		// console.log(bodyStr);
+		console.log(bodyStr);
 
 		this.emitterTemplate.head = headTemplate(effects);
 		this.emitterTemplate.body = bodyStr;

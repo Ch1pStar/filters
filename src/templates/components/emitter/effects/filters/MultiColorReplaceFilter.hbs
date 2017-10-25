@@ -1,0 +1,9 @@
+
+    if (this.filters.indexOf(multiColorReplaceFilter) === -1) {
+      this.filters.push(multiColorReplaceFilter);
+    }
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[0] = ['{{original0}}', '{{target0}}']
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[1] = ['{{original1}}', '{{target1}}']
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].replacements[2] = ['{{original2}}', '{{target2}}']
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].epsilon = {{epsilon}};
+      this.filters[this.filters.indexOf(multiColorReplaceFilter)].refresh();
