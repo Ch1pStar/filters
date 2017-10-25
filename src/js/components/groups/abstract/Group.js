@@ -28,6 +28,10 @@ class Group extends Folder {
 		this._initInput();
 	}
 
+	onUpdate() {
+		this.attach('click', '.title', this._handleClick.bind(this));
+	}
+
 	_initInput() {
 		const cnt = this.getContainer();
 		const inputs = this.inputs;
