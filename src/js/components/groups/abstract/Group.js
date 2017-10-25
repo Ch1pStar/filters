@@ -15,15 +15,12 @@ class Group extends Folder {
 	 * @param {Boolean} enable Whether the group is enabled
 	 */
 	constructor(options = {}) {
-		super();
+		super(options);
 
 		this.options = options;
-		this.label = this._state.title = options.label;
-
-		const input = (this.input = new InputRange(options));
-
-		this.input.setState({ ...this.options });
-		this.inputs = [input];
+		this.label = options.label;
+		this.setState({ ...this.options });
+		this.setState({ title: this.label });
 
 		this._initInput();
 	}
@@ -39,11 +36,8 @@ class Group extends Folder {
 			input.on(Component.events.UPDATE_STATE, e => {
 				this.emit(Group.events.CHANGE, e);
 			});
-
 			cnt.appendChild(input.container);
 		});
-
-		this.setState();
 	}
 
 	get fields() {
@@ -51,10 +45,6 @@ class Group extends Folder {
 	}
 
 	get command() {}
-
-	// get state() {
-	// 	return this.input.state;
-	// }
 }
 
 module.exports = Group;
