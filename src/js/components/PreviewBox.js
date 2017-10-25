@@ -5,6 +5,7 @@ const SheetBuilder = require('../util/SpriteSheetBuilder');
 const EmitterStateBuilder = require('../util/EmitterStateBuilder');
 const Proton = require('Quark');
 const Filters = require('pixi-filters');
+const Group = require('./groups/abstract/Group');
 
 const glowFilter = new Filters.GlowFilter();
 const asciiFilter = new Filters.AsciiFilter();
@@ -12,7 +13,7 @@ const bloomFilter = new Filters.GlowFilter();
 const blurFilter = new PIXI.filters.BlurFilter();
 const zoomBlurFilter = new Filters.ZoomBlurFilter();
 const bulgePinchFilter = new Filters.BulgePinchFilter();
-// const colorMatricFilter = new Filters.ColorMatrixFilter()
+// const colorMatricFilter = new PIXI.filters.ColorMatrixFilter();
 const colorReplaceFilter = new Filters.ColorReplaceFilter();
 const convolutionFilter = new Filters.ConvolutionFilter();
 const crossHatchFilter = new PIXI.filters.CrossHatchFilter();
@@ -46,28 +47,22 @@ class PreviewBox extends Box {
 		this._startEmit = this._startEmit.bind(this);
 		this._stopEmit = this._stopEmit.bind(this);
 		this._updateCursorPosition = this._updateCursorPosition.bind(this);
-		this.filters = [];
 
 		requestAnimationFrame(() => {
 			this.render();
 			this._initCanvasRenderer();
 			this._initEmitTypes();
 		});
-	}
 
-	hashCode(str) {
-		// java String#hashCode
-		var hash = 0;
-		for (var i = 0; i < str.length; i++) {
-			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		for (filter in this.filters) {
+			filter.on(Group.events.REMOVE, event => {
+				console.log('success');
+			});
 		}
-		return hash;
 	}
 
-	intToRGB(i) {
-		var c = (i & 0x00ffffff).toString(16).toUpperCase();
-
-		return '00000'.substring(0, 6 - c.length) + c;
+	removeFilter(filter) {
+		return this.filters.splice(this.filters.indexOf(filter), 1);
 	}
 
 	set effects(effects) {

@@ -1,12 +1,14 @@
 const InputRange = require('dope-components').InputRange;
 const Folder = require('dope-components').Folder;
 const Component = require('dope-components').Component;
+const PreviewBox = require('../../PreviewBox');
 
 class Group extends Folder {
 	static events = {
 		// ...InputRange.events,
 		ADD: 'add',
-		CHANGE: 'change'
+		CHANGE: 'change',
+		REMOVE: 'remove'
 	};
 
 	/**
@@ -21,8 +23,17 @@ class Group extends Folder {
 		this.label = options.label;
 		this.setState({ ...this.options });
 		this.setState({ title: this.label });
-
+		this.removeBtn = document.createElement('span');
+		this.removeBtn.classList.add('fa-times', 'remove');
+		this.removeBtn.addEventListener('click', this._handleRemoveClicked.bind(this));
+		this.folderElem = this.container.querySelector('.folder');
+		this.folderElem.appendChild(this.removeBtn);
 		this._initInput();
+	}
+
+	_handleRemoveClicked(e, element) {
+		this.container.removeChild(this.container.querySelector('.folder-component'));
+		this.emit(Group.events.REMOVE, this.label);
 	}
 
 	onUpdate() {

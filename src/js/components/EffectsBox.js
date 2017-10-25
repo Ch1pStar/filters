@@ -122,6 +122,11 @@ class EffetcsBox extends Box {
 	_addGroup(group) {
 		this.contentContainer.appendChild(group.container);
 
+		group.on(Group.events.REMOVE, event => {
+			this._removeGroup(group);
+			this.emitGroupsState();
+		});
+
 		group.on(Group.events.CHANGE, this.emitGroupsState);
 		this.groups.push(group);
 

@@ -7,7 +7,7 @@ class AsciiFilter extends Group {
 		const size = (this.sizeInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, size];
+		this.inputs = [size];
 
 		this.sizeInput.setState(state.size);
 		super._initInput();
