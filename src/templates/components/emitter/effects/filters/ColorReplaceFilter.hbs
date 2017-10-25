@@ -2,6 +2,7 @@
       this.filters.push(colorReplaceFilter);
       
     } 
-    this.filters[this.filters.indexOf(colorReplaceFilter)].originalColor = '{{originalColor}}';
-    this.filters[this.filters.indexOf(colorReplaceFilter)].newColor = '{{newColor}}';
-    this.filters[this.filters.indexOf(colorReplaceFilter)].epsilon = {{epsilon}};
+    var filter = this.filters[this.filters.indexOf(colorReplaceFilter)]
+    filter.originalColor = '{{originalColor}}';
+    filter.newColor = '{{newColor}}';
+    filter.epsilon = {{epsilon}};

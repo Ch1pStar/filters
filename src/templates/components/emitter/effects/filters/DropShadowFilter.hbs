@@ -1,8 +1,9 @@
 if (this.filters.indexOf(dropShadowFilter) === -1) {
   this.filters.push(dropShadowFilter);
 } 
-this.filters[this.filters.indexOf(dropShadowFilter)].blur = {{blur}};      
-this.filters[this.filters.indexOf(dropShadowFilter)].alpha = {{alpha}};
-this.filters[this.filters.indexOf(dropShadowFilter)].distance = {{distance}};
-this.filters[this.filters.indexOf(dropShadowFilter)].rotation = {{rotation}};
-this.filters[this.filters.indexOf(dropShadowFilter)].color = '{{color}}';
+var filter = this.filters[this.filters.indexOf(dropShadowFilter)]
+filter.blur = {{blur}};      
+filter.alpha = {{alpha}};
+filter.distance = {{distance}};
+filter.rotation = {{rotation}};
+filter.color = '{{color}}';

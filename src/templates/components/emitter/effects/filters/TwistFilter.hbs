@@ -2,7 +2,9 @@
     if (this.filters.indexOf(twistFilter) === -1) {
       this.filters.push(twistFilter);
     }
-    this.filters[this.filters.indexOf(twistFilter)].angle = {{angle}};
-    this.filters[this.filters.indexOf(twistFilter)].radius = {{radius}};
-    this.filters[this.filters.indexOf(twistFilter)].offset.x = {{x}};
-    this.filters[this.filters.indexOf(twistFilter)].offset.y = {{y}};
+
+    var filter = this.filters[this.filters.indexOf(twistFilter)]
+    filter.angle = {{angle}};
+    filter.radius = {{radius}};
+    filter.offset.x = {{x}};
+    filter.offset.y = {{y}};

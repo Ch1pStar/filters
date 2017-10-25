@@ -1,5 +1,6 @@
     if (this.filters.indexOf(tiltShiftFilter) === -1) {
       this.filters.push(tiltShiftFilter);
     }
-    this.filters[this.filters.indexOf(tiltShiftFilter)].blur = {{blur}};
-    this.filters[this.filters.indexOf(tiltShiftFilter)].gradientBlur = {{gradientBlur}};
+    var filter = this.filters[this.filters.indexOf(tiltShiftFilter)]
+    filter.blur = {{blur}};
+    filter.gradientBlur = {{gradientBlur}};

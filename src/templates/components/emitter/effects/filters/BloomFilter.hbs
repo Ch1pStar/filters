@@ -1,7 +1,8 @@
     if (this.filters.indexOf(bloomFilter) === -1) {
       this.filters.push(bloomFilter);
     }    
-    this.filters[this.filters.indexOf(bloomFilter)].blur = {{blur}};
-    this.filters[this.filters.indexOf(bloomFilter)].blurX = {{blurX}};
-    this.filters[this.filters.indexOf(bloomFilter)].blurY = {{blurY}};
+    var filter = this.filters[this.filters.indexOf(bloomFilter)]
+    filter.blur = {{blur}};
+    filter.blurX = {{blurX}};
+    filter.blurY = {{blurY}};
   

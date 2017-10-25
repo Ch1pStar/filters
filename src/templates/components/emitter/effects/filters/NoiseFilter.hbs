@@ -2,5 +2,6 @@
     if (this.filters.indexOf(noiseFilter) === -1) {
       this.filters.push(noiseFilter);
     }
-    this.filters[this.filters.indexOf(noiseFilter)].noise = {{noise}};
-    this.filters[this.filters.indexOf(noiseFilter)].seed = {{seed}};
+    var filter = this.filters[this.filters.indexOf(noiseFilter)]
+    filter.noise = {{noise}};
+    filter.seed = {{seed}};

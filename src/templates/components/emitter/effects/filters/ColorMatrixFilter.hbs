@@ -2,14 +2,15 @@
     if (this.filters.indexOf(colorMatricFilter) === -1) {
       this.filters.push(colorMatricFilter);
     } 
-    this.filters[this.filters.indexOf(colorMatricFilter)].reset = {{reset.isChecked}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].sepia = {{sepia}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].negative = {{negative}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].kodachrome = {{kodachrome}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].lsd = {{lsd}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].polaroid = {{polaroid}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].desaturate = {{desaturate}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].contrast = {{contrast}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].greyscale = {{greyscale}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].predator = {{predator}};
-    this.filters[this.filters.indexOf(colorMatricFilter)].saturate = {{saturate}};
+    var filter = this.filters[this.filters.indexOf(colorMatricFilter)]
+    filter.reset = {{reset.isChecked}};
+    filter.sepia = {{sepia}};
+    filter.negative = {{negative}};
+    filter.kodachrome = {{kodachrome}};
+    filter.lsd = {{lsd}};
+    filter.polaroid = {{polaroid}};
+    filter.desaturate = {{desaturate}};
+    filter.contrast = {{contrast}};
+    filter.greyscale = {{greyscale}};
+    filter.predator = {{predator}};
+    filter.saturate = {{saturate}};

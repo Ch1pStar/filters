@@ -1,5 +1,6 @@
     if (this.filters.indexOf(outlineFilter) === -1) {
       this.filters.push(outlineFilter);
     }
-    this.filters[this.filters.indexOf(outlineFilter)].thickness = {{thickness}};
-    this.filters[this.filters.indexOf(outlineFilter)].color = '{{color}}';
+    var filter = this.filters[this.filters.indexOf(outlineFilter)]
+    filter.thickness = {{thickness}};
+    filter.color = '{{color}}';

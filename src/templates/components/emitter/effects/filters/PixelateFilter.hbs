@@ -2,5 +2,6 @@
     if (this.filters.indexOf(pixelateFilter) === -1) {
       this.filters.push(pixelateFilter);
     }
-    this.filters[this.filters.indexOf(pixelateFilter)].size.x= {{sizeX}};
-    this.filters[this.filters.indexOf(pixelateFilter)].size.y = {{sizeY}};
+    var filter = this.filters[this.filters.indexOf(pixelateFilter)]
+    filter.size.x= {{sizeX}};
+    filter.size.y = {{sizeY}};

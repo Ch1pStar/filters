@@ -2,5 +2,6 @@
       this.filters.push(displacementFilter);
     } 
     console.log(displacementFilter)
-      this.filters[this.filters.indexOf(displacementFilter)].scale.x = {{scaleX}};      
-      this.filters[this.filters.indexOf(displacementFilter)].scale.y = {{scaleY}};
+    var filter = this.filters[this.filters.indexOf(displacementFilter)]
+      filter.scale.x = {{scaleX}};      
+      filter.scale.y = {{scaleY}};

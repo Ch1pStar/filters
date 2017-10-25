@@ -2,5 +2,6 @@
     if (this.filters.indexOf(dotFilter) === -1) {
       this.filters.push(dotFilter);
     } 
-      this.filters[this.filters.indexOf(dotFilter)].scale = {{scale}};      
-      this.filters[this.filters.indexOf(dotFilter)].angle = {{angle}};
+    var filter = this.filters[this.filters.indexOf(dotFilter)]
+      filter.scale = {{scale}};      
+      filter.angle = {{angle}};

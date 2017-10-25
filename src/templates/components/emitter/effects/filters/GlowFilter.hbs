@@ -1,8 +1,9 @@
     if (this.filters.indexOf(glowFilter) === -1) {
       this.filters.push(glowFilter);
     }
-      this.filters[this.filters.indexOf(glowFilter)].innerStrength = {{innerStrength}};
-      this.filters[this.filters.indexOf(glowFilter)].outerStrength = {{outerStrength}};
-      this.filters[this.filters.indexOf(glowFilter)].distance = {{distance}};
-      this.filters[this.filters.indexOf(glowFilter)].color = '{{color}}';
-      this.filters[this.filters.indexOf(glowFilter)].quality = {{quality}};
+    var filter = this.filters[this.filters.indexOf(glowFilter)]
+      filter.innerStrength = {{innerStrength}};
+      filter.outerStrength = {{outerStrength}};
+      filter.distance = {{distance}};
+      filter.color = '{{color}}';
+      filter.quality = {{quality}};

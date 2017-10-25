@@ -3,7 +3,8 @@
     if (this.filters.indexOf(convolutionFilter) === -1) {
       this.filters.push(convolutionFilter);
     } 
-     this.filters[this.filters.indexOf(convolutionFilter)].matrix = [{{matrixZeroZero}},{{matrixZeroOne}},{{matrixZeroTwo}},{{matrixOneZero}},{{matrixOneOne}},{{matrixOneTwo}},{{matrixTwoZero}},{{matrixTwoOne}},{{matrixTwoTwo}}]
-      this.filters[this.filters.indexOf(convolutionFilter)].width = {{width}};      
-      this.filters[this.filters.indexOf(convolutionFilter)].height = {{height}};
+    var filter = this.filters[this.filters.indexOf(convolutionFilter)]
+     filter.matrix = [{{matrixZeroZero}},{{matrixZeroOne}},{{matrixZeroTwo}},{{matrixOneZero}},{{matrixOneOne}},{{matrixOneTwo}},{{matrixTwoZero}},{{matrixTwoOne}},{{matrixTwoTwo}}]
+      filter.width = {{width}};      
+      filter.height = {{height}};
 

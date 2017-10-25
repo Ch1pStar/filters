@@ -3,6 +3,7 @@
     if (this.filters.indexOf(shockwaveFilter) === -1) {
       this.filters.push(shockwaveFilter);
     }
-    this.filters[this.filters.indexOf(shockwaveFilter)].time = {{time}};
-    this.filters[this.filters.indexOf(shockwaveFilter)].center[0] = {{centerX}};
-    this.filters[this.filters.indexOf(shockwaveFilter)].center[1] = {{centerY}};
+    var filter = this.filters[this.filters.indexOf(shockwaveFilter)]
+    filter.time = {{time}};
+    filter.center[0] = {{centerX}};
+    filter.center[1] = {{centerY}};

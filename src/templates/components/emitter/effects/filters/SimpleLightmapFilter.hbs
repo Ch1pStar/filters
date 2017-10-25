@@ -1,6 +1,7 @@
     if (this.filters.indexOf(simpleLightmapFilter) === -1) {
       this.filters.push(simpleLightmapFilter);
     }
-    this.filters[this.filters.indexOf(simpleLightmapFilter)].texture = this.bgSprite.texture;
-    this.filters[this.filters.indexOf(simpleLightmapFilter)].color = '{{color}}';
-    this.filters[this.filters.indexOf(simpleLightmapFilter)].alpha = {{alpha}};
+    var filter = this.filters[this.filters.indexOf(simpleLightmapFilter)]
+    filter.texture = this.bgSprite.texture;
+    filter.color = '{{color}}';
+    filter.alpha = {{alpha}};
