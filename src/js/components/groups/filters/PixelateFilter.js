@@ -4,14 +4,12 @@ const Checkbox = require('dope-components').Checkbox;
 
 class PixelateFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const sizeX = (this.sizeXInput = new InputRange());
 		const sizeY = (this.sizeYInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, sizeX, sizeY];
+		this.inputs = [sizeX, sizeY];
 
-		this.enabledInput.setState(state.enabled);
 		this.sizeXInput.setState(state.sizeX);
 		this.sizeYInput.setState(state.sizeY);
 		super._initInput();
@@ -19,7 +17,6 @@ class PixelateFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			sizeX: this.sizeXInput.state.value,
 			sizeY: this.sizeYInput.state.value
 		};

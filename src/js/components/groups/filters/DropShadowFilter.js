@@ -5,7 +5,6 @@ const Checkbox = require('dope-components').Checkbox;
 
 class DropShadowFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const blur = (this.blurInput = new InputRange());
 		const alpha = (this.alphaInput = new InputRange());
 		const distance = (this.distanceInput = new InputRange());
@@ -13,9 +12,8 @@ class DropShadowFilter extends Group {
 		const color = (this.colorInput = new InputColor());
 		const state = this.options;
 
-		this.inputs = [enabled, blur, alpha, distance, rotation, color];
+		this.inputs = [blur, alpha, distance, rotation, color];
 
-		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.alphaInput.setState(state.alpha);
 		this.distanceInput.setState(state.distance);
@@ -26,7 +24,6 @@ class DropShadowFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			blur: this.blurInput.state.value,
 			alpha: this.alphaInput.state.value,
 			distance: this.distanceInput.state.value,

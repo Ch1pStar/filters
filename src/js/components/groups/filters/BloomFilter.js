@@ -4,15 +4,13 @@ const Checkbox = require('dope-components').Checkbox;
 
 class BloomFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const blur = (this.blurInput = new InputRange());
 		const blurX = (this.blurXInput = new InputRange());
 		const blurY = (this.blurYInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, blur, blurX, blurY];
+		this.inputs = [blur, blurX, blurY];
 
-		this.enabledInput.setState(state.enabled);
 		this.blurInput.setState(state.blur);
 		this.blurXInput.setState(state.blurX);
 		this.blurYInput.setState(state.blurY);
@@ -21,7 +19,6 @@ class BloomFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			blur: this.blurInput.state.value,
 			blurX: this.blurXInput.state.value,
 			blurY: this.blurYInput.state.value

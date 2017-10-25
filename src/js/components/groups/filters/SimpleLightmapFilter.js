@@ -5,14 +5,12 @@ const InputColor = require('dope-components').InputColor;
 
 class SimpleLightmapFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const color = (this.colorInput = new InputColor());
 		const alpha = (this.alphaInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, color, alpha];
+		this.inputs = [color, alpha];
 
-		this.enabledInput.setState(state.enabled);
 		this.colorInput.setState(state.color);
 		this.alphaInput.setState(state.alpha);
 		super._initInput();
@@ -20,7 +18,6 @@ class SimpleLightmapFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			color: this.colorInput.state.value,
 			alpha: this.alphaInput.state.value
 		};

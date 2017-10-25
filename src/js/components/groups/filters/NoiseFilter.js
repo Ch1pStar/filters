@@ -4,14 +4,12 @@ const Checkbox = require('dope-components').Checkbox;
 
 class NoiseFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const noise = (this.noiseInput = new InputRange());
 		const seed = (this.seedInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, noise, seed];
+		this.inputs = [noise, seed];
 
-		this.enabledInput.setState(state.enabled);
 		this.noiseInput.setState(state.noise);
 		this.seedInput.setState(state.seed);
 		super._initInput();
@@ -19,7 +17,6 @@ class NoiseFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			noise: this.noiseInput.state.value,
 			seed: this.seedInput.state.value
 		};

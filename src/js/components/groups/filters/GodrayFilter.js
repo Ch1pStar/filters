@@ -4,16 +4,14 @@ const Checkbox = require('dope-components').Checkbox;
 
 class GodrayFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const time = (this.timeInput = new InputRange());
 		const angle = (this.angleInput = new InputRange());
 		const gain = (this.gainInput = new InputRange());
 		const lacunarity = (this.lacunarityInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, time, angle, gain, lacunarity];
+		this.inputs = [time, angle, gain, lacunarity];
 
-		this.enabledInput.setState(state.enabled);
 		this.timeInput.setState(state.time);
 		this.angleInput.setState(state.angle);
 		this.gainInput.setState(state.gain);
@@ -23,7 +21,6 @@ class GodrayFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			time: this.timeInput.state.value,
 			angle: this.angleInput.state.value,
 			gain: this.gainInput.state.value,

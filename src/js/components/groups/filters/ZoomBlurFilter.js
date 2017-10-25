@@ -4,16 +4,14 @@ const Checkbox = require('dope-components').Checkbox;
 
 class ZoomBlurFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const strength = (this.strengthInput = new InputRange());
 		const centerX = (this.centerXInput = new InputRange());
 		const centerY = (this.centerYInput = new InputRange());
 		const innerRadius = (this.innerRadiusInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, strength, centerX, centerY, innerRadius];
+		this.inputs = [strength, centerX, centerY, innerRadius];
 
-		this.enabledInput.setState(state.enabled);
 		this.strengthInput.setState(state.strength);
 		this.centerXInput.setState(state.centerX);
 		this.centerYInput.setState(state.centerY);
@@ -23,7 +21,6 @@ class ZoomBlurFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			strength: this.strengthInput.state.value,
 			centerX: this.centerXInput.state.value,
 			centerY: this.centerYInput.state.value,

@@ -4,7 +4,6 @@ const Checkbox = require('dope-components').Checkbox;
 
 class RGBSplitFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const redX = (this.redXInput = new InputRange());
 		const redY = (this.redYInput = new InputRange());
 		const greenX = (this.greenXInput = new InputRange());
@@ -13,9 +12,8 @@ class RGBSplitFilter extends Group {
 		const blueY = (this.blueYInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, redX, redY, greenX, greenY, blueX, blueY];
+		this.inputs = [redX, redY, greenX, greenY, blueX, blueY];
 
-		this.enabledInput.setState(state.enabled);
 		this.redXInput.setState(state.redX);
 		this.redYInput.setState(state.redY);
 		this.greenXInput.setState(state.greenX);
@@ -27,7 +25,6 @@ class RGBSplitFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			redX: this.redXInput.state.value,
 			redY: this.redYInput.state.value,
 			greenX: this.greenXInput.state.value,

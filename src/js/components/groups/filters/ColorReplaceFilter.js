@@ -5,15 +5,13 @@ const Checkbox = require('dope-components').Checkbox;
 
 class ColorReplaceFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const originalColor = (this.originalColorInput = new InputColor());
 		const newColor = (this.newColorInput = new InputColor());
 		const epsilon = (this.epsilonInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, originalColor, newColor, epsilon];
+		this.inputs = [originalColor, newColor, epsilon];
 
-		this.enabledInput.setState(state.enabled);
 		this.originalColorInput.setState(state.originalColor);
 		this.newColorInput.setState(state.newColor);
 		this.epsilonInput.setState(state.epsilon);
@@ -22,7 +20,6 @@ class ColorReplaceFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			originalColor: this.originalColorInput.state.value,
 			newColor: this.newColorInput.state.value,
 			epsilon: this.epsilonInput.state.value

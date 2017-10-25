@@ -4,7 +4,6 @@ const Checkbox = require('dope-components').Checkbox;
 
 class ColorMatrixFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const reset = (this.resetInput = new Checkbox());
 		const sepia = (this.sepiaInput = new Checkbox());
 		const negative = (this.negativeInput = new Checkbox());
@@ -19,7 +18,6 @@ class ColorMatrixFilter extends Group {
 		const state = this.options;
 
 		this.inputs = [
-			enabled,
 			reset,
 			sepia,
 			negative,
@@ -33,14 +31,23 @@ class ColorMatrixFilter extends Group {
 			saturate
 		];
 
-		this.enabledInput.setState(state.enabled);
 		this.resetInput.setState(state.reset);
+		this.sepiaInput.setState(state.sepia);
+		this.negativeInput.setState(state.negative);
+		this.kodachromeInput.setState(state.kodachrome);
+		this.lsdInput.setState(state.lsd);
+		this.polaroidInput.setState(state.polaroid);
+		this.desaturateInput.setState(state.desaturate);
+		this.contrastInput.setState(state.contrast);
+		this.greyscaleInput.setState(state.greyscale);
+		this.predatorInput.setState(state.predator);
+		this.saturateInput.setState(state.saturate);
+
 		super._initInput();
 	}
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			reset: this.resetInput.state.value,
 			sepia: this.sepiaInput.state.value,
 			negative: this.negativeInput.state.value,

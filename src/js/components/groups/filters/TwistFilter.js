@@ -4,16 +4,14 @@ const Checkbox = require('dope-components').Checkbox;
 
 class TwistFilter extends Group {
 	_initInput() {
-		const enabled = (this.enabledInput = new Checkbox());
 		const angle = (this.angleInput = new InputRange());
 		const radius = (this.radiusInput = new InputRange());
 		const x = (this.xInput = new InputRange());
 		const y = (this.yInput = new InputRange());
 		const state = this.options;
 
-		this.inputs = [enabled, angle, radius, x, y];
+		this.inputs = [angle, radius, x, y];
 
-		this.enabledInput.setState(state.enabled);
 		this.angleInput.setState(state.angle);
 		this.radiusInput.setState(state.radius);
 		this.xInput.setState(state.x);
@@ -23,7 +21,6 @@ class TwistFilter extends Group {
 
 	get fields() {
 		return {
-			enabled: this.enabledInput.state.value,
 			angle: this.angleInput.state.value,
 			radius: this.radiusInput.state.value,
 			x: this.xInput.state.value,
