@@ -58,7 +58,7 @@ class EmitterStateBuilder {
 		SimpleLightmapFilter,
 		TiltShiftFilter,
 		TwistFilter,
-		ZoomBlurFilter
+		ZoomBlurFilter,
 	};
 
 	emitterTemplate = {
@@ -68,11 +68,11 @@ class EmitterStateBuilder {
 		emitterStart: emitterStartTemplate,
 		emitterStop: emitterStopTemplate,
 		emitterDestroy: emitterDestroyTemplate,
-		particleTextures: particleTexturesTemplate
+		particleTextures: particleTexturesTemplate,
 	};
 
 	emitterParams = {
-		emitterZone: 'emitterZone'
+		emitterZone: 'emitterZone',
 	};
 
 	effectMarkers = null;
@@ -81,9 +81,11 @@ class EmitterStateBuilder {
 
 	set effects(effects) {
 		let bodyStr = '';
+
 		this._effects = effects;
 		for (const effect in effects) {
 			const effectAttributes = effects[effect];
+
 			bodyStr += this.effectTemplates[effect](effectAttributes);
 		}
 
@@ -100,11 +102,11 @@ class EmitterStateBuilder {
 
 	get actionScriptState() {
 		return (
-			this.emitterTemplate.particleTextures(this.emitterParams) +
-			this.emitterTemplate.head.replace(/.stage/g, '') +
-			this.emitterTemplate.body +
-			this.emitterTemplate.footer +
-			this.emitterStartState
+			this.emitterTemplate.particleTextures(this.emitterParams)
+			+ this.emitterTemplate.head.replace(/.stage/g, '')
+			+ this.emitterTemplate.body
+			+ this.emitterTemplate.footer
+			+ this.emitterStartState
 		);
 	}
 
@@ -125,7 +127,7 @@ class EmitterStateBuilder {
 		const marker = new PIXI.Graphics();
 		const text = new PIXI.Text(label, {
 			fill: 0x009900,
-			fontSize: 10
+			fontSize: 10,
 		});
 
 		marker.beginFill(0x478020);
@@ -149,7 +151,7 @@ class EmitterStateBuilder {
 		const marker = new PIXI.Graphics();
 		const text = new PIXI.Text(label, {
 			fill: 0x009900,
-			fontSize: 10
+			fontSize: 10,
 		});
 
 		marker.lineStyle(2, 0x478020);

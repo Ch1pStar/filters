@@ -13,7 +13,7 @@ class GlowFilter extends Group {
 		// const isCollapsed = (this.isCollapsed = new Boolean());
 		const state = this.options;
 
-		this.inputs = [innerStrength, outerStrength, distance, color, quality /*, isCollapsed*/];
+		this.inputs = [innerStrength, outerStrength, distance, color, quality];
 
 		this.innerStrengthInput.setState(state.innerStrength);
 		this.outerStrengthInput.setState(state.outerStrength);
@@ -29,7 +29,7 @@ class GlowFilter extends Group {
 			outerStrength: this.outerStrengthInput.state.value,
 			distance: this.distanceInput.state.value,
 			color: this.colorInput.state.value,
-			quality: this.qualityInput.state.value
+			quality: this.qualityInput.state.value,
 		};
 	}
 }

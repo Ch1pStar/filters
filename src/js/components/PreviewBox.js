@@ -55,7 +55,7 @@ class PreviewBox extends Box {
 		});
 
 		for (filter in this.filters) {
-			filter.on(Group.events.REMOVE, event => {
+			filter.on(Group.events.REMOVE, (event) => {
 				console.log('success');
 			});
 		}
@@ -146,11 +146,11 @@ class PreviewBox extends Box {
 	_initEmitTypes() {
 		const checkboxes = this.container.querySelectorAll('.check');
 
-		[...checkboxes].forEach(check => {
+		[...checkboxes].forEach((check) => {
 			check.addEventListener('click', () => {
 				const type = check.dataset.type;
 
-				[...checkboxes].forEach(check => (check.checked = false));
+				[...checkboxes].forEach((check) => (check.checked = false));
 				check.checked = true;
 
 				// reset
@@ -165,7 +165,7 @@ class PreviewBox extends Box {
 					this._updateEmitterPosition = this._cursorUpdate;
 					this._startCursorFollow();
 				} else {
-					this._updateEmitterPosition = function() {};
+					this._updateEmitterPosition = function () {};
 					this.emitOnClick = true;
 					this._stopEmit();
 				}

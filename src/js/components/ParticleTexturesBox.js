@@ -3,7 +3,6 @@ const template = require('../../templates/ParticleTexturesBox.hbs');
 const Grid = require('./Grid');
 
 class ParticleTexturesBox extends Box {
-
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
 		CHANGE: 'image_change',
@@ -15,7 +14,7 @@ class ParticleTexturesBox extends Box {
 		this.container.classList.add('particle-textures-component-container');
 		this.render();
 
-		const grid = this.grid = new Grid();
+		const grid = (this.grid = new Grid());
 
 		grid.render();
 		requestAnimationFrame(() => {

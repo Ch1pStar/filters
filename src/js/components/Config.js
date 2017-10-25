@@ -1,5 +1,3 @@
-const Config = {
-
-};
+const Config = {};
 
 module.exports = Config;

@@ -18,7 +18,7 @@ class DotFilter extends Group {
 	get fields() {
 		return {
 			scale: this.scaleInput.state.value,
-			angle: this.angleInput.state.value
+			angle: this.angleInput.state.value,
 		};
 	}
 }

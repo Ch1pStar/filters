@@ -18,7 +18,7 @@ class BlurFilter extends Group {
 	get fields() {
 		return {
 			blur: this.blurInput.state.value,
-			quality: this.qualityInput.state.value
+			quality: this.qualityInput.state.value,
 		};
 	}
 }

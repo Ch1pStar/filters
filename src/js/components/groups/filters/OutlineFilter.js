@@ -19,7 +19,7 @@ class OutlineFilter extends Group {
 	get fields() {
 		return {
 			thickness: this.thicknessInput.state.value,
-			color: this.colorInput.state.value
+			color: this.colorInput.state.value,
 		};
 	}
 }

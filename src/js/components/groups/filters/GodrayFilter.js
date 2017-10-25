@@ -24,7 +24,7 @@ class GodrayFilter extends Group {
 			time: this.timeInput.state.value,
 			angle: this.angleInput.state.value,
 			gain: this.gainInput.state.value,
-			lacunarity: this.lacunarityInput.state.value
+			lacunarity: this.lacunarityInput.state.value,
 		};
 	}
 }

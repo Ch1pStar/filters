@@ -21,7 +21,7 @@ class BloomFilter extends Group {
 		return {
 			blur: this.blurInput.state.value,
 			blurX: this.blurXInput.state.value,
-			blurY: this.blurYInput.state.value
+			blurY: this.blurYInput.state.value,
 		};
 	}
 }

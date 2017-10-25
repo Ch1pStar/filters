@@ -4,6 +4,7 @@ const Checkbox = require('dope-components').Checkbox;
 class CrossHatchFilter extends Group {
 	_initInput() {
 		const state = this.options;
+
 		this.inputs = [enabled];
 		super._initInput();
 	}

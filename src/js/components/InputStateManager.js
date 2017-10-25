@@ -41,23 +41,23 @@ class InputStateManager {
 			outerStrength: { label: 'Outer Strength', min: 0, max: 20, value: 10, step: 0.01 },
 			distance: { label: 'Distance', min: 0, max: 20, value: 10, step: 0.01 },
 			color: { label: 'Color' },
-			quality: { label: 'Quality', min: 0, max: 20, value: 10, step: 0.01 }
+			quality: { label: 'Quality', min: 0, max: 20, value: 10, step: 0.01 },
 			// isCollapsed: false
 		},
 		DisplacementFilter: {
 			label: 'DisplacementFilter',
 			scaleX: { label: 'scale.x', min: 1, max: 200, step: 0.01 },
-			scaleY: { label: 'scale.y', min: 1, max: 200, step: 0.01 }
+			scaleY: { label: 'scale.y', min: 1, max: 200, step: 0.01 },
 		},
 		BlurFilter: {
 			label: 'BlurFilter',
 			blur: { label: 'Blur', min: 1, max: 100, step: 0.01 },
-			quality: { label: 'Quality', min: 1, max: 10, step: 0.01 }
+			quality: { label: 'Quality', min: 1, max: 10, step: 0.01 },
 		},
 		NoiseFilter: {
 			label: 'NoiseFilter',
 			noise: { label: 'Noise', min: 0, max: 1, step: 0.01 },
-			seed: { label: 'Seed', min: 0, max: 1, step: 0.01 }
+			seed: { label: 'Seed', min: 0, max: 1, step: 0.01 },
 		},
 		ColorMatrixFilter: {
 			label: 'ColorMatrixFilter',
@@ -71,12 +71,12 @@ class InputStateManager {
 			contrast: { label: 'Contrast' },
 			greyscale: { label: 'Greyscale' },
 			predator: { label: 'Predator' },
-			saturate: { label: 'Saturate' }
+			saturate: { label: 'Saturate' },
 		},
 		OutlineFilter: {
 			label: 'OutlineFilter',
 			thickness: { label: 'thickness', min: 0, max: 20, value: 10, step: 0.01 },
-			color: { label: 'color' }
+			color: { label: 'color' },
 		},
 		DropShadowFilter: {
 			label: 'DropShadowFilter',
@@ -84,32 +84,32 @@ class InputStateManager {
 			alpha: { label: 'Alpha', min: 0, max: 1, value: 0.5, step: 0.01 },
 			distance: { label: 'Distance', min: 0, max: 50, value: 0.5, step: 0.01 },
 			rotation: { label: 'Rotation', min: 0, max: 360, value: 10, step: 0.01 },
-			color: { label: 'color' }
+			color: { label: 'color' },
 		},
 		TwistFilter: {
 			label: 'TwistFilter',
 			angle: { label: 'Angle', min: 0, max: 10, value: 5, step: 0.01 },
 			radius: { label: 'Radius', min: 0, max: 1920, value: 500, step: 0.01 },
 			x: { label: 'x', min: 0, max: 1920, value: 500, step: 0.01 },
-			y: { label: 'y', min: 0, max: 972, value: 500, step: 0.01 }
+			y: { label: 'y', min: 0, max: 972, value: 500, step: 0.01 },
 		},
 		AsciiFilter: {
 			label: 'AsciiFilter',
-			size: { label: 'size', min: 0, max: 20, value: 10, step: 0.01 }
+			size: { label: 'size', min: 0, max: 20, value: 10, step: 0.01 },
 		},
 		DotFilter: {
 			label: 'DotFilter',
 			scale: { label: 'Scale', min: 0, max: 1, value: 0.5, step: 0.01 },
-			angle: { label: 'Angle', min: 0, max: 5, value: 5, step: 0.01 }
+			angle: { label: 'Angle', min: 0, max: 5, value: 5, step: 0.01 },
 		},
 		EmbossFilter: {
 			label: 'EmbossFilter',
-			strength: { label: 'strength', min: 0, max: 20, value: 10, step: 0.01 }
+			strength: { label: 'strength', min: 0, max: 20, value: 10, step: 0.01 },
 		},
 		PixelateFilter: {
 			label: 'PixelateFilter',
 			sizeX: { label: 'sizeX', min: 4, max: 40, value: 15, step: 0.01 },
-			sizeY: { label: 'sizeY', min: 4, max: 40, value: 15, step: 0.01 }
+			sizeY: { label: 'sizeY', min: 4, max: 40, value: 15, step: 0.01 },
 		},
 		RGBSplitFilter: {
 			label: 'RGBSplitFilter',
@@ -118,10 +118,10 @@ class InputStateManager {
 			greenX: { label: 'greenX', min: -20, max: 20, value: 15, step: 0.01 },
 			greenY: { label: 'greenY', min: -20, max: 20, value: 15, step: 0.01 },
 			blueX: { label: 'blueX', min: -20, max: 20, value: 15, step: 0.01 },
-			blueY: { label: 'blueY', min: -20, max: 20, value: 15, step: 0.01 }
+			blueY: { label: 'blueY', min: -20, max: 20, value: 15, step: 0.01 },
 		},
 		CrossHatchFilter: {
-			label: 'CrossHatch'
+			label: 'CrossHatch',
 		},
 		ConvolutionFilter: {
 			label: 'ConvolutionFilter',
@@ -135,37 +135,37 @@ class InputStateManager {
 			matrixTwoOne: { label: 'matrixTwoOne', min: 0, max: 1, value: 0.5, step: 0.01 },
 			matrixTwoTwo: { label: 'matrixTwoTwo', min: 0, max: 1, value: 0.5, step: 0.01 },
 			width: { label: 'width', min: 0, max: 500, value: 15, step: 0.01 },
-			height: { label: 'height', min: 0, max: 500, value: 15, step: 0.01 }
+			height: { label: 'height', min: 0, max: 500, value: 15, step: 0.01 },
 		},
 		BloomFilter: {
 			label: 'BloomFilter',
 			blur: { label: 'blur', min: 0, max: 20, value: 15, step: 0.01 },
 			blurX: { label: 'blurX', min: 0, max: 20, value: 15, step: 0.01 },
-			blurY: { label: 'blurY', min: 0, max: 20, value: 15, step: 0.01 }
+			blurY: { label: 'blurY', min: 0, max: 20, value: 15, step: 0.01 },
 		},
 		TiltShiftFilter: {
 			label: 'TiltShiftFilter',
 			blur: { label: 'blur', min: 0, max: 200, value: 15 },
-			gradientBlur: { label: 'gradientBlur', min: 0, max: 200, value: 15, step: 0.01 }
+			gradientBlur: { label: 'gradientBlur', min: 0, max: 200, value: 15, step: 0.01 },
 		},
 		ShockwaveFilter: {
 			label: 'ShockwaveFilter',
 			time: { label: 'Time', min: 0, max: 1, value: 0.5, step: 0.01 },
 			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5, step: 0.01 },
-			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 }
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 },
 		},
 		BulgePinchFilter: {
 			label: 'BulgePinchFilter',
 			radius: { label: 'radius', min: 0, max: 1000, value: 0.5, step: 0.01 },
 			strength: { label: 'strength', min: 0, max: 1, value: 0.5, step: 0.01 },
 			centerX: { label: 'Center.x', min: 0, max: 1, value: 0.5, step: 0.01 },
-			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 }
+			centerY: { label: 'Center.y', min: 0, max: 1, value: 0.5, step: 0.01 },
 		},
 		ColorReplaceFilter: {
 			label: 'ColorReplaceFilter',
 			originalColor: { label: 'originalColor' },
 			newColor: { label: 'newColor' },
-			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 }
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 },
 		},
 		MultiColorReplaceFilter: {
 			label: 'MultiColorReplaceFilter',
@@ -175,27 +175,27 @@ class InputStateManager {
 			target1: { label: 'target1' },
 			original2: { label: 'original2' },
 			target2: { label: 'target2' },
-			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 }
+			epsilon: { label: 'Epsilon', min: 0, max: 1, value: 0.5, step: 0.01 },
 		},
 		SimpleLightmapFilter: {
 			label: 'SimpleLightmapFilter',
 			color: { label: 'color' },
-			alpha: { label: 'alpha', min: 0, max: 1, value: 0.5, step: 0.01 }
+			alpha: { label: 'alpha', min: 0, max: 1, value: 0.5, step: 0.01 },
 		},
 		GodrayFilter: {
 			label: 'GodrayFilter',
 			time: { label: 'time', min: 0, max: 1, value: 0, step: 0.01 },
 			angle: { label: 'angle', min: 0, max: 60, value: 30, step: 0.01 },
 			gain: { label: 'gain', min: 0, max: 1, value: 0, step: 0.01 },
-			lacunarity: { label: 'lacunarity', min: 0, max: 5, value: 0, step: 0.01 }
+			lacunarity: { label: 'lacunarity', min: 0, max: 5, value: 0, step: 0.01 },
 		},
 		ZoomBlurFilter: {
 			label: 'ZoomBlurFilter',
 			strength: { label: 'strength', min: 0, max: 0.5, value: 0, step: 0.01 },
 			centerX: { label: 'centerX', min: 0, max: 1920, value: 900, step: 0.01 },
 			centerY: { label: 'centerY', min: 0, max: 1920, value: 900, step: 0.01 },
-			innerRadius: { label: 'innerRadius', min: 0, max: 960, value: 360, step: 0.01 }
-		}
+			innerRadius: { label: 'innerRadius', min: 0, max: 960, value: 360, step: 0.01 },
+		},
 	};
 
 	_states = {};

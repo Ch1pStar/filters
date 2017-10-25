@@ -15,7 +15,7 @@ class AsciiFilter extends Group {
 
 	get fields() {
 		return {
-			size: this.sizeInput.state.value
+			size: this.sizeInput.state.value,
 		};
 	}
 }

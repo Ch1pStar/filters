@@ -5,7 +5,7 @@ const Grid = require('./Grid');
 class BackgroundsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
-		CHANGE: 'background_change'
+		CHANGE: 'background_change',
 	};
 
 	constructor(options) {
@@ -32,7 +32,7 @@ class BackgroundsBox extends Box {
 
 	_initGridImages(imgs) {
 		this.grid.clearContent('.grid-component');
-		[...imgs].forEach(img => this._createImageItem(img));
+		[...imgs].forEach((img) => this._createImageItem(img));
 	}
 
 	_createImageItem(imagePath) {

@@ -44,7 +44,7 @@ class DropdownBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
 		ADD: 'effect_add',
-		REMOVE: 'dropwdown_effect_remove'
+		REMOVE: 'dropwdown_effect_remove',
 	};
 
 	constructor(parent) {
@@ -62,18 +62,16 @@ class DropdownBox extends Box {
 		requestAnimationFrame(() => {
 			const items = Array.prototype.slice.call(this.container.querySelectorAll('li'));
 
-			items.forEach(option => {
+			items.forEach((option) => {
 				const effectType = option.dataset.effectType;
 
 				if (this.groupExits(effectType)) option.classList.add('active');
 
-				option.addEventListener('click', e => {
+				option.addEventListener('click', (e) => {
 					if (this.groupExits(effectType)) {
 						this.emit(DropdownBox.events.REMOVE, this.getGroup(effectType));
 					} else {
-						const group = new this.parent.inputGroups[effectType](
-							this.parent.stateManager.state[effectType]
-						);
+						const group = new this.parent.inputGroups[effectType](this.parent.stateManager.state[effectType]);
 
 						this.emit(DropdownBox.events.ADD, group);
 					}

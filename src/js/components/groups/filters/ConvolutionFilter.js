@@ -27,7 +27,7 @@ class ConvolutionFilter extends Group {
 			matrixTwoOne,
 			matrixTwoTwo,
 			width,
-			height
+			height,
 		];
 
 		this.matrixZeroZeroInput.setState(state.matrixZeroZero);
@@ -56,7 +56,7 @@ class ConvolutionFilter extends Group {
 			matrixTwoOne: this.matrixTwoOneInput.state.value,
 			matrixTwoTwo: this.matrixTwoTwoInput.state.value,
 			width: this.widthInput.state.value,
-			height: this.heightInput.state.value
+			height: this.heightInput.state.value,
 		};
 	}
 }

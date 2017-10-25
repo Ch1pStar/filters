@@ -18,7 +18,7 @@ class NoiseFilter extends Group {
 	get fields() {
 		return {
 			noise: this.noiseInput.state.value,
-			seed: this.seedInput.state.value
+			seed: this.seedInput.state.value,
 		};
 	}
 }

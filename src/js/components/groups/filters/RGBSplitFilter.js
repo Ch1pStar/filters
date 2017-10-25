@@ -30,7 +30,7 @@ class RGBSplitFilter extends Group {
 			greenX: this.greenXInput.state.value,
 			greenY: this.greenYInput.state.value,
 			blueX: this.blueXInput.state.value,
-			blueY: this.blueYInput.state.value
+			blueY: this.blueYInput.state.value,
 		};
 	}
 }

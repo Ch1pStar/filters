@@ -21,7 +21,7 @@ class ShockwaveFilter extends Group {
 		return {
 			time: this.timeInput.state.value,
 			centerX: this.centerXInput.state.value,
-			centerY: this.centerYInput.state.value
+			centerY: this.centerYInput.state.value,
 		};
 	}
 }

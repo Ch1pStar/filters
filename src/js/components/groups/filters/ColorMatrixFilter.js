@@ -28,7 +28,7 @@ class ColorMatrixFilter extends Group {
 			contrast,
 			greyscale,
 			predator,
-			saturate
+			saturate,
 		];
 
 		this.resetInput.setState(state.reset);
@@ -58,7 +58,7 @@ class ColorMatrixFilter extends Group {
 			contrast: this.contrastInput.state.value,
 			greyscale: this.greyscaleInput.state.value,
 			predator: this.predatorInput.state.value,
-			saturate: this.saturateInput.state.value
+			saturate: this.saturateInput.state.value,
 		};
 	}
 }

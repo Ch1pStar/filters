@@ -24,7 +24,7 @@ class BulgePinchFilter extends Group {
 			radius: this.radiusInput.state.value,
 			strength: this.strengthInput.state.value,
 			centerX: this.centerXInput.state.value,
-			centerY: this.centerYInput.state.value
+			centerY: this.centerYInput.state.value,
 		};
 	}
 }

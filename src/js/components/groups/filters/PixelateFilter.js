@@ -18,7 +18,7 @@ class PixelateFilter extends Group {
 	get fields() {
 		return {
 			sizeX: this.sizeXInput.state.value,
-			sizeY: this.sizeYInput.state.value
+			sizeY: this.sizeYInput.state.value,
 		};
 	}
 }

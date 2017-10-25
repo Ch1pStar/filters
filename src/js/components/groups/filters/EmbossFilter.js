@@ -15,7 +15,7 @@ class EmbossFilter extends Group {
 
 	get fields() {
 		return {
-			strength: this.strengthInput.state.value
+			strength: this.strengthInput.state.value,
 		};
 	}
 }

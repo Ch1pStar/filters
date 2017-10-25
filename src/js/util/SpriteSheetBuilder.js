@@ -6,7 +6,6 @@ const PIXI = require('pixi.js');
  * Creates a texture for each image source from the base texture
  */
 class SpriteSheetBuilder {
-
 	/** @type {PIXI.WebGLRenderer} The renderer used to render the sprite sheet */
 	renderer = null;
 
@@ -78,7 +77,7 @@ class SpriteSheetBuilder {
 	 * Renders a sprite sheet from the current image sources
 	 */
 	renderSheet() {
-		const container = this._sheetContainer = new PIXI.Container();
+		const container = (this._sheetContainer = new PIXI.Container());
 		const sources = this._sources;
 		let width = this.sheetWidth;
 		let height = this.sheetHeight;
@@ -98,7 +97,7 @@ class SpriteSheetBuilder {
 			height = sourceSprite.height > height ? sourceSprite.height : height;
 		});
 
-		const sheetTexture = this._sheetTexture = PIXI.RenderTexture.create(width, height);
+		const sheetTexture = (this._sheetTexture = PIXI.RenderTexture.create(width, height));
 
 		// draw the images sheet
 		this.renderer.render(container, sheetTexture);
@@ -115,7 +114,10 @@ class SpriteSheetBuilder {
 		let startX = 0;
 
 		[...sources].forEach((source) => {
-			const txt = new PIXI.Texture(sheetTexture, new PIXI.Rectangle(startX, 0, source.textureWidth, source.textureHeight));
+			const txt = new PIXI.Texture(
+				sheetTexture,
+				new PIXI.Rectangle(startX, 0, source.textureWidth, source.textureHeight)
+			);
 
 			textures.push(txt);
 			startX += source.textureWidth;
@@ -123,7 +125,6 @@ class SpriteSheetBuilder {
 
 		return textures;
 	}
-
 }
 
 module.exports = SpriteSheetBuilder;

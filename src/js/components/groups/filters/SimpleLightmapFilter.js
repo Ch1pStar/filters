@@ -19,7 +19,7 @@ class SimpleLightmapFilter extends Group {
 	get fields() {
 		return {
 			color: this.colorInput.state.value,
-			alpha: this.alphaInput.state.value
+			alpha: this.alphaInput.state.value,
 		};
 	}
 }

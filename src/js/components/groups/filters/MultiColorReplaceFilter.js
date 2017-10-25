@@ -34,7 +34,7 @@ class MultiColorReplaceFilter extends Group {
 			target1: this.target1Input.state.value,
 			original2: this.original2Input.state.value,
 			target2: this.target2Input.state.value,
-			epsilon: this.epsilonInput.state.value
+			epsilon: this.epsilonInput.state.value,
 		};
 	}
 }

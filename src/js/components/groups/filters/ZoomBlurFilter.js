@@ -24,7 +24,7 @@ class ZoomBlurFilter extends Group {
 			strength: this.strengthInput.state.value,
 			centerX: this.centerXInput.state.value,
 			centerY: this.centerYInput.state.value,
-			innerRadius: this.innerRadiusInput.state.value
+			innerRadius: this.innerRadiusInput.state.value,
 		};
 	}
 }

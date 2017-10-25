@@ -18,7 +18,7 @@ class DisplacementFilter extends Group {
 	get fields() {
 		return {
 			scaleX: this.scaleXInput.state.value,
-			scaleY: this.scaleYInput.state.value
+			scaleY: this.scaleYInput.state.value,
 		};
 	}
 }

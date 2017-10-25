@@ -22,7 +22,7 @@ class ColorReplaceFilter extends Group {
 		return {
 			originalColor: this.originalColorInput.state.value,
 			newColor: this.newColorInput.state.value,
-			epsilon: this.epsilonInput.state.value
+			epsilon: this.epsilonInput.state.value,
 		};
 	}
 }

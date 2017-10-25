@@ -5,7 +5,7 @@ const jsflUtil = require('../../jsfl/util');
 class ToolsLineBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
-		CLICK: 'tools_click'
+		CLICK: 'tools_click',
 	};
 
 	constructor(previewPanel, particleTexturesBox) {
@@ -30,7 +30,7 @@ class ToolsLineBox extends Box {
 	_attachAddButton() {
 		this.container.querySelector('.button.add').addEventListener('click', () => {
 			// const images = [...this.particleTexturesBox.images];
-			const imageNames = images.map(itm => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
+			const imageNames = images.map((itm) => itm.src.match(/(?=\w+\.\w{3,4}$).+/gi)[0]);
 			const codeString = this.previewPanel.emitterState.actionScriptState;
 
 			if (!this.inFlash) {
@@ -41,7 +41,7 @@ class ToolsLineBox extends Box {
 
 			window.__adobe_cep__.evalScript(
 				jsflUtil.createEmitter(JSON.stringify(imageNames), 2, this._prepareString(codeString)),
-				a => {
+				(a) => {
 					console.log(a);
 				}
 			);
@@ -58,7 +58,7 @@ class ToolsLineBox extends Box {
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 				console.log(a);
 			});
 		});
@@ -74,7 +74,7 @@ class ToolsLineBox extends Box {
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 				console.log(a);
 			});
 		});
@@ -90,7 +90,7 @@ class ToolsLineBox extends Box {
 				return;
 			}
 
-			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), a => {
+			window.__adobe_cep__.evalScript(jsflUtil.insertScript(this._prepareString(codeString)), (a) => {
 				console.log(a);
 			});
 		});

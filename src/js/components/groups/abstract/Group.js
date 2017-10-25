@@ -8,7 +8,7 @@ class Group extends Folder {
 		// ...InputRange.events,
 		ADD: 'add',
 		CHANGE: 'change',
-		REMOVE: 'remove'
+		REMOVE: 'remove',
 	};
 
 	/**
@@ -43,8 +43,9 @@ class Group extends Folder {
 	_initInput() {
 		const cnt = this.getContainer();
 		const inputs = this.inputs;
-		inputs.forEach(input => {
-			input.on(Component.events.UPDATE_STATE, e => {
+
+		inputs.forEach((input) => {
+			input.on(Component.events.UPDATE_STATE, (e) => {
 				this.emit(Group.events.CHANGE, e);
 			});
 			cnt.appendChild(input.container);

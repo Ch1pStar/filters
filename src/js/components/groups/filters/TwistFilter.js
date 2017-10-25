@@ -24,7 +24,7 @@ class TwistFilter extends Group {
 			angle: this.angleInput.state.value,
 			radius: this.radiusInput.state.value,
 			x: this.xInput.state.value,
-			y: this.yInput.state.value
+			y: this.yInput.state.value,
 		};
 	}
 }

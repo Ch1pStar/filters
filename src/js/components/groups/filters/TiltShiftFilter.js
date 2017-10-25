@@ -18,7 +18,7 @@ class TiltShiftFilter extends Group {
 	get fields() {
 		return {
 			blur: this.blurInput.state.value,
-			gradientBlur: this.gradientBlurInput.state.value
+			gradientBlur: this.gradientBlurInput.state.value,
 		};
 	}
 }

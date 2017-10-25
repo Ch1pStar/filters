@@ -28,7 +28,7 @@ class DropShadowFilter extends Group {
 			alpha: this.alphaInput.state.value,
 			distance: this.distanceInput.state.value,
 			rotation: this.rotationInput.state.value,
-			color: this.colorInput.state.value
+			color: this.colorInput.state.value,
 		};
 	}
 }

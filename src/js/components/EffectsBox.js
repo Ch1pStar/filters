@@ -35,7 +35,7 @@ const ZoomBlurFilter = require('./groups/filters/ZoomBlurFilter');
 class EffetcsBox extends Box {
 	/** @type {Object} List of events this class will dispatch */
 	static events = {
-		CHANGE: 'effect_change'
+		CHANGE: 'effect_change',
 	};
 
 	/**
@@ -68,7 +68,7 @@ class EffetcsBox extends Box {
 		MultiColorReplaceFilter,
 		SimpleLightmapFilter,
 		GodrayFilter,
-		ZoomBlurFilter
+		ZoomBlurFilter,
 	};
 
 	properties = {};
@@ -106,7 +106,7 @@ class EffetcsBox extends Box {
 		const output = {};
 		const outputState = {};
 
-		this.groups.forEach(gr => {
+		this.groups.forEach((gr) => {
 			const groupState = gr.state;
 
 			output[gr.label] = gr.fields;
@@ -122,7 +122,7 @@ class EffetcsBox extends Box {
 	_addGroup(group) {
 		this.contentContainer.appendChild(group.container);
 
-		group.on(Group.events.REMOVE, event => {
+		group.on(Group.events.REMOVE, (event) => {
 			this._removeGroup(group);
 			this.emitGroupsState();
 		});
@@ -145,7 +145,7 @@ class EffetcsBox extends Box {
 	_clearGroups() {
 		const groups = this.groups;
 
-		groups.forEach(gr => {
+		groups.forEach((gr) => {
 			this.contentContainer.removeChild(gr.container);
 			gr.removeAllListeners(Group.events.CHANGE);
 		});
@@ -156,11 +156,11 @@ class EffetcsBox extends Box {
 	_initStateButtons() {
 		const saveButton = this.container.querySelector('.save-state-button');
 
-		saveButton.addEventListener('click', e => {
+		saveButton.addEventListener('click', (e) => {
 			const label = prompt('Name') || undefined;
 			const outputState = {};
 
-			this.groups.forEach(gr => {
+			this.groups.forEach((gr) => {
 				const groupState = gr.state;
 
 				groupState.label = gr.label;
@@ -181,17 +181,17 @@ class EffetcsBox extends Box {
 
 		buttonsContainer.innerHTML = '';
 
-		states.forEach(state => {
+		states.forEach((state) => {
 			const button = document.createElement('div');
 
 			button.classList.add('button');
 			button.innerHTML = buttonTemplate({ label: state });
 
-			button.addEventListener('click', e => {
+			button.addEventListener('click', (e) => {
 				const savedState = this.stateManager.getSavedState(state);
 
 				this._clearGroups();
-				for (let groupState in savedState) {
+				for (const groupState in savedState) {
 					this._addGroup(new this.inputGroups[groupState](savedState[groupState]));
 				}
 				console.log(savedState);
@@ -203,7 +203,7 @@ class EffetcsBox extends Box {
 	}
 
 	_initDropdown() {
-		this.container.querySelector('.effect-add-button').addEventListener('click', e => {
+		this.container.querySelector('.effect-add-button').addEventListener('click', (e) => {
 			e.stopPropagation();
 			if (!this.dropdownBox) {
 				// requestAnimationFrame(() => e.target.querySelector('span').textContent = '- Behaviors');
@@ -211,7 +211,7 @@ class EffetcsBox extends Box {
 
 				this.container.appendChild(dropdownBox.container);
 				this.dropdownBox = dropdownBox;
-				this.dropdownBox.on(DropdownBox.events.ADD, group => {
+				this.dropdownBox.on(DropdownBox.events.ADD, (group) => {
 					const content = this.container.querySelector('.content-component');
 
 					content.scrollTop = content.scrollHeight;
@@ -219,7 +219,7 @@ class EffetcsBox extends Box {
 					this.emitGroupsState();
 				});
 
-				this.dropdownBox.on(DropdownBox.events.REMOVE, group => {
+				this.dropdownBox.on(DropdownBox.events.REMOVE, (group) => {
 					this._removeGroup(group);
 					this.emitGroupsState();
 				});

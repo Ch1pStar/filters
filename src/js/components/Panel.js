@@ -33,7 +33,7 @@ class Panel extends Box {
 			// '../img/particles/p2.png',
 			'../img/particles/p3.png',
 			// '../img/particles/p4.png',
-			'../img/particles/chip-3.png'
+			'../img/particles/chip-3.png',
 			// '../img/basepixi-assets/1.png',
 			// '../img/basepixi-assets/2.png',
 			// '../img/basepixi-assets/3.png',
@@ -74,9 +74,9 @@ class Panel extends Box {
 		backgrounds: [
 			'../img/backgrounds/bg.png',
 			'../img/backgrounds/N16uiSo.jpg',
-			'../img/backgrounds/sky.jpg'
+			'../img/backgrounds/sky.jpg',
 			// '../img/particles/chip-3.png'
-		]
+		],
 	};
 
 	/**
@@ -114,17 +114,17 @@ class Panel extends Box {
 		this._previewPanel = new PreviewBox(this._effectsPanel);
 		this._previewPanel.render();
 
-		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, /*this.particleTexturesBox,*/ this.backgroundsBox);
+		this._toolsLinePanel = new ToolsLineBox(this._previewPanel, /* this.particleTexturesBox,*/ this.backgroundsBox);
 		this._toolsLinePanel.render();
 
 		// attach component listeners
-		this._effectsPanel.on(EffectsBox.events.CHANGE, effects => (this._previewPanel.effects = effects));
+		this._effectsPanel.on(EffectsBox.events.CHANGE, (effects) => (this._previewPanel.effects = effects));
 		// this.particleTexturesBox.on(ParticleTexturesBox.events.CHANGE, images => {
 		// 	this._effectsPanel.emitGroupsState();
 		// 	this._previewPanel.particleImages = images;
 		// });
 
-		this.backgroundsBox.on(BackgroundsBox.events.CHANGE, images => {
+		this.backgroundsBox.on(BackgroundsBox.events.CHANGE, (images) => {
 			this._previewPanel.backgroundImage = images[0];
 		});
 
@@ -151,7 +151,7 @@ class Panel extends Box {
 	/*eslint-enable*/
 
 	_getDocumentImages() {
-		this._eval(jsflUtil.getLibraryImages(), res => {
+		this._eval(jsflUtil.getLibraryImages(), (res) => {
 			const imgs = res === 'undefined' ? [] : res.split(',');
 
 			// this.particleTexturesBox.images = imgs;
