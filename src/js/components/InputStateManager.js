@@ -125,6 +125,15 @@ class InputStateManager {
 		},
 		ConvolutionFilter: {
 			label: 'ConvolutionFilter',
+			matrixZeroZero: { label: 'matrixZeroZero', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixZeroOne: { label: 'matrixZeroOne', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixZeroTwo: { label: 'matrixZeroTwo', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixOneZero: { label: 'matrixOneZero', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixOneOne: { label: 'matrixOneOne', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixOneTwo: { label: 'matrixOneTwo', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixTwoZero: { label: 'matrixTwoZero', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixTwoOne: { label: 'matrixTwoOne', min: 0, max: 1, value: 0.5, step: 0.01 },
+			matrixTwoTwo: { label: 'matrixTwoTwo', min: 0, max: 1, value: 0.5, step: 0.01 },
 			width: { label: 'width', min: 0, max: 500, value: 15, step: 0.01 },
 			height: { label: 'height', min: 0, max: 500, value: 15, step: 0.01 }
 		},
